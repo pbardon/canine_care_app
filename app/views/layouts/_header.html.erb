@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+      <div class="navbar-brand" id="logo">
+        <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/logo.png" alt="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png" />
+
+      <a style="font-size: 35px" href="/">Paw Pal</a>
+      Dog Sitting Web Application
+    </div>
+
+
+      <% if signed_in? %>
+
+
+
+        <ul class="nav navbar-default navbar-right">
+
+
+          <li id="menuDropdown" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+              Your Account <span class='glyphicon glyphicon-chevron-down'></span>
+            </a>
+            <ul class="dropdown-menu" data-no-collapse="true" role="menu">
+              <li><%= current_user.name %></li>
+              <li class="divider"></li>
+              <li><a href="#/dogs"> Your Dogs</a></li>
+              <li><a href="">Find A Sitter</a></li>
+              <li><a href="#/dogs/new">Add Dog</a></li>
+              <% if current_user.sitter_account %>
+                <li><a href="#/sitters/<%= current_user.sitter_account.id %>">Go to Sitter Profile</a></li>
+              <% else %>
+                <li><a href="#/sitters/new">Become a Sitter!</a></li>
+              <% end %>
+              <li><%= link_to "Sign out", session_url, method: :delete%></li>
+            </ul>
+          </li>
+
+        </ul>
+
+      <% else %>
+        <div id="guestButton" class="nav navbar-default navbar-right">
+          <%= link_to "Enter As Guest", guest_url, class: 'btn btn-success' %>
+        </div>
+      <% end %>
+
+</nav>

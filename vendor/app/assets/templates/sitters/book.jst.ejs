@@ -1,0 +1,26 @@
+<div class="sitterShowInfo">
+
+
+  <h1><%= sitter.escape('sitter_name') %> <% if (sitter.get('current_user') === sitter.get('user_id')) { %>
+    <button class="removeSitterAccount btn btn-danger">Remove Sitter Listing</button>
+    <% }else { %>
+      <button class="bookNow btn btn-success">Book Now!</button>
+    <% } %></h1>
+
+  <img class="img-responsive" src="<%= sitter.get('sitter_photo_large') %>">
+
+<ul>
+  <li>Price per Night: <%= sitter.escape('price') %></li>
+  <li>Description:
+    <p class="sitter-description"><%= sitter.escape('description') %></p>
+  </li>
+  <li>Accepts Small Dogs? <%= (sitter.get('small')) ? "Yes" : "No" %></li>
+  <li>Accepts Medium Dogs? <%= (sitter.get('medium')) ? "Yes" : "No" %></li>
+  <li>Accepts Large Dogs? <%= (sitter.get('large')) ? "Yes" : "No" %></li>
+
+  <li>
+    <a href= "#/sitters/<%= sitter.escape('id') %>/edit"> Edit Sitter Information </a>
+  </li>
+</ul>
+
+</div>

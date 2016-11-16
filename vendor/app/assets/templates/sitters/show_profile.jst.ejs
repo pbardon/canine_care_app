@@ -1,0 +1,53 @@
+<div class="sitterProfileShowInfo">
+
+  <div id="sitterProfileTopContent">
+    <span class="sitterProfileButtons">
+      <button class="btn btn-primary editSitterInfo" data-id="<%= sitter.escape('id') %>">Edit Sitter Information </button>
+      <button class="removeSitterAccount btn btn-danger">Remove Sitter Listing</button>
+    </span>
+
+    <div id="sitterProfileLeftContent">
+      <div id="sitterProfileImage">
+        <img class="img-responsive" src="<%= sitter.escape('sitter_photo_large') %>">
+      </div>
+    </div>
+
+    <div id="sitterProfileRightContent">
+      <div class="sitterShowProfileContent">
+
+        <h2><%= sitter.escape('sitter_name') %></h2>
+
+        <ul>
+          <li><h4>Price per Night:</h4><span id="sitterShowPrice">$<%= sitter.escape('price') %></span></li>
+          <li><h4>Description:</h4>
+            <p class="sitter-description"><%= sitter.escape('description') %></p>
+          </li>
+
+        </ul>
+
+        <span><strong>Accepts Small Dogs?</strong> <%= (sitter.escape('small')) ? "✓" : "✖" %></span>
+        <span><strong>Accepts Medium Dogs?</strong> <%= (sitter.escape('medium')) ? "✓" : "✖" %></span>
+        <span><strong>Accepts Large Dogs?</strong> <%= (sitter.escape('large')) ? "✓" : "✖" %></span>
+      </div>
+    </div>
+
+
+
+  </div>
+
+    <div id="sitterProfileBottomContent">
+      <h2 id="sitterBookingsHeader">Bookings:</h2>
+      <div class="profileBookings">
+        <div class="sitter_bookings">
+      </div>
+    </div>
+
+
+    <h2 id="sitterCommentsHeader">Comments:</h2>
+    <div class="profileComments">
+      <div class="sitterComments">
+      </div>
+    </div>
+
+  </div>
+</div>

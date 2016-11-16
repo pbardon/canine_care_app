@@ -1,0 +1,38 @@
+<div class="sign-in-form-container".
+  <label>Sign Up!</label>
+  <form action="/users" method="post" id="sign-up-form">
+
+    <%= form_auth_token %>
+
+    <div class="form-group">
+      <label for="nameInfo">Your Name:</label>
+      <input
+        type="text"
+        name="user[name]"
+        class="form-control"
+        id="nameInfo"
+        placeholder="Enter Name">
+    </div>
+
+    <div class="form-group">
+      <label for="emailCredential">Email Address:</label>
+      <input
+        type="email"
+        name="user[email]"
+        class="form-control"
+        id="emailCredential"
+        placeholder="Enter Email Address">
+    </div>
+
+    <div class="form-group">
+      <label for="passwordCredential">Password:</label>
+      <input
+        type="password"
+        name="user[password]"
+        class="form-control"
+        id="passwordCredential"
+        placeholder="Password">
+    </div>
+    <span><input type="submit" value="Sign Up!" class="btn btn-success"><span id="button-spacer">&nbsp</span><%= link_to "Sign In", new_session_url, class: 'btn btn-primary' %></span>
+  </form>
+</div>

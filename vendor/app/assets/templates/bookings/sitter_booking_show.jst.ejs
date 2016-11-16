@@ -1,0 +1,108 @@
+<div class="sitterBooking panel panel-info" data-id="<%= booking.get('id') %>">
+
+  <div class="panel-heading">
+    <h2 style="margin: 0px;">Booking: <a href="#/dogs/<%= dog.get('id') %>"><%= dog.escape('name') %></a></h2>
+  </div>
+
+
+    <div class="dogBookingInfo panel-body">
+
+      <table style="margin-bottom: 0;" class="table table-striped">
+        <tr>
+          <td>Date Start:</td>
+          <td>Date End:</td>
+        </tr>
+        <tr>
+          <td><%= booking.escape('date_start') %> </td>
+          <td><%= booking.escape('date_end') %> </td>
+          </td>
+
+        </tr>
+
+      </table>
+
+      <div id="sitterBookingLowerSection">
+
+
+        <div class="bookingDogInfo">
+
+          <div class="dogBookingInfo">
+            <h4> Message: </h4>
+            <p> <%= booking.escape('message') %></p>
+            <div id="dogRating">
+              Average Rating:
+              <% if  (dog.escape('avg_rating') >= 4.9) { %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fivepaws3.png" alt="" />
+
+              <% } else if ((dog.escape('avg_rating') >= 4.5)) { %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fourpointfivepaws.png" alt="" />
+              <% } else if (dog.escape('avg_rating') >= 4){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fourpaws.png" alt="" />
+              <% } else if (dog.escape('avg_rating') >= 3.5){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/threepointfivepaws.png" alt="" />
+              <% } else if (dog.escape('avg_rating') >= 3){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/threepaws.png" alt="" />
+              <% } else if (dog.escape('avg_rating') >= 2.5){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/twopointfivepaws.png" alt="" />
+              <% } else if (dog.escape('avg_rating') >= 2){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/twopaws.png" alt="" />
+              <% } else if (dog.escape('avg_rating') >= 1.5){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/onepointfivepaws.png" alt="" />
+              <% } else if (dog.escape('avg_rating') >= 1) { %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/onepaw.png" alt="" />
+              <% } else if (dog.escape('avg_rating') >= 1.5){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/halfpaw.png" alt="" />
+              <% } else { %>
+                <img></img>
+                Dog not rated.
+              <%  } %>
+            </div>
+            <div>Dog Size: <%= dog.escape('size') %></div>
+
+          </div>
+
+          </div>
+
+          <div id="sitterBookingPicWrapper">
+            <div class = "sitterBookingPic">
+              <div class="thumbnail" style="display: inline-block;" >
+                <img class="smallBookingDogPic"src="<%= dog.get('dog_photo_small') %>">
+                <div style="font-size: 10px; color: blue; padding: 5px 0px;" class="caption">
+                  Click to expand/collapse picture
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+      </div>
+
+      <div id="sitterConfirmationSection">
+        <h4>Status:</h4>
+        <% if (booking.get('confirmed')) { %>
+          <span style="color:#3EFF1F; font-size: 24px;">Confirmed</span>
+        <% }else { %>
+          <div class="bookingConfirmation">
+            <span class="confirmDiv" data-id="<%= booking.get('id') %>"><h2>Confirm?
+              <button class="confirmBooking btn btn-success">✓</button></h2>
+            </span>
+            <span class="denyDiv" data-id="<%= booking.get('id') %>"><h2>Deny?
+              <button class="denyBooking btn btn-danger">✖</button></h2>
+            </span>
+          </div>
+        <% }  %>
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+</div>

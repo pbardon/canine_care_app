@@ -1,0 +1,131 @@
+
+
+<% if (sitter.get('id')) { %>
+<h2>Edit Sitter Information</h2>
+
+<% } else { %>
+
+<h2> Enter Your Information To Become A Sitter!</h2>
+
+<% } %>
+
+<form id="newSitterForm">
+  <div class="row">
+
+    <div class="leftSide col-xs-6">
+
+
+
+
+    <label for="sitterName">Sitter Profile Name: </label>
+    <input
+      type="text"
+      class="form-control"
+      name="sitter_name"
+      id="sitterName"
+      value="<%= sitter.escape('sitter_name') %>">
+
+    <label for="sitterDescription">Description:</label>
+    <textarea
+      class="form-control"
+      name="description"
+      id="sitterDescription"
+      ><%= sitter.escape('description') %></textarea>
+
+    <label for="sitterPrice">Price Per Night: </label>
+    <div class="input-group">
+       <div class="input-group-addon">$</div>
+      <input
+          type="text"
+          class="form-control"
+          name="price"
+          id="sitterPrice"
+          value="<%= sitter.escape('price') %>">
+      </div>
+
+
+    <label>Able to Sit Dogs of Size:</label>
+    <div>
+      <div style="margin-left: 0px" class="form-checkbox">
+      <input type="checkbox" <%= (sitter.get('small') === true) ? 'checked' : '' %>
+        class = "checkbox"
+        name = "small"
+        value="true">Small</div>
+        <div class="form-checkbox">
+        <input type = "checkbox" <%= (sitter.get('small') === true) ? 'checked' : '' %>
+        class = "checkbox"
+        name="medium"
+        value="true">Medium</div>
+        <div class="form-checkbox">
+        <input type = "checkbox" <%= (sitter.get('small') === true) ? 'checked' : '' %>
+        class = "checkbox"
+        name="large"
+        value="true">Large</div>
+      </div>
+    </div>
+    <div class="rightSide col-xs-6">
+      <label for="sitterAddress">Street Address:</label>
+      <input
+          type="text"
+          class="form-control"
+          name="street_address"
+          id="sitterAddress"
+          value="<%= sitter.escape('street_address') %>">
+
+      <label for="sitterCity">City:</label>
+      <input
+          type="text"
+          class="form-control"
+          name="city"
+          id="sitterCity"
+          value="<%= sitter.escape('city') %>">
+
+      <label for="sitterCity">State:</label>
+      <input
+          type="text"
+          class="form-control"
+          name="state"
+          id="sitterState"
+          value="<%= sitter.escape('state') %>">
+
+        <label for="sitterZip">Zipcode:</label>
+        <input
+            type="text"
+            class="form-control"
+            name="zipcode"
+            id="sitterZip"
+            value="<%= sitter.escape('zipcode') %>">
+
+
+
+    <br>
+    <% if (!sitter.get('sitter_photo')) { %>
+
+      <label for="addPic">Change Sitter Profile Picture:</label>
+      <br>
+      <input
+        type="file"
+        name="sitter_photo"
+        id="addSitterPic">
+
+
+    <% }else { %>
+
+      <label for="addSitterPic">Add A Sitter Profile Picture:</label>
+      <br>
+      <input
+        type="file"
+        name="sitter_photo"
+        id="addSitterPic">
+
+    <% } %>
+    <br>
+
+    <% if (sitter.get('id')) { %>
+      <input type='submit' class='addSubmit btn btn-success' value="Update Information">
+    <% }else { %>
+      <input type='submit' class='addSubmit btn btn-success' value="Create Sitter Profile!">
+    <% } %>
+  </form>
+</div>
+</div>

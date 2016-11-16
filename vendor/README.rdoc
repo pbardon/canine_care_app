@@ -1,0 +1,7 @@
+== README
+
+
+* Ruby version "1.9.3"
+
+
+* Run rake db:create and rake db:migrate to set up the database
