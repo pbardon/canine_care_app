@@ -1,25 +1,21 @@
 DogSittingApp.Collections.Bookings = Backbone.Collection.extend({
 
-  url: 'bookings/',
+    url: 'bookings/',
 
-  model: DogSittingApp.Models.Booking,
+    model: DogSittingApp.Models.Booking,
 
-  getOrFetch: function(id) {
-    var booking = this.get(id)
-    var bookings = this;
-    if(!booking) {
-      booking = new DogSittingApp.Models.Booking({ id: id });
-      booking.fetch({
-        success: function() {
-          bookings.add(booking)
+    getOrFetch: function(id) {
+        var booking = this.get(id);
+        var bookings = this;
+        function addBooking() {
+            bookings.add(booking)
         }
-      });
-    }else {
-      booking.fetch();
+        if (!booking) {
+            booking = new DogSittingApp.Models.Booking({ id: id });
+            booking.fetch({success: addBooking});
+        } else {
+            booking.fetch();
+        }
+        return booking;
     }
-
-    return booking;
-  }
-
-
 });

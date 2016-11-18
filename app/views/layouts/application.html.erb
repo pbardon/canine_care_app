@@ -9,26 +9,16 @@
     </script>
 
   <%= csrf_meta_tags %>
-
-
-
-
-
 </head>
 
 <% unless current_user %>
 <div id="splash">
-
-
-
 <% end  %>
 <body>
 
 <%= render partial: "layouts/header" %>
 
 <%= yield %>
-
-
 
 <%= render partial: "layouts/footer" %>
 
@@ -45,34 +35,34 @@
 
 <% unless current_user %>
 
-<!-- <div class="footer">
-  <h2>Paw Pal: The Dog Sitting Web Aggregator</h2>
-  <a href="https://www.linkedin.com/profile/view?id=299520782">About The Developer</a>
+<!--<div class="footer">-->
+  <!--<h2>Paw Pal: The Dog Sitting Web Aggregator</h2>-->
+  <!--<a href="https://www.linkedin.com/profile/view?id=299520782">About The Developer</a>-->
 
 
 
-  <div id="about">
-    <span class="footerTitle">How it Works:</span>
-    <p> Sign in, Add Your Dogs then Search and Book Sitters. Or become a sitter to start earning cash today</p>
-  </div>
+  <!--<div id="about">-->
+    <!--<span class="footerTitle">How it Works:</span>-->
+    <!--<p> Sign in, Add Your Dogs then Search and Book Sitters. Or become a sitter to start earning cash today</p>-->
+  <!--</div>-->
 
-  <div id="toolsUsed">
-    <span class="footerTitle">Tools Used to Create Site:</span>
+  <!--<div id="toolsUsed">-->
+    <!--<span class="footerTitle">Tools Used to Create Site:</span>-->
 
-    <div id="ruby">
-      <img class="img" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/railslog.png" alt="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png" />
-    </div>
+    <!--<div id="ruby">-->
+      <!--<img class="img" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/railslog.png" alt="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png" />-->
+    <!--</div>-->
 
-    <div id="backbone">
-      <img class="img" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/backbone.png" alt="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png" />
-    </div>
+    <!--<div id="backbone">-->
+      <!--<img class="img" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/backbone.png" alt="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png" />-->
+    <!--</div>-->
 
-    <div id="HTML">
-      <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/htmllogo.png" alt="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png" />
-    </div>
-  </div>
+    <!--<div id="HTML">-->
+      <!--<img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/htmllogo.png" alt="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png" />-->
+    <!--</div>-->
+  <!--</div>-->
 
-</div> -->
+<!--</div>-->
 
 
 <% end  %>

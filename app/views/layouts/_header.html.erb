@@ -1,20 +1,10 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-
       <div class="navbar-brand" id="logo">
         <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/logo.png" alt="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png" />
-
-      <a style="font-size: 35px" href="/">Paw Pal</a>
-      Dog Sitting Web Application
+        <a style="font-size: 35px" href="/">Canine Care</a>Dog Care Aggregator
     </div>
-
-
       <% if signed_in? %>
-
-
-
         <ul class="nav navbar-default navbar-right">
-
-
           <li id="menuDropdown" class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown">
               Your Account <span class='glyphicon glyphicon-chevron-down'></span>
@@ -33,13 +23,10 @@
               <li><%= link_to "Sign out", session_url, method: :delete%></li>
             </ul>
           </li>
-
         </ul>
-
       <% else %>
         <div id="guestButton" class="nav navbar-default navbar-right">
           <%= link_to "Enter As Guest", guest_url, class: 'btn btn-success' %>
         </div>
       <% end %>
-
 </nav>

@@ -1,27 +1,28 @@
 DogSittingApp.Collections.DogComments = Backbone.Collection.extend({
 
-  url: "api/comments",
+    url: "api/comments",
 
-  model: DogSittingApp.Models.Comment,
+    model: DogSittingApp.Models.Comment,
 
-  getOrFetch: function(id) {
-    var comment = this.get(id)
+    getOrFetch: function(id) {
+        var comment = this.get(id);
+        var comments = this;
+        function addComment() {
+            comments.add(comment);
+        }
+        if(!comment) {
+            comment = new DogSittingApp.Models.Comment({ id: id });
+            comments.fetch({
+            success: addComment
+            });
+        }else {
+            comment.fetch();
+        }
 
-    if(!comment) {
-      comment = new DogSittingApp.Models.Comment({ id: id });
-      comment.fetch({
-        success: function() {
-          this.add(comment)
-        }.bind(this)
-      });
-    }else {
-      comment.fetch();
+        return comment;
     }
 
-    return comment;
-  }
-
-});
+    });
 
 
 DogSittingApp.Collections.dogcomments = new DogSittingApp.Collections.DogComments();
