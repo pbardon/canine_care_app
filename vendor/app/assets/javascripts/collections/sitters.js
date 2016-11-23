@@ -1,7 +1,7 @@
-DogSittingApp.Collections.Sitters = Backbone.Collection.extend({
+CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
   url: 'api/sitters',
 
-  model: DogSittingApp.Models.Sitter,
+  model: CanineCareApp.Models.Sitter,
 
 
   filterByBounds: function(minX, maxX, minY, maxY) {
@@ -20,7 +20,7 @@ DogSittingApp.Collections.Sitters = Backbone.Collection.extend({
     var sitter = this.get(id);
 
     if(!sitter) {
-      sitter = new DogSittingApp.Models.Sitter({ id: id });
+      sitter = new CanineCareApp.Models.Sitter({ id: id });
       sitter.fetch({
         success: function () {
           this.add(sitter);
@@ -34,4 +34,4 @@ DogSittingApp.Collections.Sitters = Backbone.Collection.extend({
   }
 });
 
-DogSittingApp.Collections.sitters = new DogSittingApp.Collections.Sitters();
+CanineCareApp.Collections.sitters = new CanineCareApp.Collections.Sitters();

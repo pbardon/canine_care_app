@@ -1,4 +1,4 @@
-DogSittingApp.Views.SitterIndex = Backbone.View.extend({
+CanineCareApp.Views.SitterIndex = Backbone.View.extend({
 
   initialize: function(options){
     this.listenTo(this.collection, 'reset', this.render);

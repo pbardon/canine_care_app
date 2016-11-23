@@ -1,8 +1,8 @@
-DogSittingApp.Collections.Bookings = Backbone.Collection.extend({
+CanineCareApp.Collections.Bookings = Backbone.Collection.extend({
 
     url: 'bookings/',
 
-    model: DogSittingApp.Models.Booking,
+    model: CanineCareApp.Models.Booking,
 
     getOrFetch: function(id) {
         var booking = this.get(id);
@@ -11,7 +11,7 @@ DogSittingApp.Collections.Bookings = Backbone.Collection.extend({
             bookings.add(booking)
         }
         if (!booking) {
-            booking = new DogSittingApp.Models.Booking({ id: id });
+            booking = new CanineCareApp.Models.Booking({ id: id });
             booking.fetch({success: addBooking});
         } else {
             booking.fetch();

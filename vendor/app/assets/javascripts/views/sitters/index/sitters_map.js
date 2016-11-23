@@ -1,4 +1,4 @@
-DogSittingApp.Views.SittersMap = Backbone.View.extend({
+CanineCareApp.Views.SittersMap = Backbone.View.extend({
 
   template: JST['sitters/index/map_index'],
 

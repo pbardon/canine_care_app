@@ -1,11 +1,11 @@
-window.DogSittingApp = {
+window.CanineCareApp = {
 
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
   initialize: function() {
-    var router = new DogSittingApp.Routers.Router();
+    var router = new CanineCareApp.Routers.Router();
     Backbone.history.start();
   }
 };

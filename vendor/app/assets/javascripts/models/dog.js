@@ -1,15 +1,15 @@
-DogSittingApp.Models.Dog = Backbone.Model.extend({
+CanineCareApp.Models.Dog = Backbone.Model.extend({
   urlRoot: 'api/dogs',
 
   bookings: function() {
     this._bookings = this._bookings ||
-      new DogSittingApp.Collections.DogBookings([], { dog: this });
+      new CanineCareApp.Collections.DogBookings([], { dog: this });
     return this._bookings;
   },
 
   comments: function() {
     this._comments = this._comments ||
-      new DogSittingApp.Collections.SitterComments([], { sitter: this });
+      new CanineCareApp.Collections.SitterComments([], { sitter: this });
     return this._comments;
   },
 

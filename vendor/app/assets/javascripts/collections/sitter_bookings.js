@@ -1,4 +1,4 @@
-DogSittingApp.Collections.SitterBookings = Backbone.Collection.extend({
+CanineCareApp.Collections.SitterBookings = Backbone.Collection.extend({
 
   initialize: function(models, options) {
   },
@@ -7,13 +7,13 @@ DogSittingApp.Collections.SitterBookings = Backbone.Collection.extend({
     return this.sitter.url() + "/bookings";
   },
 
-  model: DogSittingApp.Models.Booking,
+  model: CanineCareApp.Models.Booking,
 
   getOrFetch: function(id) {
     var booking = this.get(id)
 
     if(!booking) {
-      booking = new DogSittingApp.Models.Booking({ id: id });
+      booking = new CanineCareApp.Models.Booking({ id: id });
       booking.fetch({
         success: function() {
           this.add(booking)
@@ -28,4 +28,4 @@ DogSittingApp.Collections.SitterBookings = Backbone.Collection.extend({
 
 });
 
-DogSittingApp.Collections.sitterbookings = new DogSittingApp.Collections.SitterBookings();
+CanineCareApp.Collections.sitterbookings = new CanineCareApp.Collections.SitterBookings();

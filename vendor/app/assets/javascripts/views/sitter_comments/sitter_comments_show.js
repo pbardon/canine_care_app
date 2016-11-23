@@ -1,4 +1,4 @@
-DogSittingApp.Views.SitterCommentShow = Backbone.View.extend({
+CanineCareApp.Views.SitterCommentShow = Backbone.View.extend({
   template: JST['comments/show']
 
 });

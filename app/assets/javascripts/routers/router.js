@@ -1,4 +1,4 @@
-DogSittingApp.Routers.Router = Backbone.Router.extend({
+CanineCareApp.Routers.Router = Backbone.Router.extend({
   initialize: function() {
     this.$rootEl = $('#main');
   },
@@ -16,18 +16,18 @@ DogSittingApp.Routers.Router = Backbone.Router.extend({
   },
 
   dogsIndex: function () {
-    DogSittingApp.Collections.dogs.fetch();
+    CanineCareApp.Collections.dogs.fetch();
 
-    var dogsView = new DogSittingApp.Views.DogsIndex({
-      collection: DogSittingApp.Collections.dogs
+    var dogsView = new CanineCareApp.Views.DogsIndex({
+      collection: CanineCareApp.Collections.dogs
     });
 
     this._swapView(dogsView);
   },
 
   dogShow: function(id) {
-    var dog = DogSittingApp.Collections.dogs.getOrFetch(id);
-    var showDogView = new DogSittingApp.Views.DogShow({
+    var dog = CanineCareApp.Collections.dogs.getOrFetch(id);
+    var showDogView = new CanineCareApp.Views.DogShow({
       model: dog
     });
 
@@ -35,31 +35,31 @@ DogSittingApp.Routers.Router = Backbone.Router.extend({
   },
 
   dogNew: function() {
-    var dog = new DogSittingApp.Models.Dog();
-    var newDogView = new DogSittingApp.Views.DogForm({
+    var dog = new CanineCareApp.Models.Dog();
+    var newDogView = new CanineCareApp.Views.DogForm({
       model: dog,
-      collection: DogSittingApp.Collections.dogs
+      collection: CanineCareApp.Collections.dogs
     });
 
     this._swapView(newDogView);
   },
 
   dogEdit: function(id) {
-    var dog = DogSittingApp.Collections.dogs.getOrFetch(id);
+    var dog = CanineCareApp.Collections.dogs.getOrFetch(id);
 
-    var editDogView = new DogSittingApp.Views.DogForm({
+    var editDogView = new CanineCareApp.Views.DogForm({
       model: dog,
-      collection: DogSittingApp.Collections.dogs
+      collection: CanineCareApp.Collections.dogs
     });
 
     this._swapView(editDogView);
   },
 
   sitterNew: function() {
-    var sitter = new DogSittingApp.Models.Sitter();
-    var newSitterView = new DogSittingApp.Views.SitterForm({
+    var sitter = new CanineCareApp.Models.Sitter();
+    var newSitterView = new CanineCareApp.Views.SitterForm({
       model: sitter,
-      collection: DogSittingApp.Collections.sitters
+      collection: CanineCareApp.Collections.sitters
     });
 
     this._swapView(newSitterView);
@@ -67,8 +67,8 @@ DogSittingApp.Routers.Router = Backbone.Router.extend({
   },
 
   sitterShow: function(id) {
-    var sitter = DogSittingApp.Collections.sitters.getOrFetch(id);
-    var showSitterView = new DogSittingApp.Views.SitterShow({
+    var sitter = CanineCareApp.Collections.sitters.getOrFetch(id);
+    var showSitterView = new CanineCareApp.Views.SitterShow({
       model: sitter
     });
 
@@ -76,20 +76,20 @@ DogSittingApp.Routers.Router = Backbone.Router.extend({
   },
 
   sittersIndex: function() {
-    DogSittingApp.Collections.sitters.fetch();
-    var sittersView = new DogSittingApp.Views.SittersIndex({
-      collection: DogSittingApp.Collections.sitters
+    CanineCareApp.Collections.sitters.fetch();
+    var sittersView = new CanineCareApp.Views.SittersIndex({
+      collection: CanineCareApp.Collections.sitters
     });
 
     this._swapView(sittersView);
   },
 
   sitterEdit: function(id) {
-    var sitter = DogSittingApp.Collections.sitters.getOrFetch(id);
+    var sitter = CanineCareApp.Collections.sitters.getOrFetch(id);
 
-    var editSitterView = new DogSittingApp.Views.SitterForm({
+    var editSitterView = new CanineCareApp.Views.SitterForm({
       model: sitter,
-      collection: DogSittingApp.Collections.sitters
+      collection: CanineCareApp.Collections.sitters
     });
 
     this._swapView(editSitterView);
@@ -97,13 +97,13 @@ DogSittingApp.Routers.Router = Backbone.Router.extend({
 
   newBooking: function(id) {
     var sitter_id = parseInt(id);
-    var booking = new DogSittingApp.Models.Booking({sitter_id: sitter_id});
-    var dogs = DogSittingApp.Collections.dogs
+    var booking = new CanineCareApp.Models.Booking({sitter_id: sitter_id});
+    var dogs = CanineCareApp.Collections.dogs
     dogs.fetch();
 
-    var newBookingView = new DogSittingApp.Views.NewSitterBooking({
+    var newBookingView = new CanineCareApp.Views.NewSitterBooking({
       model: booking,
-      collection: DogSittingApp.Collections.sitterbookings,
+      collection: CanineCareApp.Collections.sitterbookings,
       dogs: dogs
     });
 

@@ -1,4 +1,4 @@
-DogSittingApp.Views.SittersIndex = Backbone.CompositeView.extend({
+CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
 
   initialize: function(options) {
     this.listenTo(this.collection, 'sync', this.placeMarkers);
@@ -28,7 +28,7 @@ DogSittingApp.Views.SittersIndex = Backbone.CompositeView.extend({
 
   addSitterIndex: function(){
 
-    var subview = new DogSittingApp.Views.SitterIndex({
+    var subview = new CanineCareApp.Views.SitterIndex({
       collection: this.collection
     });
 
@@ -128,7 +128,7 @@ DogSittingApp.Views.SittersIndex = Backbone.CompositeView.extend({
   },
 
   saveOriginalCollection: function() {
-    this.originalCollection = new DogSittingApp.Collections.Sitters(this.collection.models);
+    this.originalCollection = new CanineCareApp.Collections.Sitters(this.collection.models);
   },
 
   reorderByHightoLowRating: function() {

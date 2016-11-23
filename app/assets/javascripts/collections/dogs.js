@@ -1,5 +1,5 @@
-DogSittingApp.Collections.Dogs = Backbone.Collection.extend({
-    model: DogSittingApp.Models.Dog,
+CanineCareApp.Collections.Dogs = Backbone.Collection.extend({
+    model: CanineCareApp.Models.Dog,
     url: 'api/dogs',
 
     getOrFetch: function(id) {
@@ -9,7 +9,7 @@ DogSittingApp.Collections.Dogs = Backbone.Collection.extend({
             dogs.add(dog)
         }
         if(!dog) {
-            dog = new DogSittingApp.Models.Dog({ id: id });
+            dog = new CanineCareApp.Models.Dog({ id: id });
             dog.fetch({ success: addDog });
         } else {
             dog.fetch();
@@ -18,4 +18,4 @@ DogSittingApp.Collections.Dogs = Backbone.Collection.extend({
     }
 });
 
-DogSittingApp.Collections.dogs = new DogSittingApp.Collections.Dogs();
+CanineCareApp.Collections.dogs = new CanineCareApp.Collections.Dogs();

@@ -1,8 +1,8 @@
-DogSittingApp.Collections.DogComments = Backbone.Collection.extend({
+CanineCareApp.Collections.DogComments = Backbone.Collection.extend({
 
     url: "api/comments",
 
-    model: DogSittingApp.Models.Comment,
+    model: CanineCareApp.Models.Comment,
 
     getOrFetch: function(id) {
         var comment = this.get(id);
@@ -11,18 +11,13 @@ DogSittingApp.Collections.DogComments = Backbone.Collection.extend({
             comments.add(comment);
         }
         if(!comment) {
-            comment = new DogSittingApp.Models.Comment({ id: id });
-            comments.fetch({
-            success: addComment
-            });
+            comment = new CanineCareApp.Models.Comment({ id: id });
+            comments.fetch({ success: addComment });
         }else {
             comment.fetch();
         }
 
         return comment;
     }
-
     });
-
-
-DogSittingApp.Collections.dogcomments = new DogSittingApp.Collections.DogComments();
+CanineCareApp.Collections.dogcomments = new CanineCareApp.Collections.DogComments();

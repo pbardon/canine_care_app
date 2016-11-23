@@ -1,10 +1,10 @@
-DogSittingApp.Views.SitterBookingShow = Backbone.CompositeView.extend({
+CanineCareApp.Views.SitterBookingShow = Backbone.CompositeView.extend({
 
   initialize: function(options) {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, "change:confirmed", this.render);
 
-    this.dog = DogSittingApp.Collections.dogs.getOrFetch(this.model.get('dog_id'));
+    this.dog = CanineCareApp.Collections.dogs.getOrFetch(this.model.get('dog_id'));
 
     this.listenTo(this.dog, 'sync', this.render);
 

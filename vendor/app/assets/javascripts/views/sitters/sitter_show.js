@@ -1,4 +1,4 @@
-DogSittingApp.Views.SitterShow = Backbone.CompositeView.extend({
+CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.listenTo(this.model, 'sync', this.render);
@@ -34,7 +34,7 @@ DogSittingApp.Views.SitterShow = Backbone.CompositeView.extend({
   },
 
   addBooking: function (booking) {
-    var subview = new DogSittingApp.Views.SitterBookingShow({
+    var subview = new CanineCareApp.Views.SitterBookingShow({
       collection: this.model.bookings(),
       model: booking
     });
@@ -44,9 +44,9 @@ DogSittingApp.Views.SitterShow = Backbone.CompositeView.extend({
 
   addCommentForm: function(event) {
     event.preventDefault();
-    var commentForm = new DogSittingApp.Views.NewComment({
+    var commentForm = new CanineCareApp.Views.NewComment({
       model: this.model,
-      collection: DogSittingApp.Collections.sittercomments
+      collection: CanineCareApp.Collections.sittercomments
     });
 
     $(event.currentTarget).replaceWith('<div class="newCommentFormWrapper"></div>');
@@ -60,8 +60,8 @@ DogSittingApp.Views.SitterShow = Backbone.CompositeView.extend({
     var data = $('#newCommentForm').serializeJSON();
     data['commentable_type'] = "Sitter";
     data['commentable_id'] = this.model.get('id');
-    var comment = new DogSittingApp.Models.Comment(data);
-    DogSittingApp.Collections.sittercomments.create(comment, {
+    var comment = new CanineCareApp.Models.Comment(data);
+    CanineCareApp.Collections.sittercomments.create(comment, {
       success: function() {
         view.model.comments().add(comment);
         $(event.currentTarget).replaceWith('<button id="commentOnSitter" class="btn btn-info">Add Comment</button>');
@@ -78,7 +78,7 @@ DogSittingApp.Views.SitterShow = Backbone.CompositeView.extend({
   },
 
   addComment: function (comment) {
-    var subview = new DogSittingApp.Views.CommentShow({
+    var subview = new CanineCareApp.Views.CommentShow({
       collection: this.model.comments(),
       model: comment
     });

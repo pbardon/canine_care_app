@@ -1,18 +1,17 @@
-DogSittingApp.Views.CommentShow = Backbone.View.extend({
-  template: JST['comments/show'],
+CanineCareApp.Views.CommentShow = Backbone.View.extend({
+    template: JST['comments/show'],
 
-  initialize: function() {
-    this.listenTo(this.model, "sync", this.render);
-  },
+    initialize: function() {
+        this.listenTo(this.model, "sync", this.render);
+    },
 
-  render: function () {
-    var renderedContent = this.template({
-      comment: this.model
-    });
+    render: function () {
+        var renderedContent = this.template({
+            comment: this.model
+        });
 
-    this.$el.html(renderedContent);
+        this.$el.html(renderedContent);
 
-    return this;
-  }
-
+        return this;
+    }
 });

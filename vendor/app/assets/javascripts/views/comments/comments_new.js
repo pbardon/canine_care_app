@@ -1,4 +1,4 @@
-DogSittingApp.Views.NewComment = Backbone.View.extend({
+CanineCareApp.Views.NewComment = Backbone.View.extend({
 
   initialize: function(options) {
 
@@ -26,7 +26,7 @@ DogSittingApp.Views.NewComment = Backbone.View.extend({
     var data = $(event.currentTarget).serializeJSON();
     data['commentable_type'] = "Sitter";
     data['commentable_id'] = this.model.get('dog_id');
-    var comment = new DogSittingApp.Models.Comment(data);
+    var comment = new CanineCareApp.Models.Comment(data);
     this.collection.create(comment, {
       success: function() {
         $(event.currentTarget).remove();

@@ -1,4 +1,4 @@
-DogSittingApp.Models.Map = Backbone.Model.extend({
+CanineCareApp.Models.Map = Backbone.Model.extend({
   initialize: function(options) {
     var mapOptions = {
       center: options.center,

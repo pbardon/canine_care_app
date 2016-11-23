@@ -1,4 +1,4 @@
-DogSittingApp.Views.DogShow = Backbone.CompositeView.extend({
+CanineCareApp.Views.DogShow = Backbone.CompositeView.extend({
 
 
   events: {
@@ -34,7 +34,7 @@ DogSittingApp.Views.DogShow = Backbone.CompositeView.extend({
 
   addCommentForm: function(event) {
     event.preventDefault();
-    var commentForm = new DogSittingApp.Views.NewComment({
+    var commentForm = new CanineCareApp.Views.NewComment({
     });
 
     $(event.currentTarget).replaceWith('<div class="newCommentForm"></div>');
@@ -48,8 +48,8 @@ DogSittingApp.Views.DogShow = Backbone.CompositeView.extend({
     var data = $('#newCommentForm').serializeJSON();
     data['commentable_type'] = "Dog";
     data['commentable_id'] = this.model.get('id');
-    var comment = new DogSittingApp.Models.Comment(data);
-    DogSittingApp.Collections.dogcomments.create(comment, {
+    var comment = new CanineCareApp.Models.Comment(data);
+    CanineCareApp.Collections.dogcomments.create(comment, {
       success: function() {
         view.model.comments().add(comment);
         $(event.currentTarget).replaceWith('<button id="commentOnSitter" class="btn btn-info">Add Comment</button>');
@@ -67,7 +67,7 @@ DogSittingApp.Views.DogShow = Backbone.CompositeView.extend({
 
 
   addBooking: function (booking) {
-    var subview = new DogSittingApp.Views.DogBookingShow({
+    var subview = new CanineCareApp.Views.DogBookingShow({
       model: booking
     });
 
@@ -75,7 +75,7 @@ DogSittingApp.Views.DogShow = Backbone.CompositeView.extend({
   },
 
   addComment: function (comment) {
-    var subview = new DogSittingApp.Views.CommentShow({
+    var subview = new CanineCareApp.Views.CommentShow({
       collection: this.model.comments(),
       model: comment
     });
