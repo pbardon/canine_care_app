@@ -1,71 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="139e295e-1ec2-46c6-a1cc-a4ff9beacc97" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/canine_care_app.iml" afterPath="$PROJECT_DIR$/.idea/canine_care_app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/bookings.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/bookings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/dog_bookings.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/dog_bookings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/dog_comments.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/dog_comments.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/dogs.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/dogs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/sitter_bookings.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/sitter_bookings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/sitter_comments.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/sitter_comments.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/sitters.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/sitters.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/dog_sitting_app.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/dog_sitting_app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/booking.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/booking.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/comment.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/comment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/dog.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/dog.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/map.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/sitter.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/sitter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/user.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routers/router.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/routers/router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/bookings/bookings_new.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/bookings/bookings_new.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/bookings/dog_bookings_show.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/bookings/dog_bookings_show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/bookings/sitter_bookings_show.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/bookings/sitter_bookings_show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/comments/comments_new.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/comments/comments_new.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/comments/comments_show.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/comments/comments_show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/dogs/dog_form.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/dogs/dog_form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/dogs/dog_show.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/dogs/dog_show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/dogs/dogs_index.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/dogs/dogs_index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/sitter_comments/sitter_comments_show.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/sitter_comments/sitter_comments_show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/sitters/index/sitters_map.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/sitters/index/sitters_map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/sitters/sitter_form.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/sitters/sitter_form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/sitters/sitter_show.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/sitters/sitter_show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/sitters/sitters_index.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/sitters/sitters_index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/sitters_index/sitter_index.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/sitters_index/sitter_index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/bookings.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/bookings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/dog_bookings.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/dog_bookings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/dog_comments.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/dog_comments.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/dogs.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/dogs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/sitter_bookings.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/sitter_bookings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/sitter_comments.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/sitter_comments.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/sitters.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/collections/sitters.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/dog_sitting_app.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/dog_sitting_app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/models/booking.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/models/booking.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/models/comment.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/models/comment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/models/dog.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/models/dog.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/models/map.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/models/map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/models/sitter.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/models/sitter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/models/user.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/models/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/routers/router.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/routers/router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/bookings/bookings_new.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/bookings/bookings_new.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/bookings/dog_bookings_show.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/bookings/dog_bookings_show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/bookings/sitter_bookings_show.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/bookings/sitter_bookings_show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/comments/comments_new.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/comments/comments_new.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/comments/comments_show.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/comments/comments_show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/dogs/dog_form.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/dogs/dog_form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/dogs/dog_show.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/dogs/dog_show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/dogs/dogs_index.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/dogs/dogs_index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/sitter_comments/sitter_comments_show.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/sitter_comments/sitter_comments_show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/sitters/index/sitters_map.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/sitters/index/sitters_map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/sitters/sitter_form.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/sitters/sitter_form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/sitters/sitter_show.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/sitters/sitter_show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/sitters/sitters_index.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/sitters/sitters_index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/sitters_index/sitter_index.js" afterPath="$PROJECT_DIR$/vendor/app/assets/javascripts/views/sitters_index/sitter_index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/vendor/app/views/layouts/application.html.erb" />
-    </list>
+    <list default="true" id="139e295e-1ec2-46c6-a1cc-a4ff9beacc97" name="Default" comment="" />
     <ignored path="canine_care_app.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -178,8 +114,8 @@
       <file leaf-file-name="sitter_bookings_show.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/bookings/sitter_bookings_show.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+            <state relative-caret-position="210">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
               <folding>
                 <marker date="1479871378000" expanded="true" signature="1692:1723" ph="..." />
                 <marker date="1479871378000" expanded="true" signature="2479:2506" ph="..." />
@@ -928,16 +864,16 @@
       <option name="presentableId" value="Default" />
       <updated>1479439551319</updated>
       <workItem from="1479439553966" duration="3010000" />
-      <workItem from="1479868645938" duration="2725000" />
+      <workItem from="1479868645938" duration="3308000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5735000" />
+    <option name="totallyTimeSpent" value="6318000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="981" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25274727" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1347,8 +1283,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/bookings/sitter_bookings_show.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+        <state relative-caret-position="210">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding>
             <marker date="1479871378000" expanded="true" signature="1692:1723" ph="..." />
             <marker date="1479871378000" expanded="true" signature="2479:2506" ph="..." />
