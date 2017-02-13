@@ -3,8 +3,13 @@ window.CanineCareApp = {
     Collections: {},
     Views: {},
     Routers: {},
-    initialize: function() {
+    formAuthToken: null,
+    initialize: function(token) {
         new CanineCareApp.Routers.Router();
         Backbone.history.start();
+        this.formAuthToken = token;
+    },
+    setFormAuthToken: function(token) {
+        this.formAuthToken = token;
     }
 };

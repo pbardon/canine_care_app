@@ -18,145 +18,145 @@
 @import "bootstrap";
 
 
-
-body, html * {
-  font-family: Tahoma, Verdana, Segoe, sans-serif;
-  // height:100%;
-}
-
-body, html {
-  height: 100%;
-  background-color: #B7E4FF;
-}
-
-body, html * h2 {
-  font-family:"Arial Rounded MT Bold", "Helvetica-Rounded", Arial, sans-serif;
-}
-
-.backdrop {
-  // background-image: url('https://s3-us-west-1.amazonaws.com/pet-sitter-development/Bones-Seamless-Patterns2.jpg');
-  background-position: -40px 0px;
-  background-size: 2000px;
-  background-repeat: repeat-y;
-  position: absolute;
-  top: 50px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-}
-
-body, html ul {
-  list-style-image: url(https://s3-us-west-1.amazonaws.com/pet-sitter-development/paw1.png);
-}
-
-.container {
-  width: 95%;
-  height: 100%;
-  background-color: #FFFFFF;
-  // box-shadow: 40px 0 40px -4px #CBFFBA, -40px 0 40px -4px #CBFFBA;
-}
-
-
-
-
-// .navbar .navbar-default {
-//   color: black;
+//
+// body, html * {
+//   font-family: Tahoma, Verdana, Segoe, sans-serif;
+//   // height:100%;
 // }
-
-
-#button-spacer {
-  width: 5px;
-}
-
-#splash {
-  background-image: url("https://s3-us-west-1.amazonaws.com/pet-sitter-development/background_dog.jpg");
-  background-size: cover;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-
-.newSitterWrapper {
-  position: absolute;
-  width: 80%;
-  left: 10%;
-  right: 10%;
-  top: 5%;
-  padding-bottom: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border: thin solid #D4D4BD;
-  border-radius: 5px;
-  margin-bottom: 1em;
-}
-
-#newSitterForm {
-  width: 100%;
-  position: relative;
-}
-
-#newSitterForm textarea {
-  width: 100%;
-  height: 152px;
-}
-
-#newSitterForm input.addSubmit {
-  float: right;
-}
-
-.addSubmit {
-
-  float: right;
-}
-
-.form-checkbox {
-  float: left;
-  margin-left: 20px;
-}
-
-
-
-.sign-in-container {
-  display: none;
-  margin-top: 10%;
-  border-radius: 5px;
-  opacity: 0.5;
-  width: 50%;
-  height: 35%;
-  position: relative;
-}
-
-.sign-in-form-container {
-  position: absolute;
-  top: 15%;
-  right: 40%;
-  left: 30%;
-  width: 175px;
-  opacity: 1;
-}
-
-
-.dogShowInfo .img-circle {
-  display: inline;
-  height: 400px;
-  width: 400px;
-}
-
-.sitters {
-  margin: auto;
-
-}
-
-.bookNow {
-  display: inline-block;
-  position: absolute;
-  left: 80%;
-  right: 0;
-  top: 1%;
-  z-index: 1000;
-}
-
+//
+// body, html {
+//   height: 100%;
+//   background-color: #B7E4FF;
+// }
+//
+// body, html * h2 {
+//   font-family:"Arial Rounded MT Bold", "Helvetica-Rounded", Arial, sans-serif;
+// }
+//
+// .backdrop {
+//   // background-image: url('https://s3-us-west-1.amazonaws.com/pet-sitter-development/Bones-Seamless-Patterns2.jpg');
+//   background-position: -40px 0px;
+//   background-size: 2000px;
+//   background-repeat: repeat-y;
+//   position: absolute;
+//   top: 50px;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//
+// }
+//
+// body, html ul {
+//   list-style-image: url(https://s3-us-west-1.amazonaws.com/pet-sitter-development/paw1.png);
+// }
+// //
+// // .container {
+// //   width: 95%;
+// //   height: 100%;
+// //   background-color: #FFFFFF;
+// //   // box-shadow: 40px 0 40px -4px #CBFFBA, -40px 0 40px -4px #CBFFBA;
+// // }
+//
+//
+//
+//
+// // .navbar .navbar-default {
+// //   color: black;
+// // }
+//
+//
+// #button-spacer {
+//   width: 5px;
+// }
+//
+// #splash {
+//   background-image: url("https://s3-us-west-1.amazonaws.com/pet-sitter-development/background_dog.jpg");
+//   background-size: cover;
+//   position: absolute;
+//   height: 100%;
+//   width: 100%;
+// }
+//
+// .newSitterWrapper {
+//   position: absolute;
+//   width: 80%;
+//   left: 10%;
+//   right: 10%;
+//   top: 5%;
+//   padding-bottom: 5px;
+//   padding-left: 20px;
+//   padding-right: 20px;
+//   border: thin solid #D4D4BD;
+//   border-radius: 5px;
+//   margin-bottom: 1em;
+// }
+//
+// #newSitterForm {
+//   width: 100%;
+//   position: relative;
+// }
+//
+// #newSitterForm textarea {
+//   width: 100%;
+//   height: 152px;
+// }
+//
+// #newSitterForm input.addSubmit {
+//   float: right;
+// }
+//
+// .addSubmit {
+//
+//   float: right;
+// }
+//
+// .form-checkbox {
+//   float: left;
+//   margin-left: 20px;
+// }
+//
+//
+//
+// .sign-in-container {
+//   display: none;
+//   margin-top: 10%;
+//   border-radius: 5px;
+//   opacity: 0.5;
+//   width: 50%;
+//   height: 35%;
+//   position: relative;
+// }
+//
+// .sign-in-form-container {
+//   position: absolute;
+//   top: 15%;
+//   right: 40%;
+//   left: 30%;
+//   width: 175px;
+//   opacity: 1;
+// }
+//
+//
+// .dogShowInfo .img-circle {
+//   display: inline;
+//   height: 400px;
+//   width: 400px;
+// }
+//
+// .sitters {
+//   margin: auto;
+//
+// }
+//
+// .bookNow {
+//   display: inline-block;
+//   position: absolute;
+//   left: 80%;
+//   right: 0;
+//   top: 1%;
+//   z-index: 1000;
+// }
+//
 .map-wrapper > #map-canvas {
   // box-shadow: 2px 5px 1px black, -2px -5px 1px black;
   border-left: 2px solid black;
@@ -165,65 +165,65 @@ body, html ul {
   border-bottom: 5px solid black;
   border-radius: 5px;
 }
-
-.sitterItem {
-  position: relative;
-}
-
-.sitterItem> img {
-  position: absolute;
-  display: inline-block;
-}
-
-#sitterIndexWrapper .sitterItem .panel-heading {
-  padding: 0px;
-}
-
-.sitter_item> li {
-  display: inline-block;
-  list-style: none;
-}
-
-.sitterItem > .sitterInfoButton > .moreInfo {
-  margin-bottom: 5%;
-
-}
-
-
-.sitter_item > p {
-  display: inline-block;
-}
-
-.map-wrapper {
-  height: 100%;
-}
-
-
-
+//
+// .sitterItem {
+//   position: relative;
+// }
+//
+// .sitterItem> img {
+//   position: absolute;
+//   display: inline-block;
+// }
+//
+// #sitterIndexWrapper .sitterItem .panel-heading {
+//   padding: 0px;
+// }
+//
+// .sitter_item> li {
+//   display: inline-block;
+//   list-style: none;
+// }
+//
+// .sitterItem > .sitterInfoButton > .moreInfo {
+//   margin-bottom: 5%;
+//
+// }
+//
+//
+// .sitter_item > p {
+//   display: inline-block;
+// }
+//
+// .map-wrapper {
+//   height: 100%;
+// }
+//
+//
+//
 #map-canvas {
   width:100%;
   height:100%;
 }
-
-
-.sitterShowInfo {
-  display: block;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-
-
-
-.sitterShow {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-
-
-}
-
-.sitterShow #map-canvas {
+//
+//
+// .sitterShowInfo {
+//   display: block;
+//   position: absolute;
+//   height: 100%;
+//   width: 100%;
+// }
+//
+//
+//
+// .sitterShow {
+//   position: absolute;
+//   height: 100%;
+//   width: 100%;
+//
+//
+// }
+//
+#map-canvas {
   height: 650px;
   width: 650px;
   margin-top: 5%;
@@ -232,1058 +232,1058 @@ body, html ul {
   margin-bottom: 2%;
   border-radius: 10px;
 }
-
-#sitterShowImage {
-  display: inline-block;
-  position: absolute;
-  width: 40%;
-  left: 2%;
-  display: inline;
-  border-radius: 5px;
-  max-height: 40%;
-}
-
-#sitterShowImage img{
-  max-width: 100%;
-  height: auto;
-}
-
-.sitterItem a {
-  color: #4BDE2F;
-}
-
-.sitterInfo {
-  position: absolute;
-  margin-top: 1%;
-  width: 80%;
-  left: 7%;
-  height: 40%;
-  padding: 1%;
-  border: 3px solid black;
-  border-radius: 5px;
-}
-
-.dogs{
-  margin-left: 5%;
-  overflow-y: auto;
-  max-height: 100%;
-}
-
-.dog {
-  display: inline-block;
-  float: left;
-  padding-left: 2%;
-  padding-right: 2%;
-
-  border-radius: 5px;
-}
-.dog h2{
-  text-align: center;
-  font-size: 250%;
-}
-
-.dog > .img-circle {
-  width: 300px;
-  height: 250px;
-}
-
-.dogShowInfo p{
-  padding-left: 5%;
-}
-
-.dropdown-menu > li a, a:hover, a:active, a:visited {
-  font-size: 15px;
-}
-
-.dropdown-menu > a, a:hover, a:active, a:visited {
-  font-size: 15px;
-}
-
-
-.dropdown-menu > li > a:hover {
-  background-color: #B7E4FF;
-}
-
-.newSitterForm #loadingSitterGif {
-  float: right;
-  margin-top: 20%;
-
-}
-
-
-#dateStart {
-  display: inline;
-  width: 25%;
-}
-
-#dateEnd {
-  display: inline;
-  width: 25%;
-}
-
-#newBookingForm {
-  width: 100%;
-}
-
-#bookingMessageLabel {
-  display: block;
-}
-
-#bookingMessage {
-  display: block;
-  min-height: 250px;
-  width: 65%;
-}
-
-#submitBooking {
-  display: block;
-  margin-top: 1%;
-}
-
-#newDogForm textarea {
-  min-height: 250px;
-}
-
-#newDogForm {
-  width: 40%;
-  margin-left: 30%;
-  // margin-right: 25%;
-}
-
-.alert {
-  width: 100%;
-}
-
-.newSitterWrapper .alert {
-  width: 100%;
-}
-
-.container > .alert {
-  width: 50%;
-}
-
-#newBookingForm {
-  padding: 20px;
-  padding-left: 25%;
-  background-color: #FFFFFF;
-  border-radius: 5px;
-}
-
-#newBookingForm .alert {
-  width: 100%;
-}
-
-#newBookingForm textarea {
-  min-width: 200px;
-}
-
-
-.mapWrapper {
-  height: 400px;
-  width: 400px;
-}
-
-
-.dogBooking img {
-  max-width: 100%;
-  max-height: auto;
-}
-
-.dogBooking .bigImage {
-  min-width: 100%;
-}
-
-.sitterBooking {
-  // border: thin solid black;
-  // border-radius: 5px;
-}
-
-.sitterBookingPic {
-  display: inline-block;
-  position: absolute;
-  right: 5px;
-  top: 0;
-}
-
-.dogFormWrapper {
-  margin-top: 1%;
-  min-height: 675px;
-  border: thin solid #E9EBE7;
-  border-radius: 5px;
-  background-color: white;
-}
-
-.dogFormWrapper h2{
-  padding-left: 15px;
-}
-
-.dogFormWrapper .alert {
-  width: 100%
-}
-
-
-.dog_bookings > img {
-  display: inline-block;
-}
-
-.smallBookingDogPic {
-  min-width: 140px;
-  height: auto;
-}
-
-
-.sitterBookingPic .bigImage {
-  max-width: 100%;
-  max-height: 250px;
-}
-
-.index_price h2 {
-  min-width: 150px;
-  align: right;
-  margin-right: 10%;
-  font-size: 20px;
-}
-
-// .navbar .navbar-default .navbar-fixed-top {
-//   background: -webkit-linear-gradient(#FFFFFF, #DEDCD2); /* For Safari 5.1 to 6.0 */
-//   background: -o-linear-gradient(#FFFFFF, #DEDCD2); /* For Opera 11.1 to 12.0 */
-//   background: -moz-linear-gradient(#FFFFFF, #DEDCD2); /* For Firefox 3.6 to 15 */
-//   background: linear-gradient(#FFFFFF, #DEDCD2); /* Standard syntax */
+//
+// #sitterShowImage {
+//   display: inline-block;
+//   position: absolute;
+//   width: 40%;
+//   left: 2%;
+//   display: inline;
+//   border-radius: 5px;
+//   max-height: 40%;
 // }
-
-.sitterIndex {
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: absolute;
-  bottom: 0;
-  top: 40px;
-  left: 0;
-  right: 0;
-}
-
-#pawicon {
-  padding: 5px;
-  padding-right: 10px;
-
-}
-
-.sitterItem h2 {
-  display: inline;
-}
-
-
-.showDogProfile {
-  margin-top: 10%;
-  margin-left: 22%;
-}
-
-
-.searchBar {
-  display: inline-block;
-  position: absolute;
-  width: 75%;
-  top: 0px;
-  left: 1%;
-  z-index: 100000;
-}
-
-.lowerContent > .sitter_bookings {
-  position: absolute;
-  margin-top: 20%;
-  max-height: 50%;
-}
-
-.dogShowContent {
-  position: absolute;
-  display: inline-block;
-  margin-left: 1%;
-  width: 80%;
-  top: 5%;
-  height: 80%;
-  overflow-y: auto;
-}
-
-.dogShowPrivateContent {
-  display: inline-block;
-  margin-left: 1%;
-  top: 5%;
-  height: 75%;
-  overflow-y: auto;
-}
-
-
-#dogShowPic {
-  position: absolute;
-  display: inline-block;
-  width: 20%;
-
-}
-
-#logo {
-  display: inline;
-}
-
-
-#logo img {
-  max-height: 35px;
-  margin-bottom: 20px;
-}
-
-
-// .navbar-brand > .sitename > a a:hover, a:visited, a:link, a:active{
-//   text-decoration: none;
+//
+// #sitterShowImage img{
+//   max-width: 100%;
+//   height: auto;
 // }
-
-.sitterProfileButtons {
-  position: absolute;
-  top: 2%;
-  right: 5%;
-  z-index: 1;
-}
-
-.sitterShowContent {
-  position: absolute;
-  width: 50%;
-  left: 40%;
-  height: 40%;
-  display: inline-block;
-  overflow-y: auto;
-  overflow-x: hidden;
-
-}
-
-.dogShowPhoto {
-  border-radius: 5px;
-  max-width: 100%;
-  max-height: 70%;
-}
-
-.dogShowPic {
-  display: inline-block;
-}
-
-.privateDogButtons {
-}
-
-.dogBooking {
-  padding-left: 0%;
-  padding-right: 0%;
-}
-
-
-.frontPageWrapper {
-  position: relative;
-  height: 100%;
-
-}
-
-#mapWrapper {
-  box-shadow: 1px 1px 1px;
-  position: absolute;
-  top:40px;
-  bottom:0;
-  left:0;
-  width: 40%;
-}
-
-#sitterIndexWrapper {
-  position: absolute;
-  margin-left: 1%;
-  margin-right: 1%;
-  left: 40%;
-  top: 40px;
-  right: 0;
-  bottom:0;
-
-}
-
-#sitterIndexWrapper h2{
-  margin: 0;
-}
-
-
-.frontPageWrapper .sitterIndexWrapper .sitterIndex .row .sitterItem {
-  margin-left: 45%;
-  width: 55%;
-  margin-left: 10px;
-}
-
-#sitterShowPrice {
-  font-size: 20px;
-}
-
-.dogBookingInfo .panel-body #dogShowPicWrapper{
-  max-height: 100px;
-  padding-left: 10px;
-  padding-top: 0px;
-}
-
-#dogProfileName {
-  font-size: 40px;
-  margin-top: 0;
-}
-
-.dog_bookings .panel-body {
-  padding: 0px;
-}
-
-#newCommentForm {
-  min-height: 100px;
-  margin-left: 5%;
-}
-
-#newCommentForm .alert{
-}
-
-#addCommentButton {
-  float: right;
-}
-
-#main {
-  height: 100%;
-  padding: 0;
-}
-
-// .navbar {
-//   margin-bottom: 0;
+//
+// .sitterItem a {
+//   color: #4BDE2F;
 // }
-
-.map-form {
-  position: absolute;
-  z-index: 1;
-  top: 50px;
-  left: 0;
-  right:0;
-}
-
-.sitterCommentsSection {
-  position: absolute;
-  top: 40%;
-  height: 50%;
-  width: 80%;
-  left: 10%;
-
-}
-
-.sitterCommentsSection .rating{
-  position: relative;
-  left: 60%;
-
-}
-
-
-.sitterCommentsSection .rating strong{
-
-
-}
-
-.rating .ratingImage {
-  top: 0;
-  max-width: 20%;
-  max-height: auto;
-  position: relative;
-  right: 0;
-  bottom: 0;
-}
-
-
-
-.commentsSection {
-  position: absolute;
-  display: inline-block;
-  width: 52.5%;
-  left: 30%;
-  height: 85%;
-  overflow-y: scroll;
-}
-
-.newCommentFormWrapper {
-  display: inline-block
-}
-
-// .navbar-brand {
+//
+// .sitterInfo {
+//   position: absolute;
+//   margin-top: 1%;
+//   width: 80%;
+//   left: 7%;
+//   height: 40%;
+//   padding: 1%;
+//   border: 3px solid black;
+//   border-radius: 5px;
+// }
+//
+// .dogs{
+//   margin-left: 5%;
+//   overflow-y: auto;
+//   max-height: 100%;
+// }
+//
+// .dog {
+//   display: inline-block;
+//   float: left;
+//   padding-left: 2%;
+//   padding-right: 2%;
+//
+//   border-radius: 5px;
+// }
+// .dog h2{
+//   text-align: center;
+//   font-size: 250%;
+// }
+//
+// .dog > .img-circle {
+//   width: 300px;
+//   height: 250px;
+// }
+//
+// .dogShowInfo p{
+//   padding-left: 5%;
+// }
+//
+// .dropdown-menu > li a, a:hover, a:active, a:visited {
+//   font-size: 15px;
+// }
+//
+// .dropdown-menu > a, a:hover, a:active, a:visited {
+//   font-size: 15px;
+// }
+//
+//
+// .dropdown-menu > li > a:hover {
+//   background-color: #B7E4FF;
+// }
+//
+// .newSitterForm #loadingSitterGif {
+//   float: right;
+//   margin-top: 20%;
+//
+// }
+//
+//
+// #dateStart {
+//   display: inline;
+//   width: 25%;
+// }
+//
+// #dateEnd {
+//   display: inline;
+//   width: 25%;
+// }
+//
+// #newBookingForm {
+//   width: 100%;
+// }
+//
+// #bookingMessageLabel {
+//   display: block;
+// }
+//
+// #bookingMessage {
+//   display: block;
+//   min-height: 250px;
+//   width: 65%;
+// }
+//
+// #submitBooking {
+//   display: block;
+//   margin-top: 1%;
+// }
+//
+// #newDogForm textarea {
+//   min-height: 250px;
+// }
+//
+// #newDogForm {
+//   width: 40%;
+//   margin-left: 30%;
+//   // margin-right: 25%;
+// }
+//
+// .alert {
+//   width: 100%;
+// }
+//
+// .newSitterWrapper .alert {
+//   width: 100%;
+// }
+//
+// // .container > .alert {
+// //   width: 50%;
+// // }
+//
+// #newBookingForm {
+//   padding: 20px;
+//   padding-left: 25%;
+//   background-color: #FFFFFF;
+//   border-radius: 5px;
+// }
+//
+// #newBookingForm .alert {
+//   width: 100%;
+// }
+//
+// #newBookingForm textarea {
+//   min-width: 200px;
+// }
+//
+//
+// .mapWrapper {
+//   height: 400px;
+//   width: 400px;
+// }
+//
+//
+// .dogBooking img {
+//   max-width: 100%;
+//   max-height: auto;
+// }
+//
+// .dogBooking .bigImage {
+//   min-width: 100%;
+// }
+//
+// .sitterBooking {
+//   // border: thin solid black;
+//   // border-radius: 5px;
+// }
+//
+// .sitterBookingPic {
+//   display: inline-block;
+//   position: absolute;
+//   right: 5px;
+//   top: 0;
+// }
+//
+// .dogFormWrapper {
+//   margin-top: 1%;
+//   min-height: 675px;
+//   border: thin solid #E9EBE7;
+//   border-radius: 5px;
+//   background-color: white;
+// }
+//
+// .dogFormWrapper h2{
+//   padding-left: 15px;
+// }
+//
+// .dogFormWrapper .alert {
+//   width: 100%
+// }
+//
+//
+// .dog_bookings > img {
+//   display: inline-block;
+// }
+//
+// .smallBookingDogPic {
+//   min-width: 140px;
+//   height: auto;
+// }
+//
+//
+// .sitterBookingPic .bigImage {
+//   max-width: 100%;
+//   max-height: 250px;
+// }
+//
+// .index_price h2 {
+//   min-width: 150px;
+//   align: right;
+//   margin-right: 10%;
+//   font-size: 20px;
+// }
+//
+// // .navbar .navbar-default .navbar-fixed-top {
+// //   background: -webkit-linear-gradient(#FFFFFF, #DEDCD2); /* For Safari 5.1 to 6.0 */
+// //   background: -o-linear-gradient(#FFFFFF, #DEDCD2); /* For Opera 11.1 to 12.0 */
+// //   background: -moz-linear-gradient(#FFFFFF, #DEDCD2); /* For Firefox 3.6 to 15 */
+// //   background: linear-gradient(#FFFFFF, #DEDCD2); /* Standard syntax */
+// // }
+//
+// .sitterIndex {
+//   overflow-y: auto;
+//   overflow-x: hidden;
+//   position: absolute;
+//   bottom: 0;
+//   top: 40px;
+//   left: 0;
+//   right: 0;
+// }
+//
+// #pawicon {
+//   padding: 5px;
+//   padding-right: 10px;
+//
+// }
+//
+// .sitterItem h2 {
+//   display: inline;
+// }
+//
+//
+// .showDogProfile {
+//   margin-top: 10%;
+//   margin-left: 22%;
+// }
+//
+//
+// .searchBar {
+//   display: inline-block;
+//   position: absolute;
+//   width: 75%;
+//   top: 0px;
+//   left: 1%;
+//   z-index: 100000;
+// }
+//
+// .lowerContent > .sitter_bookings {
+//   position: absolute;
+//   margin-top: 20%;
+//   max-height: 50%;
+// }
+//
+// .dogShowContent {
+//   position: absolute;
+//   display: inline-block;
+//   margin-left: 1%;
+//   width: 80%;
+//   top: 5%;
+//   height: 80%;
+//   overflow-y: auto;
+// }
+//
+// .dogShowPrivateContent {
+//   display: inline-block;
+//   margin-left: 1%;
+//   top: 5%;
+//   height: 75%;
+//   overflow-y: auto;
+// }
+//
+//
+// #dogShowPic {
+//   position: absolute;
+//   display: inline-block;
+//   width: 20%;
+//
+// }
+//
+// #logo {
+//   display: inline;
+// }
+//
+//
+// #logo img {
+//   max-height: 35px;
+//   margin-bottom: 20px;
+// }
+//
+//
+// // .navbar-brand > .sitename > a a:hover, a:visited, a:link, a:active{
+// //   text-decoration: none;
+// // }
+//
+// .sitterProfileButtons {
+//   position: absolute;
+//   top: 2%;
+//   right: 5%;
+//   z-index: 1;
+// }
+//
+// .sitterShowContent {
+//   position: absolute;
+//   width: 50%;
+//   left: 40%;
+//   height: 40%;
+//   display: inline-block;
+//   overflow-y: auto;
+//   overflow-x: hidden;
+//
+// }
+//
+// .dogShowPhoto {
+//   border-radius: 5px;
+//   max-width: 100%;
+//   max-height: 70%;
+// }
+//
+// .dogShowPic {
+//   display: inline-block;
+// }
+//
+// .privateDogButtons {
+// }
+//
+// .dogBooking {
+//   padding-left: 0%;
+//   padding-right: 0%;
+// }
+//
+//
+// .frontPageWrapper {
+//   position: relative;
+//   height: 100%;
+//
+// }
+//
+// #mapWrapper {
+//   box-shadow: 1px 1px 1px;
+//   position: absolute;
+//   top:40px;
+//   bottom:0;
+//   left:0;
+//   width: 40%;
+// }
+//
+// #sitterIndexWrapper {
+//   position: absolute;
+//   margin-left: 1%;
+//   margin-right: 1%;
+//   left: 40%;
+//   top: 40px;
+//   right: 0;
+//   bottom:0;
+//
+// }
+//
+// #sitterIndexWrapper h2{
+//   margin: 0;
+// }
+//
+//
+// .frontPageWrapper .sitterIndexWrapper .sitterIndex .row .sitterItem {
+//   margin-left: 45%;
+//   width: 55%;
+//   margin-left: 10px;
+// }
+//
+// #sitterShowPrice {
+//   font-size: 20px;
+// }
+//
+// .dogBookingInfo .panel-body #dogShowPicWrapper{
+//   max-height: 100px;
+//   padding-left: 10px;
+//   padding-top: 0px;
+// }
+//
+// #dogProfileName {
+//   font-size: 40px;
+//   margin-top: 0;
+// }
+//
+// .dog_bookings .panel-body {
+//   padding: 0px;
+// }
+//
+// #newCommentForm {
+//   min-height: 100px;
+//   margin-left: 5%;
+// }
+//
+// #newCommentForm .alert{
+// }
+//
+// #addCommentButton {
+//   float: right;
+// }
+//
+// #main {
+//   height: 100%;
 //   padding: 0;
 // }
-
-.dogBookingWrapper {
-  position: absolute;
-  width: 40%;
-  left: 5%;
-  height: 100%;
-  top: 55px;
-}
-
-.dog_bookings {
-  position: absolute;
-  height: 85%;
-  width: 100%;
-}
-
-.dogCommentsWrapper {
-    position: absolute;
-    width: 40%;
-    bottom: 0;
-    left: 50%;
-    top: 50%;
-}
-
-.dogComments {
-  position: absolute;
-  height: 85%;
-  width: 100%;
-}
-
-.publicDogCommentsWrapper {
-  position: absolute;
-  width: 100%;
-  left: 5%;
-
-}
-
-.publicDogCommentsWrapper form {
-  width: 40%;
-  top: 45%;
-  bottom: 0;
-}
-
-.publicDogCommentsWrapper > .dogComments {
-  position: absolute;
-  width: 45%;
-  left: 35%;
-  height: 70%;
-}
-
-
-
-.lowerContent .sitter_bookings {
-  width: 80%;
-  margin-left: 7%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.sitterShowProfileContent {
-  position: absolute;
-  height: 100%;
-  width: 50%;
-  left: 40%;
-  top: 5%;
-  display: inline-block;
-  overflow-y: auto;
-}
-
-
-
-.commentContent {
-  // position: relative;
-  // display: inline-block;
-  // left: 0;
-  // width: 50%;
-  // height: 100%;
-}
-
-.indexContents {
-  position: absolute;
-  display: inline-block;
-  width: 75%;
-  top: 15%;
-
-}
-
-.indexContents p {
-  max-height: 80px;
-  width: 100%;
-  overflow: hidden;
-  text-overflow:ellipsis;
-
-}
-
-.indexPanel {
-  position: relative;
-  height: 190px;
-  padding: 0px;
-  padding-left: 1%;
-}
-
-.sitterIndexImg > img {
-  top:0;
-  position: absolute;
-  left: 80%;
-  max-width: 15%;
-  max-height: auto;
-  border-radius: 5px;
-  margin-top: 0px;
-
-}
-
-.averageRating {
-  display: inline;
-  position: absolute;
-  left: 1%;
-  bottom:0;
-}
-
-.paws {
-  display: inline;
-}
-
-.index_price {
-  display: inline;
-  position: absolute;
-  top: 0;
-  left: 1%;
-}
-
-.sitterInfoButton {
-  display: inline;
-  position: absolute;
-  bottom: 5px;
-  left: 83.5%;
-}
-
-.dogPrivateCommentsWrapper .commentContent {
-  position: relative;
-  display: inline-block;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.dogPrivateCommentsWrapper {
-    position: absolute;
-    width: 40%;
-    left: 50%;
-    top: 55px;
-    height: 100%;
-    vertical-align: top;
-}
-
-.dogShowInfo {
-}
-
-.publicCommentFormWrapper > .dogComments > .commentContent {
-  width: 100%;
-  position: absolute;
-  display: inline-block;
-  left: 0;
-  height: 100%;
-}
-
-.publicDogCommentsWrapper > .dogComments {
-
-}
-
-.publicCommentFormWrapper {
-  position: absolute;
-  width: 60%;
-}
-
-.footer {
-  background-color: white;
-  position: absolute;
-  top: 90%;
-  height: 800px;
-  width: 100%;
-}
-
-#toolsUsed {
-  position: absolute;
-  width: 80%;
-  height: 30%;
-  left: 15%;
-  right: 15%;
-  top: 50%;
-
-  border: thin solid lightgrey;
-  border-radius: 5px;
-}
-
-#about {
-  position: absolute;
-  top: 20%;
-  width: 80%;
-  height: 30%;
-  left: 15%;
-  right: 15%;
-  border: thin solid lightgrey;
-  border-radius: 5px;
-}
-
-#toolsUsed div{
-  top: 15%;
-  position: relative;
-  display: inline-block;
-  width: 25%;
-  margin-left: 7%;
-
-
-}
-
-.comment {
-  width: 80%;
-  margin-left: 1%;
-}
-
-#toolsUsed div img{
-  width: 50%;
-  height: auto;
-
-}
-
-.footerTitle {
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.commentRation.panel-heading {
-  padding: 0;
-}
-
-.commentRating h4{
-  margin: 0;
-}
-
-.commentDate {
-  float: right;
-  font-size: 15px;
-}
-
-.sitterCommentsSection .rating strong{
-  position: absolute;
-
-}
-
-#newCommentsSection {
-  display: inline-block;
-  position: relative;
-  vertical-align: top;
-  left: 0;
-  width: 40%;
-  z-index: 1000;
-  top: 5px;
-}
-
-#displaySitterComments {
-  display: inline-block;
-  position: relative;
-  width: 50%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 100%;
-}
-
-#sitterDescription {
-  display: inline-block;
-}
-
-#commentsHeader {
-  margin-left: 40%;
-}
-
-
-#signInAlerts {
-  position: absolute;
-  top: 50px;
-  width: 50%;
-  left: 25%;
-  right: auto;
-}
-
-#guestButton {
-  position: relative;
-  top: 5px;
-}
-
-#searchParams {
-  width: 30%;
-}
-
-#sitterShowLeftContent {
-  position: absolute;
-  height: 100%;
-  width: 40%;
-
-}
-
-#sitterShowRightContent {
-  position: absolute;
-  height: 100%;
-  left: 40%;
-  width: 50%;
-}
-
-#sitterShowAdImage {
-  position: absolute;
-  left: 2%;
-  width: 98%;
-  display: inline;
-  border-radius: 5px;
-}
-
-#sitterShowAdImage img{
-  max-width: 100%;
-  max-height: 100%;
-}
-
-#sitterShowAdTopContent {
-  position: absolute;
-}
-
-#sitterAdTopContent {
-  position: absolute;
-  height: 80%;
-  width: 100%;
-}
-
-#sitterShowAdBottomContent {
-  position: absolute;
-  top: 80%;
-  width: 100%;
-  height: 100%;
-  background-color: #B7E4FF;
-}
-
-
-.sitterAdCommentsSection {
-  position: absolute;
-  height: 100%;
-  width: 80%;
-  top: 55px;
-  left: 45%;
-}
-
-#displayAdSitterComments {
-  display: inline-block;
-  position: relative;
-  height: 100%;
-  width : 50%
-}
-
-.displayAdSitterComments .rating strong{
-
-
-}
-
-.displayAdSitterComments .rating {
-  display: inline-block;
-}
-
-#sitterProfileTopContent{
-  position: absolute;
-  height: 80%;
-  width: 100%;
-}
-
-#sitterProfileBottomContent {
-  top: 80%;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  background-color: #B7E4FF;
-}
-
-.profileComments {
-  display: inline-block;
-  position: relative;
-  left: 15%;
-  width: 35%;
-  top: 10%;
-  height: 100%;
-}
-
-#sitterProfileLeftContent {
-  display: inline-block;
-  height: 100%;
-  width: 40%;
-}
-
-#sitterProfileRightContent {
-  display: inline-block;
-  height: 100%;
-  width: 40%;
-  left: 40%;
-}
-
-#sitterProfileImage .img-responsive {
-  max-height: 100%;
-}
-
-#sitterCommentsHeader {
-  display: inline-block;
-  position: absolute;
-  margin: 0;
-  left: 55%;
-  z-index: 1000000;
-}
-
-#sitterBookingsHeader{
-  display: inline-block;
-  position: absolute;
-  margin: 0;
-  left: 5%;
-}
-
-.profileBookings {
-  display: inline-block;
-  position: relative;
-  left: 5%;
-  width: 40%;
-  top: 10%;
-  vertical-align: top;
-  height: 100%;
-}
-
-.sitterProfileShowInfo {
-  height: 200%;
-}
-
-.topDogPrivateContent {
-  position: absolute;
-  width: 100%;
-  height: 400px;
-  background-color: white;
-}
-
-#bottomDogPrivateContent {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 400px;
-  background-color: #B7E4FF;
-}
-
-#dogPrivateRightContent {
-  position: absolute;
-  display: inline-block;
-  height: 100%;
-  width: 45%;
-  left: 50%;
-}
-
-#dogPrivateLeftContent {
-  position: absolute;
-  display: inline-block;
-  height: 100%;
-  width: 50%;
-}
-
-#dogPrivateCommentHeader {
-  position: absolute;
-  left: 50%;
-}
-
-#dogPrivateBookingHeader {
-  position: absolute;
-  left: 5%;
-
-}
-
-#sitterAdCommentsHeader {
-  display: inline-block;
-  left: 45%;
-  position: absolute;
-}
-
-.sitterShowAdContent {
-  position: relative;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-
-}
-
-.confirmDiv h2 {
-  display: inline-block;
-}
-
-.denyDiv h2 {
-  display: inline-block;
-}
-
-.bookingDogInfo {
-  display: inline-block;
-  width: 50%;
-
-}
-
-#sitterBookingPicWrapper {
-  display: inline-block;
-  width: 55%;
-  height: 200px;
-  position: absolute;
-  right: 0;
-}
-
-#sitterConfirmationSection {
-  margin-top: 75px;
-}
-
-#privateDogButtonWrapper {
-  margin: 5px;
-}
-
-#menuDropdown {
-  display: inline-block;
-  float: right;
-}
-
-#searchWrapper {
-  position: absolute;
-  height: 40px;
-  width: 100%;
-}
-
-.dogShowPrivatePic {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-}
-
-.dogShowPrivatePhoto {
-  border-radius: 5px;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-#dogShowTopContent {
-  height: 400px;
-  width: 100%;
-}
-
-#dogShowBottomContent {
-  top: 400px;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  background-color: #B7E4FF;
-}
-
-
-
-#sortDropDown {
-  position: absolute;
-  right: 10px;
-}
-
-#sortDropDown a:hover{
-  background-color: #B7E4FF;
-}
-
-#orderByPrice {
-  margin: 0;
-  padding: 0;
-  background: none;
-  color: black;
-  border: none;
-}
-
-#orderByRating {
-    margin: 0;
-    padding: 0;
-    background: none;
-    color: black;
-    border: none;
-}
+//
+// // .navbar {
+// //   margin-bottom: 0;
+// // }
+//
+// .map-form {
+//   position: absolute;
+//   z-index: 1;
+//   top: 50px;
+//   left: 0;
+//   right:0;
+// }
+//
+// .sitterCommentsSection {
+//   position: absolute;
+//   top: 40%;
+//   height: 50%;
+//   width: 80%;
+//   left: 10%;
+//
+// }
+//
+// .sitterCommentsSection .rating{
+//   position: relative;
+//   left: 60%;
+//
+// }
+//
+//
+// .sitterCommentsSection .rating strong{
+//
+//
+// }
+//
+// .rating .ratingImage {
+//   top: 0;
+//   max-width: 20%;
+//   max-height: auto;
+//   position: relative;
+//   right: 0;
+//   bottom: 0;
+// }
+//
+//
+//
+// .commentsSection {
+//   position: absolute;
+//   display: inline-block;
+//   width: 52.5%;
+//   left: 30%;
+//   height: 85%;
+//   overflow-y: scroll;
+// }
+//
+// .newCommentFormWrapper {
+//   display: inline-block
+// }
+//
+// // .navbar-brand {
+// //   padding: 0;
+// // }
+//
+// .dogBookingWrapper {
+//   position: absolute;
+//   width: 40%;
+//   left: 5%;
+//   height: 100%;
+//   top: 55px;
+// }
+//
+// .dog_bookings {
+//   position: absolute;
+//   height: 85%;
+//   width: 100%;
+// }
+//
+// .dogCommentsWrapper {
+//     position: absolute;
+//     width: 40%;
+//     bottom: 0;
+//     left: 50%;
+//     top: 50%;
+// }
+//
+// .dogComments {
+//   position: absolute;
+//   height: 85%;
+//   width: 100%;
+// }
+//
+// .publicDogCommentsWrapper {
+//   position: absolute;
+//   width: 100%;
+//   left: 5%;
+//
+// }
+//
+// .publicDogCommentsWrapper form {
+//   width: 40%;
+//   top: 45%;
+//   bottom: 0;
+// }
+//
+// .publicDogCommentsWrapper > .dogComments {
+//   position: absolute;
+//   width: 45%;
+//   left: 35%;
+//   height: 70%;
+// }
+//
+//
+//
+// .lowerContent .sitter_bookings {
+//   width: 80%;
+//   margin-left: 7%;
+//   overflow-y: scroll;
+//   overflow-x: hidden;
+// }
+//
+// .sitterShowProfileContent {
+//   position: absolute;
+//   height: 100%;
+//   width: 50%;
+//   left: 40%;
+//   top: 5%;
+//   display: inline-block;
+//   overflow-y: auto;
+// }
+//
+//
+//
+// .commentContent {
+//   // position: relative;
+//   // display: inline-block;
+//   // left: 0;
+//   // width: 50%;
+//   // height: 100%;
+// }
+//
+// .indexContents {
+//   position: absolute;
+//   display: inline-block;
+//   width: 75%;
+//   top: 15%;
+//
+// }
+//
+// .indexContents p {
+//   max-height: 80px;
+//   width: 100%;
+//   overflow: hidden;
+//   text-overflow:ellipsis;
+//
+// }
+//
+// .indexPanel {
+//   position: relative;
+//   height: 190px;
+//   padding: 0px;
+//   padding-left: 1%;
+// }
+//
+// .sitterIndexImg > img {
+//   top:0;
+//   position: absolute;
+//   left: 80%;
+//   max-width: 15%;
+//   max-height: auto;
+//   border-radius: 5px;
+//   margin-top: 0px;
+//
+// }
+//
+// .averageRating {
+//   display: inline;
+//   position: absolute;
+//   left: 1%;
+//   bottom:0;
+// }
+//
+// .paws {
+//   display: inline;
+// }
+//
+// .index_price {
+//   display: inline;
+//   position: absolute;
+//   top: 0;
+//   left: 1%;
+// }
+//
+// .sitterInfoButton {
+//   display: inline;
+//   position: absolute;
+//   bottom: 5px;
+//   left: 83.5%;
+// }
+//
+// .dogPrivateCommentsWrapper .commentContent {
+//   position: relative;
+//   display: inline-block;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+// }
+//
+// .dogPrivateCommentsWrapper {
+//     position: absolute;
+//     width: 40%;
+//     left: 50%;
+//     top: 55px;
+//     height: 100%;
+//     vertical-align: top;
+// }
+//
+// .dogShowInfo {
+// }
+//
+// .publicCommentFormWrapper > .dogComments > .commentContent {
+//   width: 100%;
+//   position: absolute;
+//   display: inline-block;
+//   left: 0;
+//   height: 100%;
+// }
+//
+// .publicDogCommentsWrapper > .dogComments {
+//
+// }
+//
+// .publicCommentFormWrapper {
+//   position: absolute;
+//   width: 60%;
+// }
+//
+// .footer {
+//   background-color: white;
+//   position: absolute;
+//   top: 90%;
+//   height: 800px;
+//   width: 100%;
+// }
+//
+// #toolsUsed {
+//   position: absolute;
+//   width: 80%;
+//   height: 30%;
+//   left: 15%;
+//   right: 15%;
+//   top: 50%;
+//
+//   border: thin solid lightgrey;
+//   border-radius: 5px;
+// }
+//
+// #about {
+//   position: absolute;
+//   top: 20%;
+//   width: 80%;
+//   height: 30%;
+//   left: 15%;
+//   right: 15%;
+//   border: thin solid lightgrey;
+//   border-radius: 5px;
+// }
+//
+// #toolsUsed div{
+//   top: 15%;
+//   position: relative;
+//   display: inline-block;
+//   width: 25%;
+//   margin-left: 7%;
+//
+//
+// }
+//
+// .comment {
+//   width: 80%;
+//   margin-left: 1%;
+// }
+//
+// #toolsUsed div img{
+//   width: 50%;
+//   height: auto;
+//
+// }
+//
+// .footerTitle {
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   font-size: 30px;
+//   font-weight: bold;
+// }
+//
+// .commentRation.panel-heading {
+//   padding: 0;
+// }
+//
+// .commentRating h4{
+//   margin: 0;
+// }
+//
+// .commentDate {
+//   float: right;
+//   font-size: 15px;
+// }
+//
+// .sitterCommentsSection .rating strong{
+//   position: absolute;
+//
+// }
+//
+// #newCommentsSection {
+//   display: inline-block;
+//   position: relative;
+//   vertical-align: top;
+//   left: 0;
+//   width: 40%;
+//   z-index: 1000;
+//   top: 5px;
+// }
+//
+// #displaySitterComments {
+//   display: inline-block;
+//   position: relative;
+//   width: 50%;
+//   overflow-y: auto;
+//   overflow-x: hidden;
+//   height: 100%;
+// }
+//
+// #sitterDescription {
+//   display: inline-block;
+// }
+//
+// #commentsHeader {
+//   margin-left: 40%;
+// }
+//
+//
+// #signInAlerts {
+//   position: absolute;
+//   top: 50px;
+//   width: 50%;
+//   left: 25%;
+//   right: auto;
+// }
+//
+// #guestButton {
+//   position: relative;
+//   top: 5px;
+// }
+//
+// #searchParams {
+//   width: 30%;
+// }
+//
+// #sitterShowLeftContent {
+//   position: absolute;
+//   height: 100%;
+//   width: 40%;
+//
+// }
+//
+// #sitterShowRightContent {
+//   position: absolute;
+//   height: 100%;
+//   left: 40%;
+//   width: 50%;
+// }
+//
+// #sitterShowAdImage {
+//   position: absolute;
+//   left: 2%;
+//   width: 98%;
+//   display: inline;
+//   border-radius: 5px;
+// }
+//
+// #sitterShowAdImage img{
+//   max-width: 100%;
+//   max-height: 100%;
+// }
+//
+// #sitterShowAdTopContent {
+//   position: absolute;
+// }
+//
+// #sitterAdTopContent {
+//   position: absolute;
+//   height: 80%;
+//   width: 100%;
+// }
+//
+// #sitterShowAdBottomContent {
+//   position: absolute;
+//   top: 80%;
+//   width: 100%;
+//   height: 100%;
+//   background-color: #B7E4FF;
+// }
+//
+//
+// .sitterAdCommentsSection {
+//   position: absolute;
+//   height: 100%;
+//   width: 80%;
+//   top: 55px;
+//   left: 45%;
+// }
+//
+// #displayAdSitterComments {
+//   display: inline-block;
+//   position: relative;
+//   height: 100%;
+//   width : 50%
+// }
+//
+// .displayAdSitterComments .rating strong{
+//
+//
+// }
+//
+// .displayAdSitterComments .rating {
+//   display: inline-block;
+// }
+//
+// #sitterProfileTopContent{
+//   position: absolute;
+//   height: 80%;
+//   width: 100%;
+// }
+//
+// #sitterProfileBottomContent {
+//   top: 80%;
+//   height: 100%;
+//   width: 100%;
+//   position: absolute;
+//   background-color: #B7E4FF;
+// }
+//
+// .profileComments {
+//   display: inline-block;
+//   position: relative;
+//   left: 15%;
+//   width: 35%;
+//   top: 10%;
+//   height: 100%;
+// }
+//
+// #sitterProfileLeftContent {
+//   display: inline-block;
+//   height: 100%;
+//   width: 40%;
+// }
+//
+// #sitterProfileRightContent {
+//   display: inline-block;
+//   height: 100%;
+//   width: 40%;
+//   left: 40%;
+// }
+//
+// #sitterProfileImage .img-responsive {
+//   max-height: 100%;
+// }
+//
+// #sitterCommentsHeader {
+//   display: inline-block;
+//   position: absolute;
+//   margin: 0;
+//   left: 55%;
+//   z-index: 1000000;
+// }
+//
+// #sitterBookingsHeader{
+//   display: inline-block;
+//   position: absolute;
+//   margin: 0;
+//   left: 5%;
+// }
+//
+// .profileBookings {
+//   display: inline-block;
+//   position: relative;
+//   left: 5%;
+//   width: 40%;
+//   top: 10%;
+//   vertical-align: top;
+//   height: 100%;
+// }
+//
+// .sitterProfileShowInfo {
+//   height: 200%;
+// }
+//
+// .topDogPrivateContent {
+//   position: absolute;
+//   width: 100%;
+//   height: 400px;
+//   background-color: white;
+// }
+//
+// #bottomDogPrivateContent {
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   top: 400px;
+//   background-color: #B7E4FF;
+// }
+//
+// #dogPrivateRightContent {
+//   position: absolute;
+//   display: inline-block;
+//   height: 100%;
+//   width: 45%;
+//   left: 50%;
+// }
+//
+// #dogPrivateLeftContent {
+//   position: absolute;
+//   display: inline-block;
+//   height: 100%;
+//   width: 50%;
+// }
+//
+// #dogPrivateCommentHeader {
+//   position: absolute;
+//   left: 50%;
+// }
+//
+// #dogPrivateBookingHeader {
+//   position: absolute;
+//   left: 5%;
+//
+// }
+//
+// #sitterAdCommentsHeader {
+//   display: inline-block;
+//   left: 45%;
+//   position: absolute;
+// }
+//
+// .sitterShowAdContent {
+//   position: relative;
+//   height: 100%;
+//   overflow-y: auto;
+//   overflow-x: hidden;
+//
+// }
+//
+// .confirmDiv h2 {
+//   display: inline-block;
+// }
+//
+// .denyDiv h2 {
+//   display: inline-block;
+// }
+//
+// .bookingDogInfo {
+//   display: inline-block;
+//   width: 50%;
+//
+// }
+//
+// #sitterBookingPicWrapper {
+//   display: inline-block;
+//   width: 55%;
+//   height: 200px;
+//   position: absolute;
+//   right: 0;
+// }
+//
+// #sitterConfirmationSection {
+//   margin-top: 75px;
+// }
+//
+// #privateDogButtonWrapper {
+//   margin: 5px;
+// }
+//
+// #menuDropdown {
+//   display: inline-block;
+//   float: right;
+// }
+//
+// #searchWrapper {
+//   position: absolute;
+//   height: 40px;
+//   width: 100%;
+// }
+//
+// .dogShowPrivatePic {
+//   position: absolute;
+//   right: 5px;
+//   top: 5px;
+// }
+//
+// .dogShowPrivatePhoto {
+//   border-radius: 5px;
+//   max-width: 100%;
+//   max-height: 100%;
+// }
+//
+// #dogShowTopContent {
+//   height: 400px;
+//   width: 100%;
+// }
+//
+// #dogShowBottomContent {
+//   top: 400px;
+//   height: 100%;
+//   width: 100%;
+//   position: absolute;
+//   background-color: #B7E4FF;
+// }
+//
+//
+//
+// #sortDropDown {
+//   position: absolute;
+//   right: 10px;
+// }
+//
+// #sortDropDown a:hover{
+//   background-color: #B7E4FF;
+// }
+//
+// #orderByPrice {
+//   margin: 0;
+//   padding: 0;
+//   background: none;
+//   color: black;
+//   border: none;
+// }
+//
+// #orderByRating {
+//     margin: 0;
+//     padding: 0;
+//     background: none;
+//     color: black;
+//     border: none;
+// }

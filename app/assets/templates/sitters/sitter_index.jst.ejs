@@ -1,93 +1,98 @@
-<% if (!sitters.isEmpty()){ %>
+<div id="main">
+    <!-- Page Content -->
+    <!-- <div class="container"> -->
+
+    <% if (!sitters.isEmpty()){ %>
 
 
 
-  <% sitters.each(function(sitter){ %>
+      <% sitters.each(function(sitter){ %>
 
-      <!-- <div class="sitter-info"> -->
-  <div class="sitterItem panel panel-info">
+          <!-- <div class="sitter-info"> -->
+      <div class="sitterItem panel panel-info">
 
-    <div class="panel-heading">
-        <img id="pawicon" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pawicon.png"><h2><%= sitter.escape('sitter_name') %></h2>
-    </div>
-    <div class="indexPanel panel-body">
-      <br>
-      <br>
-      <div class = 'indexContents'>
-        <h5> <strong>Description:</strong> </h5>
-        <p><%= sitter.escape('description') %></p>
-      </div>
-      <div class="averageRating">
-        <strong>Average Rating:</strong>
-        <div class="paws">
-          <% if  (sitter.escape('avg_rating') >= 4.9) { %>
-            <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fivepaws3.png" alt="" />
+        <div class="panel-heading">
+            <img id="pawicon" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pawicon.png"><h2><%= sitter.escape('sitter_name') %></h2>
+        </div>
+        <div class="indexPanel panel-body">
+          <br>
+          <br>
+          <div class = 'indexContents'>
+            <h5> <strong>Description:</strong> </h5>
+            <p><%= sitter.escape('description') %></p>
+          </div>
+          <div class="averageRating">
+            <strong>Average Rating:</strong>
+            <div class="paws">
+              <% if  (sitter.escape('avg_rating') >= 4.9) { %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fivepaws3.png" alt="" />
 
-          <% } else if ((sitter.escape('avg_rating') >= 4.5)) { %>
-            <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fourpointfivepaws.png" alt="" />
-          <% } else if (sitter.escape('avg_rating') >= 4){ %>
-            <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fourpaws.png" alt="" />
-          <% } else if (sitter.escape('avg_rating') >= 3.5){ %>
-            <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/threepointfivepaws.png" alt="" />
-          <% } else if (sitter.escape('avg_rating') >= 3){ %>
-            <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/threepaws.png" alt="" />
-          <% } else if (sitter.escape('avg_rating') >= 2.5){ %>
-            <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/twopointfivepaws.png" alt="" />
-          <% } else if (sitter.escape('avg_rating') >= 2){ %>
-            <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/twopaws.png" alt="" />
-          <% } else if (sitter.escape('avg_rating') >= 1.5){ %>
-            <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/onepointfivepaws.png" alt="" />
-          <% } else if (sitter.escape('avg_rating') >= 1) { %>
-            <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/onepaw.png" alt="" />
-          <% } else if (sitter.escape('avg_rating') >= 1.5){ %>
-            <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/halfpaw.png" alt="" />
-          <% } else { %>
-            Sitter not rated.
-          <%  } %>
+              <% } else if ((sitter.escape('avg_rating') >= 4.5)) { %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fourpointfivepaws.png" alt="" />
+              <% } else if (sitter.escape('avg_rating') >= 4){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fourpaws.png" alt="" />
+              <% } else if (sitter.escape('avg_rating') >= 3.5){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/threepointfivepaws.png" alt="" />
+              <% } else if (sitter.escape('avg_rating') >= 3){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/threepaws.png" alt="" />
+              <% } else if (sitter.escape('avg_rating') >= 2.5){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/twopointfivepaws.png" alt="" />
+              <% } else if (sitter.escape('avg_rating') >= 2){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/twopaws.png" alt="" />
+              <% } else if (sitter.escape('avg_rating') >= 1.5){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/onepointfivepaws.png" alt="" />
+              <% } else if (sitter.escape('avg_rating') >= 1) { %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/onepaw.png" alt="" />
+              <% } else if (sitter.escape('avg_rating') >= 1.5){ %>
+                <img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/halfpaw.png" alt="" />
+              <% } else { %>
+                Sitter not rated.
+              <%  } %>
+
+            </div>
+
+          </div>
+
+          <div class="sitterIndexImg">
+            <img class="sitterIndexPhoto thumbnail" src="<%= sitter.get('sitter_photo_large') %>">
+
+
+          </div>
+
+          <div class="sitterInfoButton">
+            <button data-id="<%= sitter.get('id') %>" class="btn btn-success moreInfo">More Info</button>
+          </div>
+
+          <div class="index_price">
+            <strong>Cost/Night: $<%= sitter.escape('price') %></strong>
+          </div>
+
+
+
+
+
 
         </div>
 
-      </div>
-
-      <div class="sitterIndexImg">
-        <img class="sitterIndexPhoto thumbnail" src="<%= sitter.get('sitter_photo_large') %>">
-
 
       </div>
 
-      <div class="sitterInfoButton">
-        <button data-id="<%= sitter.get('id') %>" class="btn btn-success moreInfo">More Info</button>
-      </div>
+          <!-- <div class="sitter-pic"> -->
 
-      <div class="index_price">
-        <strong>Cost/Night: $<%= sitter.escape('price') %></strong>
-      </div>
+
+      <% }); %>
 
 
 
 
 
+    <% } else { %>
 
-    </div>
-
-
-  </div>
-
-      <!-- <div class="sitter-pic"> -->
-
-
-  <% }); %>
+      <h2> There are no sitters in this area </h2>
+      <p>
+        Try moving the map, searching, or <a href="#/sitters/new">become a sitter</a> in this area.
+      </p>
 
 
-
-
-
-<% } else { %>
-
-  <h2> There are no sitters in this area </h2>
-  <p>
-    Try moving the map, searching, or <a href="#/sitters/new">become a sitter</a> in this area.
-  </p>
-
-
-<% }%>
+    <% }%>
+<!-- </div> -->

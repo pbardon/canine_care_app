@@ -11,14 +11,16 @@
   <%= csrf_meta_tags %>
 </head>
 
-<% unless current_user %>
-<div id="splash">
-<% end  %>
 <body>
 
 <%= render partial: "layouts/header" %>
 
-<%= yield %>
+
+
+<div id="main">
+    <%= yield %>
+</div>
+
 
 <%= render partial: "layouts/footer" %>
 
@@ -26,9 +28,13 @@
 
 <script charset="utf-8">
   $(document).ready(function(){
-    CanineCareApp.initialize();
-
+    CanineCareApp.initialize('<%= form_auth_token %>');
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    });
+    CanineCareApp.setFormAuthToken = '<%= form_auth_token %>';
   });
+
 </script>
 </body>
 

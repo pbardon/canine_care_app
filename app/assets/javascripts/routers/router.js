@@ -6,6 +6,10 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
   routes: {
     '': 'sittersIndex',
     'dogs': 'dogsIndex',
+    'sign_in' : 'signIn',
+    'contact' : 'contactPage',
+    'about' : 'aboutPage',
+    'services' : 'servicesPage',
     'dogs/new': 'dogNew',
     'dogs/:id/edit': 'dogEdit',
     'dogs/:id': 'dogShow',
@@ -14,6 +18,27 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
     'sitters/:id/edit': 'sitterEdit',
     'bookings/:id/new': 'newBooking'
   },
+
+  signIn: function () {
+    var signInView = new CanineCareApp.Views.SignInPage();
+    this._swapView(signInView);
+  },
+
+  aboutPage: function () {
+    var aboutView = new CanineCareApp.Views.AboutPage();
+    this._swapView(aboutView);
+  },
+
+  contactPage: function () {
+    var contactView = new CanineCareApp.Views.ContactPage();
+    this._swapView(contactView);
+  },
+
+  servicesPage: function () {
+    var servicesView = new CanineCareApp.Views.ServicesPage();
+    this._swapView(servicesView);
+  },
+
 
   dogsIndex: function () {
     CanineCareApp.Collections.dogs.fetch();
@@ -98,7 +123,7 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
   newBooking: function(id) {
     var sitter_id = parseInt(id);
     var booking = new CanineCareApp.Models.Booking({sitter_id: sitter_id});
-    var dogs = CanineCareApp.Collections.dogs
+    var dogs = CanineCareApp.Collections.dogs;
     dogs.fetch();
 
     var newBookingView = new CanineCareApp.Views.NewSitterBooking({
@@ -113,8 +138,9 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
 
 
   _swapView: function (view) {
-    this.currentView && this.currentView.remove();
-    this.currentView = view;
+    if (this.currentView && this.currentView.remove()) {
+        this.currentView = view;
+    }
 
     this.$rootEl.html(view.render().$el);
   }
