@@ -14,6 +14,7 @@ module Api
 
     def create
       @sitter = Sitter.new(sitter_params)
+      debugger;
       @sitter.user_id = current_user.id
       if @sitter.save
         geo = generate_geocode(@sitter.street_address, @sitter.zipcode, @sitter.city, @sitter.state)
