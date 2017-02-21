@@ -12,6 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require ./sandstone/loader
+ *= require ./sandstone/bootswatch
+ *= require jquery-ui
  */
 
 
@@ -1293,3 +1296,15 @@
 //     color: black;
 //     border: none;
 // }
+
+
+
+.sitterIndexPhoto {
+  height: 100px;
+  margin-left: 25%;
+  margin-top: 50px;
+}
+
+.sitterIndexRow {
+  height: 200px;
+}
