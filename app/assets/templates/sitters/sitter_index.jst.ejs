@@ -8,12 +8,18 @@
 
         <div class="sitterIndexRow">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <img class="sitterIndexPhoto" src="<%= sitter.get('sitter_photo_large') %>">
                 </div>
-                <div class="col-md-6">
-                    <h2><%= sitter.escape('sitter_name') %></h2>
-                    <br>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h2><%= sitter.escape('sitter_name') %></h2>
+                        </div>
+                        <div class="sitterInfoButton col-md-offset-8">
+                            <button data-id="<%= sitter.get('id') %>" class="btn btn-info moreInfo">More Info</button>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="averageRating col-md-6">
                                 <strong>Average Rating:</strong>
@@ -43,9 +49,7 @@
                                     <%  } %>
                                 </div>
                         </div>
-                        <div class="sitterInfoButton col-md-offset-7">
-                            <button data-id="<%= sitter.get('id') %>" class="btn btn-default moreInfo">More Info</button>
-                        </div>
+
                     </div>
                     <br>
                 </div>

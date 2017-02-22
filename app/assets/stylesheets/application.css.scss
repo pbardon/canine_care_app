@@ -202,10 +202,6 @@
 //
 //
 //
-#map-canvas {
-  width:100%;
-  height:100%;
-}
 //
 //
 // .sitterShowInfo {
@@ -228,7 +224,6 @@
 #map-canvas {
   height: 650px;
   width: 650px;
-  margin-top: 5%;
   position: fixed;
   margin-right: 5%;
   margin-bottom: 2%;
@@ -1300,10 +1295,29 @@
 
 .sitterIndexPhoto {
   height: 100px;
-  margin-left: 25%;
-  margin-top: 50px;
+  margin-left: 10%;
+  margin-top: 10px;
 }
 
 .sitterIndexRow {
-  height: 200px;
+  height: 125px;
+}
+
+.sitterItem {
+    margin-top: 10px;
+}
+
+.sitterListingsPanel {
+    height: 650px;
+    width: 650px;
+    border-radius: 10px;
+}
+
+.searchBar {
+
+    margin: 15px;
+}
+
+.sitterInfoButton {
+    margin-top: 15px;
 }
