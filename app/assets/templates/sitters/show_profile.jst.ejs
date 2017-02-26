@@ -1,52 +1,56 @@
-<div class="sitterProfileShowInfo">
-  <div id="sitterProfileTopContent">
-    <span class="sitterProfileButtons">
-      <button class="btn btn-primary editSitterInfo" data-id="<%= sitter.escape('id') %>">Edit Sitter Information </button>
-      <button class="removeSitterAccount btn btn-danger">Remove Sitter Listing</button>
-    </span>
+<div class="sitterProfileShowInfo container">
+    <div id="sitterProfileTopContent" class="panel panel-default">
+        <div class="panel-heading">
+            <div class="page-header row">
+                <h2><%= sitter.escape('sitter_name') %></h2>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div id="sitterProfileTopContent" class="panel panel-default">
+                <div class="row">
 
-    <div id="sitterProfileLeftContent">
-      <div id="sitterProfileImage">
-        <img class="img-responsive" src="<%= sitter.escape('sitter_photo_large') %>">
-      </div>
+                    <div id="sitterProfileLeftContent" class="col-md-6">
+                        <div class="sitterShowProfileContent">
+                            <h4>Price per Night:</h4><span id="sitterShowPrice">$<%= sitter.escape('price') %></span>
+                            <h4>Description:</h4>
+                            <p class="sitter-description"><%= sitter.escape('description') %></p>
+                          <span><strong>Accepts Small Dogs?</strong> <%= (sitter.escape('small')) ? "✓" : "✖" %></span>
+                          <span><strong>Accepts Medium Dogs?</strong> <%= (sitter.escape('medium')) ? "✓" : "✖" %></span>
+                          <span><strong>Accepts Large Dogs?</strong> <%= (sitter.escape('large')) ? "✓" : "✖" %></span>
+                        </div>
+                    </div>
+
+                    <div id="sitterProfileRightContent" class="col-md-6">
+                      <div id="sitterProfileImage">
+                        <img class="img-responsive" src="<%= sitter.escape('sitter_photo_large') %>">
+                      </div>
+                    </div>
+                </div>
+
+                <span class="sitterProfileButtons">
+                  <button class="btn btn-primary editSitterInfo" data-id="<%= sitter.escape('id') %>">Edit Sitter Information </button>
+                  <button class="removeSitterAccount btn btn-danger">Remove Sitter Listing</button>
+                </span>
+            </div>
+        </div>
     </div>
 
-    <div id="sitterProfileRightContent">
-      <div class="sitterShowProfileContent">
-
-        <h2><%= sitter.escape('sitter_name') %></h2>
-
-        <ul>
-          <li><h4>Price per Night:</h4><span id="sitterShowPrice">$<%= sitter.escape('price') %></span></li>
-          <li><h4>Description:</h4>
-            <p class="sitter-description"><%= sitter.escape('description') %></p>
-          </li>
-
-        </ul>
-
-        <span><strong>Accepts Small Dogs?</strong> <%= (sitter.escape('small')) ? "✓" : "✖" %></span>
-        <span><strong>Accepts Medium Dogs?</strong> <%= (sitter.escape('medium')) ? "✓" : "✖" %></span>
-        <span><strong>Accepts Large Dogs?</strong> <%= (sitter.escape('large')) ? "✓" : "✖" %></span>
-      </div>
-    </div>
+                <div id="sitterProfileBottomContent">
+                  <h2 id="sitterBookingsHeader">Bookings:</h2>
+                  <div class="profileBookings">
+                    <div class="sitter_bookings">
+                  </div>
+                </div>
 
 
+                <h2 id="sitterCommentsHeader">Comments:</h2>
+                <div class="profileComments">
+                  <div class="sitterComments">
+                  </div>
+                </div>
 
-  </div>
-
-    <div id="sitterProfileBottomContent">
-      <h2 id="sitterBookingsHeader">Bookings:</h2>
-      <div class="profileBookings">
-        <div class="sitter_bookings">
-      </div>
-    </div>
-
-
-    <h2 id="sitterCommentsHeader">Comments:</h2>
-    <div class="profileComments">
-      <div class="sitterComments">
-      </div>
-    </div>
-
+                </div>
+            </div>
+        </div>
   </div>
 </div>
