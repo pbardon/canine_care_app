@@ -1,7 +1,7 @@
 CanineCareApp.Views.SitterForm = Backbone.View.extend({
     template: JST['sitters/form'],
 
-    className: "newSitterWrapper",
+    className: "newSitterWrapper container",
 
     events: {
         'submit form':'submit',
@@ -19,7 +19,7 @@ CanineCareApp.Views.SitterForm = Backbone.View.extend({
         var file = event.currentTarget.files[0];
         var reader = new FileReader();
         reader.onload = function(e) {
-            that.model.set('sitter_photo', this.result)
+            that.model.set('sitter_photo', this.result);
         };
         reader.readAsDataURL(file);
     },
@@ -34,7 +34,7 @@ CanineCareApp.Views.SitterForm = Backbone.View.extend({
         if (this.model.isNew()) {
             this.collection.create(this.model, {
                 success: function() {
-                    wait:true;
+                    var wait = true;
                     Backbone.history.navigate('/');
                     window.location.reload();
                 },
@@ -43,7 +43,7 @@ CanineCareApp.Views.SitterForm = Backbone.View.extend({
                     $('.alert').remove();
                     $('.addSubmit').replaceWith("<input type='submit' class='addSubmit btn btn-primary' value='Update Information'>");
                     _(errors.responseJSON).each(function(error) {
-                    $('#newSitterForm').prepend("<div class='alert alert-danger'>"+ error + "</div>");
+                        $('#newSitterForm').prepend("<div class='alert alert-danger'>"+ error + "</div>");
                     });
                 }
             });

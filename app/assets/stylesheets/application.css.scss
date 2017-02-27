@@ -1286,6 +1286,10 @@
   margin-top: 10px;
 }
 
+#sitterProfileImage img {
+    height: 250px;
+}
+
 .sitterIndexRow {
   height: 125px;
 }
@@ -1321,4 +1325,32 @@
 #myCarousel {
     height: 600px;
     width: 100%;
+}
+
+#sitterProfileTopContent {
+    margin-top: 50px;
+}
+
+#sitterProfileImageContent {
+    padding: 25px;
+}
+
+#newDogForm {
+    margin-top: 50px;
+}
+
+.newSitterWrapper {
+    margin-top: 75px;
+}
+
+.dogIndexPage {
+    margin-top: 50px;
+}
+
+.img-responsive.img-portfoli.dogIndexPhoto {
+    min-width: 100%;
+}
+
+#profileImage {
+    padding: 10%;
 }

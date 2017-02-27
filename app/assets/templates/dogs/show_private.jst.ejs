@@ -1,57 +1,54 @@
-<div class="dogShowInfo">
+<div class="dogShowInfo container">
+    <div class="row">
+        <div id="sitterProfileTopContent" class="panel panel-default">
+            <div class="panel-heading">
+                <h2><%= dog.escape('name') %>'s Profile</h2>
+            </div>
 
-  <div class="topDogPrivateContent">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="bs-component">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                  <h4 class="list-group-item-heading">Description:</h4>
+                                  <p class="list-group-item-text"><%= dog.escape('description') %></p>
+                                </li>
 
-    <div id="dogPrivateLeftContent">
-      <h2 id="dogProfileName"><%= dog.escape('name') %>'s Profile
+                                <li class="list-group-item">
+                                    <span class="badge"><%= dog.escape('age') %></span>
+                                    <h4 class="list-group-item-heading">Age:</h4>
+                                </li>
 
-      </h2>
-      <h3 id="privateDogButtonWrapper"><span class="privateDogButtons">
-        <button class="editDogInfo btn btn-primary" data-id="<%= dog.escape('id') %>">Edit Dog Information</button>
-        <button class="removeDog btn btn-danger">Remove Dog Profile</button>
-      </span></h3>
+                                <li class="list-group-item">
+                                    <span class="badge"><%= dog.escape('size') %></span>
+                                    <h4 class="list-group-item-heading">Size:</h4>
+                                </li>
+                            </ul>
+                          </div>
 
+                    </div>
 
-      <div class='dogShowPrivateContent'>
-          <h3 style = "margin-top: 0px;">Description:</h3>
-          <div id="dogDescription">
-            <%= dog.escape('description') %>
-          </div>
+                    <div class="col-md-6">
 
-          <div class="dogAttributes">
-            <div><h3>Age: <%= dog.escape('age') %></h3></div>
-            <div><h4>Size: <%= dog.escape('size') %></h4></div>
-          </div>
+                        <div id="dogPrivateRightContent">
+                          <div class="dogShowPrivatePic panel panel-default col-md-8 col-md-offset-2">
+                                <div id="profileImage">
+                                    <img class="img-responsive img-portfolio" src="<%= dog.get('dog_photo_large') %>">
+                                </div>
+                          </div>
+                        </div>
+                    </div>
 
-      </div>
+                    <div class="col-md-8 col-md-offset-7">
+                        <span class="sitterProfileButtons">
+                          <button class="btn btn-primary editSitterInfo" data-id="1">Edit Sitter Information </button>
+                          <button class="removeSitterAccount btn btn-danger">Remove Sitter Listing</button>
+                        </span>
+                    </div>
 
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div id="dogPrivateRightContent">
-      <div class="dogShowPrivatePic">
-          <img class="dogShowPrivatePhoto" src="<%= dog.get('dog_photo_large') %>">
-      </div>
-    </div>
-
-
-
-  </div>
-
-  <div id="bottomDogPrivateContent">
-    <h3 id="dogPrivateBookingHeader"> Bookings: </h3>
-    <div class="dogBookingWrapper">
-
-      <div class="dog_bookings">
-      </div>
-    </div>
-    <h3 id="dogPrivateCommentHeader"> Comments: </h3>
-    <div class="dogPrivateCommentsWrapper">
-
-      <div class="dogComments">
-
-      </div>
-    </div>
-
-  </div>
-
 </div>

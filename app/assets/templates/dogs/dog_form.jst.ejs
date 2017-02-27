@@ -1,78 +1,105 @@
-<% if (dog.get('name')) { %>
-  <h2>Edit Dog Information</h2>
+<div class="container">
 
-<% } else { %>
+    <div id="newDogForm" class="well bs-component">
+        <div class="errors">
 
-  <h2> Add A New Dog!</h2>
+        </div>
+        <form class="form-horizontal">
+                    <fieldset>
+                          <legend>
+                              <% if (dog.get('name')) { %>
+                                Edit Dog Information
+                              <% } else { %>
+                                Add A New Dog!
+                              <% } %>
+                          </legend>
+                          <div class="form-group">
+                            <label for="dogName" class="col-lg-2 control-label">Sitter Profile Name:</label>
+                            <div class="col-lg-10">
+                              <input type="text"
+                                    class="form-control"
+                                    id="dogName"
+                                    placeholder="Dog Name"
+                                    value="<%= dog.escape('name') %>">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="dogAge" class="col-lg-2 control-label">Age:</label>
+                            <div class="col-lg-10">
+                              <input type="text"
+                                    class="form-control"
+                                    id="dogAge"
+                                    placeholder="Age"
+                                    value="<%= dog.escape('age') %>">
+                            </div>
+                          </div>
 
-<% } %>
+                          <div class="form-group">
+                            <label for="dogDescription" class="col-lg-2 control-label">Description:</label>
+                            <div class="col-lg-10">
+                              <textarea class="form-control" rows="3" id="dogDescription"><%= dog.escape('description') %>
+                              </textarea>
+                            </div>
+                          </div>
 
-<form id="newDogForm">
+                          <div class="form-group">
+                            <label class="col-lg-2 control-label">Size:</label>
+                            <div class="col-lg-10">
+                              <div class="radio">
+                                <label>
+                                  <input type="radio"
+                                         name="small"
+                                         id="smallOption"
+                                         value="small"
+                                         checked="<%= (dog.escape('size') === 'small') ? 'true' : 'false' %>">
+                                    Small
+                                </label>
+                              </div>
+                              <div class="radio">
+                                <label>
+                                  <input type="radio"
+                                         name="medium"
+                                         id="mediumOption"
+                                         value="medium">
+                                      Medium
+                                </label>
+                              </div>
+                              <div class="radio">
+                                <label>
+                                  <input type="radio"
+                                         name="large"
+                                         id="largeOption"
+                                         value="large">
+                                      Large
+                                </label>
+                              </div>
+                            </div>
+                        </div>
 
-  <div class="class="form-control"">
+                        <% if (typeof (dog.get('dog_photo_small')) === 'undefined') { %>
 
-    <div class="errors">
+                        <label for="addPic">Add A Picture of Your Dog:</label>
+                        <br>
+                        <input type="file" name="dog_photo" id="addPic">
 
+                        <% }else { %>
+
+                          <label for="addPic">Change Dog Picture:</label>
+                          <br>
+                          <input type="file" name="dog_photo" id="addPic">
+
+
+                        <% } %>
+
+                        <br>
+                        <br>
+
+                        <% if (dog.get('id')) { %>
+                          <button type='submit' class='addSubmit btn btn-primary'>Edit Dog</button>
+                        <% }else { %>
+                          <button type='submit' class='addSubmit btn btn-success'>Add Dog</button>
+                        <%  } %>
+                    </fieldset>
+          </form>
     </div>
-
-
-    <div class="form-group">
-
-      <label for="dogName">Name: </label>
-      <input type="text" class="form-control" name="name" id="dogName" value="<%= dog.escape('name') %>">
-
-    </div>
-
-
-    <div class="form-group">
-      <label for="dogAge">Age: </label>
-      <input type="text" class="form-control" name="age" id="dogAge"  value="<%= dog.escape('age') %>">
-    </div>
-
-    <div class="form-group">
-      <label for="dogDescription">Description:</label>
-      <textarea class="form-control"
-       name="description"
-       id="dogDescription"><%= dog.escape('description') %></textarea>
-    </div>
-    <br>
-    <br>
-
-    <div class="form-group">
-      <label for="dogSize">Size:</label>
-      <select name="size" id="dogSize">
-        <option <%= (dog.escape('size') === 'small') ? 'selected' : '' %> value='small'>Small</option>
-        <option <%= (dog.escape('size') === 'medium') ? 'selected' : '' %> value='medium'>Medium</option>
-        <option <%= (dog.escape('size') === 'large') ? 'selected' : '' %> value='large'>Large</option>
-      </select>
-
-    </div>
-    <br>
-    <br>
-    <% if (dog.get('id')) { %>
-      <button type='submit' class='addSubmit btn btn-primary'>Edit Dog</button>
-    <% }else { %>
-      <button type='submit' class='addSubmit btn btn-success'>Add Dog</button>
-    <%  } %>
-
-
-
-    <% if (typeof (dog.get('dog_photo_small')) === 'undefined') { %>
-
-    <label for="addPic">Add A Picture of Your Dog:</label>
-    <br>
-    <input type="file" name="dog_photo" id="addPic">
-
-    <% }else { %>
-
-      <label for="addPic">Change Dog Picture:</label>
-      <br>
-      <input type="file" name="dog_photo" id="addPic">
-
-
-    <% } %>
-
-
-  </div>
-
-</form>
+</div>
