@@ -7,6 +7,7 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
     '': 'sittersIndex',
     'dogs': 'dogsIndex',
     'sign_in' : 'signIn',
+    'sign_up': 'signUp',
     'contact' : 'contactPage',
     'about' : 'aboutPage',
     'services' : 'servicesPage',
@@ -22,6 +23,11 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
   signIn: function () {
     var signInView = new CanineCareApp.Views.SignInPage();
     this._swapView(signInView);
+  },
+
+  signUp: function () {
+    var signUpView = new CanineCareApp.Views.SignUpPage();
+    this._swapView(signUpView);
   },
 
   aboutPage: function () {

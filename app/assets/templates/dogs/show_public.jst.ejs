@@ -1,50 +1,65 @@
+<div class="dogShowInfo container">
+    <div class="row">
+        <div id="sitterProfileTopContent" class="panel panel-default">
+            <div class="panel-heading">
+                <h2><%= dog.escape('name') %>'s Profile</h2>
+            </div>
 
-<div id ="dogShowTopContent">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="bs-component">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                  <h4 class="list-group-item-heading">Description:</h4>
+                                  <p class="list-group-item-text"><%= dog.escape('description') %></p>
+                                </li>
 
-  <div class="dogShowInfo">
+                                <li class="list-group-item">
+                                    <span class="badge"><%= dog.escape('age') %></span>
+                                    <h4 class="list-group-item-heading">Age:</h4>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <span class="badge"><%= dog.escape('size') %></span>
+                                    <h4 class="list-group-item-heading">Size:</h4>
+                                </li>
+                            </ul>
+                          </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div id="dogPrivateRightContent">
+                          <div class="dogShowPrivatePic panel panel-default col-md-8 col-md-offset-2">
+                                <div id="profileImage">
+                                    <img class="img-responsive img-portfolio" src="<%= dog.get('dog_photo_large') %>">
+                                </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 col-md-offset-7">
+                        <div class="publicDogCommentsWrapper">
+
+                          <h3> Comments: </h3>
 
 
-    <h2 id="dogProfileName"><%= dog.escape('name') %>
+                          <div class="publicCommentFormWrapper">
 
-    </h2>
+                            <button id="commentOnDog" class="btn btn-info" data-dog-id="<%= dog.escape('id') %>"> Comment on Dog </h3>
 
-    <div class="">
-      <div class="dogShowPic col-xs-3">
-        <img class="dogShowPhoto" src="<%= dog.get('dog_photo_large') %>">
-      </div>
+                          </div>
 
+                          <div class="dogComments">
 
-      <div class='dogShowContent col-xs-6'>
-        <h2 style = "margin-top: 0px;">Description:</h2>
-        <div id="dogDescription">
-          <%= dog.escape('description') %>
+                          </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-
-        <div class="dogAttributes">
-          <div><h3>Age:<%= dog.escape('age') %></h3></div>
-          <div><h4>Size: <%= dog.escape('size') %></h4></div>
-        </div>
-      </div>
-    </div>
-</div>
-
-</div>
-
-
-<div id="dogShowBottomContent">
-    <div class="publicDogCommentsWrapper">
-
-      <h3> Comments: </h3>
-
-
-      <div class="publicCommentFormWrapper">
-
-        <button id="commentOnDog" class="btn btn-info" data-dog-id="<%= dog.escape('id') %>"> Comment on Dog </h3>
-
-      </div>
-
-      <div class="dogComments">
-
-      </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
-CanineCareApp.Views.SignInPage = Backbone.View.extend({
-    template: JST['login/sign_in'],
+CanineCareApp.Views.SignUpPage = Backbone.View.extend({
+    template: JST['login/sign_up'],
 
     events: {
         'submit form':'submit'
@@ -16,14 +16,12 @@ CanineCareApp.Views.SignInPage = Backbone.View.extend({
         event.preventDefault();
         var formData = $(event.currentTarget).serializeJSON();
         $.ajax({
-            url: "/session",
+            url: "/users",
             method: "POST",
             data: formData,
             dataType: "json",
             success: function(response) {
-                console.log(JSON.stringify(response));
-                Backbone.history.navigate("/");
-                window.location.reload();
+                Backbone.history.navigate("#/", { trigger: true });
             },
             error: function(response) {
                 console.log(JSON.stringify(response));

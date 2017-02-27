@@ -7,14 +7,16 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(session_params[:email],
                                     session_params[:password])
-
     if @user
       sign_in(@user)
-      redirect_to root_url
+      render json: @user, status: 200
     else
       @user = User.new(session_params)
       flash[:errors] = 'Invalid username/password'
-      render :new
+      render json: { error: "No such user; check the submitted email address",
+                     status: 400
+                   },
+            status: 400
     end
   end
 
