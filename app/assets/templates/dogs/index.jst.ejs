@@ -10,8 +10,8 @@
             </div>
             <% dogs.each(function(dog){ %>
                 <div class="col-md-4 col-sm-6">
-                    <a href="#/dogs/<%= dog.escape('id') %>">
-                        <img class="" src="<%= dog.get('dog_photo_large') %>" alt="" style="min-width: 100%;">
+                    <a class="dogIndexLink" href="#/dogs/<%= dog.escape('id') %>">
+                        <img class="dogIndexPhoto" src="<%= dog.get('dog_photo_large') %>" style="min-width: 100%; height: 250px;">
                     </a>
                 </div>
                 <% }); %>

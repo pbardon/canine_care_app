@@ -1,7 +1,7 @@
 CanineCareApp.Views.NewSitterBooking = Backbone.View.extend({
     initialize: function(options) {
         this.dogs = options.dogs;
-        this.listenTo(this.dogs, 'add sync', this.render);
+        this.listenTo(this.dogs, 'sync', this.render);
     },
 
     events: {
@@ -28,8 +28,8 @@ CanineCareApp.Views.NewSitterBooking = Backbone.View.extend({
 
         if (this.model.isNew()) {
             this.collection.create(this.model, {
+                wait: true,
                 success: function(model) {
-                    wait:true;
                     Backbone.history.navigate("#/dogs/" + model.get('dog_id'), { trigger: true });
                 },
 
@@ -49,4 +49,4 @@ CanineCareApp.Views.NewSitterBooking = Backbone.View.extend({
             });
         }
     }
-})
+});

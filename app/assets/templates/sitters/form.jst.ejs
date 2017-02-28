@@ -17,6 +17,7 @@
                                     class="form-control"
                                     id="sitter_name"
                                     placeholder="Profile Name"
+                                    name="sitter_name"
                                     value="<%= sitter.escape('sitter_name') %>">
                             </div>
                           </div>
@@ -27,6 +28,7 @@
                                     class="form-control"
                                     id="sitterPrice"
                                     placeholder="Price Per Night"
+                                    name="price"
                                     value="<%= sitter.escape('sitter_name') %>">
                             </div>
                           </div>
@@ -34,20 +36,23 @@
                           <div class="form-group">
                             <label for="textArea" class="col-lg-2 control-label">Description:</label>
                             <div class="col-lg-10">
-                              <textarea class="form-control" rows="3" id="sitterDescription"><%= sitter.escape('description') %>
+                              <textarea class="form-control"
+                                        rows="3"
+                                        name="description"
+                                        id="sitterDescription"><%= sitter.escape('description') %>
                               </textarea>
                             </div>
                           </div>
 
 
                           <div class="form-group">
-                            <label for="inputPassword" class="col-lg-2 control-label">Able to Sit Dogs of Size:</label>
+                            <label for="sizeInput" class="col-lg-2 control-label">Able to Sit Dogs of Size:</label>
                             <div class="col-lg-10">
                               <div class="checkbox">
                                 <label>
                                   <input type="checkbox" <%= (sitter.get('small') === true) ? 'checked' : '' %>
                                   class = "checkbox"
-                                  name="large"
+                                  name="small"
                                   value="true" \> Small
                                 </label>
                               </div>
@@ -55,7 +60,7 @@
                                 <label>
                                   <input type="checkbox" <%= (sitter.get('medium') === true) ? 'checked' : '' %>
                                   class = "checkbox"
-                                  name="large"
+                                  name="medium"
                                   value="true" \> Medium
                                 </label>
                               </div>
@@ -76,6 +81,7 @@
                                     class="form-control"
                                     id="sitterAddress"
                                     placeholder="Address"
+                                    name="street_address"
                                     value="<%= sitter.escape('street_address') %>">
                             </div>
                           </div>
@@ -86,7 +92,20 @@
                                     class="form-control"
                                     id="sitterCity"
                                     placeholder="City"
+                                    name="city"
                                     value="<%= sitter.escape('city') %>">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="sitterState" class="col-lg-2 control-label">State:</label>
+                            <div class="col-lg-10">
+                              <input type="text"
+                                    class="form-control"
+                                    id="sitterState"
+                                    placeholder="State"
+                                    name="state"
+                                    value="<%= sitter.escape('state') %>">
                             </div>
                           </div>
 
@@ -97,6 +116,7 @@
                                     class="form-control"
                                     id="sitterZip"
                                     placeholder="Zipcode"
+                                    name="zipcode"
                                     value="<%= sitter.escape('zipcode') %>">
                             </div>
                           </div>

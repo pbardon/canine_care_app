@@ -1,35 +1,71 @@
-<form id="newBookingForm" class="col-xs-12 col-md-4">
+<div class="container">
 
-  <h1> New Booking </h1>
-  <br>
-  <label for="dateStart">Date Start: </label>
-  <input type="text" class="form-control" name="date_start" id="dateStart" value="<%= booking.escape('date_start') %>">
+    <div id="newBookingForm" class="well bs-component">
 
+        <form class="form-horizontal">
+                    <fieldset>
+                          <legend>
+                              New Booking
+                          </legend>
+                          <div class="form-group">
+                            <label for="dateStart" class="col-lg-2 control-label">Date Start:</label>
+                            <div class="col-lg-10">
+                              <input type="text"
+                                    class="form-control"
+                                    id="dateStart"
+                                    name="date_start"
+                                    placeholder="Date Start"
+                                    value="<%= booking.escape('date_start') %>">
+                            </div>
+                          </div>
 
-  <label for="dateEnd">Date End: </label>
-  <input type="text" class="form-control" name="date_end" id="dateEnd"  value="<%= booking.escape('date_end') %>">
+                          <div class="form-group">
+                            <label for="dateEnd" class="col-lg-2 control-label">Date Start:</label>
+                            <div class="col-lg-10">
+                              <input type="text"
+                                    class="form-control"
+                                    id="dateEnd"
+                                    name="date_end"
+                                    placeholder="Date End"
+                                    value="<%= booking.escape('name') %>">
+                            </div>
+                          </div>
 
-  <label for="bookingMessage" id="bookingMessageLabel">Message/Comments:</label>
-  <textarea class="form-control" name="message" id="bookingMessage" value="<%= booking.escape('message') %>"></textarea>
+                          <div class="form-group">
+                            <label for="bookingMessage" class="col-lg-2 control-label">Message/Comments:</label>
+                            <div class="col-lg-10">
+                              <textarea class="form-control"
+                                        rows="3"
+                                        id="bookingMessage"
+                                        name="message"
+                                        value="<%= booking.escape('message') %>">
+                              </textarea>
+                            </div>
+                          </div>
 
-  <% if (!dogs) { %>
+                          <% if (!dogs) { %>
 
-  <% } else { %>
-    <label for="dogSelect">Choose which dog you would like to book this stay for:</label>
-    <select name="dog_id" id="dogSelect">
-      <% dogs.each(function(dog){ %>
-          <option value="<%= dog.escape('id') %>"><%= dog.escape('name') %></option>
-      <%  });  %>
-    </select>
+                          <% } else { %>
+                            <label for="dogSelect">Choose which dog you would like to book this stay for:</label>
+                            <select name="dog_id" id="dogSelect">
+                              <% dogs.each(function(dog){ %>
+                                  <option value="<%= dog.escape('id') %>"><%= dog.escape('name') %></option>
+                              <%  });  %>
+                            </select>
 
-  <% } %>
+                          <% } %>
 
-  <input type="submit" class="btn btn-success" id="submitBooking" value="Request Booking!">
-</form>
+                          <input type="submit" class="btn btn-success" id="submitBooking" value="Request Booking!">
+                      </fieldset>
+                  </form>
+              </div>
+          </div>
 
-<script>
- $(function() {
-    $("#dateStart").datepicker();
-    $("#dateEnd").datepicker();
-  });
-</script>
+        <script>
+         $(function() {
+            $("#dateStart").datepicker();
+            $("#dateEnd").datepicker();
+          });
+        </script>
+    </div>
+</div>

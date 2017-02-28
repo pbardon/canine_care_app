@@ -25,5 +25,4 @@ CanineCareApp.Views.DogsIndex = Backbone.CompositeView.extend({
 
     return this;
   }
-
 });

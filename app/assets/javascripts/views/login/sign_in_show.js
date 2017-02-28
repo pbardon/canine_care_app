@@ -28,7 +28,6 @@ CanineCareApp.Views.SignInPage = Backbone.View.extend({
                 window.location.reload();
             },
             error: function(response) {
-                console.log(JSON.stringify(response));
                 var errData = JSON.parse(response.responseText);
                 var errorMsgDiv = $('.errorMessage');
                 errorMsgDiv.addClass('alert alert-dismissible alert-danger');

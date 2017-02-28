@@ -6,7 +6,7 @@ CanineCareApp.Collections.Dogs = Backbone.Collection.extend({
         var dog = this.get(id);
         var dogs = this;
         function addDog() {
-            dogs.add(dog)
+            dogs.add(dog);
         }
         if(!dog) {
             dog = new CanineCareApp.Models.Dog({ id: id });
