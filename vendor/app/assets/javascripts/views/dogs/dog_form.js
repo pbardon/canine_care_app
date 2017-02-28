@@ -27,8 +27,8 @@ CanineCareApp.Views.DogForm = Backbone.View.extend({
     var file = event.currentTarget.files[0];
     var reader = new FileReader();
     reader.onload = function(e) {
-      that.model.set('dog_photo', this.result)
-    }
+      that.model.set('dog_photo', this.result);
+    };
     reader.readAsDataURL(file);
   },
 
@@ -37,10 +37,6 @@ CanineCareApp.Views.DogForm = Backbone.View.extend({
     $('.addSubmit').replaceWith('<img class="addSubmit" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/loading.gif">');
     var data = $(event.currentTarget).serializeJSON();
     this.model.set(data);
-
-
-
-
     if (this.model.isNew()) {
       this.collection.create(this.model, {
         success: function() {

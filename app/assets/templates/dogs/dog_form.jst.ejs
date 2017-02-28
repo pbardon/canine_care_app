@@ -14,11 +14,12 @@
                               <% } %>
                           </legend>
                           <div class="form-group">
-                            <label for="dogName" class="col-lg-2 control-label">Sitter Profile Name:</label>
+                            <label for="dogName" class="col-lg-2 control-label">Name:</label>
                             <div class="col-lg-10">
                               <input type="text"
                                     class="form-control"
                                     id="dogName"
+                                    name="name"
                                     placeholder="Dog Name"
                                     value="<%= dog.escape('name') %>">
                             </div>
@@ -30,6 +31,7 @@
                                     class="form-control"
                                     id="dogAge"
                                     placeholder="Age"
+                                    name="age"
                                     value="<%= dog.escape('age') %>">
                             </div>
                           </div>
@@ -37,7 +39,11 @@
                           <div class="form-group">
                             <label for="dogDescription" class="col-lg-2 control-label">Description:</label>
                             <div class="col-lg-10">
-                              <textarea class="form-control" rows="3" id="dogDescription"><%= dog.escape('description') %>
+                              <textarea class="form-control"
+                                        rows="3"
+                                        id="dogDescription"
+                                        name="description">
+                                        <%= dog.escape('description') %>
                               </textarea>
                             </div>
                           </div>
@@ -48,7 +54,7 @@
                               <div class="radio">
                                 <label>
                                   <input type="radio"
-                                         name="small"
+                                         name="size"
                                          id="smallOption"
                                          value="small"
                                          checked="<%= (dog.escape('size') === 'small') ? 'true' : 'false' %>">
@@ -58,8 +64,8 @@
                               <div class="radio">
                                 <label>
                                   <input type="radio"
-                                         name="medium"
-                                         id="mediumOption"
+                                         name="size"
+                                         id="size"
                                          value="medium">
                                       Medium
                                 </label>
@@ -67,7 +73,7 @@
                               <div class="radio">
                                 <label>
                                   <input type="radio"
-                                         name="large"
+                                         name="size"
                                          id="largeOption"
                                          value="large">
                                       Large
