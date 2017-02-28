@@ -2,13 +2,15 @@ CanineCareApp.Views.SignInPage = Backbone.View.extend({
     template: JST['login/sign_in'],
 
     events: {
-        'submit form':'submit'
+        'submit form':'submit',
+        'click .errorClose': 'close'
     },
 
     render: function() {
         var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
         var renderedContent = this.template({token : AUTH_TOKEN });
         this.$el.html(renderedContent);
+        $('.errorMessage').hide();
         return this;
     },
 
@@ -29,8 +31,15 @@ CanineCareApp.Views.SignInPage = Backbone.View.extend({
                 console.log(JSON.stringify(response));
                 var errData = JSON.parse(response.responseText);
                 var errorMsgDiv = $('.errorMessage');
-                errorMsgDiv.replaceWith(errData.error.toString());
+                errorMsgDiv.addClass('alert alert-dismissible alert-danger');
+                errorMsgDiv.find('div.errorMessageContent').html(errData.error.toString());
+                errorMsgDiv.show();
             }
         });
+    },
+
+    close: function(event) {
+        event.preventDefault();
+        $('.errorMessage').hide();
     }
 });

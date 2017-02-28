@@ -11,7 +11,8 @@
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-fw fa-check"></i>Sign Up!</h4>
+                    <h3>Sign Up!<h6><a href="#/sign_in">(login)</a></h6></h3>
+
                 </div>
                 <div class="panel-body">
                     <form action="/session" method="post" id="sign-in-form">
@@ -60,14 +61,22 @@
                         placeholder="Password">
                         </div>
 
-                        <span><input type="submit" value="Sign In!" class="btn btn-default">
+                        <br>
+                        <div class="col-md-12">
+                            <div class="errorMessage">
+                                <button type="button" class="errorClose close">&times;</button>
+                                <div class="errorMessageContent">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+
+
+                        <span><input type="submit" value="Sign Up!" class="btn btn-default">
                         <span id="button-spacer">
                         </span>
                         </span>
-
-                        <div class="errorMessage">
-
-                        </div>
                     </form>
                 </div>
             </div>
