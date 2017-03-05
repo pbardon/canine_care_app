@@ -4,13 +4,11 @@ module Api
 
     def index
       @comments = Comment.all
-
       render json: @comments
     end
 
     def show
       @comment = Comment.find(params[:id])
-
       if @comment
         render json: @comment
       else
