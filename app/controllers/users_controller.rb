@@ -26,6 +26,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+      @user = User.find(params[:id])
+      if @user
+          render formats: [:json]
+      end
+      flash[:errors] = @user.errors.full_messages
+
+  end
+
   private
 
   def user_params

@@ -55,8 +55,8 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
         var view = this;
         event.preventDefault();
         var data = $('#newCommentForm').serializeJSON();
-        data['commentable_type'] = "Sitter";
-        data['commentable_id'] = this.model.get('id');
+        data.commentable_type = "Sitter";
+        data.commentable_id = this.model.get('id');
         var comment = new CanineCareApp.Models.Comment(data);
         CanineCareApp.Collections.sittercomments.create(comment, {
             success: function() {
