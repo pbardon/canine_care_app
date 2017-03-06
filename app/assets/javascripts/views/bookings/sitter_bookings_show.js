@@ -48,7 +48,7 @@ CanineCareApp.Views.SitterBookingShow = Backbone.CompositeView.extend({
                 $($(".sitterBooking[data-id='" + data_id +"']").find('.bookingConfirmation'))
                         .replaceWith("<span style='color:#3EFF1F; font-size: 24px;''>Booking Confirmed</span>");
             }, errors: function(jq, status, message) {
-                $('.sitterBooking').prepend("<div class='alert alert-warning'>"+ message + "</div>")
+                $('.sitterBooking').prepend("<div class='alert alert-warning'>"+ message + "</div>");
             }
         });
     },

@@ -17,7 +17,8 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
     'sitters/new': 'sitterNew',
     'sitters/:id': 'sitterShow',
     'sitters/:id/edit': 'sitterEdit',
-    'bookings/:id/new': 'newBooking'
+    'bookings/:id/new': 'newBooking',
+    'sitters/:id/bookings' : 'bookingIndex'
   },
 
   signIn: function () {
@@ -127,8 +128,8 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
   },
 
   newBooking: function(id) {
-    var sitter_id = parseInt(id);
-    var booking = new CanineCareApp.Models.Booking({sitter_id: sitter_id});
+    var sitterId= parseInt(id);
+    var booking = new CanineCareApp.Models.Booking({sitter_id: sitterId});
     var dogs = CanineCareApp.Collections.dogs;
     dogs.fetch();
 
@@ -141,7 +142,15 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
     this._swapView(newBookingView);
   },
 
+  bookingIndex: function(id) {
+      var sitterId = parseInt(id);
+      var sitter = CanineCareApp.Collections.sitters.getOrFetch(id);
+      var bookingView = new CanineCareApp.Views.SitterBookingIndex({
+          model: sitter
+      });
 
+      this._swapView(bookingView);
+  },
 
   _swapView: function (view) {
     if (this.currentView && this.currentView.remove()) {
