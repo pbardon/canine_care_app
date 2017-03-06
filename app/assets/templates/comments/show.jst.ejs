@@ -11,33 +11,6 @@
       <%= comment.escape('content') %>
     </div>
 
-    <div class="rating">
-      <strong>Rating:</strong>
-      <% if  (comment.escape('rating') >= 4.9) { %>
-        <img class="ratingImage" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fivepaws3.png" alt="" />
-      <% } else if ((comment.escape('rating') >= 4.5)) { %>
-        <img class="ratingImage" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fourpointfivepaws.png" alt="" />
-      <% } else if (comment.escape('rating') >= 4){ %>
-        <img class="ratingImage" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fourpaws.png" alt="" />
-      <% } else if (comment.escape('rating') >= 3.5){ %>
-        <img class="ratingImage" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/threepointfivepaws.png" alt="" />
-      <% } else if (comment.escape('rating') >= 3){ %>
-        <img class="ratingImage" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/threepaws.png" alt="" />
-      <% } else if (comment.escape('rating') >= 2.5){ %>
-        <img class="ratingImage" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/twopointfivepaws.png" alt="" />
-      <% } else if (comment.escape('rating') >= 2){ %>
-        <img class="ratingImage" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/twopaws.png" alt="" />
-      <% } else if (comment.escape('rating') >= 1.5){ %>
-        <img class="ratingImage" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/onepointfivepaws.png" alt="" />
-      <% } else if (comment.escape('rating') >= 1) { %>
-        <img class="ratingImage" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/onepaw.png" alt="" />
-      <% } else if (comment.escape('rating') >= 1.5){ %>
-        <img class="ratingImage" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/halfpaw.png" alt="" />
-      <% } else { %>
-        Sitter not rated.
-      <%  } %>
-    </div>
-
     <span class="commentDate">
       Date: <%= comment.escape('comment_date') %>
     </span>
@@ -59,6 +32,34 @@
                     </div>
                     <div class="panel-body">
                      <%= comment.escape('content') %>
+                    <br>
+                     <div class="rating">
+                       <strong>Rating:</strong>
+                       <% if  (comment.escape('rating') >= 4.9) { %>
+                         <img class="sitterIndexRating" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fivepaws3.png" alt="" />
+                       <% } else if ((comment.escape('rating') >= 4.5)) { %>
+                         <img class="sitterIndexRating" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fourpointfivepaws.png" alt="" />
+                       <% } else if (comment.escape('rating') >= 4){ %>
+                         <img class="sitterIndexRating" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fourpaws.png" alt="" />
+                       <% } else if (comment.escape('rating') >= 3.5){ %>
+                         <img class="sitterIndexRating" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/threepointfivepaws.png" alt="" />
+                       <% } else if (comment.escape('rating') >= 3){ %>
+                         <img class="sitterIndexRating" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/threepaws.png" alt="" />
+                       <% } else if (comment.escape('rating') >= 2.5){ %>
+                         <img class="sitterIndexRating" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/twopointfivepaws.png" alt="" />
+                       <% } else if (comment.escape('rating') >= 2){ %>
+                         <img class="sitterIndexRating" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/twopaws.png" alt="" />
+                       <% } else if (comment.escape('rating') >= 1.5){ %>
+                         <img class="sitterIndexRating" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/onepointfivepaws.png" alt="" />
+                       <% } else if (comment.escape('rating') >= 1) { %>
+                         <img class="sitterIndexRating" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/onepaw.png" alt="" />
+                       <% } else if (comment.escape('rating') >= 1.5){ %>
+                         <img class="sitterIndexRating" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/halfpaw.png" alt="" />
+                       <% } else { %>
+                         Sitter not rated.
+                       <%  } %>
+                     </div>
+
                     </div><!-- /panel-body -->
                 </div><!-- /panel panel-default -->
             </div><!-- /col-sm-10 -->
