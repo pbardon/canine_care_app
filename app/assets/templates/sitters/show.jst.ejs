@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div id="sitterProfileImageContent" class="panel panel-default col-md-8 col-md-offset-2">
                                   <div id="sitterProfileImage">
-                                    <img class="img-responsive img-portfolio" src="<%= sitter.escape('sitter_photo_large') %>">
+                                    <img class="img-responsive img-portfolio" src="<%= sitter.escape('sitter_photo_large') %>" >
                                   </div>
                                 </div>
                                 <div class="col-md-8 col-md-offset-2">
@@ -69,13 +69,12 @@
                                               <div class="col-md-8">
                                                     <h4 class="list-group-item-heading">Comments:</h4>
                                               </div>
-                                              <div class="col-md-4">
-                                                  <button id="commentOnSitter" class="btn btn-info">Add Comment</button>
-                                              </div>
                                           </div>
                                       </li>
                                       <li class="list-group-item sitterComments">
-                                          No comments yet...
+                                      </li>
+                                      <li class="list-group-item">
+                                          <button id="commentOnSitter" class="btn btn-info">Add Comment</button>
                                       </li>
                                   </ul>
                               </div>

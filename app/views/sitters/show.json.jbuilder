@@ -10,6 +10,6 @@ end
 
 json.comments do
   json.array!(@sitter.comments) do |comment|
-    json.(comment, :rating, :content, :comment_date)
+    json.(comment, :rating, :content, :comment_date, :user_id)
   end
 end

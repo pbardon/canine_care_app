@@ -74,12 +74,29 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
     },
 
     addComment: function (comment) {
-        var subview = new CanineCareApp.Views.CommentShow({
-            collection: this.model.comments(),
-            model: comment
+
+        var userId = comment.attributes.user_id;
+        var view = this;
+
+        var userUrl = "/users/" + userId;
+
+        $.ajax(userUrl, {
+            success: function(response) {
+                var username = response.name;
+                comment.attributes.username = username;
+                var subview = new CanineCareApp.Views.CommentShow({
+                    collection: view.model.comments(),
+                    model: comment
+                });
+
+                view.addSubview('.sitterComments', subview);
+            },
+
+            error: function() {
+                console.log("there was a problem loading the comments");
+            }
         });
 
-        this.addSubview('.sitterComments', subview);
     },
 
     removeSitter: function(event) {

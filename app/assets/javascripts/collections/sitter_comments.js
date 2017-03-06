@@ -5,7 +5,7 @@ CanineCareApp.Collections.SitterComments = Backbone.Collection.extend({
     model: CanineCareApp.Models.Comment,
 
     comparator: function(item) {
-        return -item.get('comment_date')
+        return -item.get('comment_date');
     },
 
     getOrFetch: function(id) {
