@@ -1,5 +1,7 @@
 CanineCareApp.Views.SitterBookingShow = Backbone.CompositeView.extend({
 
+    tagName: 'tr',
+
     initialize: function(options) {
         this.listenTo(this.model, "sync", this.render);
         this.listenTo(this.model, "change:confirmed", this.render);

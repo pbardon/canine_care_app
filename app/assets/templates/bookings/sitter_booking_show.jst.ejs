@@ -1,3 +1,44 @@
+<td class="sitterBooking"
+    data-id="<%= booking.get('id') %>">
+    <img class="smallBookingDogPic"src="<%= dog.get('dog_photo_small') %>">
+</td>
+<td>
+    <%= dog.escape('name') %>
+</td>
+<td>
+    <%= booking.escape('date_start') %>
+</td>
+<td>
+    <%= booking.escape('date_end') %>
+</td>
+<td>
+    <%= dog.escape('size') %>
+</td>
+
+<td>
+
+</td>
+
+<% if (booking.get('confirmed')) { %>
+    <td>
+        <span style="color:#3EFF1F; font-size: 24px;">Confirmed</span>
+    </td>
+<% }else { %>
+    <td>
+        <div class="bookingConfirmation">
+          <span class="confirmDiv" data-id="<%= booking.get('id') %>">
+            <button class="confirmBooking btn btn-success">✓</button>
+          </span>
+          <span class="denyDiv" data-id="<%= booking.get('id') %>">
+            <button class="denyBooking btn btn-danger">✖</button>
+          </span>
+        </div>
+
+    </td>
+<% }  %>
+<!--
+<td></td>
+
 <div class="sitterBooking panel panel-info" data-id="<%= booking.get('id') %>">
 
   <div class="panel-heading">
@@ -105,4 +146,4 @@
   </div>
 
 
-</div>
+</div> -->
