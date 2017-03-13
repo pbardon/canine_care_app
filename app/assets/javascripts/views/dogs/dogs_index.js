@@ -13,7 +13,7 @@ CanineCareApp.Views.DogsIndex = Backbone.CompositeView.extend({
 
   redirectToDogShow: function(event){
     data = $(event.currentTarget).data('id');
-    Backbone.history.navigate('#/dogs/'+ data, {trigger: true})
+    Backbone.history.navigate('#/dogs/'+ data, {trigger: true});
   },
 
   render: function () {

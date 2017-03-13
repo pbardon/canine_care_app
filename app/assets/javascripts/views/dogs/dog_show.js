@@ -83,7 +83,7 @@ CanineCareApp.Views.DogShow = Backbone.CompositeView.extend({
 
     redirectToDogEdit: function(event){
         data = $(event.currentTarget).data('id');
-        Backbone.history.navigate('#/dogs/'+ data +'/edit', {trigger: true})
+        Backbone.history.navigate('#/dogs/'+ data +'/edit', {trigger: true});
     },
 
 
@@ -104,6 +104,6 @@ CanineCareApp.Views.DogShow = Backbone.CompositeView.extend({
         event.preventDefault();
         this.model.destroy();
 
-        Backbone.history.navigate("/dogs", { trigger: true })
+        Backbone.history.navigate("/dogs", { trigger: true });
     }
 });
