@@ -7,19 +7,24 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@gray-base:              #A75CCA;
-@gray-darker:            #F0F0F0;
-@gray-dark:              #E2DDE4;
-@gray:                   #BF90D5;
-@gray-light:             #A75CCA;
-@gray-lighter:           #29ABE0;
 
 
-@brand-primary:         #A75CCA;
-@brand-success:         #BF90D5;
-@brand-info:            #E2DDE4;
-@brand-warning:         #E0CFE8;
-@brand-danger:          #BF90D5;
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+@gray-base:              #8dcaf1;
+@gray-darker:            lighten(@gray-base, 15%);
+@gray-dark:              #686868;
+@gray:                   #229ed2;
+@gray-light:             #888585;
+@gray-lighter:           #bababa;
+
+@brand-primary:         #c4e9fa;
+@brand-success:         #5cb85c;
+@brand-info:            #5bc0de;
+@brand-warning:         #f0ad4e;
+@brand-danger:          #d9534f;
 
 
 //== Scaffolding
@@ -27,9 +32,9 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
+@body-bg:               #FFFCFF;
 //** Global text color on `<body>`.
-@text-color:            #3E3F3A;
+@text-color:            @gray-dark;
 
 //** Global textual link color.
 @link-color:            @brand-success;
@@ -179,7 +184,7 @@
 
 //== Forms
 //
-//##
+//
 
 //** `<input>` background color
 @input-bg:                       #fff;
