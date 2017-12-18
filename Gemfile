@@ -4,7 +4,7 @@ ruby "2.2.1"
 
 gem 'rails', '4.1.1'
 gem 'pg'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.0'
 gem 'bootstrap-sass'
 gem 'uglifier'
 gem 'coffee-rails', '~> 4.0.0'
@@ -24,11 +24,6 @@ gem 'eventmachine', '~> 1.0.8'
 gem 'therubyracer'
 gem 'less-rails'
 
-# twitter bootstrap css & javascript toolkit
-gem 'twitter-bootswatch-rails', '~> 3.3.4'
-
-# twitter bootstrap helpers gem, e.g., alerts etc...
-gem 'twitter-bootswatch-rails-helpers'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

@@ -13,9 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializeJSON
+//= require bootstrap-sprockets
 //= require underscore
 //= require backbone
-//= require sandstone/loader
 //= require dog_sitting_app
 //= require_tree ../templates
 //= require_tree ./utils

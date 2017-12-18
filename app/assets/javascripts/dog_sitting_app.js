@@ -6,7 +6,7 @@ window.CanineCareApp = {
     formAuthToken: null,
     initialize: function(token) {
         new CanineCareApp.Routers.Router();
-        Backbone.history.start();
+        Backbone.history.start({pushState: true});
         this.formAuthToken = token;
     },
     setFormAuthToken: function(token) {

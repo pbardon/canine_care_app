@@ -1,13 +1,13 @@
 CanineCareApp.Routers.Router = Backbone.Router.extend({
   initialize: function() {
-    this.$rootEl = $('#main');
+    this.$rootEl = $('#canineCareApp');
   },
 
   routes: {
-    '': 'sittersIndex',
+    '': 'dashboard',
     'dogs': 'dogsIndex',
-    'sign_in' : 'signIn',
-    'sign_up': 'signUp',
+    'session/new' : 'signIn',
+    'users/new': 'signUp',
     'contact' : 'contactPage',
     'about' : 'aboutPage',
     'services' : 'servicesPage',
@@ -19,6 +19,11 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
     'sitters/:id/edit': 'sitterEdit',
     'bookings/:id/new': 'newBooking',
     'sitters/:id/bookings' : 'bookingIndex'
+  },
+
+  dashboard: function () {
+    var dashboardView = new CanineCareApp.Views.Dashboard();
+    this._swapView(dashboardView);
   },
 
   signIn: function () {

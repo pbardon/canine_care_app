@@ -3,7 +3,9 @@ CanineCareApp.Views.SignUpPage = Backbone.View.extend({
 
     events: {
         'submit form':'submit',
-        'click .errorClose': 'close'
+        'click .errorClose': 'close',
+        'click .createButton' : 'submit',
+        'click .navToLogin' : 'navToLogin'
     },
 
     render: function() {
@@ -14,9 +16,44 @@ CanineCareApp.Views.SignUpPage = Backbone.View.extend({
         return this;
     },
 
+    navToLogin: function() {
+        Backbone.history.navigate('session/new', { trigger: true, replace: true });
+    },
+
+
     submit: function(event) {
         event.preventDefault();
-        var formData = $(event.currentTarget).serializeJSON();
+        var username = $('.loginUsername').val();
+        var loginEmail = $('.loginEmail').val();
+        var password = $('.loginPassword').val();
+        var passwordConfirm = $('.loginPasswordConfirm').val();
+        if (!username) {
+            this.addErrorMessage({ error: 'must provide username'});
+            return;
+        }
+
+        if (!loginEmail) {
+            this.addErrorMessage({ error: 'must provide username'});
+            return;
+        }
+
+        if (!password) {
+            this.addErrorMessage({ error: 'must provide password'});
+            return;
+        }
+
+        if (password !== passwordConfirm) {
+            this.addErrorMessage({ error: 'Password must match'});
+            return;
+        }
+
+        var formData = {
+            user: {
+                name: username,
+                email: loginEmail,
+                password: password
+            }
+        };
         $.ajax({
             url: "/users",
             method: "POST",
@@ -28,12 +65,17 @@ CanineCareApp.Views.SignUpPage = Backbone.View.extend({
             },
             error: function(response) {
                 var errData = JSON.parse(response.responseText);
-                var errorMsgDiv = $('.errorMessage');
-                errorMsgDiv.addClass('alert alert-dismissible alert-danger');
-                errorMsgDiv.find('div.errorMessageContent').html(errData.error.toString());
-                errorMsgDiv.show();
+                this.addErrorMessage(errData);
             }
         });
+    },
+
+
+    addErrorMessage: function(errData) {
+        var errorMsgDiv = $('.errorMessage');
+        errorMsgDiv.addClass('alert alert-dismissible alert-danger');
+        errorMsgDiv.find('div.errorMessageContent').html(errData.error.toString());
+        errorMsgDiv.show();
     },
 
     close: function(event) {
