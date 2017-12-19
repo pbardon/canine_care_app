@@ -17,6 +17,11 @@
 //= require underscore
 //= require backbone
 //= require dog_sitting_app
+//= require_tree ./vendor/popper-js
+//= require_tree ./vendor/bootstrap
+//= require_tree ./vendor/pace
+//= require_tree ./vendor/chart
+//= require_tree ./vendor/core-ui
 //= require_tree ../templates
 //= require_tree ./utils
 //= require_tree ./models
