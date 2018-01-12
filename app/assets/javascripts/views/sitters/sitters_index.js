@@ -10,6 +10,9 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         this.collection.comparator = function(item) {
             return item.get('price');
         };
+
+       // poll until google is installed...
+
     },
 
     events: {
@@ -21,7 +24,7 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
 
     className: "frontPageWrapper",
 
-    template: JST["sitters/index"],
+    template: JST["sitters/sitter_index"],
 
     addSitterIndex: function() {
         var subview = new CanineCareApp.Views.SitterIndex({ collection: this.collection });

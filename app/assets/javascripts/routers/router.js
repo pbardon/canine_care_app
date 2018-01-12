@@ -4,7 +4,7 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    '': 'dashboard',
+    '': 'sittersIndex',
     'dogs': 'dogsIndex',
     'session/new' : 'signIn',
     'users/new': 'signUp',
@@ -119,12 +119,25 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
   },
 
   sittersIndex: function() {
+      var oThis = this;
     CanineCareApp.Collections.sitters.fetch();
-    var sittersView = new CanineCareApp.Views.SittersIndex({
-      collection: CanineCareApp.Collections.sitters
-    });
+    if (typeof google === 'undefined') {
+        var url = "http://maps.googleapis.com/maps/api/js?key=" +
+             CanineCareApp.mapKey + "&sensor=false";
+        $.ajax({
+            url: url,
+            dataType: "script",
+            async: false,
+            success: function(){
+                var sittersView = new CanineCareApp.Views.SittersIndex({
+                  collection: CanineCareApp.Collections.sitters
+                });
 
-    this._swapView(sittersView);
+                oThis._swapView(sittersView);
+            }
+        });
+        return;
+    }
   },
 
   sitterEdit: function(id) {

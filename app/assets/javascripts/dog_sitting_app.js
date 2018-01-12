@@ -4,10 +4,12 @@ window.CanineCareApp = {
     Views: {},
     Routers: {},
     formAuthToken: null,
-    initialize: function(token) {
+    mapKey: null,
+    initialize: function(token, serverMapKey) {
+        this.formAuthToken = token;
+        this.mapKey = serverMapKey;
         new CanineCareApp.Routers.Router();
         Backbone.history.start({pushState: true});
-        this.formAuthToken = token;
     },
     setFormAuthToken: function(token) {
         this.formAuthToken = token;

@@ -20,14 +20,18 @@
     <%= render partial: "layouts/header" %>
     <%= yield %>
     <%= render partial: "layouts/footer" %>
+    <script> type="text/javascript"
+       src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_API_KEY']%>"
+    </script>
     <%= javascript_include_tag 'application' %>
+
     <script language="javascript" type="text/javascript" charset="utf-8">
         console.log('DOCUMENT IS not ready');
         (function () {
           console.log('DOCUMENT IS not ready');
           $(document).ready(function(){
                 console.log('DOCUMENT IS ready');
-                CanineCareApp.initialize('<%= form_auth_token %>');
+                CanineCareApp.initialize('<%= form_auth_token %>', '<%= ENV['MAPS_API_KEY']%>');
                 $('.carousel').carousel({
                     interval: 5000 //changes the speed
                 });
