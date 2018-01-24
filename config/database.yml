@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   host: localhost
-  username: bardon
+  username: <%= ENV['USER'] %>
   database: canine-care-dev
 
 # Warning: The database defined as "test" will be erased and

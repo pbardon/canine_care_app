@@ -3,7 +3,7 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
     initialize: function(options) {
         this.listenTo(this.collection, 'sync', this.placeMarkers);
 
-        this.listenTo(this.collection, 'sync', this.addSitterIndex.bind(this));
+        // this.listenTo(this.collection, 'sync', this.addSitterIndex.bind(this));
 
         this.listenTo(this.collection, 'sync', this.saveOriginalCollection);
 
@@ -19,7 +19,9 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         "click #search": 'searchResults',
         "click .moreInfo": 'showInfo',
         "click #orderByRating": "reorderByHightoLowRating",
-        "click #orderByPrice": "reorderByPrice"
+        "click #orderByPrice": "reorderByPrice",
+        'click #goToProfilePage' : 'goToProfilePage',
+        'click #logoutButton' : 'logout'
     },
 
     className: "frontPageWrapper",
@@ -56,12 +58,27 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         this.maxX = neLng;
         this.minX = swLng;
 
-        this.collection.reset(this.originalCollection.filter(function(model) {
-        return (model.get('latitude') < view.maxY &&
-            model.get('longitude') > view.minX &&
-            model.get('latitude') > view.minY &&
-            model.get('longitude') < view.maxX);
-        }));
+        // this.collection.reset(this.originalCollection.filter(function(model) {
+        // return (model.get('latitude') < view.maxY &&
+        //     model.get('longitude') > view.minX &&
+        //     model.get('latitude') > view.minY &&
+        //     model.get('longitude') < view.maxX);
+        // }));
+    },
+
+    logout: function() {
+        $.ajax({
+            url: '/session',
+            method: 'DELETE',
+            success: function() {
+                CanineCareApp.currentUser = {};
+                console.log("LOGGED OUT");
+                Backbone.history.navigate('/');
+            },
+            error: function(err) {
+                console.log('there was a problem logging out ' + JSON.stringify(err.message));
+            }
+        });
     },
 
     placeMarkers: function() {

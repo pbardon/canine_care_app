@@ -39,6 +39,8 @@ CanineCareApp.Views.SignInPage = Backbone.View.extend({
                 password: loginPassword
             }
         };
+
+        var user = new CanineCareApp.Models.User();
         $.ajax({
             url: "/session",
             method: "POST",
@@ -46,6 +48,8 @@ CanineCareApp.Views.SignInPage = Backbone.View.extend({
             dataType: "json",
             success: function(response) {
                 console.log(JSON.stringify(response));
+                user.set('id', response.id);
+                CanineCareApp.currentUser = user;
                 Backbone.history.navigate("/");
                 window.location.reload();
             },

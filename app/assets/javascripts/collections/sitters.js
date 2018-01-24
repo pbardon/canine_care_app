@@ -30,6 +30,11 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
         }
 
         return sitter;
+    },
+
+    getUserSitterProfile: function(userId, successCb) {
+        sitter = new CanineCareApp.Models.Sitter({ user_id: userId });
+        sitter.fetch({ success: successCb });
     }
 });
 

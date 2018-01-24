@@ -28,6 +28,6 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_signed_in!
-    # redirect_to "#/sign_in" unless signed_in?
+    # redirect_to "/#/" unless signed_in?
   end
 end
