@@ -49,6 +49,7 @@ CanineCareApp.Views.SignInPage = Backbone.View.extend({
             success: function(response) {
                 user.attributes = response;
                 CanineCareApp.currentUser = user;
+                CanineCareApp.loggedIn = true;
                 Backbone.history.navigate("/", { trigger: true });
             },
             error: function(response) {

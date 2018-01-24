@@ -1,4 +1,4 @@
-CanineCareApp.Views.Profile = Backbone.CompositeView.extend({
+CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
 
     isSitter : false,
 

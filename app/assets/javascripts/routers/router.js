@@ -92,9 +92,7 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
     },
 
     profilePage: function() {
-        var router = this;
         var profilePageView = new CanineCareApp.Views.Profile({
-            user: router.currentUser
         });
 
         this._swapView(profilePageView);

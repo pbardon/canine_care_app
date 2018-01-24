@@ -21,7 +21,8 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         "click #orderByRating": "reorderByHightoLowRating",
         "click #orderByPrice": "reorderByPrice",
         'click #goToProfilePage' : 'goToProfilePage',
-        'click #logoutButton' : 'logout'
+        'click #logoutButton' : 'logout',
+        'click #profileLink' : 'navToProfilePage'
     },
 
     className: "frontPageWrapper",
@@ -66,6 +67,10 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         // }));
     },
 
+    navToProfilePage: function() {
+        Backbone.history.navigate('/profile', { trigger: true });
+    },
+
     logout: function() {
         $.ajax({
             url: 'http://localhost:3000/session',
@@ -74,6 +79,7 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
             success: function() {
                 CanineCareApp.currentUser = {};
                 console.log("LOGGED OUT");
+                CanineCareApp.loggedIn = false;
                 Backbone.history.navigate('/', { trigger: true });
             },
             error: function(err) {
@@ -81,6 +87,7 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
             }
         });
     },
+
 
     placeMarkers: function() {
         var map = this.map;
