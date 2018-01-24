@@ -5,13 +5,26 @@ window.CanineCareApp = {
     Routers: {},
     formAuthToken: null,
     mapKey: null,
+    cachedSessionToken: '',
     currentUser : {},
-    initialize: function(token, serverMapKey, currentUserId) {
+    loggedIn : false,
+    initialize: function(token, serverMapKey, currentUserId, sessionToken) {
+        var app = this;
         this.formAuthToken = token;
         this.mapKey = serverMapKey;
         if (currentUserId) {
-            var users = new CanineCareApp.Collections.Users();
-            this.currentUser = users.getOrFetch(currentUserId);
+            var user = new CanineCareApp.Models.User({ id: currentUserId });
+            user.fetch({
+                success: function() {
+                    app.currentUser = user;
+                    if (sessionToken &&
+                        sessionToken === user.attributes.session_token) {
+                        app.loggedIn = true;
+                    } else {
+                        app.loggedIn = false;
+                    }
+                }
+            });
         }
         var router = new CanineCareApp.Routers.Router();
         Backbone.history.start({ pushState: true });

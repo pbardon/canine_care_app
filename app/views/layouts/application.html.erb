@@ -35,7 +35,10 @@
             // });
 
             $(document).ready(function(){
-                CanineCareApp.initialize('<%= form_auth_token %>', '<%= ENV['MAPS_API_KEY']%>', '<%= current_user ? current_user.id : nil %>');
+                CanineCareApp.initialize('<%= form_auth_token %>',
+                    '<%= ENV['MAPS_API_KEY']%>',
+                    '<%= current_user ? current_user.id : nil %>',
+                    '<%= session[:session_token] %>');
                 $('.carousel').carousel({
                     interval: 5000 //changes the speed
                 });

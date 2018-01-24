@@ -68,12 +68,13 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
 
     logout: function() {
         $.ajax({
-            url: '/session',
+            url: 'http://localhost:3000/session',
             method: 'DELETE',
+            dataType: 'json',
             success: function() {
                 CanineCareApp.currentUser = {};
                 console.log("LOGGED OUT");
-                Backbone.history.navigate('/');
+                Backbone.history.navigate('/', { trigger: true });
             },
             error: function(err) {
                 console.log('there was a problem logging out ' + JSON.stringify(err.message));

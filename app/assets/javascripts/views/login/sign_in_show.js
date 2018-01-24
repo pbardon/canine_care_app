@@ -42,16 +42,14 @@ CanineCareApp.Views.SignInPage = Backbone.View.extend({
 
         var user = new CanineCareApp.Models.User();
         $.ajax({
-            url: "/session",
+            url: "http://localhost:3000/session",
             method: "POST",
             data: loginInfo,
             dataType: "json",
             success: function(response) {
-                console.log(JSON.stringify(response));
-                user.set('id', response.id);
+                user.attributes = response;
                 CanineCareApp.currentUser = user;
-                Backbone.history.navigate("/");
-                window.location.reload();
+                Backbone.history.navigate("/", { trigger: true });
             },
             error: function(response) {
                 var errData = JSON.parse(response.responseText);
