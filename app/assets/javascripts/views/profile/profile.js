@@ -27,6 +27,12 @@ CanineCareApp.Views.Profile = Backbone.CompositeView.extend({
         var renderedContent = this.template();
 
         this.$el.html(renderedContent);
+        if (!this.model || !this.model.attributes || !this.model.attributes.id) {
+            this.model = new CanineCareApp.Models.Sitter({ id: 0 });
+        }
+        var form = new CanineCareApp.Views.SitterForm({ model: this.model });
+
+        this.addSubview('#sitterInfoCard', form);
 
         this.attachSubviews();
 
