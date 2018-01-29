@@ -17,9 +17,8 @@ CanineCareApp.Views.SignUpPage = Backbone.View.extend({
     },
 
     navToLogin: function() {
-        Backbone.history.navigate('session/new', { trigger: true, replace: true });
+        Backbone.history.navigate('#session/new', { trigger: true, replace: true });
     },
-
 
     submit: function(event) {
         event.preventDefault();
@@ -60,8 +59,7 @@ CanineCareApp.Views.SignUpPage = Backbone.View.extend({
             data: formData,
             dataType: "json",
             success: function(response) {
-                Backbone.history.navigate("#/");
-                window.location.reload();
+                Backbone.history.navigate("", { trigger: true });
             },
             error: function(response) {
                 var errData = JSON.parse(response.responseText);

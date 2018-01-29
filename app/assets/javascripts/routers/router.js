@@ -1,6 +1,7 @@
 CanineCareApp.Routers.Router = Backbone.Router.extend({
     initialize: function() {
         this.$rootEl = $('#canineCareApp');
+        Backbone.history.start({ pushState: true });
     },
     routes: {
         '': 'sittersIndex',
@@ -134,9 +135,18 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
                     });
 
                     oThis._swapView(sittersView);
+                },
+                error: function(err) {
+                    console.log(JSON.stringify(err.message));
                 }
             });
             return;
+        } else {
+            var sittersView = new CanineCareApp.Views.SittersIndex({
+                collection: CanineCareApp.Collections.sitters
+            });
+
+            oThis._swapView(sittersView);
         }
     },
 

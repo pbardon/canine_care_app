@@ -1,6 +1,12 @@
 CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
 
+    navbarView: {},
+
     initialize: function(options) {
+
+        this.navbarView = new CanineCareApp.Views.Navbar({});
+        this.addSubview('.navbarContainer', this.navbarView.render());
+
         this.listenTo(this.collection, 'sync', this.placeMarkers);
 
         // this.listenTo(this.collection, 'sync', this.addSitterIndex.bind(this));
@@ -68,10 +74,11 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
     },
 
     navToProfilePage: function() {
-        Backbone.history.navigate('/profile', { trigger: true });
+        Backbone.history.navigate('#profile', { trigger: true });
     },
 
     logout: function() {
+        var sitterView = this;
         $.ajax({
             url: 'http://localhost:3000/session',
             method: 'DELETE',
@@ -80,7 +87,10 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
                 CanineCareApp.currentUser = {};
                 console.log("LOGGED OUT");
                 CanineCareApp.loggedIn = false;
-                Backbone.history.navigate('/', { trigger: true });
+                sitterView.removeSubview('.navbarContainer', sitterView.navbarView);
+                var navbarView = new CanineCareApp.Views.Navbar({});
+                sitterView.addSubview('.navbarContainer', navbarView.render());
+                sitterView.render();
             },
             error: function(err) {
                 console.log('there was a problem logging out ' + JSON.stringify(err.message));

@@ -17,10 +17,11 @@ CanineCareApp.Views.SignInPage = Backbone.View.extend({
     },
 
     navToRegister: function(event) {
-        Backbone.history.navigate('users/new', {trigger: true, replace: true});
+        Backbone.history.navigate('#users/new', {trigger: true, replace: true});
     },
 
     submit: function(event) {
+        var loginView = this;
         event.preventDefault();
         var loginUser = $('#loginUser').val();
         var loginPassword = $('#loginPassword').val();
@@ -50,11 +51,11 @@ CanineCareApp.Views.SignInPage = Backbone.View.extend({
                 user.attributes = response;
                 CanineCareApp.currentUser = user;
                 CanineCareApp.loggedIn = true;
-                Backbone.history.navigate("/", { trigger: true });
+                Backbone.history.navigate(" ", { trigger: true });
             },
             error: function(response) {
                 var errData = JSON.parse(response.responseText);
-                addErrorMessage(errData);
+                loginView.addErrorMessage(errData);
             }
         });
     },

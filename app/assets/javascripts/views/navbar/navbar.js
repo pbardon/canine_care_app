@@ -3,25 +3,29 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
     isSitter : false,
 
     initialize: function(options) {
-        var profileView = this;
+        var navbarView = this;
         this.currentUser = CanineCareApp.currentUser;
-        CanineCareApp.Collections.sitters
-            .getUserSitterProfile(this.currentUser.attributes.id, function(response) {
-                profileView.model = response;
-                if (profileView.model.attributes.id) {
-                    profileView.isSitter = true;
-                }
-                profileView.render();
-            });
+        this.model = this.currentUser;
         this.listenTo(this.model, 'sync', this.render);
     },
 
     events: {
+        'click #signInButton' : 'navToSignIn',
+        'click #signUpButton' : 'navToSignUp'
     },
 
-    className: "profilePage",
+    className: "ccNavbar",
 
-    template: JST["profile/profile"],
+    template: JST["navbar/navbar"],
+
+    navToSignIn: function() {
+        Backbone.history.navigate('#session/new', { trigger: true });
+    },
+
+    navToSignUp: function() {
+        Backbone.history.navigate('#users/new', { trigger: true });
+    },
+
 
     render: function() {
         var renderedContent = this.template();

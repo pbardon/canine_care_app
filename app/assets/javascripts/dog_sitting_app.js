@@ -27,7 +27,6 @@ window.CanineCareApp = {
             });
         }
         var router = new CanineCareApp.Routers.Router();
-        Backbone.history.start({ pushState: true });
     },
     setFormAuthToken: function(token) {
         this.formAuthToken = token;
