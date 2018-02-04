@@ -23,6 +23,8 @@ gem 'thin'
 gem 'eventmachine', '~> 1.0.8'
 gem 'therubyracer'
 gem 'less-rails'
+gem 'font-awesome-rails'
+gem 'simple-line-icons-rails'
 
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
