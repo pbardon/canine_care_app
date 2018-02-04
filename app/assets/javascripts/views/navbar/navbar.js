@@ -33,7 +33,7 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
     },
 
     logout: function() {
-        var sitterView = this;
+        var navbarView = this;
         $.ajax({
             url: 'http://localhost:3000/session',
             method: 'DELETE',
@@ -42,10 +42,7 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
                 CanineCareApp.currentUser = {};
                 console.log("LOGGED OUT");
                 CanineCareApp.loggedIn = false;
-                sitterView.removeSubview('.navbarContainer', sitterView.navbarView);
-                var navbarView = new CanineCareApp.Views.Navbar({});
-                sitterView.addSubview('.navbarContainer', navbarView.render());
-                sitterView.render();
+                navbarView.render();
             },
             error: function(err) {
                 console.log('there was a problem logging out ' + JSON.stringify(err.message));

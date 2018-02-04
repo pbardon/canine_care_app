@@ -12,20 +12,17 @@ CanineCareApp.Views.Profile = Backbone.CompositeView.extend({
                     if (profileView.model.attributes.id) {
                         profileView.isSitter = true;
                     }
+                    var form = new CanineCareApp.Views.SitterForm({
+                        model: profileView.model ,
+                        collection: CanineCareApp.Collections.sitters
+                    });
+                    profileView.addSubview('#sitterInfoCard', form.render());
                     profileView.render();
                 });
-            }
+        }
         this.listenTo(this.model, 'sync', this.render);
 
-        if (!this.model || !this.model.attributes || !this.model.attributes.id) {
-            this.model = new CanineCareApp.Models.Sitter({ id: 0 });
-        }
-
         this.addSubview('.navbarContainer', options.navbarView.render());
-
-        var form = new CanineCareApp.Views.SitterForm({ model: this.model });
-
-        this.addSubview('#sitterInfoCard', form.render());
     },
 
     events: {

@@ -20,6 +20,12 @@
   @include avatar($width,$status-width);
 }
 
+.avatar.avatar-md {
+  $width: 52px;
+  $status-width: 12px;
+  @include avatar($width,$status-width);
+}
+
 .avatar.avatar-lg {
   $width: 72px;
   $status-width: 12px;

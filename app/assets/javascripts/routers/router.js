@@ -4,6 +4,7 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
         this.navbarView = new CanineCareApp.Views.Navbar({
             model: user
         });
+        CanineCareApp.currentUser = user;
         Backbone.history.start();
         // Backbone.history.start({pushState: true});
     },
