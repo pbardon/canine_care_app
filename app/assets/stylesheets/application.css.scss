@@ -10,10 +10,9 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree ./vendor/fonts
- *= require ./vendor/font-awesome/font-awesome.min.css
- *= require ./vendor/simple-line-icons/simple-line-icons.css
- *= require ./vendor/core-ui/style.min.css
  */
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+
+// @import "bootstrap-sprockets";
+@import "bootstrap-variables";
+@import "bootstrap";
+@import "core-ui/style";

@@ -1,7 +1,11 @@
 CanineCareApp.Routers.Router = Backbone.Router.extend({
-    initialize: function() {
+    initialize: function(user) {
         this.$rootEl = $('#canineCareApp');
-        Backbone.history.start({ pushState: true });
+        this.navbarView = new CanineCareApp.Views.Navbar({
+            model: user
+        });
+        Backbone.history.start();
+        // Backbone.history.start({pushState: true});
     },
     routes: {
         '': 'sittersIndex',
@@ -94,6 +98,7 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
 
     profilePage: function() {
         var profilePageView = new CanineCareApp.Views.Profile({
+            navbarView: this.navbarView
         });
 
         this._swapView(profilePageView);
@@ -131,7 +136,8 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
                 async: false,
                 success: function(){
                     var sittersView = new CanineCareApp.Views.SittersIndex({
-                        collection: CanineCareApp.Collections.sitters
+                        collection: CanineCareApp.Collections.sitters,
+                        navbarView: oThis.navbarView
                     });
 
                     oThis._swapView(sittersView);
@@ -143,7 +149,8 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
             return;
         } else {
             var sittersView = new CanineCareApp.Views.SittersIndex({
-                collection: CanineCareApp.Collections.sitters
+                collection: CanineCareApp.Collections.sitters,
+                navbarView: oThis.navbarView
             });
 
             oThis._swapView(sittersView);

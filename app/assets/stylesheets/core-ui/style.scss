@@ -7,13 +7,10 @@
  */
 
 // Override Boostrap variables
-@import "bootstrap-variables";
-
 // Import Bootstrap source files
-// @import "bootstrap";
 
 // Override core variables
-// @import "core-variables";
+@import "core-variables";
 
 // Import core styles
 @import "core/core";

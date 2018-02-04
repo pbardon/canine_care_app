@@ -8,7 +8,7 @@
     <ul class="nav navbar-nav ml-auto">
         <% if (!CanineCareApp.loggedIn) { %>
             <li class="nav-item">
-                <a id="signInButton" class="nav-link nav-link"  href="#">
+                <a id="signInButton" class="nav-link nav-link" >
                   Sign In&nbsp;
                   <i class="icon-lock-open"></i>
                   &nbsp;
@@ -16,9 +16,11 @@
             </li>
 
             <li class="nav-item">
-                <a id="signUpButton" class="nav-link nav-link"  href="#">
+                <a id="signUpButton" class="nav-link nav-link" >
                   Sign Up&nbsp;
                   <i class="icon-user"></i>
+                  &nbsp;
+                  &nbsp;
                   &nbsp;
                 </a>
             </li>
@@ -34,9 +36,9 @@
                   <div class="dropdown-header text-center">
                     <strong>Settings</strong>
                   </div>
-                  <a id="profileLink" class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
-                  <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Settings</a>
-                      <a id="logoutButton" class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+                  <a id="profileButton" class="dropdown-item"><i class="fa fa-user"></i> Profile</a>
+                  <a class="dropdown-item"><i class="fa fa-wrench"></i> Settings</a>
+                  <a id="logoutButton" class="dropdown-item"><i class="fa fa-lock"></i> Logout</a>
                 </div>
               </li>
           <% } %>

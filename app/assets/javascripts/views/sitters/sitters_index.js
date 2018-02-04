@@ -1,11 +1,6 @@
 CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
-
-    navbarView: {},
-
     initialize: function(options) {
-
-        this.navbarView = new CanineCareApp.Views.Navbar({});
-        this.addSubview('.navbarContainer', this.navbarView.render());
+        this.addSubview('.navbarContainer', options.navbarView.render());
 
         this.listenTo(this.collection, 'sync', this.placeMarkers);
 
@@ -25,10 +20,7 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         "click #search": 'searchResults',
         "click .moreInfo": 'showInfo',
         "click #orderByRating": "reorderByHightoLowRating",
-        "click #orderByPrice": "reorderByPrice",
-        'click #goToProfilePage' : 'goToProfilePage',
-        'click #logoutButton' : 'logout',
-        'click #profileLink' : 'navToProfilePage'
+        "click #orderByPrice": "reorderByPrice"
     },
 
     className: "frontPageWrapper",
@@ -72,32 +64,6 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         //     model.get('longitude') < view.maxX);
         // }));
     },
-
-    navToProfilePage: function() {
-        Backbone.history.navigate('#profile', { trigger: true });
-    },
-
-    logout: function() {
-        var sitterView = this;
-        $.ajax({
-            url: 'http://localhost:3000/session',
-            method: 'DELETE',
-            dataType: 'json',
-            success: function() {
-                CanineCareApp.currentUser = {};
-                console.log("LOGGED OUT");
-                CanineCareApp.loggedIn = false;
-                sitterView.removeSubview('.navbarContainer', sitterView.navbarView);
-                var navbarView = new CanineCareApp.Views.Navbar({});
-                sitterView.addSubview('.navbarContainer', navbarView.render());
-                sitterView.render();
-            },
-            error: function(err) {
-                console.log('there was a problem logging out ' + JSON.stringify(err.message));
-            }
-        });
-    },
-
 
     placeMarkers: function() {
         var map = this.map;

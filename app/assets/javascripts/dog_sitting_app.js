@@ -12,8 +12,9 @@ window.CanineCareApp = {
         var app = this;
         this.formAuthToken = token;
         this.mapKey = serverMapKey;
+        var user;
         if (currentUserId) {
-            var user = new CanineCareApp.Models.User({ id: currentUserId });
+            user = new CanineCareApp.Models.User({ id: currentUserId });
             user.fetch({
                 success: function() {
                     app.currentUser = user;
@@ -26,7 +27,7 @@ window.CanineCareApp = {
                 }
             });
         }
-        var router = new CanineCareApp.Routers.Router();
+        var router = new CanineCareApp.Routers.Router(user);
     },
     setFormAuthToken: function(token) {
         this.formAuthToken = token;

@@ -3,9 +3,9 @@ source 'https://rubygems.org'
 ruby "2.2.4"
 
 gem 'rails', '4.1.1'
-gem 'pg'
-gem 'sass-rails', '~> 5.0.0'
-gem 'bootstrap-sass'
+gem 'pg', '~> 0.11'
+gem 'bootstrap', '~> 4.0.0'
+gem 'sass-rails', '>= 3.2'
 gem 'uglifier'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'backbone-on-rails'
