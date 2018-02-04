@@ -236,7 +236,7 @@ DEPENDENCIES
   jquery-ui-rails
   less-rails
   paperclip
-  pg (~> 0.11)
+  pg (~> 0.20)
   pry-rails
   rails (= 4.1.1)
   rails_12factor
