@@ -119,7 +119,8 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
     sitterShow: function(id) {
         var sitter = CanineCareApp.Collections.sitters.getOrFetch(id);
         var showSitterView = new CanineCareApp.Views.SitterShow({
-            model: sitter
+            model: sitter,
+            navbarView: this.navbarView
         });
 
         this._swapView(showSitterView);
@@ -198,6 +199,8 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
         if (this.currentView && this.currentView.remove()) {
             this.currentView = view;
         }
+
+        view.addSubview('.navbarContainer', this.navbarView.render());
 
         this.$rootEl.html(view.render().$el);
     }

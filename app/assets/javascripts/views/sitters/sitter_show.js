@@ -1,7 +1,7 @@
 CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
 
     initialize: function(options){
-        this.listenTo(this.model, 'sync', this.render);
+        // this.listenTo(this.model, 'sync', this.render);
 
         this.listenTo(this.model.bookings(), 'add', this.addBooking);
         this.model.bookings().each(this.addBooking.bind(this));
@@ -9,7 +9,7 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
         this.listenTo(this.model.comments(), 'add', this.addComment);
         this.model.comments().each(this.addComment.bind(this));
 
-        this.listenTo(this.model.comments(), 'add', this.render);
+        // this.listenTo(this.model.comments(), 'add', this.render);
     },
 
     className: "sitterShow",
@@ -23,11 +23,11 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
     },
 
     template: function(options) {
-        if (this.model.get('current_user_id') && (this.model.get('user_id') === this.model.get('current_user_id')) ) {
-            return JST["sitters/show_profile"](options);
-        } else {
+        // if (this.model.get('current_user_id') && (this.model.get('user_id') === this.model.get('current_user_id')) ) {
+        //     return JST["sitters/show_profile"](options);
+        // } else {
             return JST["sitters/show"](options);
-        }
+        // }
     },
 
     addBooking: function (booking) {

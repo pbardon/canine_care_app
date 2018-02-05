@@ -13,7 +13,8 @@
                         class="form-control"
                         id="sitter_name"
                         placeholder="Profile Name"
-                        name="sitter_name" />
+                        name="sitter_name"
+                        value="<%= sitter.escape('sitter_name') %>" />
                     </div>
                 </div>
                 <div class="col">
@@ -21,7 +22,8 @@
                         <label for="textArea" class="col-form-label">Description:</label>
                         <textarea class="form-control"
                         name="description"
-                        id="sitterDescription"><%= sitter.escape('description') %>
+                        id="sitterDescription">
+                            <%= sitter.escape('description') %>
                         </textarea>
                     </div>
                 </div>
@@ -34,7 +36,7 @@
                     id="sitterPrice"
                     placeholder="Price Per Night"
                     name="price"
-                    value="<%= sitter.escape('sitter_name') %>">
+                    value="<%= sitter.escape('price') %>">
                 </div>
                 <div class="col">
                     <div class="form-group">

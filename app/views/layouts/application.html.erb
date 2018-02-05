@@ -27,13 +27,6 @@
 
     <script language="javascript" type="text/javascript" charset="utf-8">
         (function () {
-            // $(document).on('click', 'a[href^="/"]', function (event) {
-            //     // here, ensure that it was a left-mouse-button click. middle click should be
-            //     // allowed to pass through
-            //     event.preventDefault();
-            //     Backbone.history.navigate(this.href.substring(this.href.lastIndexOf('/')), {trigger: true});
-            // });
-
             $(document).ready(function(){
                 CanineCareApp.initialize('<%= form_auth_token %>',
                     '<%= ENV['MAPS_API_KEY']%>',
@@ -47,11 +40,5 @@
         })();
     </script>
 </body>
-
-
-    <% unless current_user %>
-
-
-    <% end  %>
 
 </html>
