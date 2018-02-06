@@ -1,91 +1,120 @@
 <div class="navbarContainer">
 </div>
 <div class="app-body">
-    <div class="sitterProfileShowInfo">
-        <div id="sitterProfileTopContent" class="">
-            <div class="">
-            </div>
-            <div class="row">
-                <div id="sitterProfileTopContent" class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2><%= sitter.escape('sitter_name') %></h2>
-                    </div>
 
-                    <div class="panel-body">
-                        <div class="row">
-                            <div id="sitterProfileLeftContent" class="col-md-6">
-                                <div class="sitterShowProfileContent">
-                                    <div class="bs-component">
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <span class="badge">$<%= sitter.escape('price') %></span>
-                                                <h4 class="list-group-item-heading">Price per Night:</h4>
-                                            </li>
-                                            <li class="list-group-item">
-                                              <h4 class="list-group-item-heading">Description:</h4>
-                                              <p class="list-group-item-text"><%= sitter.escape('description') %></p>
-                                            </li>
-                                        </ul>
-                                      </div>
+    <!-- Main content -->
+        <main class="main">
 
-                                      <div class="bs-component">
-                                          <ul class="list-group">
-                                            <li class="list-group-item">
-                                              <span class="badge"><%= (sitter.escape('small')) ? "✓" : "✖" %></span>
-                                              Accepts Small Dogs?
-                                            </li>
-                                            <li class="list-group-item">
-                                              <span class="badge"><%= (sitter.escape('medium')) ? "✓" : "✖" %></span>
-                                              Accepts Medium Dogs?
-                                            </li>
-                                            <li class="list-group-item">
-                                              <span class="badge"><%= (sitter.escape('large')) ? "✓" : "✖" %></span>
-                                              Accepts Large Dogs?
-                                            </li>
-                                          </ul>
-                                    </div>
-                                </div>
+          <!-- Breadcrumb -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">Home</li>
+            <!-- Breadcrumb Menu-->
+            <li class="breadcrumb-item active">Sitter</li>
+
+          </ol>
+
+
+        <div class="sitterProfileShowInfo">
+            <div id="sitterProfileTopContent" class="">
+                <div class="row">
+                    <div class="col-xl-5 offset-xl-1">
+                        <div id="" class="card">
+                            <div class="card-header">
+                                <h2><%= sitter.escape('sitter_name') %></h2>
                             </div>
 
-                            <div id="sitterProfileRightContent" class="col-md-6">
-                                <div class="row">
-                                    <div id="sitterProfileImageContent" class="panel panel-default col-md-8 col-md-offset-2">
-                                      <div id="sitterProfileImage">
-                                        <img class="img-responsive img-portfolio" src="<%= sitter.escape('sitter_photo_large') %>" >
-                                      </div>
+                            <div class="card-body">
+                                <table class="table table-responsive-sm">
+                                    <tbody>
+                                    <tr>
+                                    <td>Price per night</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                    <span class="badge badge-success">$<%= sitter.escape('price') %></span>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>Accepts Small Dogs?</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                    <span class="badge badge-success"><%= (sitter.escape('small')) ? "✓" : "✖" %></span>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>Accepts Medium Dogs?</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                    <span class="badge badge-success"><%= (sitter.escape('medium')) ? "✓" : "✖" %></span>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>Accepts Large Dogs?</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                    <span class="badge badge-success"><%= (sitter.escape('large')) ? "✓" : "✖" %></span>
+                                    </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="headingOne">
+                                        <h5 class="mb-0">
+                                        Description:
+                                        </h5>
                                     </div>
-                                    <div class="col-md-8 col-md-offset-5">
-                                        <span class="sitterProfileButtons">
-                                          <button class="bookNow btn btn-success">Book Now!</button>
-                                        </span>
+                                    <div id="collapseOne" class="" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style="">
+                                        <div class="card-body">
+                                         <%= sitter.escape('description') %>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                  <div class="bs-component">
-                                      <ul class="profileComments list-group">
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-md-8">
-                                                        <h4 class="list-group-item-heading">Comments:</h4>
-                                                  </div>
-                                              </div>
-                                          </li>
-                                          <li class="list-group-item sitterComments">
-                                          </li>
-                                          <li class="list-group-item">
-                                              <button id="commentOnSitter" class="btn btn-info">Add Comment</button>
-                                          </li>
-                                      </ul>
-                                  </div>
+                    </div>
+
+                    <div class="col-xl-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class="d-block w-100" data-src="<%= sitter.escape('sitter_photo_large') %>&amp;bg=777&amp;fg=555&amp;text=First slide" alt="First slide [800x400]" src="<%= sitter.escape('sitter_photo_large') %>" data-holder-rendered="true">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <p>
+                                        <button class="btn btn-success bookNow" data-id="<%= sitter.escape('id') %>">Book</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-5 offset-xl-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Comments:</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="profileComments list-group">
+                                </ul>
+                                <button id="commentOnSitter" class="btn btn-info">Add Comment</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </div>

@@ -64,6 +64,10 @@ module Api
 
       @current_user = current_user
 
+      unless @current_user
+          @current_user = User.new({ id: 0 })
+      end
+
       render "sitters/show"
     end
 

@@ -12,6 +12,7 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
         'click #signInButton' : 'navToSignIn',
         'click #signUpButton' : 'navToSignUp',
         'click #profileButton' : 'navToProfile',
+        'click #brandButton' : 'navToHome',
         'click #logoutButton' : 'logout'
     },
 
@@ -21,6 +22,10 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
 
     navToSignIn: function() {
         Backbone.history.navigate('#session/new', { trigger: true });
+    },
+
+    navToHome: function() {
+        Backbone.history.navigate('#', { trigger: true });
     },
 
     navToSignUp: function() {

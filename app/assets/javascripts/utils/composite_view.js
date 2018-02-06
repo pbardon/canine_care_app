@@ -25,38 +25,42 @@ Backbone.CompositeView = Backbone.View.extend({
   },
 
 
-  remove: function () {
-    Backbone.View.prototype.remove.call(this);
-    _(this.subviews()).each(function (subviews) {
-      _(subviews).each(function (subview) {
+    remove: function () {
+        Backbone.View.prototype.remove.call(this);
+        _(this.subviews()).each(function (subviews) {
+            _(subviews).each(function (subview) {
+                subview.remove();
+            });
+        });
+    },
+
+    removeSubview: function (selector, subview) {
+        if (!subview) {
+            return false;
+        }
+
         subview.remove();
-      });
-    });
-  },
 
-  removeSubview: function (selector, subview) {
-    subview.remove();
+        var subviews = this.subviews(selector);
+        subviews.splice(subviews.indexOf(subview), 1);
+    },
 
-    var subviews = this.subviews(selector);
-    subviews.splice(subviews.indexOf(subview), 1);
-  },
+    removeSubviews: function(selector) {
+        var view = this;
+        this._subviews[selector] = this._subviews[selector] || [];
+        _.each(this._subviews[selector], function(subview) {
+            view.removeSubview(selector, subview);
+        });
+    },
 
-  removeSubviews: function(selector) {
-      var view = this;
-      this._subviews[selector] = this._subviews[selector] || [];
-      _.each(this._subviews[selector], function(subview) {
-          view.removeSubview(selector, subview);
-      });
-  },
+    subviews: function (selector) {
+        this._subviews = this._subviews || {};
 
-  subviews: function (selector) {
-    this._subviews = this._subviews || {};
-
-    if (!selector) {
-      return this._subviews;
-    } else {
-      this._subviews[selector] = this._subviews[selector] || [];
-      return this._subviews[selector];
+        if (!selector) {
+            return this._subviews;
+        } else {
+            this._subviews[selector] = this._subviews[selector] || [];
+            return this._subviews[selector];
+        }
     }
-  }
 });
