@@ -203,5 +203,7 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
         view.addSubview('.navbarContainer', this.navbarView.render());
 
         this.$rootEl.html(view.render().$el);
+
+        view.attachSubviews();
     }
 });

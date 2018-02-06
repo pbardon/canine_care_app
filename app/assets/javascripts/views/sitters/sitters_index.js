@@ -6,6 +6,8 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
 
         this.populateIndex();
 
+        // this.addSubview('.navbarContainer', options.navbarView.render());
+
         this.collection.comparator = function(item) {
             return item.get('price');
         };

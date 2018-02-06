@@ -1,5 +1,7 @@
 CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
 
+    navbarView : {},
+
     initialize: function(options){
         // this.listenTo(this.model, 'sync', this.render);
 
@@ -8,6 +10,10 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
 
         this.listenTo(this.model.comments(), 'add', this.addComment);
         this.model.comments().each(this.addComment.bind(this));
+
+        this.navbarView = options.navbarView;
+
+        // this.addSubview('.navbarContainer', options.navbarView.render());
 
         // this.listenTo(this.model.comments(), 'add', this.render);
     },
