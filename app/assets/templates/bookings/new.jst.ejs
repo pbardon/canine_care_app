@@ -1,71 +1,76 @@
-<div class="container">
+<div class="navbarContainer">
+</div>
 
-    <div id="newBookingForm" class="well bs-component">
-
-        <form class="form-horizontal">
-                    <fieldset>
-                          <legend>
-                              New Booking
-                          </legend>
-                          <div class="form-group">
-                            <label for="dateStart" class="col-lg-2 control-label">Date Start:</label>
-                            <div class="col-lg-10">
-                              <input type="text"
-                                    class="form-control"
-                                    id="dateStart"
-                                    name="date_start"
-                                    placeholder="Date Start"
-                                    value="<%= booking.escape('date_start') %>">
+<div class="row">
+    <div class="col-xl-10 offset-xl-1">
+        <div id="newBookingForm" class="card">
+            <div class="card-header">
+                <strong>New Booking</strong>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                              <label for="dateStart" class="col-lg-2 control-label">Date Start:</label>
+                              <div class="col-lg-10">
+                                <input type="text"
+                                      class="form-control"
+                                      id="dateStart"
+                                      name="date_start"
+                                      placeholder="Date Start"
+                                      value="<%= booking.escape('date_start') %>">
+                              </div>
                             </div>
-                          </div>
 
-                          <div class="form-group">
-                            <label for="dateEnd" class="col-lg-2 control-label">Date Start:</label>
-                            <div class="col-lg-10">
-                              <input type="text"
-                                    class="form-control"
-                                    id="dateEnd"
-                                    name="date_end"
-                                    placeholder="Date End"
-                                    value="<%= booking.escape('name') %>">
+                            <div class="form-group">
+                              <label for="dateEnd" class="col-lg-2 control-label">Date Start:</label>
+                              <div class="col-lg-10">
+                                <input type="text"
+                                      class="form-control"
+                                      id="dateEnd"
+                                      name="date_end"
+                                      placeholder="Date End"
+                                      value="<%= booking.escape('name') %>">
+                              </div>
                             </div>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="bookingMessage" class="col-lg-2 control-label">Message/Comments:</label>
-                            <div class="col-lg-10">
-                              <textarea class="form-control"
-                                        rows="3"
-                                        id="bookingMessage"
-                                        name="message"
-                                        value="<%= booking.escape('message') %>">
-                              </textarea>
+                            <div class="form-group">
+                                <label for="dogSelect">Choose which dog you would like to book this stay for:</label>
+                                <select name="dog_id" id="dogSelect">
+                                  <% dogs.each(function(dog){ %>
+                                      <option value="<%= dog.escape('id') %>"><%= dog.escape('name') %></option>
+                                  <%  });  %>
+                                </select>
                             </div>
-                          </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                              <label for="bookingMessage" class="col-lg-2 control-label">Message/Comments:</label>
+                              <div class="col-lg-10">
+                                <textarea class="form-control"
+                                          rows="3"
+                                          id="bookingMessage"
+                                          name="message"
+                                          value="<%= booking.escape('message') %>">
+                                </textarea>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
 
-                          <% if (!dogs) { %>
-
-                          <% } else { %>
-                            <label for="dogSelect">Choose which dog you would like to book this stay for:</label>
-                            <select name="dog_id" id="dogSelect">
-                              <% dogs.each(function(dog){ %>
-                                  <option value="<%= dog.escape('id') %>"><%= dog.escape('name') %></option>
-                              <%  });  %>
-                            </select>
-
-                          <% } %>
-
-                          <input type="submit" class="btn btn-success" id="submitBooking" value="Request Booking!">
-                      </fieldset>
-                  </form>
-              </div>
-          </div>
-
-        <script>
-         $(function() {
-            $("#dateStart").datepicker();
-            $("#dateEnd").datepicker();
-          });
-        </script>
+                    <input type="submit" class="btn btn-success" id="submitBooking" value="Request Booking!">
+                </form>
+            </div>
+        </div>
     </div>
 </div>
+
+
+<script>
+ $(function() {
+    $("#dateStart").datepicker();
+    $("#dateEnd").datepicker();
+  });
+</script>
