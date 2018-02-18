@@ -26,17 +26,18 @@ module Api
     end
 
     def index
-      @sitters = Sitter.all
+      @sitters = Sitter.page(1).per(5)
       render "sitters/index"
     end
 
     def update
+
       @sitter = Sitter.find(params[:id])
 
-      if @sitter.user_id == 1
-        render json: "Can't Modify Guest Account", status: :unprocessable_entity
-        return
-      end
+      # if @sitter.user_id == 1
+      #   render json: "Can't Modify Guest Account", status: :unprocessable_entity
+      #   return
+      # end
 
       if @sitter.user_id == current_user.id && @sitter.update_attributes(sitter_params)
         geo = generate_geocode(@sitter.street_address, @sitter.zipcode, @sitter.city, @sitter.state)

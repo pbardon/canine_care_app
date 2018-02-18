@@ -1,4 +1,4 @@
-CanineCareApp.Views.SitterForm = Backbone.View.extend({
+CanineCareApp.Views.SitterForm = Backbone.CompositeView.extend({
     template: JST['sitters/form'],
 
     className: "newSitterWrapper container",

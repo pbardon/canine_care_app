@@ -25,11 +25,14 @@ gem 'therubyracer'
 gem 'less-rails'
 gem 'font-awesome-rails'
 gem 'simple-line-icons-rails'
+gem 'kaminari'
 
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'spring',        group: :development
+
+gem 'factory_bot', group: [:development, :test]
 
 group :development do
   gem 'annotate'

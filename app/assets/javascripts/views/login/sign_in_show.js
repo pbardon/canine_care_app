@@ -1,4 +1,4 @@
-CanineCareApp.Views.SignInPage = Backbone.View.extend({
+CanineCareApp.Views.SignInPage = Backbone.CompositeView.extend({
     template: JST['login/sign_in'],
 
     events: {

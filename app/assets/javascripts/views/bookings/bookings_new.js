@@ -1,4 +1,4 @@
-CanineCareApp.Views.NewSitterBooking = Backbone.View.extend({
+CanineCareApp.Views.NewSitterBooking = Backbone.CompositeView.extend({
     initialize: function(options) {
         this.dogs = options.dogs;
         this.listenTo(this.dogs, 'sync', this.render);
