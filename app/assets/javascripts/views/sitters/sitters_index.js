@@ -1,9 +1,6 @@
 CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
     initialize: function(options) {
         this.listenTo(this.collection, 'sync', this.placeMarkers);
-        this.listenTo(this.collection, 'sync', this.populateIndex);
-        this.listenTo(this.collection, 'sync', this.saveOriginalCollection);
-
         this.populateIndex();
 
         this.collection.comparator = function(item) {
