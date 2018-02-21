@@ -34,14 +34,18 @@
                                       value="<%= booking.escape('name') %>">
                               </div>
                             </div>
-                            <div class="form-group">
-                                <label for="dogSelect">Choose which dog you would like to book this stay for:</label>
-                                <select name="dog_id" id="dogSelect">
-                                  <% dogs.each(function(dog){ %>
-                                      <option value="<%= dog.escape('id') %>"><%= dog.escape('name') %></option>
-                                  <%  });  %>
-                                </select>
-                            </div>
+                            <% if (dogs.length > 0) { %>
+                                <div class="form-group">
+                                    <label for="dogSelect">Choose which dog you would like to book this stay for:</label>
+                                    <select name="dog_id" id="dogSelect">
+                                      <% dogs.each(function(dog){ %>
+                                          <option value="<%= dog.escape('id') %>"><%= dog.escape('name') %></option>
+                                      <%  });  %>
+                                    </select>
+                                </div>
+
+                            <% } %>
+
                         </div>
                     </div>
                     <div class="form-row">
@@ -59,8 +63,16 @@
                             </div>
                         </div>
                     </div>
+                    <% if (dogs.length < 1) { %>
+                        <div class="">
+                            It looks like you haven't added any dogs yet...
+                        </div>
+                        <button type="button" id="addDogBtn" class="btn btn-link"><i class="fa fa-plus"></i>&nbsp; Add a dog</button>
+                    <% } else { %>
 
                     <input type="submit" class="btn btn-success" id="submitBooking" value="Request Booking!">
+                    <% } %>
+
                 </form>
             </div>
         </div>

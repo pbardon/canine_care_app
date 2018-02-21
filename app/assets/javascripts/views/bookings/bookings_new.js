@@ -5,7 +5,8 @@ CanineCareApp.Views.NewSitterBooking = Backbone.CompositeView.extend({
     },
 
     events: {
-        'submit form': 'submit'
+        'submit form': 'submit',
+        'click #addDogBtn' : 'navigateToAddDog'
     },
 
     template: JST["bookings/new"],
@@ -19,6 +20,11 @@ CanineCareApp.Views.NewSitterBooking = Backbone.CompositeView.extend({
         this.$el.html(renderedContent);
 
         return this;
+    },
+
+    navigateToAddDog: function(event) {
+        event.preventDefault();
+        Backbone.history.navigate('#dogs/new', { trigger: true });
     },
 
     submit: function (event) {
@@ -41,7 +47,7 @@ CanineCareApp.Views.NewSitterBooking = Backbone.CompositeView.extend({
                     });
                 }
             });
-        }else {
+        } else {
             this.model.save({}, {
                 success: function() {
                     Backbone.history.navigate("#/dogs" + model.get('dog_id'), { trigger: true });

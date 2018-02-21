@@ -197,9 +197,9 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
 
     _swapView: function (view) {
         if (this.currentView &&
-                this.currentView.remove() &&
-                this.currentView.removeSubviews()) {
-            this.currentView = view;
+            this.currentView.remove()) {
+                this.currentView.undelegateEvents();
+                this.currentView = view;
         }
 
         view.addSubview('.navbarContainer', this.navbarView.render());
