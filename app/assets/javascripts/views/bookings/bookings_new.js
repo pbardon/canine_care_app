@@ -19,11 +19,17 @@ CanineCareApp.Views.NewSitterBooking = Backbone.CompositeView.extend({
 
         this.$el.html(renderedContent);
 
+        this.attachSubviews();
+
         return this;
     },
 
     navigateToAddDog: function(event) {
         event.preventDefault();
+        if (!CanineCareApp.currentUser.attributes) {
+            Backbone.history.navigate('#session/new', { trigger: true });
+            return;
+        }
         Backbone.history.navigate('#dogs/new', { trigger: true });
     },
 

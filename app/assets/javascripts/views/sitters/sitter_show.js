@@ -115,6 +115,10 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
 
     redirectToBooking: function(event) {
         event.preventDefault();
+        if (!CanineCareApp.currentUser.attributes) {
+            Backbone.history.navigate('#session/new', { trigger: true });
+            return;
+        }
         Backbone.history.navigate("bookings/"+ this.model.id + "/new", {trigger: true});
     },
 

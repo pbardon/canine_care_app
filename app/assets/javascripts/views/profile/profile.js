@@ -9,11 +9,11 @@ CanineCareApp.Views.Profile = Backbone.CompositeView.extend({
             CanineCareApp.Collections.sitters
                 .getUserSitterProfile(this.currentUser.attributes.id, function(response) {
                     profileView.model = response;
-                    if (profileView.model.attributes.id) {
+                    if (profileView.model.id) {
                         profileView.isSitter = true;
                     }
                     var form = new CanineCareApp.Views.SitterForm({
-                        model: profileView.model ,
+                        model: new CanineCareApp.Models.Sitter(profileView.model),
                         collection: CanineCareApp.Collections.sitters
                     });
                     profileView.addSubview('#sitterInfoCard', form.render());

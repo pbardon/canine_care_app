@@ -1,9 +1,9 @@
 CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
     initialize: function(options) {
         this.listenTo(this.collection, 'sync', this.placeMarkers);
-        this.listenTo(this.collection, 'sync', this.render);
-        //clear index..
-        this.populateIndex();
+        this.listenTo(this.collection, 'sync', this.populateIndex);
+        // this.populateIndex();
+        this.collection.fetch();
         this.collection.comparator = function(item) {
             return item.get('price');
         };
@@ -28,7 +28,10 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
     populateIndex: function() {
         var sitterIndex = this;
         //clear index..
-        if (typeof $('.sitterIndexList').get()[0] !== 'undefined') {
+        if (typeof $('.sitterIndexList').get()[0] !== 'undefined' ||
+            (typeof this.subviews === 'function' &&
+                this.subviews('.sitterIndexList') &&
+                this.subviews('.sitterIndexList').length > 0)) {
             this.removeSubviews('.sitterIndexList');
         }
 
@@ -38,6 +41,8 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
             sitterBanner = new CanineCareApp.Views.SitterBanner({ model: model });
             sitterIndex.addSubview('.sitterIndexList', sitterBanner.render());
         });
+
+        this.render();
     },
 
     showInfo: function(event) {
