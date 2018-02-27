@@ -36,12 +36,18 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
     getUserSitterProfile: function(userId, successCb) {
         sitter = new CanineCareApp.Models.Sitter({ user_id: userId });
         function sitterResponse(response) {
+            var foundProfile = false;
             _.any(response.attributes, function(model) {
                 if (model.user_id && model.user_id == userId) {
+                    foundProfile = true;
                     successCb(model);
                     return true;
                 }
             });
+
+            if (!foundProfile) {
+                successCb(sitter);
+            }
         }
         sitter.fetch({ success: sitterResponse });
     }

@@ -1,11 +1,10 @@
 CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
-
     isSitter : false,
     initialize: function(options) {
         var navbarView = this;
         this.currentUser = CanineCareApp.currentUser;
         this.model = this.currentUser;
-        this.listenTo(this.model, 'change', this.render);
+        this.listenTo(this.model, 'sync', this.render);
     },
 
     events: {
@@ -57,6 +56,8 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
 
     render: function() {
         var renderedContent = this.template();
+
+        CanineCareApp.loggedIn = !!CanineCareApp.currentUser.attributes;
 
         this.$el.html(renderedContent);
 
