@@ -26,8 +26,14 @@ module Api
     end
 
     def index
-      @sitters = Sitter.page(1).per(5)
-      render "sitters/index"
+        per_page = 5
+        if params[:page]
+            @sitters = Sitter.page(params[:page].to_i).per(per_page)
+
+        else
+            @sitters = Sitter.page(1).per(per_page)
+        end
+        render "sitters/index"
     end
 
     def update
@@ -93,7 +99,7 @@ module Api
     def sitter_params
       params.require(:sitter).permit(:sitter_name, :description, :price,
                                      :small, :medium, :large,
-                                     :street_address, :city, :state, :zipcode, :sitter_photo)
+                                     :street_address, :city, :state, :zipcode, :sitter_photo, :page)
     end
 
     def generate_geocode(street_address, zipcode, city, state)

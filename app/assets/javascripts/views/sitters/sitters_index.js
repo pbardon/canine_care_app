@@ -3,7 +3,7 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         this.listenTo(this.collection, 'sync', this.placeMarkers);
         this.listenTo(this.collection, 'sync', this.populateIndex);
         // this.populateIndex();
-        this.collection.fetch();
+        this.collection.fetch({data: {page: 1}});
         this.collection.comparator = function(item) {
             return item.get('price');
         };
@@ -42,6 +42,11 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
             sitterIndex.addSubview('.sitterIndexList', sitterBanner.render());
         });
 
+        var paginationControls = new CanineCareApp.Views.PaginationControls({
+            collection: this.collection
+        });
+
+        this.addSubview('.sitterIndexList', paginationControls);
         this.render();
     },
 

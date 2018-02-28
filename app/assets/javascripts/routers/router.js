@@ -128,7 +128,7 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
 
     sittersIndex: function() {
         var oThis = this;
-        CanineCareApp.Collections.sitters.fetch();
+        CanineCareApp.Collections.sitters.fetch({data: {page: 1}});
         if (typeof google === 'undefined') {
             var url = "http://maps.googleapis.com/maps/api/js?key=" +
             CanineCareApp.mapKey + "&sensor=false";
