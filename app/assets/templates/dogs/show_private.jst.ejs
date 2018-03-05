@@ -83,8 +83,9 @@
                               <label>
                                 <input type="radio"
                                        name="size"
-                                       id="size"
-                                       value="medium">
+                                       id="mediumOption"
+                                       value="medium"
+                                       checked="<%= (dog.escape('size') === 'medium') ? 'true' : 'false' %>">
                                     Medium
                               </label>
                             </div>
@@ -93,7 +94,8 @@
                                 <input type="radio"
                                        name="size"
                                        id="largeOption"
-                                       value="large">
+                                       value="large"
+                                       checked="<%= (dog.escape('size') === 'large') ? 'true' : 'false' %>">
                                     Large
                               </label>
                             </div>
@@ -123,7 +125,7 @@
                 <div class="form-row">
                     <div class="col">
                         <% if (dog.get('id')) { %>
-                          <button type='submit' class='editSubmit btn btn-primary'>Update Dog Informaton</button>
+                          <button type='submit' class='editDogInfo btn btn-primary'>Update Dog Informaton</button>
                           <button class='remove btn btn-outline-danger'>Remove Dog</button>
                         <% }else { %>
                           <button type='submit' class='addSubmit btn btn-success'>Add Dog</button>

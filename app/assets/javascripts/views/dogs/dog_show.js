@@ -1,7 +1,7 @@
 CanineCareApp.Views.DogShow = Backbone.CompositeView.extend({
     events: {
         'click .removeDog': 'removeDog',
-        'click .editDogInfo': 'redirectToDogEdit',
+        'click .editDogInfo': 'submitDogEdit',
         'click #commentOnDog': 'addCommentForm',
         'click #addCommentButton': 'addNewComment'
     },
@@ -30,8 +30,7 @@ CanineCareApp.Views.DogShow = Backbone.CompositeView.extend({
 
     addCommentForm: function(event) {
         event.preventDefault();
-        var commentForm = new CanineCareApp.Views.NewComment({
-        });
+        var commentForm = new CanineCareApp.Views.NewComment({});
 
         $(event.currentTarget).replaceWith('<div class="newCommentForm"></div>');
 
@@ -79,9 +78,38 @@ CanineCareApp.Views.DogShow = Backbone.CompositeView.extend({
         this.addSubview('.dogComments', subview);
     },
 
-    redirectToDogEdit: function(event){
-        data = $(event.currentTarget).data('id');
-        Backbone.history.navigate('#/dogs/'+ data +'/edit', {trigger: true});
+    getFormParameter: function(selector, fieldName) {
+        return this.$el.find(selector)[0].value ||
+            this.model.attributes[fieldName];
+    },
+
+    readFormData: function() {
+        this.model.attributes.name = getFormParameter('#dogName', 'name');
+
+        this.model.attributes.age = getFormParameter('#dogAge', 'age');
+
+        this.model.attributes.description = getFormParameter('#dogDescription',
+            'description');
+
+        this.model.attributes.size = getSelectedSize();
+    },
+
+    getSelectedSize: function() {},
+
+    submitDogEdit: function(event){
+        this.model.save(this.model.attributes, {
+            success: function() {
+                Backbone.history.navigate("#/dogs", { trigger: true });
+            },
+
+            error: function(model, error) {
+                $('.alert').remove();
+                $('.addSubmit').replaceWith("<button type='submit' class='addSubmit btn btn-primary'>Add Dog</button>");
+                _(error.responseJSON).each(function(error){
+                    $('#newDogForm').prepend('<div class="alert alert-danger">'+ error +'</div>');
+                });
+            }
+        });
     },
 
 

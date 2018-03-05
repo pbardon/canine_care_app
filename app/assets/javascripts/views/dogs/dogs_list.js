@@ -10,6 +10,8 @@ CanineCareApp.Views.DogsList = Backbone.CompositeView.extend({
 
   initialize: function() {
     this.listenTo(this.collection, 'sync', this.render);
+
+    this.collection.fetch();
   },
 
   redirectToDogShow: function(event){
