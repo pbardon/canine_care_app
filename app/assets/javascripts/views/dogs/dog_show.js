@@ -1,6 +1,4 @@
 CanineCareApp.Views.DogShow = Backbone.CompositeView.extend({
-
-
     events: {
         'click .removeDog': 'removeDog',
         'click .editDogInfo': 'redirectToDogEdit',
@@ -44,7 +42,7 @@ CanineCareApp.Views.DogShow = Backbone.CompositeView.extend({
         var view = this;
         event.preventDefault();
         var data = $('#newCommentForm').serializeJSON();
-        data['commentable_type'] = "Dog";
+        data['commentable_type'] = 'Dog';
         data['commentable_id'] = this.model.get('id');
         var comment = new CanineCareApp.Models.Comment(data);
         CanineCareApp.Collections.dogcomments.create(comment, {

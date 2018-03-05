@@ -2,32 +2,41 @@
 </div>
 
 <div class="app-body">
-<!-- Main content -->
-<main class="main">
+    <!-- Main content -->
+    <main class="main">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Profile</li>
+            <!-- Breadcrumb Menu-->
+        </ol>
+        <div class="container-fluid">
+            <div id="ui-view" style="opacity: 1;">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Edit Profile Information</strong>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item">
+                                            <a id="sitterInfoTab" class="nav-link" href="#">Sitter Information</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a id="dogsTab" class="nav-link" href="#">Dogs</a>
+                                        </li>
+                                    </ul>
 
-  <!-- Breadcrumb -->
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">Profile</li>
-    <!-- Breadcrumb Menu-->
-  </ol>
-
-  <div class="container-fluid">
-    <div id="ui-view" style="opacity: 1;">
-        <div class="animated fadeIn">
-            <div id="sitterInfoCard">
+                                    <div id="profileInfoCard">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- <div class="sitterInfoCard col-sm-offset-1 col-sm-10">
-                <div class="card">
-                  <div class="card-header">
-                    Sitter Profile
-                </div>
-
-                <div class="card-body" id="sitterInfoCard">
-                </div>
-            </div> -->
         </div>
-    </div>
-    </div>
-  <!-- /.container-fluid -->
-</main>
+        <!-- /.container-fluid -->
+    </main>
 </div>
