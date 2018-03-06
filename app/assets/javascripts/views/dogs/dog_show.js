@@ -1,4 +1,4 @@
-CanineCareApp.Views.DogShow = Backbone.CompositeView.extend({
+CanineCareApp.Views.DogShow = Backbone.FormView.extend({
     events: {
         'click .removeDog': 'removeDog',
         'click .editDogInfo': 'submitDogEdit',
@@ -17,6 +17,10 @@ CanineCareApp.Views.DogShow = Backbone.CompositeView.extend({
         this.listenTo(this.model.comments(), 'add', this.render);
 
         $('.dog_bookings').empty();
+    },
+
+    handle_files: function(event, attributeName) {
+        this.saveFileToAttribute(event, 'dog_photo');
     },
 
 
@@ -84,29 +88,40 @@ CanineCareApp.Views.DogShow = Backbone.CompositeView.extend({
     },
 
     readFormData: function() {
-        this.model.attributes.name = getFormParameter('#dogName', 'name');
+        this.model.attributes.name = this.getFormParameter('#dogName', 'name');
 
-        this.model.attributes.age = getFormParameter('#dogAge', 'age');
+        this.model.attributes.age = this.getFormParameter('#dogAge', 'age');
 
-        this.model.attributes.description = getFormParameter('#dogDescription',
+        this.model.attributes.description = this.getFormParameter('#dogDescription',
             'description');
 
-        this.model.attributes.size = getSelectedSize();
+        this.model.attributes.size = this.getSelectedSize();
     },
 
-    getSelectedSize: function() {},
+    getSelectedSize: function() {
+        if (this.$el.find('#smallOption').checked) {
+            return 'small';
+        }
+
+        if (this.$el.find('#mediumOption').checked) {
+            return 'medium';
+        }
+
+        if (this.$el.find('#largeOption').checked ) {
+            return 'large';
+        }
+    },
 
     submitDogEdit: function(event){
+        this.readFormData();
         this.model.save(this.model.attributes, {
             success: function() {
                 Backbone.history.navigate("#/dogs", { trigger: true });
             },
 
             error: function(model, error) {
-                $('.alert').remove();
-                $('.addSubmit').replaceWith("<button type='submit' class='addSubmit btn btn-primary'>Add Dog</button>");
                 _(error.responseJSON).each(function(error){
-                    $('#newDogForm').prepend('<div class="alert alert-danger">'+ error +'</div>');
+                    $('.errors').prepend('<div class="alert alert-danger">'+ error +'</div>');
                 });
             }
         });
