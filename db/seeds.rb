@@ -358,6 +358,7 @@ sitters = Sitter.create([
   },
 
   {user_id: 15,
+  price: 25,
   sitter_name: "Happy dog = happy parents",
   description: "I live in a dog friendly apartment building that is perfect for small dogs. I'm also 1 block from Golden Gate Park which is fantastic for long walks, dog parks, and lots of sniffing. I currently dog-sit/dog-walk for my friends dogs and love it so much that I want to open my home for others.",
   small: true,

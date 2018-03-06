@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-
 ruby "2.2.4"
 
 gem 'rails', '4.2.10'
@@ -14,7 +13,7 @@ gem 'jquery-ui-rails'
 gem 'jbuilder'
 gem 'figaro'
 gem 'paperclip'
-gem 'aws-sdk', '~> 2.1.3'
+gem 'aws-sdk', '~> 2'
 gem 'bcrypt', '~> 3.1.7'
 gem 'addressable'
 gem 'rest-client'
@@ -26,7 +25,6 @@ gem 'less-rails'
 gem 'font-awesome-rails'
 gem 'simple-line-icons-rails'
 gem 'kaminari'
-
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

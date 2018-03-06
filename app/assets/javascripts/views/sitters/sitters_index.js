@@ -7,6 +7,9 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         this.collection.comparator = function(item) {
             return item.get('price');
         };
+
+        this.saveOriginalCollection();
+
     },
 
     events: {
@@ -58,7 +61,10 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
 
     changeBounds: function(event) {
         var swLat, swLng, neLat, neLng;
-        var view = this;
+        var sitterIndex = this;
+
+        this.removeSubviews('.sitterIndexList');
+
         if (typeof this.map != 'undefined'){
             swLat = this.map.getBounds().getSouthWest().lat();
             swLng = this.map.getBounds().getSouthWest().lng();
@@ -75,16 +81,19 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         this.maxX = neLng;
         this.minX = swLng;
 
-        this.saveOriginalCollection();
-
         this.collection
             .reset(this.originalCollection
             .filter(function(model) {
-                return (model.get('latitude') < view.maxY &&
-                    model.get('longitude') > view.minX &&
-                    model.get('latitude') > view.minY &&
-                    model.get('longitude') < view.maxX);
+                return (model.get('latitude') < sitterIndex.maxY &&
+                    model.get('longitude') > sitterIndex.minX &&
+                    model.get('latitude') > sitterIndex.minY &&
+                    model.get('longitude') < sitterIndex.maxX);
                 }));
+
+        this.collection.forEach(function(model) {
+            sitterBanner = new CanineCareApp.Views.SitterBanner({ model: model });
+            sitterIndex.addSubview('.sitterIndexList', sitterBanner.render());
+        });
     },
 
     placeMarkers: function() {
@@ -175,7 +184,8 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         };
 
         this.map = new google.maps.Map(this.$('#map-canvas')[0], mapOptions);
-        google.maps.event.addListener(view.map, "bounds_changed",
+        google.maps.event.addListener(view.map,
+            "bounds_changed",
             view.changeBounds.bind(view));
         google.maps.event.trigger(view.map, 'resize');
         this.placeMarkers();
