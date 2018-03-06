@@ -75,12 +75,16 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         this.maxX = neLng;
         this.minX = swLng;
 
-        // this.collection.reset(this.originalCollection.filter(function(model) {
-        // return (model.get('latitude') < view.maxY &&
-        //     model.get('longitude') > view.minX &&
-        //     model.get('latitude') > view.minY &&
-        //     model.get('longitude') < view.maxX);
-        // }));
+        this.saveOriginalCollection();
+
+        this.collection
+            .reset(this.originalCollection
+            .filter(function(model) {
+                return (model.get('latitude') < view.maxY &&
+                    model.get('longitude') > view.minX &&
+                    model.get('latitude') > view.minY &&
+                    model.get('longitude') < view.maxX);
+                }));
     },
 
     placeMarkers: function() {
@@ -122,8 +126,6 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
             });
         });
     },
-
-
 
     searchResults: function(event) {
         var view = this;
@@ -173,6 +175,9 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         };
 
         this.map = new google.maps.Map(this.$('#map-canvas')[0], mapOptions);
+        google.maps.event.addListener(view.map, "bounds_changed",
+            view.changeBounds.bind(view));
+        google.maps.event.trigger(view.map, 'resize');
         this.placeMarkers();
 
         if(navigator.geolocation) {
@@ -181,11 +186,6 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
                 view.map.setCenter(pos);
             });
         }
-
-        $(window).load(function() {
-            google.maps.event.addListener(view.map, "bounds_changed", view.changeBounds.bind(view));
-            google.maps.event.trigger(view.map, 'resize');
-        });
     },
 
     render: function() {
