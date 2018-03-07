@@ -3,7 +3,6 @@ require 'rest-client'
 require 'json'
 
 module Api
-
   class SittersController < ApplicationController
     attr_reader :user_id
 
@@ -25,7 +24,7 @@ module Api
     end
 
     def index
-        per_page = 5
+        per_page = 50
         if params[:page]
             @sitters = Sitter.page(params[:page].to_i).per(per_page)
 

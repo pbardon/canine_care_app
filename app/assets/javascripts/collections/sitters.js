@@ -1,19 +1,31 @@
-
 CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
     url: 'api/sitters',
 
     model: CanineCareApp.Models.Sitter,
 
+    perPage: 5,
+
     filterByBounds: function(minX, maxX, minY, maxY) {
-        collection.select(function (model){
-        var lat = model.get('latitude');
-        var long = model.get('longitude');
-        if ( minY < lat && lat < maxY ) {
-            if ( minX < long && long< maxX ) {
-                return model;
-            }
-        }
-        });
+        return this.paginate(
+            this.filter(function(model) {
+                var lat = model.get('latitude');
+                var long = model.get('longitude');
+                return (lat < maxY &&
+                    long > minX &&
+                    lat > minY &&
+                    long < maxX);
+                }));
+    },
+
+    pageNumber: 1,
+
+    setPageNumber: function(pageNumber) {
+        this.pageNumber = pageNumber;
+    },
+
+    paginate: function(collection) {
+        return this.slice((this.perPage * (this.pageNumber - 1)),
+            ((5 * this.pageNumber)  - 1));
     },
 
     getOrFetch: function(id) {

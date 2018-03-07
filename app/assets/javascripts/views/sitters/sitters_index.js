@@ -1,15 +1,31 @@
 CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
     initialize: function(options) {
+        var sitterIndexView = this;
         this.listenTo(this.collection, 'sync', this.placeMarkers);
         this.listenTo(this.collection, 'sync', this.populateIndex);
-        // this.populateIndex();
+
         this.collection.fetch({data: {page: 1}});
         this.collection.comparator = function(item) {
-            return item.get('price');
+            return item.get('id');
         };
+        this.collection.sort();
+        var paginationControls = new CanineCareApp.Views.PaginationControls({
+            collection: this.collection,
+            cb: function(newCollection) {
+                sitterIndexView.removeSubviews('.sitterIndexList');
 
-        this.saveOriginalCollection();
+                //then populate..
+                var sitterBanner;
+                newCollection.forEach(function(model) {
+                    sitterBanner = new CanineCareApp.Views.SitterBanner({ model: model });
+                    sitterIndexView.addSubview('.sitterIndexList', sitterBanner.render());
+                });
 
+                sitterIndexView.render();
+            }
+        });
+
+        this.addSubview('.paginationControls', paginationControls);
     },
 
     events: {
@@ -45,11 +61,6 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
             sitterIndex.addSubview('.sitterIndexList', sitterBanner.render());
         });
 
-        var paginationControls = new CanineCareApp.Views.PaginationControls({
-            collection: this.collection
-        });
-
-        this.addSubview('.sitterIndexList', paginationControls);
         this.render();
     },
 
@@ -70,30 +81,17 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
             swLng = this.map.getBounds().getSouthWest().lng();
             neLat = this.map.getBounds().getNorthEast().lat();
             neLng = this.map.getBounds().getNorthEast().lng();
-        }else{
+        } else {
             swLat = -90;
             swLng = -180;
             neLat = 90;
             neLng = 180;
         }
-        this.minY = swLat;
-        this.maxY = neLat;
-        this.maxX = neLng;
-        this.minX = swLng;
-
-        this.collection
-            .reset(this.originalCollection
-            .filter(function(model) {
-                return (model.get('latitude') < sitterIndex.maxY &&
-                    model.get('longitude') > sitterIndex.minX &&
-                    model.get('latitude') > sitterIndex.minY &&
-                    model.get('longitude') < sitterIndex.maxX);
-                }));
-
-        this.collection.forEach(function(model) {
+        this.collection.filterByBounds(swLng, neLng, swLat, neLat).forEach(function(model) {
             sitterBanner = new CanineCareApp.Views.SitterBanner({ model: model });
             sitterIndex.addSubview('.sitterIndexList', sitterBanner.render());
         });
+
     },
 
     placeMarkers: function() {
@@ -113,7 +111,7 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
 
         this.collection.each(function(sitter) {
             var lat = sitter.get('latitude'),
-            lng = sitter.get('longitude');
+                lng = sitter.get('longitude');
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(lat, lng),
                 icon: image,
@@ -152,10 +150,6 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
                 $('#searchParams').val("There was a problem with your search");
             }
         });
-    },
-
-    saveOriginalCollection: function() {
-        this.originalCollection = new CanineCareApp.Collections.Sitters(this.collection.models);
     },
 
     reorderByHightoLowRating: function() {
