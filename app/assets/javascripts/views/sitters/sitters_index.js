@@ -22,6 +22,8 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
                     sitterIndexView.addSubview('.sitterIndexList', sitterBanner.render());
                 });
 
+                sitterIndexView.sitterMap.placeMarkers(newCollection);
+
                 sitterIndexView.render();
             }
         });
@@ -107,7 +109,7 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
             sitterIndex.addSubview('.sitterIndexList', sitterBanner.render());
         });
 
-        // this.sitterMap.placeMarkers(locationCollection);
+        this.sitterMap.placeMarkers(locationCollection);
 
     },
 

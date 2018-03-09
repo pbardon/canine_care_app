@@ -5,6 +5,7 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
     initialize: function (options) {
         this.changeBoundsCb = options.changeBoundsCb;
         this.markers = [];
+        this.mapLoaded = false;
     },
 
     renderMap: function () {
@@ -19,6 +20,11 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
         google.maps.event.addListener(view.map,
             "bounds_changed",
             this.changeBoundsCb.bind(view));
+
+        google.maps.event.addListenerOnce(this.map, 'tilesloaded', function(){
+            view.mapLoaded = true;
+        });
+
         google.maps.event.trigger(view.map, 'resize');
 
         if(navigator.geolocation) {
@@ -36,11 +42,16 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
         _.each(this.markers, function(marker) {
             marker.setMap(null);
         });
-        this.markers = [];
+
+        this.markers = new Array();
     },
 
     placeMarkers: function(collection) {
-        var map = this.map;
+        if (!this.mapLoaded) {
+            return;
+        }
+        var map = this.map,
+            view = this;
         var image = {
             url: 'https://s3-us-west-1.amazonaws.com/pet-sitter-development/paw_icon3.png',
             size: new google.maps.Size(20, 20),
@@ -53,11 +64,11 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
             type: 'poly'
         };
 
-        // this.clearMarkers();
+        this.clearMarkers();
         _.each(collection, function(sitter) {
             var lat = sitter.get('latitude'),
                 lng = sitter.get('longitude');
-            var marker = google.maps.Marker({
+            var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(lat, lng),
                 icon: image,
                 map: map,
@@ -72,7 +83,7 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
             var infowindow = new google.maps.InfoWindow({
                 content: sitterLink
             });
-            markers.push(marker);
+            view.markers.push(marker);
             google.maps.event.addListener(marker, 'click', function() {
                 infowindow.open(map, marker);
             });
