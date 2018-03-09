@@ -1,20 +1,88 @@
 CanineCareApp.Views.SittersMap = Backbone.View.extend({
 
-    template: JST['sitters/index/map_index'],
+    template: JST['map/show'],
 
-    initialize: function () {
-        this.renderMap();
+    initialize: function (options) {
+        this.changeBoundsCb = options.changeBoundsCb;
+        this.markers = [];
     },
 
     renderMap: function () {
-        var options = {
-        center: new google.maps.LatLng(37.7533, -122.452),
-        zoom: 12
+        var view = this;
+        var pos = new google.maps.LatLng(37.7810560, -122.4114550);
+
+        var mapOptions = {
+            zoom: 12,
+            center: pos
         };
-        this.map = App.map = new App.Models.Map(options).map;
+        this.map = new google.maps.Map(this.$('#map-canvas')[0], mapOptions);
+        google.maps.event.addListener(view.map,
+            "bounds_changed",
+            this.changeBoundsCb.bind(view));
+        google.maps.event.trigger(view.map, 'resize');
+
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                view.map.setCenter(pos);
+            });
+        }
+    },
+
+    clearMarkers: function() {
+        if (this.markers.length < 1) {
+            return;
+        }
+        _.each(this.markers, function(marker) {
+            marker.setMap(null);
+        });
+        this.markers = [];
+    },
+
+    placeMarkers: function(collection) {
+        var map = this.map;
+        var image = {
+            url: 'https://s3-us-west-1.amazonaws.com/pet-sitter-development/paw_icon3.png',
+            size: new google.maps.Size(20, 20),
+            origin: new google.maps.Point(0,0),
+            anchor: new google.maps.Point(0, 20)
+        };
+
+        var shape = {
+            coords: [1,1,1,20,20,20,20,1],
+            type: 'poly'
+        };
+
+        // this.clearMarkers();
+        _.each(collection, function(sitter) {
+            var lat = sitter.get('latitude'),
+                lng = sitter.get('longitude');
+            var marker = google.maps.Marker({
+                position: new google.maps.LatLng(lat, lng),
+                icon: image,
+                map: map,
+                shape: shape,
+                title: sitter.get('sitter_name')
+            });
+
+            var sitterLink = "<div><a href='#/sitters/" + sitter.get('id') + "'>" +
+                marker.title + "</a><br><img width='75px' height='75px' src=" +
+                sitter.get('sitter_photo_small') + "></div>";
+
+            var infowindow = new google.maps.InfoWindow({
+                content: sitterLink
+            });
+            markers.push(marker);
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map, marker);
+            });
+        });
     },
 
     render: function () {
+        var renderedContent = this.template();
+        this.$el.html(renderedContent);
+        this.renderMap();
         return this;
     }
 });
