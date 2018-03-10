@@ -5,7 +5,7 @@ CanineCareApp.Views.PaginationControls = Backbone.CompositeView.extend({
 
     initialize: function(options) {
         this.collection = options.collection;
-        this.perPage = 5;
+        this.perPage = 6;
         this.originalCollection = this.collection;
         this.firstSelect = true;
         this.newPageCallback = options.cb;
@@ -19,7 +19,7 @@ CanineCareApp.Views.PaginationControls = Backbone.CompositeView.extend({
     },
 
     calculateNumberOfPages: function(collection) {
-        return collection.length / this.perPage;
+        return Math.ceil(collection.length / this.perPage);
     },
 
     events: {

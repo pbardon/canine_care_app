@@ -78,17 +78,16 @@ CanineCareApp.Views.SittersIndexList = Backbone.CompositeView.extend({
 
         this.$el.html(renderedContent);
 
-        var newCollection = this.collection.filterByBounds();
+        var mapFilteredCollection = this.collection.filterByBounds();
 
-
-        newCollection.forEach(function(model) {
+        this.collection.paginate(mapFilteredCollection).forEach(function(model) {
             sitterBanner = new CanineCareApp.Views.SitterBanner({ model: model });
             sitterIndexList.addSubview('.sitterIndexList', sitterBanner);
         });
 
-        this.paginationControls.processNewCollection(newCollection);
+        this.paginationControls.processNewCollection(mapFilteredCollection);
 
-        this.placeMarkersFn(newCollection);
+        this.placeMarkersFn(mapFilteredCollection);
 
         this.attachSubviews();
 
