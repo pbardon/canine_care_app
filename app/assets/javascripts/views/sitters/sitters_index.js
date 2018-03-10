@@ -4,10 +4,14 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         // this.listenTo(this.collection, 'sync', this.copyCollection);
         // this.listenTo(this.collection, 'sync', this.populateIndex);
 
-        this.sitterMap = new CanineCareApp.Views.SittersMap({
-            changeBoundsCb: function() {
+        var changeBoundsFunction = function(minLat, maxLat, minLng, maxLng) {
+            sitterIndexView.collection.setBounds(minLat, maxLat, minLng, maxLng);
+            sitterIndexView.collection.trigger('sync');
+        };
 
-            }
+
+        this.sitterMap = new CanineCareApp.Views.SittersMap({
+            changeBoundsCb: changeBoundsFunction.bind(sitterIndexView)
         });
 
         this.sittersIndexList = new CanineCareApp.Views.SittersIndexList({

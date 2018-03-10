@@ -96,21 +96,21 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
         if (!this.mapLoaded) {
             return;
         }
-        var swLat, swLng, neLat, neLng;
+        var minLat, minLng, maxLat, maxLng;
 
         if (typeof this.map != 'undefined'){
-            swLat = this.map.getBounds().getSouthWest().lat();
-            swLng = this.map.getBounds().getSouthWest().lng();
-            neLat = this.map.getBounds().getNorthEast().lat();
-            neLng = this.map.getBounds().getNorthEast().lng();
+            minLat = this.map.getBounds().getSouthWest().lat();
+            minLng = this.map.getBounds().getSouthWest().lng();
+            maxLat = this.map.getBounds().getNorthEast().lat();
+            maxLng = this.map.getBounds().getNorthEast().lng();
         } else {
-            swLat = -90;
-            swLng = -180;
-            neLat = 90;
-            neLng = 180;
+            minLat = -90;
+            minLng = -180;
+            maxLat = 90;
+            maxLng = 180;
         }
 
-        this.changeBoundsCb(swLng, neLng, swLat, neLat);
+        this.changeBoundsCb(minLat, maxLat, minLng, maxLng);
     },
 
     render: function () {

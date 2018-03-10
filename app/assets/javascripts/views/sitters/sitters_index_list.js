@@ -27,7 +27,6 @@ CanineCareApp.Views.SittersIndexList = Backbone.CompositeView.extend({
     },
 
     newPageCallback: function() {
-        this.placeMarkersFn(this.collection.paginate());
         this.render();
 
     },
@@ -79,10 +78,14 @@ CanineCareApp.Views.SittersIndexList = Backbone.CompositeView.extend({
 
         this.$el.html(renderedContent);
 
-        this.collection.paginate().forEach(function(model) {
+        var newCollection = this.collection.filterByBounds();
+
+        newCollection.forEach(function(model) {
             sitterBanner = new CanineCareApp.Views.SitterBanner({ model: model });
             sitterIndexList.addSubview('.sitterIndexList', sitterBanner);
         });
+
+        this.placeMarkersFn(newCollection);
 
         this.attachSubviews();
 

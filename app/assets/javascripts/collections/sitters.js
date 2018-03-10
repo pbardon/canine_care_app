@@ -3,18 +3,32 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
 
     model: CanineCareApp.Models.Sitter,
 
-    perPage: 5,
+    perPage: 6,
+    minLat: -90,
+    maxLat: 90,
+    minLng: -180,
+    maxLng: 180,
 
-    filterByBounds: function(minX, maxX, minY, maxY) {
-        return this.paginate(
-            this.filter(function(model) {
-                var lat = model.get('latitude');
-                var long = model.get('longitude');
-                return (lat < maxY &&
-                    long > minX &&
-                    lat > minY &&
-                    long < maxX);
-                }));
+    setBounds: function(minLat, maxLat, minLng, maxLng) {
+        this.minLat = minLat;
+        this.maxLat = maxLat;
+        this.minLng = minLng;
+        this.maxLng = maxLng;
+    },
+
+    filterByBounds: function() {
+        var collection = this;
+        var newCollection = this.paginate(
+            this.filter(
+                function(model) {
+                    var lat = model.get('latitude');
+                    var long = model.get('longitude');
+                    return (lat > collection.minLat &&
+                        long > collection.minLng &&
+                        lat < collection.maxLat &&
+                        long < collection.maxLng);
+                    }));
+        return newCollection;
     },
 
     pageNumber: 1,
@@ -24,9 +38,9 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
     },
 
     paginate: function(collection) {
-        debugger;
-        return new CanineCareApp.Collections.Sitters(this.slice((this.perPage * (this.pageNumber - 1)),
-            ((5 * this.pageNumber)  - 1)));
+        return new CanineCareApp.Collections.Sitters(
+            collection.slice((this.perPage * (this.pageNumber - 1)),
+            (this.perPage * this.pageNumber)));
     },
 
     getOrFetch: function(id) {
