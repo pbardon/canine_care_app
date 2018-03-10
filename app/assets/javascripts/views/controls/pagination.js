@@ -39,6 +39,7 @@ CanineCareApp.Views.PaginationControls = Backbone.CompositeView.extend({
 
     processNewCollection: function(newCollection) {
         this.maxPages = this.calculateNumberOfPages(newCollection);
+        this.render();
     },
 
     incrementCounter: function() {

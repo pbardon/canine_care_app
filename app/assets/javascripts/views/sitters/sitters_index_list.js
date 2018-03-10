@@ -86,6 +86,8 @@ CanineCareApp.Views.SittersIndexList = Backbone.CompositeView.extend({
             sitterIndexList.addSubview('.sitterIndexList', sitterBanner);
         });
 
+        this.paginationControls.processNewCollection(newCollection);
+
         this.placeMarkersFn(newCollection);
 
         this.attachSubviews();
