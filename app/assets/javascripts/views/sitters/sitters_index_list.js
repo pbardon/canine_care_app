@@ -80,6 +80,7 @@ CanineCareApp.Views.SittersIndexList = Backbone.CompositeView.extend({
 
         var newCollection = this.collection.filterByBounds();
 
+
         newCollection.forEach(function(model) {
             sitterBanner = new CanineCareApp.Views.SitterBanner({ model: model });
             sitterIndexList.addSubview('.sitterIndexList', sitterBanner);

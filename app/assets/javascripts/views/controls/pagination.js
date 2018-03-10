@@ -9,8 +9,13 @@ CanineCareApp.Views.PaginationControls = Backbone.CompositeView.extend({
         this.originalCollection = this.collection;
         this.firstSelect = true;
         this.newPageCallback = options.cb;
-
         this.mapRef = options.mapRef;
+
+        this.currentFirstPage = 1;
+        this.buttonOne = this.currentFirstPage;
+        this.buttonTwo = 2;
+        this.buttonThree = 3;
+        this.maxPages = 5;
     },
 
     calculateNumberOfPages: function(collection) {
@@ -21,7 +26,8 @@ CanineCareApp.Views.PaginationControls = Backbone.CompositeView.extend({
         'click .buttonOne': 'getPage',
         'click .buttonTwo': 'getPage',
         'click .buttonThree': 'getPage',
-        'click .nextButton' : 'incrementCounter'
+        'click .nextButton' : 'incrementCounter',
+        'click .previousButton' : 'decrementCounter'
     },
 
     getPage: function(event) {
@@ -33,20 +39,22 @@ CanineCareApp.Views.PaginationControls = Backbone.CompositeView.extend({
 
     processNewCollection: function(newCollection) {
         this.maxPages = this.calculateNumberOfPages(newCollection);
-        if (this.currentPage > this.maxPages) {
-            this.currentPage = 1;
-            this.resetCounter();
-        }
     },
 
     incrementCounter: function() {
-        this.incrementHtmlValue(this.$el.find('.buttonOne'));
-        this.incrementHtmlValue(this.$el.find('.buttonTwo'));
-        this.incrementHtmlValue(this.$el.find('.buttonThree'));
+        this.currentFirstPage++;
+        this.buttonOne++;
+        this.buttonTwo++;
+        this.buttonThree++;
+        this.render();
     },
 
-    incrementHtmlValue: function(element) {
-
+    decrementCounter: function() {
+        this.currentFirstPage--;
+        this.buttonOne--;
+        this.buttonTwo--;
+        this.buttonThree--;
+        this.render();
     },
 
     render: function() {
