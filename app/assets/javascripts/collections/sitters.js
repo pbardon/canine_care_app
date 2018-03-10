@@ -24,8 +24,9 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
     },
 
     paginate: function(collection) {
-        return this.slice((this.perPage * (this.pageNumber - 1)),
-            ((5 * this.pageNumber)  - 1));
+        debugger;
+        return new CanineCareApp.Collections.Sitters(this.slice((this.perPage * (this.pageNumber - 1)),
+            ((5 * this.pageNumber)  - 1)));
     },
 
     getOrFetch: function(id) {

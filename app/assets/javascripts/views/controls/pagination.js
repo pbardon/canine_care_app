@@ -9,6 +9,8 @@ CanineCareApp.Views.PaginationControls = Backbone.CompositeView.extend({
         this.originalCollection = this.collection;
         this.firstSelect = true;
         this.newPageCallback = options.cb;
+
+        this.mapRef = options.mapRef;
     },
 
     calculateNumberOfPages: function(collection) {
@@ -26,7 +28,7 @@ CanineCareApp.Views.PaginationControls = Backbone.CompositeView.extend({
         event.preventDefault();
         var pageNumber = parseInt($(event.target).html());
         this.collection.setPageNumber(pageNumber);
-        this.newPageCallback(this.collection.paginate());
+        this.newPageCallback();
     },
 
     processNewCollection: function(newCollection) {

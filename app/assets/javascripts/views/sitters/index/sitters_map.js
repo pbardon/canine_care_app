@@ -16,12 +16,13 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
             zoom: 12,
             center: pos
         };
-        this.map = new google.maps.Map(this.$('#map-canvas')[0], mapOptions);
-        google.maps.event.addListener(view.map,
-            "bounds_changed",
-            this.changeBoundsCb.bind(view));
 
-        google.maps.event.addListenerOnce(this.map, 'tilesloaded', function(){
+        this.map = new google.maps.Map(this.$('#map-canvas')[0], mapOptions);
+
+        google.maps.event.addListener(view.map, "bounds_changed",
+            this.changeBounds.bind(view));
+
+        google.maps.event.addListenerOnce(this.map, 'tilesloaded', function() {
             view.mapLoaded = true;
         });
 
@@ -29,7 +30,8 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
 
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
-                pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                pos = new google.maps.LatLng(position.coords.latitude,
+                    position.coords.longitude);
                 view.map.setCenter(pos);
             });
         }
@@ -65,7 +67,7 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
         };
 
         this.clearMarkers();
-        _.each(collection, function(sitter) {
+        collection.each(function(sitter) {
             var lat = sitter.get('latitude'),
                 lng = sitter.get('longitude');
             var marker = new google.maps.Marker({
@@ -88,6 +90,27 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
                 infowindow.open(map, marker);
             });
         });
+    },
+
+    changeBounds: function(event) {
+        if (!this.mapLoaded) {
+            return;
+        }
+        var swLat, swLng, neLat, neLng;
+
+        if (typeof this.map != 'undefined'){
+            swLat = this.map.getBounds().getSouthWest().lat();
+            swLng = this.map.getBounds().getSouthWest().lng();
+            neLat = this.map.getBounds().getNorthEast().lat();
+            neLng = this.map.getBounds().getNorthEast().lng();
+        } else {
+            swLat = -90;
+            swLng = -180;
+            neLat = 90;
+            neLng = 180;
+        }
+
+        this.changeBoundsCb(swLng, neLng, swLat, neLat);
     },
 
     render: function () {

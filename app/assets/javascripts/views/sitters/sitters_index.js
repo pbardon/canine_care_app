@@ -1,38 +1,23 @@
 CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
     initialize: function(options) {
         var sitterIndexView = this;
-        // this.listenTo(this.collection, 'sync', this.placeMarkers);
+        // this.listenTo(this.collection, 'sync', this.copyCollection);
         // this.listenTo(this.collection, 'sync', this.populateIndex);
 
-        this.collection.fetch({data: {page: 1}});
-        this.collection.comparator = function(item) {
-            return item.get('id');
-        };
-        this.collection.sort();
-        this.paginationControls = new CanineCareApp.Views.PaginationControls({
-            collection: this.collection,
-            cb: function(newCollection) {
-                sitterIndexView.removeSubviews('.sitterIndexList');
+        this.sitterMap = new CanineCareApp.Views.SittersMap({
+            changeBoundsCb: function() {
 
-
-                //then populate..
-                var sitterBanner;
-                newCollection.forEach(function(model) {
-                    sitterBanner = new CanineCareApp.Views.SitterBanner({ model: model });
-                    sitterIndexView.addSubview('.sitterIndexList', sitterBanner.render());
-                });
-
-                sitterIndexView.sitterMap.placeMarkers(newCollection);
-
-                sitterIndexView.render();
             }
         });
 
-        this.sitterMap = new CanineCareApp.Views.SittersMap({
-            changeBoundsCb: this.changeBounds.bind(this)
+        this.sittersIndexList = new CanineCareApp.Views.SittersIndexList({
+            collection: this.collection,
+            placeMarkersFn: function(collection) {
+                sitterIndexView.sitterMap.placeMarkers(collection);
+            }
         });
 
-        this.addSubview('.paginationControls', this.paginationControls);
+        this.addSubview('.sitterIndexListContainer', this.sittersIndexList.render());
 
         this.addSubview('.mapContainer', this.sitterMap.render());
     },
@@ -73,46 +58,6 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
     //     this.render();
     // },
 
-    showInfo: function(event) {
-        var $ct = $(event.currentTarget);
-        var sitterId = $ct.data('id');
-        Backbone.history.navigate("#/sitters/" + sitterId, {trigger: true});
-    },
-
-    changeBounds: function(event) {
-        var swLat, swLng, neLat, neLng;
-        var sitterIndex = this;
-
-        this.removeSubviews('.sitterIndexList');
-
-        if (typeof this.map != 'undefined'){
-            swLat = this.map.getBounds().getSouthWest().lat();
-            swLng = this.map.getBounds().getSouthWest().lng();
-            neLat = this.map.getBounds().getNorthEast().lat();
-            neLng = this.map.getBounds().getNorthEast().lng();
-        } else {
-            swLat = -90;
-            swLng = -180;
-            neLat = 90;
-            neLng = 180;
-        }
-
-        // filter the collection ...
-        var locationCollection = this.collection.filterByBounds(swLng, neLng, swLat, neLat);
-        // calculate the new number of pages, refresh the pagination controls
-        this.paginationControls.processNewCollection(locationCollection);
-
-        // replace the sitters index with the correct entries
-        this.removeSubviews('.sitterIndexList');
-        locationCollection.forEach(function(model) {
-            sitterBanner = new CanineCareApp.Views.SitterBanner({ model: model });
-            sitterIndex.addSubview('.sitterIndexList', sitterBanner.render());
-        });
-
-        this.sitterMap.placeMarkers(locationCollection);
-
-    },
-
     searchResults: function(event) {
         var view = this;
         event.preventDefault();
@@ -131,21 +76,6 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         });
     },
 
-    reorderByHightoLowRating: function() {
-        this.collection.comparator = function(item) {
-            return -item.get('avg_rating');
-        };
-        this.collection.sort();
-        this.collection.trigger('reset');
-    },
-
-    reorderByPrice: function() {
-        this.collection.comparator = function(item) {
-            return item.get('price');
-        };
-        this.collection.sort();
-        this.collection.trigger('reset');
-    },
 
     render: function() {
         var renderedContent = this.template({ sitters: this.collection });
