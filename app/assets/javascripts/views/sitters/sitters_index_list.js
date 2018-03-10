@@ -24,6 +24,7 @@ CanineCareApp.Views.SittersIndexList = Backbone.CompositeView.extend({
         this.addSubview('.paginationControls', this.paginationControls);
 
         this.placeMarkersFn = options.placeMarkersFn.bind(this);
+
     },
 
     newPageCallback: function() {
@@ -80,14 +81,18 @@ CanineCareApp.Views.SittersIndexList = Backbone.CompositeView.extend({
 
         var mapFilteredCollection = this.collection.filterByBounds();
 
+        this.paginationControls.processNewCollection(mapFilteredCollection);
+
         this.collection.paginate(mapFilteredCollection).forEach(function(model) {
             sitterBanner = new CanineCareApp.Views.SitterBanner({ model: model });
             sitterIndexList.addSubview('.sitterIndexList', sitterBanner);
         });
 
-        this.paginationControls.processNewCollection(mapFilteredCollection);
-
         this.placeMarkersFn(mapFilteredCollection);
+
+        if (mapFilteredCollection.length < 1) {
+            this.addSubview('.sitterIndexList', new CanineCareApp.Views.NoSitterMessage());
+        }
 
         this.attachSubviews();
 

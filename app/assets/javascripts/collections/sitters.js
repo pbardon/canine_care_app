@@ -9,6 +9,10 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
     minLng: -180,
     maxLng: 180,
 
+    initialize: function(options) {
+        this.pageNumber = 1;
+    },
+
     setBounds: function(minLat, maxLat, minLng, maxLng) {
         this.minLat = minLat;
         this.maxLat = maxLat;
@@ -29,16 +33,14 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
         }));
     },
 
-    pageNumber: 1,
-
     setPageNumber: function(pageNumber) {
         this.pageNumber = pageNumber;
     },
 
     paginate: function(collection) {
         return new CanineCareApp.Collections.Sitters(
-            collection.slice((this.perPage * (this.pageNumber - 1)),
-            (this.perPage * this.pageNumber)));
+            collection.slice((this.perPage * (collection.pageNumber - 1)),
+            (this.perPage * collection.pageNumber)));
     },
 
     getOrFetch: function(id) {

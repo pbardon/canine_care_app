@@ -48,8 +48,15 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
         this.markers = new Array();
     },
 
-    placeMarkers: function(collection) {
+    placeMarkers: function(collection, repeatCount) {
+        var mapView = this;
+        var repeatCount = repeatCount || 0;
         if (!this.mapLoaded) {
+            if (repeatCount < 3) {
+                setTimeout(function() {
+                    mapView.placeMarkers(collection, repeatCount++);
+                }, 1000);
+            }
             return;
         }
         var map = this.map,
