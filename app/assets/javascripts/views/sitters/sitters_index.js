@@ -1,9 +1,6 @@
 CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
     initialize: function(options) {
         var sitterIndexView = this;
-        // this.listenTo(this.collection, 'sync', this.copyCollection);
-        // this.listenTo(this.collection, 'sync', this.populateIndex);
-
         var changeBoundsFunction = function(minLat, maxLat, minLng, maxLng) {
             sitterIndexView.collection.setBounds(minLat, maxLat, minLng, maxLng);
             sitterIndexView.collection.trigger('sync');
@@ -24,6 +21,8 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
         this.addSubview('.sitterIndexListContainer', this.sittersIndexList.render());
 
         this.addSubview('.mapContainer', this.sitterMap.render());
+
+        sitterIndexView.collection.trigger('sync');
     },
 
     events: {

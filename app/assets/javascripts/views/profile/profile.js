@@ -2,7 +2,6 @@ CanineCareApp.Views.Profile = Backbone.CompositeView.extend({
 
     isSitter : false,
 
-
     initialize: function(options) {
         var profileView = this;
         this.currentUser = CanineCareApp.currentUser;
@@ -14,8 +13,8 @@ CanineCareApp.Views.Profile = Backbone.CompositeView.extend({
                         profileView.isSitter = true;
                     }
                     profileView.form = new CanineCareApp.Views.SitterForm({
-                        model: new CanineCareApp.Models.Sitter(profileView.model),
-                        collection: CanineCareApp.Collections.sitters
+                        model: profileView.model,
+                        collection : CanineCareApp.Collections.sitters
                     });
                     profileView.addSubview('#profileInfoCard',
                         profileView.form.render());

@@ -59,6 +59,10 @@ CanineCareApp.Views.SignUpPage = Backbone.CompositeView.extend({
             data: formData,
             dataType: "json",
             success: function(response) {
+                var user = new CanineCareApp.Models.User();
+                user.attributes = response;
+                CanineCareApp.currentUser = user;
+                CanineCareApp.loggedIn = true;
                 Backbone.history.navigate("", { trigger: true });
             },
             error: function(response) {

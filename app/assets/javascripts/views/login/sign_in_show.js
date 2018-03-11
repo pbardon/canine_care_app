@@ -41,13 +41,13 @@ CanineCareApp.Views.SignInPage = Backbone.CompositeView.extend({
             }
         };
 
-        var user = new CanineCareApp.Models.User();
         $.ajax({
             url: "http://localhost:3000/session",
             method: "POST",
             data: loginInfo,
             dataType: "json",
             success: function(response) {
+                var user = new CanineCareApp.Models.User();
                 user.attributes = response;
                 CanineCareApp.currentUser = user;
                 CanineCareApp.loggedIn = true;

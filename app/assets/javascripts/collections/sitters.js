@@ -61,22 +61,24 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
     },
 
     getUserSitterProfile: function(userId, successCb) {
-        sitter = new CanineCareApp.Models.Sitter({ user_id: userId });
+        var sitters = CanineCareApp.Collections.sitters;
         function sitterResponse(response) {
             var foundProfile = false;
-            _.any(response.attributes, function(model) {
+            _.any(response.models, function(model) {
                 if (model.user_id && model.user_id == userId) {
                     foundProfile = true;
+                    debugger;
                     successCb(model);
                     return true;
                 }
             });
 
             if (!foundProfile) {
-                successCb(sitter);
+                debugger;
+                successCb(new CanineCareApp.Models.Sitter());
             }
         }
-        sitter.fetch({ success: sitterResponse });
+        sitters.fetch({ success: sitterResponse });
     }
 });
 

@@ -13,9 +13,7 @@ module Api
       @sitter = Sitter.new(sitter_params)
       @sitter.user_id = current_user.id
       if @sitter.save
-        geo = @sitter.generate_geocode(@sitter.street_address, @sitter.zipcode, @sitter.city, @sitter.state)
-        @sitter.latitude = geo[0]
-        @sitter.longitude = geo[1]
+        geo = @sitter.generate_geocode()
         @sitter.save!
         render 'sitters/show'
       else
@@ -27,10 +25,10 @@ module Api
         per_page = 50
         if params[:page]
             @sitters = Sitter.page(params[:page].to_i).per(per_page)
-
         else
             @sitters = Sitter.page(1).per(per_page)
         end
+
         render "sitters/index"
     end
 

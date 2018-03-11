@@ -48,6 +48,7 @@ CanineCareApp.Views.SitterForm = Backbone.CompositeView.extend({
                 }
             });
         } else {
+            debugger;
             this.model.save({}, {
                 success: function() {
                     Backbone.history.navigate("/", { trigger: true });
