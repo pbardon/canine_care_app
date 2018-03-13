@@ -22,7 +22,7 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
 
     filterByBounds: function() {
         var collection = this;
-        return new CanineCareApp.Collections.Sitters(this.filter(
+        var newCollection = new CanineCareApp.Collections.Sitters(this.filter(
             function(model) {
                 var lat = model.get('latitude');
                 var long = model.get('longitude');
@@ -31,6 +31,8 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
                     lat < collection.maxLat &&
                     long < collection.maxLng);
         }));
+
+        return newCollection;
     },
 
     setPageNumber: function(pageNumber) {
@@ -67,14 +69,12 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
             _.any(response.models, function(model) {
                 if (model.user_id && model.user_id == userId) {
                     foundProfile = true;
-                    debugger;
                     successCb(model);
                     return true;
                 }
             });
 
             if (!foundProfile) {
-                debugger;
                 successCb(new CanineCareApp.Models.Sitter());
             }
         }

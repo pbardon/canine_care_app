@@ -7,9 +7,7 @@ CanineCareApp.Views.PaginationControls = Backbone.CompositeView.extend({
         this.collection = options.collection;
         this.perPage = this.collection.perPage;
         this.firstSelect = true;
-        this.newPageCallback = options.cb;
         this.mapRef = options.mapRef;
-
         this.currentFirstPage = 1;
         this.buttonOne = this.currentFirstPage;
         this.buttonTwo = 2;
@@ -37,7 +35,7 @@ CanineCareApp.Views.PaginationControls = Backbone.CompositeView.extend({
         event.preventDefault();
         var pageNumber = parseInt($(event.target).html());
         this.collection.setPageNumber(pageNumber);
-        this.newPageCallback();
+        this.collection.trigger('sync');
     },
 
     processNewCollection: function(newCollection) {
@@ -62,10 +60,7 @@ CanineCareApp.Views.PaginationControls = Backbone.CompositeView.extend({
     },
 
     render: function() {
-        var renderedContent = this.template();
-
-        this.$el.html(renderedContent);
-
+        this.$el.html(this.template());
         return this;
     }
 });
