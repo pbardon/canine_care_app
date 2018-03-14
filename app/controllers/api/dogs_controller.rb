@@ -4,7 +4,7 @@ module Api
 
     def create
       @dog = current_user.dogs.new(dog_params)
-
+      debugger
       if @dog.save
         render "dogs/show"
       else

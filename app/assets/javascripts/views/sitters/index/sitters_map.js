@@ -30,11 +30,17 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
 
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
-                pos = new google.maps.LatLng(position.coords.latitude,
+                view.setMapCenter(position.coords.latitude,
                     position.coords.longitude);
                 view.map.setCenter(pos);
             });
         }
+    },
+
+    setMapCenter: function(latitude, longitude) {
+        var pos = new google.maps.LatLng(position.coords.latitude,
+            position.coords.longitude);
+        this.map.setCenter =view.map.setCenter(pos);
     },
 
     clearMarkers: function() {
@@ -45,12 +51,12 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
             marker.setMap(null);
         });
 
-        this.markers = new Array();
+        this.markers = [];
     },
 
     placeMarkers: function(collection, repeatCount) {
         var mapView = this;
-        var repeatCount = repeatCount || 0;
+        repeatCount = repeatCount || 0;
         if (!this.mapLoaded) {
             if (repeatCount < 3) {
                 setTimeout(function() {
@@ -61,6 +67,16 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
         }
         var map = this.map,
             view = this;
+
+        this.clearMarkers();
+        collection.each(function(sitter) {
+            var lat = sitter.get('latitude'),
+                lng = sitter.get('longitude');
+            view.placeMarker(lat, lng, sitter);
+        });
+    },
+
+    placeMarker: function(lat, lng, sitter) {
         var image = {
             url: 'https://s3-us-west-1.amazonaws.com/pet-sitter-development/paw_icon3.png',
             size: new google.maps.Size(20, 20),
@@ -72,30 +88,24 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
             coords: [1,1,1,20,20,20,20,1],
             type: 'poly'
         };
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat, lng),
+            icon: image,
+            map: this.map,
+            shape: shape,
+            title: sitter.get('sitter_name')
+        });
 
-        this.clearMarkers();
-        collection.each(function(sitter) {
-            var lat = sitter.get('latitude'),
-                lng = sitter.get('longitude');
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
-                icon: image,
-                map: map,
-                shape: shape,
-                title: sitter.get('sitter_name')
-            });
+        var sitterLink = "<div><a href='#/sitters/" + sitter.get('id') + "'>" +
+            marker.title + "</a><br><img width='75px' height='75px' src=" +
+            sitter.get('sitter_photo_small') + "></div>";
 
-            var sitterLink = "<div><a href='#/sitters/" + sitter.get('id') + "'>" +
-                marker.title + "</a><br><img width='75px' height='75px' src=" +
-                sitter.get('sitter_photo_small') + "></div>";
-
-            var infowindow = new google.maps.InfoWindow({
-                content: sitterLink
-            });
-            view.markers.push(marker);
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map, marker);
-            });
+        var infowindow = new google.maps.InfoWindow({
+            content: sitterLink
+        });
+        this.markers.push(marker);
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
         });
     },
 
