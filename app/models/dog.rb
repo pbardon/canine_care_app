@@ -16,5 +16,4 @@ class Dog < ActiveRecord::Base
 
   validates_attachment :dog_photo,
   :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
-
 end

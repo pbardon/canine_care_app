@@ -14,9 +14,12 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
         this.navbarView = options.navbarView;
 
         this.listenTo(this.model.comments(), 'add', this.render);
-        this.map = new CanineCareApp.Views.SittersMap({
-        });
-        this.addSubview('.sitterMap', this.map);
+        // this.map = new CanineCareApp.Views.SittersMap({
+        // });
+        // this.addSubview('.sitterMap', this.map.render());
+
+        this.noSitterMsg = this.addSubview('.noReviewMsg',
+            new CanineCareApp.Views.NoReviewMessage());
     },
 
     className: "sitterShow",
@@ -96,6 +99,9 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
                     model: comment
                 });
 
+                view.removeSubview('.noSitterIndex', view.noSitterMsg);
+
+
                 view.addSubview('.sitterComments', subview);
             },
 
@@ -136,8 +142,6 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
         this.$el.html(renderedContent);
 
         this.attachSubviews();
-
-        this.map.setCenter(this.model.latitude, this.model.longitude);
 
         return this;
     }

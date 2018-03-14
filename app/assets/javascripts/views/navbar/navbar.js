@@ -52,6 +52,7 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
                 CanineCareApp.currentUser = {};
                 console.log("LOGGED OUT");
                 CanineCareApp.loggedIn = false;
+                Backbone.history.navigate('#/', { trigger: true });
                 navbarView.render();
             },
             error: function(err) {

@@ -141,10 +141,8 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
     },
 
     removeDog: function(event) {
-
         event.preventDefault();
         this.model.destroy();
-
         Backbone.history.navigate("/dogs", { trigger: true });
     }
 });
