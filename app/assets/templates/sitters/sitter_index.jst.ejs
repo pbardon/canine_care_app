@@ -1,44 +1,88 @@
-<div class="navbarContainer">
-</div>
-<div class="app-body">
-<!-- Main content -->
-    <main class="main">
+<div id="main">
+    <% if (!sitters.isEmpty()){ %>
 
-      <!-- Breadcrumb -->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">Home</li>
-        <!-- Breadcrumb Menu-->
-      </ol>
+      <% sitters.each(function(sitter){ %>
 
-      <div class="container-fluid">
-        <div id="ui-view" style="opacity: 1;">
-            <div class="animated fadeIn">
-                <div class="row">
-                    <div class="sitterListCard col-sm-4 offset-md-1">
-                        <div class="card">
-                          <div class="card-header">
-                            Sitter List
-                            </div>
-                            <div class="sitterIndexListContainer">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mapCard col-sm-6">
-                        <div class="card">
-                          <div class="card-header">
-                            Sitter Map
-                          </div>
-                          <div class="card-img-top mapContainer">
-                          </div>
-                        </div>
-                    </div>
+          <!-- <div class="sitter-info"> -->
+      <div class="sitterItem panel panel-default">
+
+        <div class="sitterIndexRow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="sitterIndexPhoto" src="<%= sitter.get('sitter_photo_large') %>">
                 </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h2><%= sitter.escape('sitter_name') %></h2>
+                        </div>
+                        <div class="sitterInfoButton col-md-offset-8">
+                            <button data-id="<%= sitter.get('id') %>" class="btn btn-info moreInfo">More Info</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="averageRating col-md-6">
+                                <strong>Average Rating:</strong>
+                                <div class="paws">
+                                    <% if  (sitter.escape('avg_rating') >= 4.9) { %>
+                                    <img class="sitterIndexRating"
+                                         src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fivepaws3.png" alt="" />
+                                    <% } else if ((sitter.escape('avg_rating') >= 4.5)) { %>
+                                    <img class="sitterIndexRating"
+                                        src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fourpointfivepaws.png" alt="" />
+                                    <% } else if (sitter.escape('avg_rating') >= 4){ %>
+                                    <img class="sitterIndexRating"
+                                        src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/fourpaws.png" alt="" />
+                                    <% } else if (sitter.escape('avg_rating') >= 3.5){ %>
+                                    <img class="sitterIndexRating"
+                                        src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/threepointfivepaws.png" alt="" />
+                                    <% } else if (sitter.escape('avg_rating') >= 3){ %>
+                                    <img class="sitterIndexRating"
+                                        src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/threepaws.png" alt="" />
+                                    <% } else if (sitter.escape('avg_rating') >= 2.5){ %>
+                                    <img class="sitterIndexRating"
+                                        src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/twopointfivepaws.png" alt="" />
+                                    <% } else if (sitter.escape('avg_rating') >= 2){ %>
+                                    <img class="sitterIndexRating"
+                                        src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/twopaws.png" alt="" />
+                                    <% } else if (sitter.escape('avg_rating') >= 1.5){ %>
+                                    <img class="sitterIndexRating"
+                                        src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/onepointfivepaws.png" alt="" />
+                                    <% } else if (sitter.escape('avg_rating') >= 1) { %>
+                                    <img class="sitterIndexRating"
+                                        src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/onepaw.png" alt="" />
+                                    <% } else if (sitter.escape('avg_rating') >= 1.5){ %>
+                                    <img class=""
+                                        src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/rating_paws/halfpaw.png" alt="" />
+                                    <% } else { %>
+                                    Sitter not rated.
+                                    <%  } %>
+                                </div>
+                        </div>
 
+                    </div>
+                    <br>
+                </div>
             </div>
         </div>
+      </div>
 
-        </div>
-      <!-- /.container-fluid -->
-    </main>
+          <!-- <div class="sitter-pic"> -->
 
-</div>
+
+      <% }); %>
+
+
+
+
+
+    <% } else { %>
+
+      <h2> There are no sitters in this area </h2>
+      <p>
+        Try moving the map, searching, or <a href="#/sitters/new">become a sitter</a> in this area.
+      </p>
+
+
+    <% }%>
+<!-- </div> -->

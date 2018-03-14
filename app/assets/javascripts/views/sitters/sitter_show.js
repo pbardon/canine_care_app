@@ -1,7 +1,5 @@
 CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
 
-    navbarView : {},
-
     initialize: function(options){
         this.listenTo(this.model, 'sync', this.render);
 
@@ -11,15 +9,7 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
         this.listenTo(this.model.comments(), 'add', this.addComment);
         this.model.comments().each(this.addComment.bind(this));
 
-        this.navbarView = options.navbarView;
-
         this.listenTo(this.model.comments(), 'add', this.render);
-        // this.map = new CanineCareApp.Views.SittersMap({
-        // });
-        // this.addSubview('.sitterMap', this.map.render());
-
-        this.noSitterMsg = this.addSubview('.noReviewMsg',
-            new CanineCareApp.Views.NoReviewMessage());
     },
 
     className: "sitterShow",
@@ -34,7 +24,7 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
 
     template: function(options) {
         if (this.model.get('current_user_id') && (this.model.get('user_id') === this.model.get('current_user_id')) ) {
-            Backbone.history.navigate('#/profile', { trigger: true });
+            return JST["sitters/show_profile"](options);
         } else {
             return JST["sitters/show"](options);
         }
@@ -99,9 +89,6 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
                     model: comment
                 });
 
-                view.removeSubview('.noSitterIndex', view.noSitterMsg);
-
-
                 view.addSubview('.sitterComments', subview);
             },
 
@@ -124,11 +111,7 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
 
     redirectToBooking: function(event) {
         event.preventDefault();
-        if (!CanineCareApp.currentUser.attributes) {
-            Backbone.history.navigate('#session/new', { trigger: true });
-            return;
-        }
-        Backbone.history.navigate("bookings/"+ this.model.id + "/new", {trigger: true});
+        Backbone.history.navigate("/bookings/"+ this.model.id + "/new", {trigger: true});
     },
 
     redirectToEdit: function(event) {

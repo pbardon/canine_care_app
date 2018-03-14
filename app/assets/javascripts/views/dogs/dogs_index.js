@@ -4,20 +4,16 @@ CanineCareApp.Views.DogsIndex = Backbone.CompositeView.extend({
   template: JST['dogs/index'],
 
   events: {
-    'click .showDogProfile': 'redirectToDogShow',
-    'click #newDogButton' : 'redirectToDogForm'
+    'click .showDogProfile': 'redirectToDogShow'
   },
 
   initialize: function() {
     this.listenTo(this.collection, 'sync', this.render);
+  },
 
-    var dogsList = new CanineCareApp.Views.DogsList(
-        {
-            collection: this.collection
-        }
-    );
-
-    this.addSubview('.sitterListCard', dogsList.render());
+  redirectToDogShow: function(event){
+    data = $(event.currentTarget).data('id');
+    Backbone.history.navigate('#/dogs/'+ data, {trigger: true});
   },
 
   render: function () {
@@ -26,8 +22,6 @@ CanineCareApp.Views.DogsIndex = Backbone.CompositeView.extend({
     });
 
     this.$el.html(renderedContent);
-
-    this.attachSubviews();
 
     return this;
   }

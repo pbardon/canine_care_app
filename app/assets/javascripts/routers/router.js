@@ -1,211 +1,162 @@
 CanineCareApp.Routers.Router = Backbone.Router.extend({
-    initialize: function(user) {
-        this.$rootEl = $('#canineCareApp');
-        this.navbarView = new CanineCareApp.Views.Navbar({
-            model: user
-        });
-        CanineCareApp.currentUser = user;
-        Backbone.history.start();
-        // Backbone.history.start({pushState: true});
-    },
-    routes: {
-        '': 'sittersIndex',
-        'dogs': 'dogsIndex',
-        'profile' : 'profilePage',
-        'session/new' : 'signIn',
-        'users/new': 'signUp',
-        'contact' : 'contactPage',
-        'about' : 'aboutPage',
-        'services' : 'servicesPage',
-        'dogs/new': 'dogNew',
-        'dogs/:id/edit': 'dogEdit',
-        'dogs/:id': 'dogShow',
-        'sitters/new': 'sitterNew',
-        'sitters/:id': 'sitterShow',
-        'sitters/:id/edit': 'sitterEdit',
-        'bookings/:id/new': 'newBooking',
-        'sitters/:id/bookings' : 'bookingIndex'
-    },
+  initialize: function() {
+    this.$rootEl = $('#main');
+  },
 
-    dashboard: function () {
-        var dashboardView = new CanineCareApp.Views.Dashboard();
-        this._swapView(dashboardView);
-    },
+  routes: {
+    '': 'sittersIndex',
+    'dogs': 'dogsIndex',
+    'sign_in' : 'signIn',
+    'sign_up': 'signUp',
+    'contact' : 'contactPage',
+    'about' : 'aboutPage',
+    'services' : 'servicesPage',
+    'dogs/new': 'dogNew',
+    'dogs/:id/edit': 'dogEdit',
+    'dogs/:id': 'dogShow',
+    'sitters/new': 'sitterNew',
+    'sitters/:id': 'sitterShow',
+    'sitters/:id/edit': 'sitterEdit',
+    'bookings/:id/new': 'newBooking',
+    'sitters/:id/bookings' : 'bookingIndex'
+  },
 
-    signIn: function () {
-        var signInView = new CanineCareApp.Views.SignInPage();
-        this._swapView(signInView);
-    },
+  signIn: function () {
+    var signInView = new CanineCareApp.Views.SignInPage();
+    this._swapView(signInView);
+  },
 
-    signUp: function () {
-        var signUpView = new CanineCareApp.Views.SignUpPage();
-        this._swapView(signUpView);
-    },
+  signUp: function () {
+    var signUpView = new CanineCareApp.Views.SignUpPage();
+    this._swapView(signUpView);
+  },
 
-    aboutPage: function () {
-        var aboutView = new CanineCareApp.Views.AboutPage();
-        this._swapView(aboutView);
-    },
+  aboutPage: function () {
+    var aboutView = new CanineCareApp.Views.AboutPage();
+    this._swapView(aboutView);
+  },
 
-    contactPage: function () {
-        var contactView = new CanineCareApp.Views.ContactPage();
-        this._swapView(contactView);
-    },
+  contactPage: function () {
+    var contactView = new CanineCareApp.Views.ContactPage();
+    this._swapView(contactView);
+  },
 
-    servicesPage: function () {
-        var servicesView = new CanineCareApp.Views.ServicesPage();
-        this._swapView(servicesView);
-    },
+  servicesPage: function () {
+    var servicesView = new CanineCareApp.Views.ServicesPage();
+    this._swapView(servicesView);
+  },
 
-    dogsIndex: function () {
-        CanineCareApp.Collections.dogs.fetch();
 
-        var dogsView = new CanineCareApp.Views.DogsIndex({
-            collection: CanineCareApp.Collections.dogs
-        });
+  dogsIndex: function () {
+    CanineCareApp.Collections.dogs.fetch();
 
-        this._swapView(dogsView);
-    },
+    var dogsView = new CanineCareApp.Views.DogsIndex({
+      collection: CanineCareApp.Collections.dogs
+    });
 
-    dogShow: function(id) {
-        var dog = CanineCareApp.Collections.dogs.getOrFetch(id);
-        var showDogView = new CanineCareApp.Views.DogShow({
-            model: dog
-        });
+    this._swapView(dogsView);
+  },
 
-        this._swapView(showDogView);
-    },
+  dogShow: function(id) {
+    var dog = CanineCareApp.Collections.dogs.getOrFetch(id);
+    var showDogView = new CanineCareApp.Views.DogShow({
+      model: dog
+    });
 
-    dogNew: function() {
-        var dog = new CanineCareApp.Models.Dog();
-        var newDogView = new CanineCareApp.Views.DogForm({
-            model: dog,
-            collection: CanineCareApp.Collections.dogs
-        });
+    this._swapView(showDogView);
+  },
 
-        this._swapView(newDogView);
-    },
+  dogNew: function() {
+    var dog = new CanineCareApp.Models.Dog();
+    var newDogView = new CanineCareApp.Views.DogForm({
+      model: dog,
+      collection: CanineCareApp.Collections.dogs
+    });
 
-    dogEdit: function(id) {
-        var dog = CanineCareApp.Collections.dogs.getOrFetch(id);
+    this._swapView(newDogView);
+  },
 
-        var editDogView = new CanineCareApp.Views.DogForm({
-            model: dog,
-            collection: CanineCareApp.Collections.dogs
-        });
+  dogEdit: function(id) {
+    var dog = CanineCareApp.Collections.dogs.getOrFetch(id);
 
-        this._swapView(editDogView);
-    },
+    var editDogView = new CanineCareApp.Views.DogForm({
+      model: dog,
+      collection: CanineCareApp.Collections.dogs
+    });
 
-    profilePage: function() {
-        var profilePageView = new CanineCareApp.Views.Profile({
-            navbarView: this.navbarView
-        });
+    this._swapView(editDogView);
+  },
 
-        this._swapView(profilePageView);
-    },
+  sitterNew: function() {
+    var sitter = new CanineCareApp.Models.Sitter();
+    var newSitterView = new CanineCareApp.Views.SitterForm({
+      model: sitter,
+      collection: CanineCareApp.Collections.sitters
+    });
 
-    sitterNew: function() {
-        var sitter = new CanineCareApp.Models.Sitter();
-        var newSitterView = new CanineCareApp.Views.SitterForm({
-            model: sitter,
-            collection: CanineCareApp.Collections.sitters
-        });
+    this._swapView(newSitterView);
 
-        this._swapView(newSitterView);
+  },
 
-    },
+  sitterShow: function(id) {
+    var sitter = CanineCareApp.Collections.sitters.getOrFetch(id);
+    var showSitterView = new CanineCareApp.Views.SitterShow({
+      model: sitter
+    });
 
-    sitterShow: function(id) {
-        var sitter = CanineCareApp.Collections.sitters.getOrFetch(id);
-        var showSitterView = new CanineCareApp.Views.SitterShow({
-            model: sitter,
-            navbarView: this.navbarView
-        });
+    this._swapView(showSitterView);
+  },
 
-        this._swapView(showSitterView);
-    },
+  sittersIndex: function() {
+    CanineCareApp.Collections.sitters.fetch();
+    var sittersView = new CanineCareApp.Views.SittersIndex({
+      collection: CanineCareApp.Collections.sitters
+    });
 
-    sittersIndex: function() {
-        var oThis = this;
-        CanineCareApp.Collections.sitters.fetch({data: { page: 1 }});
-        if (typeof google === 'undefined') {
-            var url = "http://maps.googleapis.com/maps/api/js?key=" +
-            CanineCareApp.mapKey + "&sensor=false";
-            $.ajax({
-                url: url,
-                dataType: "script",
-                async: false,
-                success: function(){
-                    var sittersView = new CanineCareApp.Views.SittersIndex({
-                        collection: CanineCareApp.Collections.sitters,
-                        navbarView: oThis.navbarView
-                    });
+    this._swapView(sittersView);
+  },
 
-                    oThis._swapView(sittersView);
-                },
-                error: function(err) {
-                    console.log(JSON.stringify(err.message));
-                }
-            });
-            return;
-        } else {
-            var sittersView = new CanineCareApp.Views.SittersIndex({
-                collection: CanineCareApp.Collections.sitters,
-                navbarView: oThis.navbarView
-            });
+  sitterEdit: function(id) {
+    var sitter = CanineCareApp.Collections.sitters.getOrFetch(id);
 
-            oThis._swapView(sittersView);
-        }
-    },
+    var editSitterView = new CanineCareApp.Views.SitterForm({
+      model: sitter,
+      collection: CanineCareApp.Collections.sitters
+    });
 
-    sitterEdit: function(id) {
-        var sitter = CanineCareApp.Collections.sitters.getOrFetch(id);
+    this._swapView(editSitterView);
+  },
 
-        var editSitterView = new CanineCareApp.Views.SitterForm({
-            model: sitter,
-            collection: CanineCareApp.Collections.sitters
-        });
+  newBooking: function(id) {
+    var sitterId= parseInt(id);
+    var booking = new CanineCareApp.Models.Booking({sitter_id: sitterId});
+    var dogs = CanineCareApp.Collections.dogs;
+    dogs.fetch();
 
-        this._swapView(editSitterView);
-    },
+    var newBookingView = new CanineCareApp.Views.NewSitterBooking({
+      model: booking,
+      collection: CanineCareApp.Collections.sitterbookings,
+      dogs: dogs
+    });
 
-    newBooking: function(id) {
-        var sitterId= parseInt(id);
-        var booking = new CanineCareApp.Models.Booking({sitter_id: sitterId});
-        var dogs = CanineCareApp.Collections.dogs;
-        dogs.fetch();
+    this._swapView(newBookingView);
+  },
 
-        var newBookingView = new CanineCareApp.Views.NewSitterBooking({
-            model: booking,
-            collection: CanineCareApp.Collections.sitterbookings,
-            dogs: dogs
-        });
+  bookingIndex: function(id) {
+      var sitterId = parseInt(id);
+      var sitter = CanineCareApp.Collections.sitters.getOrFetch(id);
+      var bookingView = new CanineCareApp.Views.SitterBookingIndex({
+          model: sitter
+      });
 
-        this._swapView(newBookingView);
-    },
+      this._swapView(bookingView);
+  },
 
-    bookingIndex: function(id) {
-        var sitterId = parseInt(id);
-        var sitter = CanineCareApp.Collections.sitters.getOrFetch(id);
-        var bookingView = new CanineCareApp.Views.SitterBookingIndex({
-            model: sitter
-        });
-
-        this._swapView(bookingView);
-    },
-
-    _swapView: function (view) {
-        if (this.currentView &&
-            this.currentView.remove()) {
-                this.currentView.undelegateEvents();
-                this.currentView = view;
-        }
-
-        view.addSubview('.navbarContainer', this.navbarView.render());
-
-        this.$rootEl.html(view.render().$el);
-
-        view.attachSubviews();
+  _swapView: function (view) {
+    if (this.currentView && this.currentView.remove()) {
+        this.currentView = view;
     }
+
+    this.$rootEl.html(view.render().$el);
+  }
 });

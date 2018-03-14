@@ -1,11 +1,9 @@
-CanineCareApp.Views.SignInPage = Backbone.CompositeView.extend({
+CanineCareApp.Views.SignInPage = Backbone.View.extend({
     template: JST['login/sign_in'],
 
     events: {
         'submit form':'submit',
-        'click .errorClose': 'close',
-        'click .loginButton' : 'submit',
-        'click .goToRegister' : 'navToRegister'
+        'click .errorClose': 'close'
     },
 
     render: function() {
@@ -16,46 +14,25 @@ CanineCareApp.Views.SignInPage = Backbone.CompositeView.extend({
         return this;
     },
 
-    navToRegister: function(event) {
-        Backbone.history.navigate('#users/new', {trigger: true, replace: true});
-    },
-
     submit: function(event) {
-        var loginView = this;
         event.preventDefault();
-        var loginUser = $('#loginUser').val();
-        var loginPassword = $('#loginPassword').val();
-        if (!loginUser) {
-            //must provide login user, show error
-            this.addErrorMessage({error: 'must provide user'});
-            return;
-        }
-        if (!loginPassword) {
-            this.addErrorMessage({error: 'must provide password'});
-            return;
-        }
-        var loginInfo = {
-            user: {
-                email: loginUser,
-                password: loginPassword
-            }
-        };
-
+        var formData = $(event.currentTarget).serializeJSON();
         $.ajax({
-            url: "http://localhost:3000/session",
+            url: "/session",
             method: "POST",
-            data: loginInfo,
+            data: formData,
             dataType: "json",
             success: function(response) {
-                var user = new CanineCareApp.Models.User();
-                user.attributes = response;
-                CanineCareApp.currentUser = user;
-                CanineCareApp.loggedIn = true;
-                Backbone.history.navigate(" ", { trigger: true });
+                console.log(JSON.stringify(response));
+                Backbone.history.navigate("/");
+                window.location.reload();
             },
             error: function(response) {
                 var errData = JSON.parse(response.responseText);
-                loginView.addErrorMessage(errData);
+                var errorMsgDiv = $('.errorMessage');
+                errorMsgDiv.addClass('alert alert-dismissible alert-danger');
+                errorMsgDiv.find('div.errorMessageContent').html(errData.error.toString());
+                errorMsgDiv.show();
             }
         });
     },
@@ -63,12 +40,5 @@ CanineCareApp.Views.SignInPage = Backbone.CompositeView.extend({
     close: function(event) {
         event.preventDefault();
         $('.errorMessage').hide();
-    },
-
-    addErrorMessage: function(errData) {
-        var errorMsgDiv = $('.errorMessage');
-        errorMsgDiv.addClass('alert alert-dismissible alert-danger');
-        errorMsgDiv.find('div.errorMessageContent').html(errData.error.toString());
-        errorMsgDiv.show();
     }
 });

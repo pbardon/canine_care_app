@@ -3,17 +3,21 @@ require 'rest-client'
 require 'json'
 
 module Api
+
   class SittersController < ApplicationController
     attr_reader :user_id
 
     wrap_parameters :sitter, include: [:sitter_name, :price, :description, :street_address,
                                        :city, :state, :zipcode, :small, :medium, :large, :sitter_photo]
 
+
     def create
       @sitter = Sitter.new(sitter_params)
       @sitter.user_id = current_user.id
       if @sitter.save
-        geo = @sitter.generate_geocode()
+        geo = generate_geocode(@sitter.street_address, @sitter.zipcode, @sitter.city, @sitter.state)
+        @sitter.latitude = geo[0]
+        @sitter.longitude = geo[1]
         @sitter.save!
         render 'sitters/show'
       else
@@ -22,24 +26,17 @@ module Api
     end
 
     def index
-        per_page = 50
-        if params[:page]
-            @sitters = Sitter.page(params[:page].to_i).per(per_page)
-        else
-            @sitters = Sitter.page(1).per(per_page)
-        end
-
-        render "sitters/index"
+      @sitters = Sitter.all
+      render "sitters/index"
     end
 
     def update
-
       @sitter = Sitter.find(params[:id])
 
-      # if @sitter.user_id == 1
-      #   render json: "Can't Modify Guest Account", status: :unprocessable_entity
-      #   return
-      # end
+      if @sitter.user_id == 1
+        render json: "Can't Modify Guest Account", status: :unprocessable_entity
+        return
+      end
 
       if @sitter.user_id == current_user.id && @sitter.update_attributes(sitter_params)
         geo = generate_geocode(@sitter.street_address, @sitter.zipcode, @sitter.city, @sitter.state)
@@ -67,14 +64,11 @@ module Api
 
       @current_user = current_user
 
-      unless @current_user
-          @current_user = User.new({ id: 0 })
-      end
-
       render "sitters/show"
     end
 
     def destroy
+      debugger
       @sitter = Sitter.find(params[:id])
 
       if @sitter.user_id == 1
@@ -94,7 +88,27 @@ module Api
     def sitter_params
       params.require(:sitter).permit(:sitter_name, :description, :price,
                                      :small, :medium, :large,
-                                     :street_address, :city, :state, :zipcode, :sitter_photo, :page)
+                                     :street_address, :city, :state, :zipcode, :sitter_photo)
+    end
+
+    def generate_geocode(street_address, zipcode, city, state)
+      coords = []
+      address = street_address.to_s + ", " + city.to_s + ", " + state.to_s + " " + zipcode.to_s
+
+      geolocationaddress = Addressable::URI.new(
+        scheme: 'http',
+        host: 'maps.googleapis.com',
+        path: 'maps/api/geocode/json',
+        query_values: {address: address}
+      ).to_s
+
+      output = JSON.parse(RestClient.get(geolocationaddress))
+      results = output["results"].first
+      location = results['geometry']['location']
+
+      coords.push(location['lat'])
+      coords.push(location['lng'])
+      coords
     end
 
   end

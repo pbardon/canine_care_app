@@ -1,7 +1,7 @@
-CanineCareApp.Views.SitterForm = Backbone.CompositeView.extend({
+CanineCareApp.Views.SitterForm = Backbone.View.extend({
     template: JST['sitters/form'],
 
-    className: "newSitterWrapper",
+    className: "newSitterWrapper container",
 
     events: {
         'submit form':'submit',
@@ -51,6 +51,7 @@ CanineCareApp.Views.SitterForm = Backbone.CompositeView.extend({
             this.model.save({}, {
                 success: function() {
                     Backbone.history.navigate("/", { trigger: true });
+                    window.location.reload();
                 },
 
                 error: function(model, errors) {

@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140730234252) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bookings", force: :cascade do |t|
+  create_table "bookings", force: true do |t|
     t.integer  "sitter_id",                  null: false
     t.integer  "dog_id",                     null: false
     t.date     "date_start",                 null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140730234252) do
     t.text     "message"
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "comments", force: true do |t|
     t.integer  "user_id",          null: false
     t.text     "content"
     t.date     "comment_date",     null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140730234252) do
 
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "dogs", force: :cascade do |t|
+  create_table "dogs", force: true do |t|
     t.string   "name",                                 null: false
     t.string   "size",                                 null: false
     t.text     "description",                          null: false
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20140730234252) do
   add_index "dogs", ["name"], name: "index_dogs_on_name", using: :btree
   add_index "dogs", ["owner_id"], name: "index_dogs_on_owner_id", using: :btree
 
-  create_table "sitters", force: :cascade do |t|
+  create_table "sitters", force: true do |t|
     t.integer  "user_id",                                   null: false
     t.float    "avg_rating",                default: 0.0,   null: false
     t.string   "sitter_name",                               null: false
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20140730234252) do
     t.float    "longitude"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: true do |t|
     t.string   "name",            null: false
     t.string   "email",           null: false
     t.string   "password_digest", null: false

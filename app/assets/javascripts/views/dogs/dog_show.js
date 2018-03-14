@@ -1,7 +1,9 @@
-CanineCareApp.Views.DogShow = Backbone.FormView.extend({
+CanineCareApp.Views.DogShow = Backbone.CompositeView.extend({
+
+
     events: {
         'click .removeDog': 'removeDog',
-        'click .editDogInfo': 'submitDogEdit',
+        'click .editDogInfo': 'redirectToDogEdit',
         'click #commentOnDog': 'addCommentForm',
         'click #addCommentButton': 'addNewComment'
     },
@@ -19,10 +21,6 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
         $('.dog_bookings').empty();
     },
 
-    handle_files: function(event, attributeName) {
-        this.saveFileToAttribute(event, 'dog_photo');
-    },
-
 
     template: function(options) {
         if (this.model.get('current_user_id') && this.model.get('owner_id') === this.model.get('current_user_id')) {
@@ -34,7 +32,8 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
 
     addCommentForm: function(event) {
         event.preventDefault();
-        var commentForm = new CanineCareApp.Views.NewComment({});
+        var commentForm = new CanineCareApp.Views.NewComment({
+        });
 
         $(event.currentTarget).replaceWith('<div class="newCommentForm"></div>');
 
@@ -45,7 +44,7 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
         var view = this;
         event.preventDefault();
         var data = $('#newCommentForm').serializeJSON();
-        data['commentable_type'] = 'Dog';
+        data['commentable_type'] = "Dog";
         data['commentable_id'] = this.model.get('id');
         var comment = new CanineCareApp.Models.Comment(data);
         CanineCareApp.Collections.dogcomments.create(comment, {
@@ -82,49 +81,9 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
         this.addSubview('.dogComments', subview);
     },
 
-    getFormParameter: function(selector, fieldName) {
-        return this.$el.find(selector)[0].value ||
-            this.model.attributes[fieldName];
-    },
-
-    readFormData: function() {
-        this.model.attributes.name = this.getFormParameter('#dogName', 'name');
-
-        this.model.attributes.age = this.getFormParameter('#dogAge', 'age');
-
-        this.model.attributes.description = this.getFormParameter('#dogDescription',
-            'description');
-
-        this.model.attributes.size = this.getSelectedSize();
-    },
-
-    getSelectedSize: function() {
-        if (this.$el.find('#smallOption').checked) {
-            return 'small';
-        }
-
-        if (this.$el.find('#mediumOption').checked) {
-            return 'medium';
-        }
-
-        if (this.$el.find('#largeOption').checked ) {
-            return 'large';
-        }
-    },
-
-    submitDogEdit: function(event){
-        this.readFormData();
-        this.model.save(this.model.attributes, {
-            success: function() {
-                Backbone.history.navigate("#/dogs", { trigger: true });
-            },
-
-            error: function(model, error) {
-                _(error.responseJSON).each(function(error){
-                    $('.errors').prepend('<div class="alert alert-danger">'+ error +'</div>');
-                });
-            }
-        });
+    redirectToDogEdit: function(event){
+        data = $(event.currentTarget).data('id');
+        Backbone.history.navigate('#/dogs/'+ data +'/edit', {trigger: true});
     },
 
 
@@ -141,8 +100,10 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
     },
 
     removeDog: function(event) {
+
         event.preventDefault();
         this.model.destroy();
+
         Backbone.history.navigate("/dogs", { trigger: true });
     }
 });
