@@ -13,7 +13,7 @@ CanineCareApp.Views.SitterForm = Backbone.View.extend({
       sitter: this.model
     });
 
-    this.$el.html(renderedContent)
+    this.$el.html(renderedContent);
 
     return this;
   },
@@ -23,7 +23,7 @@ CanineCareApp.Views.SitterForm = Backbone.View.extend({
     var file = event.currentTarget.files[0];
     var reader = new FileReader();
     reader.onload = function(e) {
-      that.model.set('sitter_photo', this.result)
+      that.model.set('sitter_photo', this.result);
     };
     reader.readAsDataURL(file);
   },

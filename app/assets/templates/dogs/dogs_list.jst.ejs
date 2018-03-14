@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-body">
+        <!-- Portfolio Section -->
+        <% if (dogs.isEmpty()){  %>
+          <h3> You haven't added any dogs yet
+              <h4>
+                  <a href="#/dogs/new">(Add Dog)</a>
+              </h4>
+          </h3>
+        <% } else { %>
+            <div class="row">
+
+                <div class="col-md-10 offset-md-1">
+                    <table class="table table-responsive-sm table-hover table-outline mb-0">
+                        <tbody>
+                            <% dogs.each(function(dog){ %>
+                                <tr>
+                                    <td class="text-center">
+                                    <div class="avatar">
+                                        <img id="dogIndexPhoto" src="<%= dog.get('dog_photo_small') %>" class="dog-index-avatar img-avatar" alt="">
+                                        <span class="avatar-status badge-success"></span>
+                                    </div>
+                                    </td>
+                                    <td>
+                                        <div><%= dog.get('name') %></div>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-outline-primary showDogProfile" data-id="<%= dog.get('id') %>">Edit</button>
+                                    </td>
+                                </tr>
+                            <% }); %>
+
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-center">
+                                        <button id="newDogButton" type="button" class="btn btn-outline-primary">Add Dog</button>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>

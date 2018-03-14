@@ -4,7 +4,6 @@ module Api
 
     def create
       @dog = current_user.dogs.new(dog_params)
-
       if @dog.save
         render "dogs/show"
       else
@@ -44,8 +43,13 @@ module Api
 
     def destroy
       @dog = Dog.find(params[:id]);
-      @dog.destroy
-      render "dogs/show"
+      clone = @dog.clone
+      if @dog.destroy
+          @dog = clone
+          render "dogs/show"
+          return
+      end
+      render json: @dog.errors.full_messages, status: :unprocessable_entity
     end
 
     private

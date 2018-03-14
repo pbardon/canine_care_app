@@ -1,0 +1,44 @@
+<header class="app-header navbar">
+    <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a id="brandButton" class="navbar-brand" href="#">
+    </a>
+    <ul class="nav navbar-nav ml-auto">
+        <% if (!CanineCareApp.loggedIn) { %>
+            <li class="nav-item">
+                <a id="signInButton" class="nav-link nav-link" >
+                  Sign In&nbsp;
+                  <i class="icon-lock-open"></i>
+                  &nbsp;
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a id="signUpButton" class="nav-link nav-link" >
+                  Sign Up&nbsp;
+                  <i class="icon-wallet"></i>
+                  &nbsp;
+                  &nbsp;
+                  &nbsp;
+                </a>
+            </li>
+        <% } else { %>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Menu&nbsp;
+                    <i class="icon-settings"></i>
+                    &nbsp;
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <div class="dropdown-header text-center">
+                    <strong>Settings</strong>
+                  </div>
+                  <a id="profileButton" class="dropdown-item"><i class="fa fa-user"></i> Profile</a>
+                  <a id="logoutButton" class="dropdown-item"><i class="fa fa-lock"></i> Logout</a>
+                </div>
+              </li>
+          <% } %>
+    </ul>
+</header>

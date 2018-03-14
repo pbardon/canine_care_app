@@ -3,16 +3,46 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
 
     model: CanineCareApp.Models.Sitter,
 
-    filterByBounds: function(minX, maxX, minY, maxY) {
-        collection.select(function (model){
-        var lat = model.get('latitude');
-        var long = model.get('longitude');
-        if ( minY < lat && lat < maxY ) {
-            if ( minX < long && long< maxX ) {
-                return model;
-            }
-        }
-        });
+    perPage: 6,
+    minLat: -90,
+    maxLat: 90,
+    minLng: -180,
+    maxLng: 180,
+
+    initialize: function(options) {
+        this.pageNumber = 1;
+    },
+
+    setBounds: function(minLat, maxLat, minLng, maxLng) {
+        this.minLat = minLat;
+        this.maxLat = maxLat;
+        this.minLng = minLng;
+        this.maxLng = maxLng;
+    },
+
+    filterByBounds: function() {
+        var collection = this;
+        var newCollection = new CanineCareApp.Collections.Sitters(this.filter(
+            function(model) {
+                var lat = model.get('latitude');
+                var long = model.get('longitude');
+                return (lat > collection.minLat &&
+                    long > collection.minLng &&
+                    lat < collection.maxLat &&
+                    long < collection.maxLng);
+        }));
+
+        return newCollection;
+    },
+
+    setPageNumber: function(pageNumber) {
+        this.pageNumber = pageNumber;
+    },
+
+    paginate: function(collection) {
+        return new CanineCareApp.Collections.Sitters(
+            collection.slice((this.perPage * (collection.pageNumber - 1)),
+            (this.perPage * collection.pageNumber)));
     },
 
     getOrFetch: function(id) {
@@ -30,6 +60,25 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
         }
 
         return sitter;
+    },
+
+    getUserSitterProfile: function(userId, successCb) {
+        var sitters = CanineCareApp.Collections.sitters;
+        function sitterResponse(response) {
+            var foundProfile = false;
+            _.any(response.models, function(model) {
+                if (model.user_id && model.user_id == userId) {
+                    foundProfile = true;
+                    successCb(model);
+                    return true;
+                }
+            });
+
+            if (!foundProfile) {
+                successCb(new CanineCareApp.Models.Sitter());
+            }
+        }
+        sitters.fetch({ success: sitterResponse });
     }
 });
 

@@ -6,6 +6,6 @@ window.CanineCareApp = {
   Routers: {},
   initialize: function() {
     var router = new CanineCareApp.Routers.Router();
-    Backbone.history.start();
+    Backbone.history.start({ pushState: true });
   }
 };

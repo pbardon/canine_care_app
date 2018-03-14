@@ -12,11 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require_tree ./vendor/popper-js
 //= require jquery.serializeJSON
+//= require bootstrap-sprockets
 //= require underscore
 //= require backbone
-//= require sandstone/loader
 //= require dog_sitting_app
+//= require_tree ./vendor/bootstrap
+//= require_tree ./vendor/pace
+//= require_tree ./vendor/chart
+//= require_tree ./vendor/core-ui
 //= require_tree ../templates
 //= require_tree ./utils
 //= require_tree ./models

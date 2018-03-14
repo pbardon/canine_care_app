@@ -1,4 +1,4 @@
-CanineCareApp.Views.DogForm = Backbone.View.extend({
+CanineCareApp.Views.DogForm = Backbone.FormView.extend({
     template: JST['dogs/dog_form'],
 
     className: "dogFormWrapper",
@@ -21,13 +21,7 @@ CanineCareApp.Views.DogForm = Backbone.View.extend({
     },
 
     handle_files: function(event) {
-        var that = this;
-        var file = event.currentTarget.files[0];
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            that.model.set('dog_photo', this.result);
-        };
-        reader.readAsDataURL(file);
+        this.saveFileToAttribute(event, 'dog_photo');
     },
 
     submit: function (event) {

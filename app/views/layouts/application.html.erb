@@ -1,76 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>DogSittingApp</title>
 
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Canine Care Application">
+  <meta name="author" content="Peter Bardon">
+  <meta name="keyword" content="dogsitting">
+  <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
+
+  <title>Canine Care</title>
   <%= stylesheet_link_tag 'application' %>
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_API_KEY'] %>">
-    </script>
 
   <%= csrf_meta_tags %>
 </head>
 
-<body>
-
-<%= render partial: "layouts/header" %>
-
-
-
-<div id="main">
+<body id="canineCareApp" class="flex-row align-items-center">
+    <%= render partial: "layouts/header" %>
     <%= yield %>
-</div>
+    <%= render partial: "layouts/footer" %>
+    <script> type="text/javascript"
+       src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_API_KEY']%>"
+    </script>
+    <%= javascript_include_tag 'application' %>
 
-
-<%= render partial: "layouts/footer" %>
-
-<%= javascript_include_tag 'application' %>
-
-<script charset="utf-8">
-  $(document).ready(function(){
-    CanineCareApp.initialize('<%= form_auth_token %>');
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    });
-    CanineCareApp.setFormAuthToken = '<%= form_auth_token %>';
-  });
-
-</script>
+    <script language="javascript" type="text/javascript" charset="utf-8">
+        (function () {
+            $(document).ready(function(){
+                CanineCareApp.initialize('<%= form_auth_token %>',
+                    '<%= ENV['MAPS_API_KEY']%>',
+                    '<%= current_user ? current_user.id : nil %>',
+                    '<%= session[:session_token] %>');
+                $('.carousel').carousel({
+                    interval: 5000 //changes the speed
+                });
+                CanineCareApp.setFormAuthToken = '<%= form_auth_token %>';
+            });
+        })();
+    </script>
 </body>
-
-
-<% unless current_user %>
-
-<!--<div class="footer">-->
-  <!--<h2>Paw Pal: The Dog Sitting Web Aggregator</h2>-->
-  <!--<a href="https://www.linkedin.com/profile/view?id=299520782">About The Developer</a>-->
-
-
-
-  <!--<div id="about">-->
-    <!--<span class="footerTitle">How it Works:</span>-->
-    <!--<p> Sign in, Add Your Dogs then Search and Book Sitters. Or become a sitter to start earning cash today</p>-->
-  <!--</div>-->
-
-  <!--<div id="toolsUsed">-->
-    <!--<span class="footerTitle">Tools Used to Create Site:</span>-->
-
-    <!--<div id="ruby">-->
-      <!--<img class="img" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/railslog.png" alt="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png" />-->
-    <!--</div>-->
-
-    <!--<div id="backbone">-->
-      <!--<img class="img" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/backbone.png" alt="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png" />-->
-    <!--</div>-->
-
-    <!--<div id="HTML">-->
-      <!--<img src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/htmllogo.png" alt="https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png" />-->
-    <!--</div>-->
-  <!--</div>-->
-
-<!--</div>-->
-
-
-<% end  %>
 
 </html>

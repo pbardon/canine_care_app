@@ -69,7 +69,6 @@ module Api
     end
 
     def destroy
-      debugger
       @sitter = Sitter.find(params[:id])
 
       if @sitter.user_id == 1

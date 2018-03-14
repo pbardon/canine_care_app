@@ -1,159 +1,170 @@
-<div class="">
-    <div class="">
-        <div id="newSitterForm" class="well bs-component">
-                      <form class="form-horizontal">
-                        <fieldset>
-                          <legend>
-                              <% if (sitter.get('id')) { %>
-                                  Edit Sitter Information
-                              <% } else { %>
-                                  Enter Your Information To Become A Sitter!
-                              <% } %>
-                          </legend>
-                          <div class="form-group">
-                            <label for="sitter_name" class="col-lg-2 control-label">Sitter Profile Name:</label>
-                            <div class="col-lg-10">
-                              <input type="text"
-                                    class="form-control"
-                                    id="sitter_name"
-                                    placeholder="Profile Name"
-                                    name="sitter_name"
-                                    value="<%= sitter.escape('sitter_name') %>">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="sitterPrice" class="col-lg-2 control-label">Price Per Night:</label>
-                            <div class="col-lg-10">
-                              <input type="text"
-                                    class="form-control"
-                                    id="sitterPrice"
-                                    placeholder="Price Per Night"
-                                    name="price"
-                                    value="<%= sitter.escape('sitter_name') %>">
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="textArea" class="col-lg-2 control-label">Description:</label>
-                            <div class="col-lg-10">
-                              <textarea class="form-control"
-                                        rows="3"
-                                        name="description"
-                                        id="sitterDescription"><%= sitter.escape('description') %>
-                              </textarea>
-                            </div>
-                          </div>
-
-
-                          <div class="form-group">
-                            <label for="sizeInput" class="col-lg-2 control-label">Able to Sit Dogs of Size:</label>
-                            <div class="col-lg-10">
-                              <div class="checkbox">
+<div class="card">
+    <div class="card-body">
+        <form>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="sitter_name" class="col-form-label">Sitter Profile Name:</label>
+                        <input type="text"
+                        class="form-control"
+                        id="sitter_name"
+                        placeholder="Profile Name"
+                        name="sitter_name"
+                        value="<%= sitter.escape('sitter_name') %>" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="textArea" class="col-form-label">Description:</label>
+                        <textarea class="form-control"
+                        name="description"
+                        id="sitterDescription">
+                            <%= sitter.escape('description') %>
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label for="sitterPrice" class="col-form-label">Price Per Night:</label>
+                    <input type="text"
+                    class="form-control"
+                    id="sitterPrice"
+                    placeholder="Price Per Night"
+                    name="price"
+                    value="<%= sitter.escape('price') %>">
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="sizeInput" class="col-form-label">Able to Sit Dogs of Size:</label>
+                        <div class="col-lg-10">
+                            <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" <%= (sitter.get('small') === true) ? 'checked' : '' %>
-                                  class = "checkbox"
-                                  name="small"
-                                  value="true" \> Small
+                                    <input type="checkbox" <%= (sitter.get('small') === true) ? 'checked' : '' %>
+                                    class = "checkbox"
+                                    name="small"
+                                    value="true" \> Small
                                 </label>
-                              </div>
-                              <div class="checkbox">
+                            </div>
+                            <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" <%= (sitter.get('medium') === true) ? 'checked' : '' %>
-                                  class = "checkbox"
-                                  name="medium"
-                                  value="true" \> Medium
+                                    <input type="checkbox" <%= (sitter.get('medium') === true) ? 'checked' : '' %>
+                                    class = "checkbox"
+                                    name="medium"
+                                    value="true" \> Medium
                                 </label>
-                              </div>
-                              <div class="checkbox">
+                            </div>
+                            <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" <%= (sitter.get('large') === true) ? 'checked' : '' %>
-                                  class = "checkbox"
-                                  name="large"
-                                  value="true" \> Large
+                                    <input type="checkbox" <%= (sitter.get('large') === true) ? 'checked' : '' %>
+                                    class = "checkbox"
+                                    name="large"
+                                    value="true" \> Large
                                 </label>
-                              </div>
                             </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="sitterAddress" class="col-lg-2 control-label">Street Address:</label>
-                            <div class="col-lg-10">
-                              <input type="text"
-                                    class="form-control"
-                                    id="sitterAddress"
-                                    placeholder="Address"
-                                    name="street_address"
-                                    value="<%= sitter.escape('street_address') %>">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="sitterCity" class="col-lg-2 control-label">City:</label>
-                            <div class="col-lg-10">
-                              <input type="text"
-                                    class="form-control"
-                                    id="sitterCity"
-                                    placeholder="City"
-                                    name="city"
-                                    value="<%= sitter.escape('city') %>">
-                            </div>
-                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                          <div class="form-group">
-                            <label for="sitterState" class="col-lg-2 control-label">State:</label>
-                            <div class="col-lg-10">
-                              <input type="text"
-                                    class="form-control"
-                                    id="sitterState"
-                                    placeholder="State"
-                                    name="state"
-                                    value="<%= sitter.escape('state') %>">
-                            </div>
-                          </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="sitterAddress" class="col-form-label">Street Address:</label>
+                        <div class="col-lg-10">
+                            <input type="text"
+                            class="form-control"
+                            id="sitterAddress"
+                            placeholder="Address"
+                            name="street_address"
+                            value="<%= sitter.escape('street_address') %>">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                          <div class="form-group">
-                            <label for="sitterZip" class="col-lg-2 control-label">Zipcode:</label>
-                            <div class="col-lg-10">
-                              <input type="text"
-                                    class="form-control"
-                                    id="sitterZip"
-                                    placeholder="Zipcode"
-                                    name="zipcode"
-                                    value="<%= sitter.escape('zipcode') %>">
-                            </div>
-                          </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="sitterCity" class="col-form-label">City:</label>
+                        <div class="col-lg-10">
+                            <input type="text"
+                            class="form-control"
+                            id="sitterCity"
+                            placeholder="City"
+                            name="city"
+                            value="<%= sitter.escape('city') %>">
+                        </div>
+                    </div>
 
+                </div>
 
-                          <% if (!sitter.get('sitter_photo')) { %>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="sitterState" class="col-form-label">State:</label>
+                        <div class="col-lg-10">
+                            <input type="text"
+                            class="form-control"
+                            id="sitterState"
+                            placeholder="State"
+                            name="state"
+                            value="<%= sitter.escape('state') %>">
+                        </div>
+                    </div>
+                </div>
 
-                              <div class="form-group">
-                                <label for="addSitterPic" class="col-lg-2 control-label">Change Sitter Profile Picture:</label>
-                                <div class="col-lg-10">
-                                  <input type="file"
-                                        id="addSitterPic">
-                                </div>
-                              </div>
-                          <% }else { %>
-
-                            <label for="addSitterPic">Add A Sitter Profile Picture:</label>
-                            <br>
-                            <input
-                              type="file"
-                              name="sitter_photo"
-                              id="addSitterPic">
-
-                          <% } %>
-                          <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                <% if (sitter.get('id')) { %>
-                                  <input type='submit' class='addSubmit btn btn-success' value="Update Information">
-                                <% }else { %>
-                                  <input type='submit' class='addSubmit btn btn-success' value="Create Sitter Profile!">
-                                <% } %>
-                            </div>
-                          </div>
-                        </fieldset>
-                      </form>
-                    <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="sitterZip" class="col-form-label">Zipcode:</label>
+                        <div class="col-lg-10">
+                            <input type="text"
+                            class="form-control"
+                            id="sitterZip"
+                            placeholder="Zipcode"
+                            name="zipcode"
+                            value="<%= sitter.escape('zipcode') %>">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
+        <% if (!sitter.get('sitter_photo')) { %>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="addSitterPic" class="col-form-label">Change Sitter Profile Picture:</label>
+                    <div class="col-lg-10">
+                        <input type="file"
+                        id="addSitterPic">
+                    </div>
+                </div>
+            </div>
+        <% }else { %>
+            <div class="form-row">
+                <div class="form-group">
+
+                    <label for="addSitterPic">Add A Sitter Profile Picture:</label>
+                    <br>
+                    <input
+                    type="file"
+                    name="sitter_photo"
+                    id="addSitterPic">
+                </div>
+            </div>
+
+        <% } %>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <% if (sitter.get('id')) { %>
+                            <input type='submit' class='addSubmit btn btn-success' value="Update Information">
+                        <% }else { %>
+                            <input type='submit' class='addSubmit btn btn-success' value="Create Sitter Profile!">
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

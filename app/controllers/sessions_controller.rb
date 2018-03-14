@@ -21,8 +21,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    sign_out
-    redirect_to root_url
+      user_id = current_user.id
+      if sign_out
+          render json: { user_id: user_id }, status: 200
+          return
+      end
+      render json: {  error: "Unable to signout, try again.." },
+             status: 500
   end
 
   def guest
