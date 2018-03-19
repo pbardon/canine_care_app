@@ -1,13 +1,16 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
+default: &default
+      adapter: postgresql
+      encoding: unicode
+      pool: 5
+      username: <%= ENV['USERNAME'] %>
+      password: <%= ENV['PASSWORD'] %>
+      host:     <%= ENV['IP'] %>
+
 development:
-  adapter: postgresql
-  host: localhost
-  username: <%= ENV['USER'] %>
-  database: canine-care-dev
+  <<: *default
+  database: canine_care_development
+
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
