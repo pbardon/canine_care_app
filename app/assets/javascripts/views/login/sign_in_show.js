@@ -42,7 +42,7 @@ CanineCareApp.Views.SignInPage = Backbone.CompositeView.extend({
         };
 
         $.ajax({
-            url: "http://localhost:3000/session",
+            url: "/session",
             method: "POST",
             data: loginInfo,
             dataType: "json",

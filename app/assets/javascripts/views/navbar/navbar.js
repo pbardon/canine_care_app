@@ -45,7 +45,7 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
     logout: function() {
         var navbarView = this;
         $.ajax({
-            url: 'http://localhost:3000/session',
+            url: '/session',
             method: 'DELETE',
             dataType: 'json',
             success: function() {
