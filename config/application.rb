@@ -10,7 +10,7 @@ module DogSittingApp
   class Application < Rails::Application
     config.paperclip_defaults = {
         :storage => :s3,
-        :s3_protocol => 'http',
+        :s3_protocol => 'https',
         :url =>':s3_domain_url',
         :s3_host_name=> 's3-us-west-2.amazonaws.com',
         :s3_region => 'us-west-2',
