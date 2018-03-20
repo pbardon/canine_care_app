@@ -17,18 +17,21 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
             center: pos
         };
 
-        view.mapLoaded = false;
+        if (!this.map) {
+            view.mapLoaded = false;
 
-        this.map = new google.maps.Map(this.$('#map-canvas')[0], mapOptions);
+            this.map = new google.maps.Map(this.$('#map-canvas')[0], mapOptions);
+            google.maps.event.addListener(view.map, "bounds_changed",
+                this.changeBounds.bind(view));
 
-        google.maps.event.addListener(view.map, "bounds_changed",
-            this.changeBounds.bind(view));
+            google.maps.event.addListenerOnce(this.map, 'tilesloaded', function() {
+                view.mapLoaded = true;
+            });
 
-        google.maps.event.addListenerOnce(this.map, 'tilesloaded', function() {
-            view.mapLoaded = true;
-        });
+            google.maps.event.trigger(view.map, 'resize');
+        }
 
-        google.maps.event.trigger(view.map, 'resize');
+
 
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
