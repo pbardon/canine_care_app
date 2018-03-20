@@ -20,7 +20,7 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
 
         this.addSubview('.sitterIndexListContainer', this.sittersIndexList.render());
 
-        this.addSubview('.mapContainer', this.sitterMap.render());
+        this.addSubview('.mapContainer', this.sitterMap);
 
         sitterIndexView.collection.trigger('sync');
     },

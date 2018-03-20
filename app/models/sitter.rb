@@ -29,7 +29,7 @@ class Sitter < ActiveRecord::Base
       scheme: 'https',
       host: 'maps.googleapis.com',
       path: 'maps/api/geocode/json',
-      query_values: {address: address, key: ENV['MAPS_API_KEY']}
+      query_values: { address: address, key: ENV['MAPS_API_KEY'] }
     ).to_s
 
     output = JSON.parse(RestClient.get(geolocationaddress))
