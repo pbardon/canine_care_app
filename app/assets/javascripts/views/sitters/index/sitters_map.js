@@ -17,32 +17,29 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
             center: pos
         };
 
-        if (!this.map) {
-            view.mapLoaded = false;
-            this.map = new google.maps.Map(this.$('#map-canvas')[0], mapOptions);
-            google.maps.event.addListener(view.map, "bounds_changed",
-                this.changeBounds.bind(view));
+        view.mapLoaded = false;
+        this.map = new google.maps.Map(this.$('#map-canvas')[0], mapOptions);
+        google.maps.event.addListener(view.map, "bounds_changed",
+            this.changeBounds.bind(view));
 
-            google.maps.event.addListenerOnce(this.map, 'tilesloaded', function() {
-                view.mapLoaded = true;
-                if(navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function(position) {
-                        view.setMapCenter(position.coords.latitude,
-                            position.coords.longitude);
-                    });
-                }
-            });
-            google.maps.event.trigger(view.map, 'resize');
-        }
+        google.maps.event.addListenerOnce(this.map, 'tilesloaded', function() {
+            view.mapLoaded = true;
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    view.setMapCenter(position.coords.latitude,
+                        position.coords.longitude);
+                });
+            }
+        });
+        google.maps.event.trigger(view.map, 'resize');
 
     },
 
     setMapCenter: function(latitude, longitude) {
-        var map = this.map;
         var pos = new google.maps.LatLng(latitude, longitude);
-        if (map && typeof map.setCenter === 'function' && this.mapLoaded) {
+        if (this.map && typeof this.map.setCenter === 'function' && this.mapLoaded) {
             // do something only the first time the map is loaded
-            map.setCenter = map.setCenter(pos);
+            this.map.setCenter(pos);
         }
     },
 
@@ -137,7 +134,6 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
         var renderedContent = this.template();
         this.$el.html(renderedContent);
         this.renderMap();
-        debugger;
         return this;
     }
 });

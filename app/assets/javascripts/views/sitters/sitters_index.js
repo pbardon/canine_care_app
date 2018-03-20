@@ -82,11 +82,8 @@ CanineCareApp.Views.SittersIndex = Backbone.CompositeView.extend({
 
     render: function() {
         var renderedContent = this.template({ sitters: this.collection });
-
         this.$el.html(renderedContent);
-
         this.attachSubviews();
-
         return this;
     }
 });
