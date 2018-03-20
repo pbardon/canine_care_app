@@ -17,6 +17,8 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
             center: pos
         };
 
+        view.mapLoaded = false;
+
         this.map = new google.maps.Map(this.$('#map-canvas')[0], mapOptions);
 
         google.maps.event.addListener(view.map, "bounds_changed",
@@ -39,11 +41,9 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
     setMapCenter: function(latitude, longitude) {
         var map = this.map;
         var pos = new google.maps.LatLng(latitude, longitude);
-        if (map && typeof map.setCenter === 'function' ) {
-            google.maps.event.addListenerOnce(map, 'idle', function(){
-                // do something only the first time the map is loaded
-                map.setCenter = map.setCenter(pos);
-            });
+        if (map && typeof map.setCenter === 'function' && view.mapLoaded) {
+            // do something only the first time the map is loaded
+            map.setCenter = map.setCenter(pos);
         }
     },
 
@@ -138,6 +138,7 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
         var renderedContent = this.template();
         this.$el.html(renderedContent);
         this.renderMap();
+        debugger;
         return this;
     }
 });
