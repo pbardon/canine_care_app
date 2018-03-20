@@ -32,7 +32,6 @@ CanineCareApp.Views.SittersMap = Backbone.View.extend({
             navigator.geolocation.getCurrentPosition(function(position) {
                 view.setMapCenter(position.coords.latitude,
                     position.coords.longitude);
-                view.map.setCenter(pos);
             });
         }
     },
