@@ -30,17 +30,16 @@
 <script language="javascript" type="text/javascript" charset="utf-8">
     (function () {
         $(document).ready(function(){
+            //Bootstrap the sitters colllection
             CanineCareApp.Collections.sitters =
                 new CanineCareApp.Collections.Sitters();
+            //Bootstrap the sitters colllection
             CanineCareApp.Collections.sitters.reset(
                 "<%= load_sitters %>".replace(/&quot;/g, '"'));
             CanineCareApp.initialize('<%= form_auth_token %>',
                 '<%= ENV['MAPS_API_KEY']%>',
                 '<%= current_user ? current_user.id : nil %>',
                 '<%= session[:session_token] %>');
-            $('.carousel').carousel({
-                interval: 5000
-            });
             CanineCareApp.setFormAuthToken = '<%= form_auth_token %>';
         });
     })();

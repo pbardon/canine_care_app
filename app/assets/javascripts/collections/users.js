@@ -9,10 +9,7 @@ CanineCareApp.Collections.Users = Backbone.Collection.extend({
         if(!user) {
             user = new CanineCareApp.Models.User();
             this.fetch({
-                id: id,
-                success: function(response) {
-                    console.log('got user info: ', JSON.stringify(response.body));
-                }
+                id: id
             });
         } else {
             user.fetch();

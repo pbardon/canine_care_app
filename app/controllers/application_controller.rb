@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     end
 
     def load_sitters
-        Sitter.page(1).per(50).to_json
+        Sitter.page(1).per(10).to_json
     end
 
     def ensure_signed_in!

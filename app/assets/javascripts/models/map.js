@@ -6,6 +6,7 @@ CanineCareApp.Models.Map = Backbone.Model.extend({
             style: options.style
         };
 
-        this.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        this.map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
     }
 });
