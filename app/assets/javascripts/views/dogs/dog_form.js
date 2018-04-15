@@ -42,7 +42,7 @@ CanineCareApp.Views.DogForm = Backbone.FormView.extend({
                     });
                 }
             });
-        }else {
+        } else {
             this.model.save({}, {
                 success: function() {
                     Backbone.history.navigate("#/dogs", { trigger: true });
@@ -50,13 +50,13 @@ CanineCareApp.Views.DogForm = Backbone.FormView.extend({
 
                 error: function(model, error) {
                     $('.alert').remove();
-                    $('.addSubmit').replaceWith("<button type='submit' class='addSubmit btn btn-primary'>Add Dog</button>");
+                    $('.addSubmit').replaceWith(
+                        "<button type='submit' class='addSubmit btn btn-primary'>Add Dog</button>");
                     _(error.responseJSON).each(function(error){
                         $('#newDogForm').prepend('<div class="alert alert-danger">'+ error +'</div>');
                     });
                 }
             });
         }
-
     }
 });

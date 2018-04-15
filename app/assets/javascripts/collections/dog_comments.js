@@ -19,5 +19,5 @@ CanineCareApp.Collections.DogComments = Backbone.Collection.extend({
 
         return comment;
     }
-    });
+});
 CanineCareApp.Collections.dogcomments = new CanineCareApp.Collections.DogComments();

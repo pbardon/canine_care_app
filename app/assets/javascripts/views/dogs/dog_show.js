@@ -127,7 +127,6 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
         });
     },
 
-
     render: function() {
         var renderedContent = this.template({
             dog: this.model

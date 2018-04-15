@@ -1,8 +1,4 @@
 CanineCareApp.Collections.SitterBookings = Backbone.Collection.extend({
-
-    initialize: function(models, options) {
-    },
-
     url: function() {
         return this.sitter.url() + "/bookings";
     },

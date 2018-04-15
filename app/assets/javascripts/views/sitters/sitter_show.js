@@ -14,9 +14,6 @@ CanineCareApp.Views.SitterShow = Backbone.CompositeView.extend({
         this.navbarView = options.navbarView;
 
         this.listenTo(this.model.comments(), 'add', this.render);
-        // this.map = new CanineCareApp.Views.SittersMap({
-        // });
-        // this.addSubview('.sitterMap', this.map.render());
 
         this.noSitterMsg = this.addSubview('.noReviewMsg',
             new CanineCareApp.Views.NoReviewMessage());
