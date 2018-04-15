@@ -73,7 +73,6 @@ CanineCareApp.Views.SittersIndexList = Backbone.CompositeView.extend({
         this.$el.html(renderedContent);
 
         var mapFilteredCollection = this.collection.filterByBounds();
-
         this.paginationControls.processNewCollection(mapFilteredCollection);
         mapFilteredCollection.pageNumber = this.collection.pageNumber || 1;
         this.collection.paginate(mapFilteredCollection).forEach(function(model) {

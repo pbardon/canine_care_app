@@ -31,11 +31,11 @@
     (function () {
         $(document).ready(function(){
             //Bootstrap the sitters colllection
-            CanineCareApp.Collections.sitters =
-                new CanineCareApp.Collections.Sitters();
+            // CanineCareApp.Collections.sitters =
+            //     new CanineCareApp.Collections.Sitters();
             //Bootstrap the sitters colllection
-            CanineCareApp.Collections.sitters.reset(
-                "<%= load_sitters %>".replace(/&quot;/g, '"'));
+            // CanineCareApp.Collections.sitters.reset(
+            //     "<%= load_sitters %>".replace(/&quot;/g, '"'));
             CanineCareApp.initialize('<%= form_auth_token %>',
                 '<%= ENV['MAPS_API_KEY']%>',
                 '<%= current_user ? current_user.id : nil %>',

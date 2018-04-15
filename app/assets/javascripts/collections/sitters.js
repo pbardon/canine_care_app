@@ -22,21 +22,19 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
 
     filterByBounds: function() {
         var collection = this;
-        function isVisible(lat, lng) {
+        var isVisible = function(lat, lng) {
             return (lat > collection.minLat &&
-                long > collection.minLng &&
+                lng > collection.minLng &&
                 lat < collection.maxLat &&
-                long < collection.maxLng);
-        }
-        var newCollection = new CanineCareApp.Collections.Sitters(
+                lng < collection.maxLng);
+        };
+        return new CanineCareApp.Collections.Sitters(
             this.filter(
                 function(model) {
-                    isVisible(
+                    return isVisible(
                         model.get('latitude'),
                         model.get('longitude'));
-            }));
-
-        return newCollection;
+        }));
     },
 
     setPageNumber: function(pageNumber) {

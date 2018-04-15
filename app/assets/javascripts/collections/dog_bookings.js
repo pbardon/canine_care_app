@@ -1,4 +1,4 @@
-CanineCareApp.Collections.DogBookings = Backbone.Bookings.extend({
+CanineCareApp.Collections.DogBookings = CanineCareApp.Collections.Bookings.extend({
 
     url: function() {
         return this.dog.url() + "/bookings";
