@@ -20,32 +20,37 @@ CanineCareApp.Views.SignUpPage = Backbone.CompositeView.extend({
         Backbone.history.navigate('#session/new', { trigger: true, replace: true });
     },
 
-    submit: function(event) {
-        event.preventDefault();
-        var username = $('.loginUsername').val();
-        var loginEmail = $('.loginEmail').val();
-        var password = $('.loginPassword').val();
-        var passwordConfirm = $('.loginPasswordConfirm').val();
-        if (!username) {
-            this.addErrorMessage({ error: 'must provide username'});
-            return;
+    validateUserInfo: function(formData, passwordConfirm) {
+        if (!formData.name) {
+            this.addErrorMessage({ error: 'You must provide a username'});
+            return false;
         }
 
-        if (!loginEmail) {
-            this.addErrorMessage({ error: 'must provide username'});
-            return;
+        if (!formData.email) {
+            this.addErrorMessage({ error: 'You must provide an email'});
+            return false;
         }
 
-        if (!password) {
-            this.addErrorMessage({ error: 'must provide password'});
-            return;
+        if (!formData.password) {
+            this.addErrorMessage({ error: 'You must provide a password'});
+            return false;
         }
 
         if (password !== passwordConfirm) {
             this.addErrorMessage({ error: 'Password must match'});
-            return;
+            return false;
         }
 
+        return true;
+    },
+
+    submit: function(event) {
+        event.preventDefault();
+        var signUpView = this;
+        var username = $('.loginUsername').val();
+        var loginEmail = $('.loginEmail').val();
+        var password = $('.loginPassword').val();
+        var passwordConfirm = $('.loginPasswordConfirm').val();
         var formData = {
             user: {
                 name: username,
@@ -53,6 +58,9 @@ CanineCareApp.Views.SignUpPage = Backbone.CompositeView.extend({
                 password: password
             }
         };
+        if (!this.validateUserInfo(formData, passwordConfirm)) {
+            return;
+        }
         $.ajax({
             url: "/users",
             method: "POST",
@@ -67,7 +75,7 @@ CanineCareApp.Views.SignUpPage = Backbone.CompositeView.extend({
             },
             error: function(response) {
                 var errData = JSON.parse(response.responseText);
-                this.addErrorMessage(errData);
+                signUpView.addErrorMessage(errData);
             }
         });
     },

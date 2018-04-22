@@ -14,7 +14,7 @@ CanineCareApp.Collections.Users = Backbone.Collection.extend({
         } else {
             user.fetch();
         }
-
+        user.checkSitterStatus();
         return user;
     }
 });

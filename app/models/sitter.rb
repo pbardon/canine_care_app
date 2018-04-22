@@ -44,4 +44,9 @@ class Sitter < ActiveRecord::Base
         self.latitude = location['lat']
         self.longitude = location['lng']
     end
+
+    def find_by_user_id(user_id)
+        #query for sitter with user id
+        Sitter.find_by({ user_id: user_id })
+    end
 end

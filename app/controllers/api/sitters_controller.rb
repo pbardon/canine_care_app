@@ -25,6 +25,8 @@ module Api
         per_page = 50
         if params[:page]
             @sitters = Sitter.page(params[:page].to_i).per(per_page)
+        elsif params[:user_id]
+            @sitters = [ Sitter.find_by_user_id(params[:user_id]) ]
         else
             @sitters = Sitter.page(1).per(per_page)
         end

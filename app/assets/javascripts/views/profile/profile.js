@@ -11,6 +11,7 @@ CanineCareApp.Views.Profile = Backbone.CompositeView.extend({
                     profileView.model = response;
                     if (profileView.model.id) {
                         profileView.isSitter = true;
+                        CanineCareApp.currentUser.isSitter = true;
                     }
                     profileView.form = new CanineCareApp.Views.SitterForm({
                         model: profileView.model,
