@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730234252) do
+ActiveRecord::Schema.define(version: 20180515044603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140730234252) do
     t.text     "description",                          null: false
     t.integer  "age",                                  null: false
     t.float    "avg_rating",             default: 0.0
-    t.integer  "owner_id",                             null: false
+    t.integer  "user_id",                              null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "dog_photo_file_name"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140730234252) do
   end
 
   add_index "dogs", ["name"], name: "index_dogs_on_name", using: :btree
-  add_index "dogs", ["owner_id"], name: "index_dogs_on_owner_id", using: :btree
+  add_index "dogs", ["user_id"], name: "index_dogs_on_user_id", using: :btree
 
   create_table "sitters", force: :cascade do |t|
     t.integer  "user_id",                                   null: false
