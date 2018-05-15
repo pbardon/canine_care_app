@@ -31,4 +31,23 @@ RSpec.describe User, type: :model do
         @user.reset_session_token!
         expect(@user.session_token).to_not eq token
     end
+
+    it 'should have many dogs' do
+        def add_dog(user)
+            dog = create(:dog)
+            user.dogs.push(dog)
+            dog
+        end
+        dog1 = add_dog(@user)
+        expect(@user.dogs.first.name).to eq dog1.name
+        add_dog(@user)
+        add_dog(@user)
+        expect(@user.dogs.length).to eq 3
+    end
+
+    it 'should be able to have a sitter account' do
+        sitter = create(:sitter)
+        @user.sitter_account = sitter
+        expect(@user.sitter_account.user_id).to eq @user.id
+    end
 end
