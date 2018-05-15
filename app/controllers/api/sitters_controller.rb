@@ -22,7 +22,7 @@ module Api
     end
 
     def index
-        per_page = 50
+        per_page = 999
         if params[:page]
             @sitters = Sitter.page(params[:page].to_i).per(per_page)
         elsif params[:user_id]
