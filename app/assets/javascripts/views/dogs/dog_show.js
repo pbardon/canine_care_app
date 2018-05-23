@@ -25,7 +25,7 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
 
 
     template: function(options) {
-        if (this.model.get('current_user_id') && this.model.get('owner_id') === this.model.get('current_user_id')) {
+        if (this.model.get('current_user_id') && this.model.get('user_id') === this.model.get('current_user_id')) {
             return JST['dogs/show_private'](options);
         }else {
             return JST['dogs/show_public'](options);
@@ -45,8 +45,8 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
         var view = this;
         event.preventDefault();
         var data = $('#newCommentForm').serializeJSON();
-        data['commentable_type'] = 'Dog';
-        data['commentable_id'] = this.model.get('id');
+        data.commentable_type = 'Dog';
+        data.commentable_id = this.model.get('id');
         var comment = new CanineCareApp.Models.Comment(data);
         CanineCareApp.Collections.dogcomments.create(comment, {
             success: function() {
@@ -70,7 +70,7 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
             model: booking
         });
 
-        this.addSubview('.dog_bookings', subview.render());
+        this.addSubview('.dogBookingContent', subview.render());
     },
 
     addComment: function (comment) {

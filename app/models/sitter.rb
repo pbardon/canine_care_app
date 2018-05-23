@@ -1,7 +1,4 @@
 class Sitter < ActiveRecord::Base
-
-    before_save :generate_geocode
-
     validates :user_id, :avg_rating, :sitter_name, :description, :price,
               :street_address, :city, :state, :zipcode, presence: true
 

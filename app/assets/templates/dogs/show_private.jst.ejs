@@ -2,15 +2,10 @@
 </div>
 
 <div class="container">
-
     <div id="editDogForm" class="card">
         <div class="card-header">
             <strong>
-                <% if (dog.get('name')) { %>
                   Edit Dog Information
-                <% } else { %>
-                  Add A New Dog!
-                <% } %>
             </strong>
         </div>
         <div class="card-body">
@@ -43,7 +38,8 @@
 
                     <div class="col">
                         <div id="profileImage">
-                            <img class="img-responsive img-portfolio dogEditPhoto" src="<%= dog.get('dog_photo_large') %>">
+                            <img class="img-responsive img-portfolio dogEditPhoto"
+                                 src="<%= dog.get('dog_photo_large') %>">
                         </div>
 
                     </div>
@@ -141,6 +137,16 @@
                 <div class="form-row">
                 </div>
             </form>
+        </div>
+    </div>
+    <div id="dogBookings" class="card">
+        <div class="card-header">
+            <strong>
+                  Bookings
+            </strong>
+        </div>
+        <div class="dogBookingContent card-body">
+
         </div>
     </div>
 </div>

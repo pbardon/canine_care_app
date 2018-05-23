@@ -19,7 +19,7 @@ CanineCareApp.Views.DogBookingShow = Backbone.CompositeView.extend({
 
 
     showLargePhoto: function(event) {
-        $ct = $(event.currentTarget)
+        $ct = $(event.currentTarget);
         $ct.attr('src', this.sitter.get('sitter_photo_large'));
         $ct.removeClass('thumbnail');
         $ct.addClass('bigImage');
@@ -27,7 +27,7 @@ CanineCareApp.Views.DogBookingShow = Backbone.CompositeView.extend({
     },
 
     closeImage: function() {
-        $image = $(event.currentTarget).find('img')
+        $image = $(event.currentTarget).find('img');
         $image.attr('src', this.sitter.get('sitter_photo_small'));
         $image.removeClass('bigImage');
         $image.addClass('thumbnail');
@@ -40,8 +40,6 @@ CanineCareApp.Views.DogBookingShow = Backbone.CompositeView.extend({
         });
 
         this.$el.html(renderedContent);
-
-        this.attachSubviews();
 
         return this;
     }
