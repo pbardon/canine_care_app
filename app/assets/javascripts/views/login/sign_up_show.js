@@ -36,7 +36,7 @@ CanineCareApp.Views.SignUpPage = Backbone.CompositeView.extend({
             return false;
         }
 
-        if (password !== passwordConfirm) {
+        if (formData.password !== passwordConfirm) {
             this.addErrorMessage({ error: 'Password must match'});
             return false;
         }
@@ -58,7 +58,7 @@ CanineCareApp.Views.SignUpPage = Backbone.CompositeView.extend({
                 password: password
             }
         };
-        if (!this.validateUserInfo(formData, passwordConfirm)) {
+        if (!this.validateUserInfo(formData.user, passwordConfirm)) {
             return;
         }
         $.ajax({

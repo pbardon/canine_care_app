@@ -8,6 +8,7 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
     },
 
     events: {
+        'click #mapButton': 'navToHome',
         'click #bookingsButton' : 'navToBookings',
         'click #signInButton' : 'navToSignIn',
         'click #signUpButton' : 'navToSignUp',
