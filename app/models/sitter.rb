@@ -1,7 +1,4 @@
 class Sitter < ActiveRecord::Base
-
-    before_save :generate_geocode
-
     validates :user_id, :avg_rating, :sitter_name, :description, :price,
               :street_address, :city, :state, :zipcode, presence: true
 
@@ -43,5 +40,10 @@ class Sitter < ActiveRecord::Base
 
         self.latitude = location['lat']
         self.longitude = location['lng']
+    end
+
+    def find_by_user_id(user_id)
+        #query for sitter with user id
+        Sitter.find_by({ user_id: user_id })
     end
 end

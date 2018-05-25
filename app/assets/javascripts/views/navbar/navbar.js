@@ -8,6 +8,8 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
     },
 
     events: {
+        'click #mapButton': 'navToHome',
+        'click #bookingsButton' : 'navToBookings',
         'click #signInButton' : 'navToSignIn',
         'click #signUpButton' : 'navToSignUp',
         'click #profileButton' : 'navToProfile',
@@ -20,26 +22,44 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
 
     template: JST["navbar/navbar"],
 
-    navToSignIn: function() {
-        Backbone.history.navigate('#session/new', { trigger: true });
+    navTo: function(event, target) {
+        event.preventDefault();
+        Backbone.history.navigate(target, { trigger: true });
     },
 
-    navToDogs: function() {
-        Backbone.history.navigate('#dogs', { trigger: true });
-
+    navToBookings: function(event) {
+        var navbarView = this;
+        var currentUser = CanineCareApp.currentUser;
+        if (currentUser &&
+                currentUser.attributes &&
+                currentUser.attributes.id) {
+            var sitterId = currentUser.attributes.id;
+            CanineCareApp.Collections.sitters
+            .getUserSitterProfile(sitterId, function(response) {
+                var sitterUrl = '#/sitters/' + response.attributes.id + '/bookings';
+                navbarView.navTo(event, sitterUrl);
+            });
+        }
     },
 
-    navToHome: function() {
-        Backbone.history.navigate('#', { trigger: true });
+    navToDogs: function(event) {
+        this.navTo(event, '#dogs');
     },
 
-    navToSignUp: function() {
-        Backbone.history.navigate('#users/new', { trigger: true });
+    navToHome: function(event) {
+        this.navTo(event, '#');
+    },
+
+    navToSignIn: function(event) {
+        this.navTo(event, '#session/new');
+    },
+
+    navToSignUp: function(event) {
+        this.navTo(event, '#users/new');
     },
 
     navToProfile: function(event) {
-        event.preventDefault();
-        Backbone.history.navigate('#/profile', { trigger: true });
+        this.navTo(event, '#/profile');
     },
 
     logout: function() {
@@ -50,7 +70,6 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
             dataType: 'json',
             success: function() {
                 CanineCareApp.currentUser = {};
-                console.log("LOGGED OUT");
                 CanineCareApp.loggedIn = false;
                 Backbone.history.navigate('#/', { trigger: true });
                 navbarView.render();
@@ -63,13 +82,9 @@ CanineCareApp.Views.Navbar = Backbone.CompositeView.extend({
 
     render: function() {
         var renderedContent = this.template();
-
         CanineCareApp.loggedIn = !!CanineCareApp.currentUser.attributes;
-
         this.$el.html(renderedContent);
-
         this.attachSubviews();
-
         return this;
     }
 });

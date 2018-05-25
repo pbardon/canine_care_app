@@ -34,7 +34,7 @@ module Api
 
     def update
       @dog = Dog.find(params[:id]);
-      if @dog.owner_id == current_user.id && @dog.update_attributes(dog_params)
+      if @dog.user_id == current_user.id && @dog.update_attributes(dog_params)
         render "dogs/show"
       else
         render json: @dog.errors.full_messages, status: :unprocessable_entity

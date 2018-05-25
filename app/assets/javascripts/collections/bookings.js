@@ -1,7 +1,5 @@
 CanineCareApp.Collections.Bookings = Backbone.Collection.extend({
 
-    url: 'bookings/',
-
     model: CanineCareApp.Models.Booking,
 
     getOrFetch: function(id) {
@@ -10,9 +8,12 @@ CanineCareApp.Collections.Bookings = Backbone.Collection.extend({
         function addBooking() {
             bookings.add(booking);
         }
+        function bookingErr(err) {
+            console.log(err);
+        }
         if (!booking) {
             booking = new CanineCareApp.Models.Booking({ id: id });
-            booking.fetch({ success: addBooking });
+            booking.fetch({ success: addBooking, error: bookingErr });
         } else {
             booking.fetch();
         }

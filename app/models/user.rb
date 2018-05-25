@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :password, length: {minimum: 4, allow_nil: true}
 
-  has_many :dogs, class_name: :Dog, foreign_key: :owner_id
+  has_many :dogs
 
   has_one :sitter_account, class_name: :Sitter, foreign_key: :user_id
 

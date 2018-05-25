@@ -4,7 +4,6 @@ CanineCareApp.Views.DogBookingShow = Backbone.CompositeView.extend({
     initialize: function(options) {
         this.listenTo(this.model, "change", this.render);
 
-
         this.sitter = CanineCareApp.Collections.sitters.getOrFetch(this.model.get('sitter_id'));
 
         this.listenTo(this.sitter, "sync", this.render);
@@ -16,10 +15,8 @@ CanineCareApp.Views.DogBookingShow = Backbone.CompositeView.extend({
         'click .bigImage': 'closeImage'
     },
 
-
-
     showLargePhoto: function(event) {
-        $ct = $(event.currentTarget)
+        $ct = $(event.currentTarget);
         $ct.attr('src', this.sitter.get('sitter_photo_large'));
         $ct.removeClass('thumbnail');
         $ct.addClass('bigImage');
@@ -27,7 +24,7 @@ CanineCareApp.Views.DogBookingShow = Backbone.CompositeView.extend({
     },
 
     closeImage: function() {
-        $image = $(event.currentTarget).find('img')
+        $image = $(event.currentTarget).find('img');
         $image.attr('src', this.sitter.get('sitter_photo_small'));
         $image.removeClass('bigImage');
         $image.addClass('thumbnail');
@@ -40,8 +37,6 @@ CanineCareApp.Views.DogBookingShow = Backbone.CompositeView.extend({
         });
 
         this.$el.html(renderedContent);
-
-        this.attachSubviews();
 
         return this;
     }

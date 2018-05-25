@@ -69,7 +69,9 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
         function sitterResponse(response) {
             var foundProfile = false;
             _.any(response.models, function(model) {
-                if (model.user_id && model.user_id == userId) {
+                if (model &&
+                    model.attributes.user_id &&
+                    model.attributes.user_id === parseInt(userId)) {
                     foundProfile = true;
                     successCb(model);
                     return true;
@@ -77,10 +79,18 @@ CanineCareApp.Collections.Sitters = Backbone.Collection.extend({
             });
 
             if (!foundProfile) {
+                // No sitter entry exists, create a new model
                 successCb(new CanineCareApp.Models.Sitter());
             }
         }
-        sitters.fetch({ success: sitterResponse });
+
+
+        function sitterRequestError(error) {
+            // There was an error retrieving the sitter model, return an empty model...
+            successCb(new CanineCareApp.Models.Sitter());
+        }
+
+        sitters.fetch({ data: $.param({ user_id: userId }), success: sitterResponse, error: sitterRequestError });
     }
 });
 

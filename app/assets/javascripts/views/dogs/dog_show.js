@@ -8,15 +8,13 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
 
     initialize: function() {
         var view = this;
-        this.listenTo(this.model, 'sync add', this.render);
-        this.listenTo(this.model.bookings(), 'add', this.addBooking);
-
+        this.listenTo(this.model, 'sync', this.render);
+        this.listenTo(this.model.bookings(), 'add', this.render);
         this.listenTo(this.model.comments(), 'add', this.addComment);
         this.model.comments().each(this.addComment.bind(this));
 
         this.listenTo(this.model.comments(), 'add', this.render);
 
-        $('.dog_bookings').empty();
     },
 
     handle_files: function(event, attributeName) {
@@ -25,7 +23,7 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
 
 
     template: function(options) {
-        if (this.model.get('current_user_id') && this.model.get('owner_id') === this.model.get('current_user_id')) {
+        if (this.model.get('current_user_id') && this.model.get('user_id') === this.model.get('current_user_id')) {
             return JST['dogs/show_private'](options);
         }else {
             return JST['dogs/show_public'](options);
@@ -45,8 +43,8 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
         var view = this;
         event.preventDefault();
         var data = $('#newCommentForm').serializeJSON();
-        data['commentable_type'] = 'Dog';
-        data['commentable_id'] = this.model.get('id');
+        data.commentable_type = 'Dog';
+        data.commentable_id = this.model.get('id');
         var comment = new CanineCareApp.Models.Comment(data);
         CanineCareApp.Collections.dogcomments.create(comment, {
             success: function() {
@@ -65,12 +63,15 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
     },
 
 
-    addBooking: function (booking) {
-        var subview = new CanineCareApp.Views.DogBookingShow({
-            model: booking
-        });
+    addBookings: function (booking) {
+        this.removeSubviews('.dogBookingContent')
+        var bookingMap = this.model.bookings().map((booking) => {
+            var subview = new CanineCareApp.Views.DogBookingShow({
+                model: booking
+            });
 
-        this.addSubview('.dog_bookings', subview.render());
+            this.addSubview('.dogBookingContent', subview.render());
+        });
     },
 
     addComment: function (comment) {
@@ -133,7 +134,7 @@ CanineCareApp.Views.DogShow = Backbone.FormView.extend({
         });
 
         this.$el.html(renderedContent);
-
+        this.addBookings();
         this.attachSubviews();
 
         return this;

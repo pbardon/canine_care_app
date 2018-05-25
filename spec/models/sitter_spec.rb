@@ -29,4 +29,18 @@ RSpec.describe Sitter, type: :model do
       expect(@sitter.latitude).to_not be_nil
       expect(@sitter.latitude).to_not be_nil
   end
+
+  it 'should be able to find a sitter profile by user id' do
+      @sitter = create(:sitter)
+      @user = @sitter.user
+      expect(@user.email).to_not be_nil
+      found_sitter = @sitter.find_by_user_id(@user.id)
+      expect(found_sitter.sitter_name).to eq @sitter.sitter_name
+  end
+
+  # it 'should have bookings' do
+  #     @user = create(:user)
+  #     @sitter = create(:sitter)
+  #     @user = @sitter.user
+  # end
 end
