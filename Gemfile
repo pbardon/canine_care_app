@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby "2.2.4"
 
 gem 'rails', '4.2.10'
+gem 'rails-html-sanitizer', '~> 1.0.4'
 gem 'pg', '~> 0.20'
 gem 'bootstrap', '~> 4.0.0'
 gem 'sass-rails', '>= 3.2'
