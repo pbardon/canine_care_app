@@ -6,7 +6,6 @@ gem 'pg', '~> 0.20'
 gem 'bootstrap', '~> 4.0.0'
 gem 'sass-rails', '>= 3.2'
 gem 'uglifier'
-gem 'coffee-rails', '~> 4.0.0'
 gem 'backbone-on-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -22,15 +21,19 @@ gem 'thin'
 gem 'eventmachine', '~> 1.0.8'
 gem 'therubyracer'
 gem 'less-rails'
+gem 'loofah', '~> 2.2.1'
 gem 'font-awesome-rails'
 gem 'simple-line-icons-rails'
 gem 'kaminari'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'spring',        group: :development
-
-gem 'factory_bot', group: [:development, :test]
+group :development, :test do
+    gem 'factory_bot'
+    gem 'faker'
+    gem 'rspec-rails', '~> 3.7'
+    gem 'spring'
+end
 
 group :development do
   gem 'annotate'

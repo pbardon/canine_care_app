@@ -3,7 +3,6 @@ CanineCareApp.Views.SitterBanner = Backbone.View.extend({
 
     events: {
         'click #sitterInfoButton' : 'navToSitterInfo'
-
     },
 
     navToSitterInfo: function() {
