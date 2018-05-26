@@ -1,4 +1,4 @@
-class MoveAddressToSitter < ActiveRecord::Migration
+class MoveAddressToSitter < ActiveRecord::Migration[5.0]
   def change
     remove_column :users, :street_address
     remove_column :users, :city

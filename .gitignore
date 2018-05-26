@@ -17,3 +17,7 @@
 
 # Ignore application configuration
 config/application.yml
+app.yaml
+
+# Ignore precompiled assets
+public/assets

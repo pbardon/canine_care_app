@@ -1,4 +1,4 @@
-class AddAttachmentToSitters < ActiveRecord::Migration
+class AddAttachmentToSitters < ActiveRecord::Migration[5.0]
   def self.up
     change_table :sitters do |t|
       t.attachment :sitter_photo

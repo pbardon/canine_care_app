@@ -1,4 +1,4 @@
-class CreateSitterComments < ActiveRecord::Migration
+class CreateSitterComments < ActiveRecord::Migration[5.0]
   def change
     create_table :sitter_comments do |t|
       t.integer :sitter_id, null: false
