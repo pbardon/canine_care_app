@@ -87,7 +87,7 @@ Rails.application.configure do
   :storage => :s3,
   :s3_protocol => 'https',
   :url =>':s3_domain_url',
-  :s3_region => 'us-west-2',
+  :s3_region => ENV['AWS_REGION'],
   :path => '/:class/:attachment/:id_partition/:style/:filename',
   :s3_credentials => {
     :bucket => ENV['AWS_BUCKET_PRODUCTION'],

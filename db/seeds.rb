@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-photos_folder_path="/Users/bardon/Desktop/seedphotos"
+photos_folder_path="/Users/oldComputer/Desktop/seedphotos"
 require 'factory_bot'
 include FactoryBot::Syntax::Methods
 

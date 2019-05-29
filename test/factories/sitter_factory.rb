@@ -1,5 +1,5 @@
 require 'faker'
-photos_folder_path="/Users/bardon/Desktop/seedphotos"
+photos_folder_path="/Users/oldComputer/Desktop/seedphotos"
 
 FactoryBot.define do
     factory :sitter do
@@ -14,6 +14,6 @@ FactoryBot.define do
         avg_rating 0
         latitude { rand(31..49) }
         longitude { rand(-120..-81) }
-        sitter_photo { File.open("#{photos_folder_path.to_s}/sitter#{rand(1..15).to_s}.jpg") }
+        sitter_photo { File.open("#{photos_folder_path.to_s}/sitter#{rand(1..6).to_s}.jpg") }
     end
 end
