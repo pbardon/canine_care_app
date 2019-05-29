@@ -14,9 +14,8 @@ development:
       pool: 5
       timeout: 5000
       database: "canine_care_development"
-      username: <%= ENV['PG_USERNAME'] %>
+      username: postgres 
       password: <%= ENV['PG_PASSWORD'] %>
-      host:     <%= ENV['PG_INSTANCE'] %>
 
 production:
       adapter: postgresql
