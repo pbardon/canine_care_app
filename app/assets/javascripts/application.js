@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require_tree ./vendor/popper-js
 //= require jquery.serializeJSON
-//= require bootstrap-sprockets
 //= require underscore
 //= require backbone
 //= require dog_sitting_app
