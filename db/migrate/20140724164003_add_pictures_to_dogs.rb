@@ -1,4 +1,4 @@
-class AddPicturesToDogs < ActiveRecord::Migration
+class AddPicturesToDogs < ActiveRecord::Migration[5.0]
   def self.up
     change_table :dogs do |t|
       t.attachment :dog_photo

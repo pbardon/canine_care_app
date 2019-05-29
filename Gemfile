@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby "2.2.4"
+ruby "2.6.3"
 
-gem 'rails', '4.2.10'
+gem 'rails', '5.2.3'
 gem 'rails-html-sanitizer', '~> 1.0.4'
 gem 'pg', '~> 0.20'
 gem 'bootstrap', '~> 4.0.0'
@@ -20,8 +20,7 @@ gem 'rest-client'
 gem 'rails_12factor'
 gem 'thin'
 gem 'eventmachine', '~> 1.0.8'
-gem 'therubyracer'
-gem 'less-rails'
+gem 'mini_racer'
 gem 'loofah', '~> 2.2.1'
 gem 'font-awesome-rails'
 gem 'simple-line-icons-rails'
@@ -56,3 +55,5 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem "appengine", "~> 0.4.6"
