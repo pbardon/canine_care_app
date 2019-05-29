@@ -4,7 +4,7 @@ ruby "2.6.3"
 gem 'rails', '5.2.3'
 gem 'rails-html-sanitizer', '~> 1.0.4'
 gem 'pg', '~> 0.20'
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '>= 4.3.1'
 gem 'sass-rails', '>= 3.2'
 gem 'uglifier'
 gem 'backbone-on-rails'
