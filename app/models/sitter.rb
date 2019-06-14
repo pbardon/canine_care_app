@@ -34,6 +34,7 @@ class Sitter < ActiveRecord::Base
         ).to_s
 
         output = JSON.parse(RestClient.get(geolocationaddress))
+        print output
         results = output["results"].first
         location = results['geometry']['location']
         location
