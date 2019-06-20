@@ -2,6 +2,7 @@ FROM ruby:2.6
 
 RUN mkdir /app
 WORKDIR /app
+RUN mkdir seedphotos
 
 ADD Gemfile Gemfile.lock /app/
 RUN bundle install -j 8
