@@ -5,12 +5,12 @@ services:
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:
-    build: .
+    image: pbardon/canine_care_app
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/myapp
-      - /Users/oldComputer/Desktop/seedphotos:/Users/oldComputer/Desktop/seedphotos
+      - /home/webhost/seedphotos:/Users/oldComputer/Desktop/seedphotos
     ports:
-      - "3000:3000"
+      - "8080:3000"
     depends_on:
       - db
