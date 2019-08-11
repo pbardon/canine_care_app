@@ -28,4 +28,3 @@ production:
 test:
   <<: *default
   database: canine_care_test
-

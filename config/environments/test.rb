@@ -49,7 +49,12 @@ Rails.application.configure do
         }
     }
 
-     Paperclip.options[:log] = false
+    Paperclip.options[:log] = false
+
+    config.google_cloud.use_trace = false
+    config.google_cloud.use_logging = false
+    config.google_cloud.use_error_reporting = false
+    config.google_cloud.use_debugger = false
 
     config.after_initialize do
         ActiveRecord::Base.logger = Rails.logger.clone
