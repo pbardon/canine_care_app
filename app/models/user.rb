@@ -17,12 +17,17 @@ class User < ActiveRecord::Base
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
-    if user && user.is_password?(password)
-      user.password = password
-      return user
-    else
-      nil
+    unless user
+      message = "Username/Password invalid"
+      Rails.logger.info(message)
+      raise message
     end
+    unless user.is_password?(password)
+      message = "Password invalid"
+      Rails.logger.info(message)
+      raise message
+    end
+    return user
   end
 
   def is_password?(password)
