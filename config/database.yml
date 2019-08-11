@@ -25,6 +25,9 @@ production:
 # Do not set this db to the same as development or production.
 
 test:
-  <<: *default
-  database: myapp_test
-
+  adapter: postgresql
+  encoding: unicode
+  host: 127.0.0.1 
+  username: postgres
+  password:
+  pool: 5

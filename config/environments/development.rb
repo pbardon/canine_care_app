@@ -51,4 +51,9 @@ Rails.application.configure do
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+  config.google_cloud.use_trace = false
+  config.google_cloud.use_logging = false
+  config.google_cloud.use_error_reporting = false
+  config.google_cloud.use_debugger = false
 end
