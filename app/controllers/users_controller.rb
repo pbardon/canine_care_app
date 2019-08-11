@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       render json: @user, status: 200
     else
-      render json: { error: @user.errors.full_messages,
+      render json: { error: "Registration failed: #{@user.errors.full_messages.join(', ')}",
                      status: 400
                    },
             status: 400
@@ -21,18 +21,18 @@ class UsersController < ApplicationController
     @user = User.find_by_session_token(current_user.session_token)
     if @user.update_attributes(user_params)
       @user.save!
-    else
-      flash[:errors] =  @user.errors.full_messages
+      return
     end
+    flash[:errors] =  @user.errors.full_messages
   end
 
   def show
       @user = User.find(params[:id])
       if @user
           render formats: [:json]
+          return
       end
       flash[:errors] = @user.errors.full_messages
-
   end
 
   private
@@ -40,5 +40,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :street_address, :city, :state, :zipcode)
   end
-
 end

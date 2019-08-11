@@ -27,11 +27,11 @@ CanineCareApp.Views.SignInPage = Backbone.CompositeView.extend({
         var loginPassword = $('#loginPassword').val();
         if (!loginUser) {
             //must provide login user, show error
-            this.addErrorMessage({error: 'must provide user'});
+            this.addErrorMessage({error: 'Username must be provided'});
             return;
         }
         if (!loginPassword) {
-            this.addErrorMessage({error: 'must provide password'});
+            this.addErrorMessage({error: 'Password must be provided'});
             return;
         }
         var loginInfo = {
