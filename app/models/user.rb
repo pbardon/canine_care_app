@@ -17,11 +17,9 @@ class User < ActiveRecord::Base
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
-    if user && user.is_password?(password)
-      user.password = password
+    return unless user
+    if user.is_password?(password)
       return user
-    else
-      nil
     end
   end
 

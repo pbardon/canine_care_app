@@ -12,11 +12,11 @@ class SessionsController < ApplicationController
       render json: @user, status: 200
     else
       @user = User.new(session_params)
-      flash[:errors] = 'Invalid username/password'
-      render json: { error: "No such user; check the submitted email address",
-                     status: 400
+      flash[:errors] = 'Authentication Failed: Invalid username/password'
+      render json: { error: "Authentication Failed: Invalide username and/or password",
+                     status: 401
                    },
-            status: 400
+            status: 401
     end
   end
 
