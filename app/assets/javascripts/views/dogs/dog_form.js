@@ -9,7 +9,7 @@ CanineCareApp.Views.DogForm = Backbone.FormView.extend({
 
     events: {
         'submit form' : 'submit',
-        'change #addPic': 'handle_files'
+        'change #addPic': 'encodeFile'
     },
 
     render: function() {
@@ -20,8 +20,18 @@ CanineCareApp.Views.DogForm = Backbone.FormView.extend({
         return this;
     },
 
-    handle_files: function(event) {
-        this.saveFileToAttribute(event, 'dog_photo');
+    encodeFile: function (event) {
+        var file = event.currentTarget.files[0];
+        var reader = new FileReader();
+        reader.onload = function (fileEvent) {
+          this.model.set({ 
+            dog_photo: fileEvent.target.result }// file name is part of the data
+          );
+        }.bind(this)
+        reader.onerror = function () {
+          console.log("error", arguments)
+        }
+        reader.readAsDataURL(file);
     },
 
     submit: function (event) {
@@ -29,6 +39,7 @@ CanineCareApp.Views.DogForm = Backbone.FormView.extend({
         $('.addSubmit').replaceWith('<img class="addSubmit" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/loading.gif">');
         var data = $(event.currentTarget).serializeJSON();
         this.model.set(data);
+        // this.model.set({ DogName: $('input[name=dog_name]').val() });
         if (this.model.isNew()) {
             this.collection.create(this.model, {
                 success: function() {

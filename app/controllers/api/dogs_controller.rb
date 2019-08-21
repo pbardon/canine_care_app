@@ -4,7 +4,7 @@ module Api
 
     def create
       @dog = current_user.dogs.new(dog_params)
-      if @dog.save
+      if @dog.save()
         render "dogs/show"
       else
         render json: @dog.errors.full_messages, status: :unprocessable_entity
@@ -57,6 +57,5 @@ module Api
     def dog_params
       params.require(:dog).permit(:name, :age, :description, :size, :dog_photo)
     end
-
   end
 end

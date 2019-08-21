@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Sitter, type: :model do
     before(:each) do
-        allow_any_instance_of(Paperclip::Attachment).to receive(:save)
-            .and_return(true)
+        # allow_any_instance_of(Paperclip::Attachment).to receive(:save)
+        #     .and_return(true)
         @sitter = create(:sitter)
     end
   it 'should validate required parameters' do

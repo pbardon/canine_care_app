@@ -12,8 +12,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jbuilder'
 gem 'figaro'
-gem 'aws-sdk'
-gem 'paperclip'
+gem "aws-sdk-s3"
 gem 'bcrypt', '~> 3.1.7'
 gem 'addressable'
 gem 'rest-client'
@@ -38,6 +37,7 @@ end
 group :development do
   gem 'annotate'
   gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'byebug'

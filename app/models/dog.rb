@@ -8,12 +8,11 @@ class Dog < ActiveRecord::Base
 
   has_many :comments, as: :commentable
 
-  has_attached_file :dog_photo, styles: {
-    big: "600x600>",
-    small: "100x100#"
-  }, default_url: "https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png"
+  has_one_attached :dog_photo
 
-
-  validates_attachment :dog_photo,
-  :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
+  # def save()
+  #   self.dog_photo.attach(photo)
+  #   params[:signed_blob_id]
+  #   return super
+  # end
 end
