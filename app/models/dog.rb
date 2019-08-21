@@ -8,11 +8,20 @@ class Dog < ActiveRecord::Base
 
   has_many :comments, as: :commentable
 
-  has_one_attached :dog_photo
+  has_many :photos, as: :imageable
+
+  # has_one_attached :dog_photo
 
   # def save()
   #   self.dog_photo.attach(photo)
   #   params[:signed_blob_id]
   #   return super
   # end
+
+  before_create :process_dog
+
+  def process_dog
+    binding.pry
+  end
+
 end

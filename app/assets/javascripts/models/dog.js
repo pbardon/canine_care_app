@@ -32,7 +32,9 @@ CanineCareApp.Models.Dog = Backbone.Model.extend({
         // Post data as FormData object on create to allow file upload
         if(method == 'create'){
           var dog = new FormData();
-          dog.append('dog[dog_photo]', model.attributes['dog_photo']);
+          var photo = new FormData;
+          photo.append('photo[filename]', 'photo[file_content]')
+          dog.append('dog[photos]', [photo]);
           // Loop over model attributes and append to formData
           _.each(model.attributes, function(value, key){
             if (key === 'dog_photo') {

@@ -3,7 +3,8 @@ module Api
     wrap_parameters :dog, include: [:name, :age, :description, :size, :dog_photo]
 
     def create
-      @dog = current_user.dogs.new(dog_params)
+      binding.pry
+      @dog = current_user.dogs.create(dog_params)
       if @dog.save()
         render "dogs/show"
       else
