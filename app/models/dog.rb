@@ -21,7 +21,7 @@ class Dog < ActiveRecord::Base
   before_create :process_dog
 
   def process_dog
-    binding.pry
+    # binding.pry
   end
 
 end

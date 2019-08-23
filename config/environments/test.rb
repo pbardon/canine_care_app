@@ -41,6 +41,9 @@ Rails.application.configure do
     config.google_cloud.use_error_reporting = false
     config.google_cloud.use_debugger = false
 
+    config.active_storage.service = :test
+
+
     config.after_initialize do
         ActiveRecord::Base.logger = Rails.logger.clone
         ActiveRecord::Base.logger.level = Logger::INFO

@@ -26,4 +26,11 @@ RSpec.describe Dog, type: :model do
         booking.dog = @dog
         expect(booking.dog_id).to eq @dog.id
     end
+
+    # it 'should be able to attach a photo' do
+    #     @dog.photos.create()
+    #     photo = create(:photo)
+    #     expect(photo).to_not be_nil
+        
+    # end
 end

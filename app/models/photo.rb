@@ -7,7 +7,6 @@ class Photo < ActiveRecord::Base
   after_create :parse_photo
   validate :photo_validations, on: :create
 
-
   def parse_photo
     # If directly uploaded
     unless self.photo_contents.nil? || self.photo_contents[/(image\/[a-z]{3,4})|(application\/[a-z]{3,4})/] == ''
@@ -19,7 +18,9 @@ class Photo < ActiveRecord::Base
       File.open("#{Rails.root}/tmp/images/#{filename}", 'wb') do |f|
         f.write(decoded_data)
       end
-      self.photo.attach(io: File.open("#{Rails.root}/tmp/images/#{filename}"), filename: filename)
+      puts "Filename is #{filename}"
+      puts "file content: #{File.open("#{Rails.root}/tmp/images/#{filename}")}"
+      self.img.attach(io: File.open("#{Rails.root}/tmp/images/#{filename}"), filename: filename)
       FileUtils.rm("#{Rails.root}/tmp/images/#{filename}")
     end
   end
