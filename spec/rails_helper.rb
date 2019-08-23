@@ -59,3 +59,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+def generate_base64_encoded_image
+  return "data:image/jpeg;base64,#{Base64.encode64(File.open("/Users/oldComputer/Desktop/seedphotos/dog1.jpeg", "rb").read)}"
+end

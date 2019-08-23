@@ -1,4 +1,7 @@
 class Photo < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+  
+
   has_one_attached :img
   belongs_to :imageable, polymorphic: true, optional: true
   attr_accessor :photo_contents
@@ -6,6 +9,11 @@ class Photo < ActiveRecord::Base
 
   after_create :parse_photo
   validate :photo_validations, on: :create
+
+  def img_url
+    #generate url for attachement
+    return rails_blob_path(self.img, disposition: "attachment", only_path: true)
+  end
 
   def parse_photo
     # If directly uploaded

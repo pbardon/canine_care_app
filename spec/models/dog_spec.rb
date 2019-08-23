@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'byebug'
 
 RSpec.describe Dog, type: :model do
     before(:all) do
@@ -28,8 +29,10 @@ RSpec.describe Dog, type: :model do
     end
 
     it 'should be able to attach a photo' do
-        @dog.photos.create()
-        photo = create(:photo)
+        photo = @dog.photos.create({photo_name: "test-dog-photo", photo_contents: generate_base64_encoded_image })
         expect(photo).to_not be_nil
+        expect(photo.img).to_not be_nil
+        expect(photo.img_url).to_not be_nil
+        expect(photo.img_url).to match(/^\/rails\/active_storage\/blobs\/.*\?disposition=attachment$/)
     end
 end
