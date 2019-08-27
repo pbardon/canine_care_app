@@ -24,8 +24,6 @@ class Photo < ActiveRecord::Base
       File.open("#{Rails.root}/tmp/images/#{filename}", 'wb') do |f|
         f.write(decoded_data)
       end
-      puts "Filename is #{filename}"
-      puts "file content: #{File.open("#{Rails.root}/tmp/images/#{filename}")}"
       self.img.attach(io: File.open("#{Rails.root}/tmp/images/#{filename}"), filename: filename)
       FileUtils.rm("#{Rails.root}/tmp/images/#{filename}")
     end

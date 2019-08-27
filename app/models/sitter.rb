@@ -8,6 +8,8 @@ class Sitter < ActiveRecord::Base
 
     has_many :comments, as: :commentable
 
+    has_one :photo, as: :imageable
+
     has_one_attached :sitter_photo
 
 

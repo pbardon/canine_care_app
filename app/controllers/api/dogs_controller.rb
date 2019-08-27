@@ -1,9 +1,10 @@
+require 'byebug'
+
 module Api
   class DogsController < ApplicationController
-    wrap_parameters :dog, include: [:name, :age, :description, :size, :dog_photo]
+    wrap_parameters :dog, include: [:name, :age, :description, :size]
 
     def create
-      binding.pry
       @dog = current_user.dogs.create(dog_params)
       if @dog.save()
         render "dogs/show"
@@ -56,7 +57,7 @@ module Api
     private
 
     def dog_params
-      params.require(:dog).permit(:name, :age, :description, :size, :dog_photo)
+      params.require(:dog).permit(:name, :age, :description, :size, photo_attributes: [:photo_name, :photo_contents])
     end
   end
 end

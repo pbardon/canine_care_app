@@ -10,7 +10,7 @@ gem 'uglifier'
 gem 'backbone-on-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'jbuilder'
+gem 'jbuilder', '>= 2.5'
 gem 'figaro'
 gem "aws-sdk-s3"
 gem 'bcrypt', '~> 3.1.7'
@@ -32,6 +32,7 @@ group :development, :test do
     gem 'faker'
     gem 'rspec-rails', '~> 3.7'
     gem 'spring'
+    gem 'rails-controller-testing'
 end
 
 group :development do

@@ -12,18 +12,4 @@ class Dog < ActiveRecord::Base
 
   accepts_nested_attributes_for :photo
 
-  # has_one_attached :dog_photo
-
-  # def save()
-  #   self.dog_photo.attach(photo)
-  #   params[:signed_blob_id]
-  #   return super
-  # end
-
-  before_create :process_dog
-
-  def process_dog
-    # binding.pry
-  end
-
 end
