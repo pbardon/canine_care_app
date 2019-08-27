@@ -8,7 +8,9 @@ class Dog < ActiveRecord::Base
 
   has_many :comments, as: :commentable
 
-  has_many :photos, as: :imageable
+  has_one :photo, as: :imageable
+
+  accepts_nested_attributes_for :photo
 
   # has_one_attached :dog_photo
 

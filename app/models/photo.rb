@@ -1,9 +1,7 @@
 class Photo < ActiveRecord::Base
   include Rails.application.routes.url_helpers
-  
-
+  belongs_to :imageable, polymorphic: true
   has_one_attached :img
-  belongs_to :imageable, polymorphic: true, optional: true
   attr_accessor :photo_contents
   attr_accessor :photo_name
 

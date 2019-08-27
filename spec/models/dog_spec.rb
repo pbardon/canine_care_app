@@ -29,7 +29,7 @@ RSpec.describe Dog, type: :model do
     end
 
     it 'should be able to attach a photo' do
-        photo = @dog.photos.create({photo_name: "test-dog-photo", photo_contents: generate_base64_encoded_image })
+        photo = @dog.create_photo({photo_name: "test-dog-photo", photo_contents: generate_base64_encoded_image })
         expect(photo).to_not be_nil
         expect(photo.img).to_not be_nil
         expect(photo.img_url).to_not be_nil
