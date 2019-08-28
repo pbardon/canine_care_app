@@ -1,4 +1,6 @@
 require 'faker'
+require 'rails_helper'
+
 FactoryBot.define do
   factory :dog do
       user
@@ -6,5 +8,6 @@ FactoryBot.define do
       age { Faker::Number.number(digits: 1) }
       size { %w(small, medium, large).take(1) }
       description { Faker::Lorem.sentence(word_count: 1) }
+      photo
   end
 end

@@ -5,18 +5,18 @@ Rails.application.routes.draw do
 
 
     namespace :api, defaults: { format: :json } do
-    resources :dogs, only: [:create, :index, :update, :show, :destroy] do
-      resources :bookings, only: [:index]
-    end
-    resources :sitters, only: [:create, :index, :update, :show, :destroy] do
-      resources :bookings, only: [:index]
-    end
+      resources :dogs, only: [:create, :index, :update, :show, :destroy] do
+        resources :bookings, only: [:index]
+      end
+      resources :sitters, only: [:create, :index, :update, :show, :destroy] do
+        resources :bookings, only: [:index]
+      end
 
-    resources :bookings, only: [:create, :destroy, :update]
+      resources :bookings, only: [:create, :destroy, :update]
 
-    resources :sitter_comments, only: [:create, :index, :show, :destroy]
+      resources :sitter_comments, only: [:create, :index, :show, :destroy]
 
-    resources :comments, only: [:index, :create, :show, :update, :destroy]
+      resources :comments, only: [:index, :create, :show, :update, :destroy]
 
     end
 

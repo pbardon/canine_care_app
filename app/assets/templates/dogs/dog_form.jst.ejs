@@ -23,7 +23,7 @@
                                 <input type="text"
                                       class="form-control"
                                       id="dogName"
-                                      name="dog[name]"
+                                      name="name"
                                       placeholder="Dog Name"
                                       value="<%= dog.escape('name') %>">
                               </div>
@@ -40,7 +40,7 @@
                                   class="form-control"
                                   id="dogAge"
                                   placeholder="Age"
-                                  name="dog[age]"
+                                  name="age"
                                   value="<%= dog.escape('age') %>">
                           </div>
                         </div>
@@ -55,7 +55,7 @@
                             <textarea class="form-control"
                                       rows="3"
                                       id="dogDescription"
-                                      name="dog[description]">
+                                      name="description">
                                       <%= dog.escape('description') %>
                             </textarea>
                           </div>
@@ -69,7 +69,7 @@
                             <div class="radio">
                               <label>
                                 <input type="radio"
-                                       name="dog[size]"
+                                       name="size"
                                        id="smallOption"
                                        value="small"
                                        checked="<%= (dog.escape('size') === 'small') ? 'true' : 'false' %>">
@@ -79,7 +79,7 @@
                             <div class="radio">
                               <label>
                                 <input type="radio"
-                                       name="dog[size]"
+                                       name="size"
                                        id="size"
                                        value="medium">
                                     Medium
@@ -88,7 +88,7 @@
                             <div class="radio">
                               <label>
                                 <input type="radio"
-                                       name="dog[size]"
+                                       name="size"
                                        id="largeOption"
                                        value="large">
                                     Large
@@ -107,14 +107,14 @@
                               
                             <label for="addPic">Add A Picture of Your Dog:</label>
                             <br>
-                            <input type="file" name="dog[dog_photo]" id="addPic">
+                            <input type="file" name="dog_photo" id="addPic">
                             <% } else { %>
                               <label for="addPic">Change Dog Picture:</label>
                               <div id="profileImage">
                                   <img class="img-responsive img-portfolio" src="<%= dog.get('dog_photo_large') %>">
                               </div>
                               <br>
-                              <input type="file" name="dog[dog_photo]" id="addPic">
+                              <input type="file" name="dog_photo" id="addPic">
                             <% } %>
                         </div>
                     </div>

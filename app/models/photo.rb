@@ -10,7 +10,7 @@ class Photo < ActiveRecord::Base
 
   def img_url
     #generate url for attachement
-    return rails_blob_path(self.img, disposition: "attachment", only_path: true)
+    return rails_blob_path(self.img, disposition: "attachment")
   end
 
   def parse_photo

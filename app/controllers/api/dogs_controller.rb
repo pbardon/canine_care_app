@@ -2,9 +2,10 @@ require 'byebug'
 
 module Api
   class DogsController < ApplicationController
-    wrap_parameters :dog, include: [:name, :age, :description, :size]
+    wrap_parameters :dog, include: [:name, :age, :description, :size, :photo_attributes]
 
     def create
+      debugger
       @dog = current_user.dogs.create(dog_params)
       if @dog.save()
         render "dogs/show"
@@ -19,19 +20,19 @@ module Api
     end
 
     def show
+      @current_user = current_user
       @dog = Dog.find(params[:id]);
       if @dog
-        i = 1
-        sum = 0
-        @dog.comments.each do |comment|
-          sum += comment.rating
-          i += 1
+        if @dog.comments.count > 0
+          @dog.comments.each do |comment|
+            sum += comment.rating
+          end
+          @dog.avg_rating = sum/@dog.comments.count
         end
-        @dog.avg_rating = sum/i unless i == 0
-        @dog.save
+        render "dogs/show"
+      else
+        render json: @dog.errors.full_messages, status: :unprocessable_entity
       end
-      @current_user = current_user
-      render "dogs/show"
     end
 
     def update

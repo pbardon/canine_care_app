@@ -10,11 +10,12 @@ RSpec.describe Api::DogsController, type: :controller do
   before(:each) do
     user = FactoryBot.create(:user)
     controller.sign_in user
+    @dog = FactoryBot.create(:dog)
   end
 
   describe "#create" do
     it "creates a dog" do
-      get :create, { params: 
+      post :create, { params: 
         { dog: { 
           name: "Spot", age: 7, 
           description: "Nice", size: "small", 
@@ -24,6 +25,14 @@ RSpec.describe Api::DogsController, type: :controller do
           }}
         }, format: :json }
         expect(response).to render_template("dogs/show")
+    end
+  end
+
+  describe "#show" do
+    render_views
+    it "renders the dog as json" do
+      get :show, { params: { id: @dog.id }, format: :json }
+      expect(response).to render_template("dogs/show")
     end
   end
 end

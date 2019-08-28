@@ -48,4 +48,6 @@ Rails.application.configure do
         ActiveRecord::Base.logger = Rails.logger.clone
         ActiveRecord::Base.logger.level = Logger::INFO
     end
+
+    Rails.application.routes.default_url_options[:host] = "http://localhost:3000"
 end

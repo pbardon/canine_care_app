@@ -24,9 +24,9 @@ CanineCareApp.Views.DogForm = Backbone.FormView.extend({
         var file = event.currentTarget.files[0];
         var reader = new FileReader();
         reader.onload = function (fileEvent) {
-          this.model.set({ 
-            dog_photo: fileEvent.target.result }// file name is part of the data
-          );
+          this.model.set({
+            photo_attributes: { photo_name: "foo", photo_contents: fileEvent.target.result }
+          });
         }.bind(this)
         reader.onerror = function () {
           console.log("error", arguments)
@@ -41,7 +41,7 @@ CanineCareApp.Views.DogForm = Backbone.FormView.extend({
         this.model.set(data);
         // this.model.set({ DogName: $('input[name=dog_name]').val() });
         if (this.model.isNew()) {
-            this.collection.create(this.model, {
+            this.collection.create({dog: this.model.attributes}, {
                 success: function() {
                     Backbone.history.navigate("#/dogs", { trigger: true });
                 },
