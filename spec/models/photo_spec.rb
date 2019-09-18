@@ -12,6 +12,6 @@ RSpec.describe Photo, type: :model do
 
   it 'should be able to provide a url' do
     expect(@photo.img_url).to_not be_nil
-    expect(@photo.img_url).to match(/$\/rails\/active_storage\/blobs\/.*\??disposition=attachment^/)
+    expect(@photo.img_url).to match(/^\/rails\/active_storage\/blobs\/.*\??disposition=attachment$/)
   end
 end
