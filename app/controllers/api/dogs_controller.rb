@@ -5,7 +5,6 @@ module Api
     wrap_parameters :dog, include: [:name, :age, :description, :size, :photo_attributes]
 
     def create
-      debugger
       @dog = current_user.dogs.create(dog_params)
       if @dog.save()
         render "dogs/show"

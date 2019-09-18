@@ -21,3 +21,6 @@ app.yaml
 
 # Ignore precompiled assets
 public/assets
+
+# Ignore local dev storage
+/storage
