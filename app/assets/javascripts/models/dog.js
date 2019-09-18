@@ -25,23 +25,5 @@ CanineCareApp.Models.Dog = Backbone.Model.extend({
         }
 
         return jsonPayload;
-    },
-
-    // sync: function(method, model, options){
-
-    //     // Post data as FormData object on create to allow file upload
-    //     if(method == 'create'){
-    //       var dog = model.attributes
-    //       // var outputFormData = new FormData();
-    //       // outputFormData.append('dog', formData)
-    
-    //       // Set processData and contentType to false so data is sent as FormData
-    //       _.defaults(options || (options = {}), {
-    //         data: {dog: dog},
-    //         processData: false,
-    //         contentType: false
-    //       });
-    //     }
-    //     return Backbone.sync.call(this, method, model, options);
-    //   }
+    }
 });

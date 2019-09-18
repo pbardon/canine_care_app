@@ -10,8 +10,7 @@ class Sitter < ActiveRecord::Base
 
     has_one :photo, as: :imageable
 
-    has_one_attached :sitter_photo
-
+    accepts_nested_attributes_for :photo
 
     def generate_geocode
         if self.latitude && self.longitude

@@ -5,7 +5,7 @@ CanineCareApp.Views.SitterForm = Backbone.CompositeView.extend({
 
     events: {
         'submit form':'submit',
-        'change #addSitterPic': 'handle_files'
+        'change #addSitterPic': 'encodeFile'
     },
 
     render: function() {
@@ -14,13 +14,19 @@ CanineCareApp.Views.SitterForm = Backbone.CompositeView.extend({
         return this;
     },
 
-    handle_files: function(event) {
-        var that = this;
+    encodeFile: function (event) {
+        var sitterForm = this;
         var file = event.currentTarget.files[0];
         var reader = new FileReader();
-        reader.onload = function(e) {
-            that.model.set('sitter_photo', this.result);
+        var loadFunction = function (fileEvent) {
+            sitterForm.model.set({
+            photo_attributes: { photo_name: "foo", photo_contents: fileEvent.target.result }
+          });
         };
+        reader.onload = loadFunction;
+        reader.onerror = function () {
+          console.log("error", arguments)
+        }
         reader.readAsDataURL(file);
     },
 
@@ -32,7 +38,7 @@ CanineCareApp.Views.SitterForm = Backbone.CompositeView.extend({
         var data = $(event.currentTarget).serializeJSON();
         this.model.set(data);
         if (this.model.isNew()) {
-            this.collection.create(this.model, {
+            this.collection.create({ sitter: this.model.attributes }, {
                 success: function() {
                     var wait = true;
                     Backbone.history.navigate('/');

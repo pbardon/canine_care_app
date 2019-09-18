@@ -39,7 +39,6 @@ CanineCareApp.Views.DogForm = Backbone.FormView.extend({
         $('.addSubmit').replaceWith('<img class="addSubmit" src="https://s3-us-west-1.amazonaws.com/pet-sitter-development/loading.gif">');
         var data = $(event.currentTarget).serializeJSON();
         this.model.set(data);
-        // this.model.set({ DogName: $('input[name=dog_name]').val() });
         if (this.model.isNew()) {
             this.collection.create({dog: this.model.attributes}, {
                 success: function() {
