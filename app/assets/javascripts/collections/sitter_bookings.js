@@ -18,7 +18,6 @@ CanineCareApp.Collections.SitterBookings = Backbone.Collection.extend({
         } else {
             booking.fetch();
         }
-
         return booking;
     }
 
