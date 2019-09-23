@@ -6,6 +6,7 @@ RUN mkdir seedphotos
 
 ADD Gemfile Gemfile.lock /app/
 RUN bundle install -j 8
+RUN bundle exec rspec
 
 ADD . /app
 RUN ruby /app/bin/rake assets:precompile

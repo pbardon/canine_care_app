@@ -88,6 +88,7 @@ GEM
     brakeman (4.6.1)
     builder (3.2.3)
     byebug (11.0.1)
+    climate_control (0.2.0)
     coderay (1.1.2)
     coffee-script (2.4.1)
       coffee-script-source
@@ -225,6 +226,12 @@ GEM
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     os (1.0.1)
+    paperclip (6.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      mime-types
+      mimemagic (~> 0.3.0)
+      terrapin (~> 0.6.0)
     pg (0.21.0)
     popper_js (1.14.5)
     pry (0.12.2)
@@ -332,6 +339,8 @@ GEM
       google-cloud-trace (~> 0.33)
     stackdriver-core (1.3.3)
       google-cloud-core (~> 1.2)
+    terrapin (0.6.0)
+      climate_control (>= 0.0.3, < 1.0)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -376,6 +385,7 @@ DEPENDENCIES
   kaminari
   loofah (~> 2.2.1)
   mini_racer
+  paperclip (~> 6.0.0)
   pg (~> 0.20)
   pry-byebug
   pry-rails
@@ -394,7 +404,7 @@ DEPENDENCIES
   uglifier
 
 RUBY VERSION
-   ruby 2.6.3p62
+   ruby 2.6.4p104
 
 BUNDLED WITH
    1.17.2

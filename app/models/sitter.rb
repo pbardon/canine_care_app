@@ -12,6 +12,11 @@ class Sitter < ActiveRecord::Base
 
     accepts_nested_attributes_for :photo
 
+    has_attached_file :sitter_photo, styles: {
+    big: "600x600>",
+    small: "100x100#"
+    }, default_url: "https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png"
+
     def generate_geocode
         if self.latitude && self.longitude
             return

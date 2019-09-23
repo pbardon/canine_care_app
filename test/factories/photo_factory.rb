@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative './factory_helper'
 require 'faker'
 FactoryBot.define do
   factory :photo do

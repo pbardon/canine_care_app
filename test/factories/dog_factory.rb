@@ -1,5 +1,5 @@
 require 'faker'
-require 'rails_helper'
+require_relative './factory_helper'
 
 FactoryBot.define do
   factory :dog do

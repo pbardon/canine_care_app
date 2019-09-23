@@ -24,6 +24,7 @@ gem 'loofah', '~> 2.2.1'
 gem 'font-awesome-rails'
 gem 'simple-line-icons-rails'
 gem 'kaminari'
+gem "paperclip", "~> 6.0.0"
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

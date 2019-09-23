@@ -148,14 +148,14 @@ CanineCareApp.Routers.Router = Backbone.Router.extend({
                 }
             });
             return;
-        } else {
-            var sittersView = new CanineCareApp.Views.SittersIndex({
-                collection: CanineCareApp.Collections.sitters,
-                navbarView: oThis.navbarView
-            });
-
-            oThis._swapView(sittersView);
         }
+
+        var sittersView = new CanineCareApp.Views.SittersIndex({
+            collection: CanineCareApp.Collections.sitters,
+            navbarView: oThis.navbarView
+        });
+
+        oThis._swapView(sittersView);
     },
 
     sitterEdit: function(id) {

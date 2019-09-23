@@ -85,4 +85,18 @@ Rails.application.configure do
 
   # Set storage for S3
   config.active_storage.service = :amazon
+
+  # Include old config for migration
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_protocol => 'https',
+    :url =>':s3_domain_url',
+    :s3_region => ENV['AWS_REGION'],
+    :path => '/:class/:attachment/:id_partition/:style/:filename',
+    :s3_credentials => {
+      :bucket => ENV['AWS_BUCKET_PRODUCTION'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      }
+    }
 end
