@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
   attr_accessor :photo_name
 
   after_create :parse_photo
-  validate :photo_validations, on: :create
+  # validate :photo_validations, on: :create
 
   def img_url
     #generate url for attachement

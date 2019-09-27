@@ -9,8 +9,6 @@ module Api
     wrap_parameters :sitter, include: [:sitter_name, :price, :description, :street_address,
                                        :city, :state, :zipcode, :small, :medium, :large, :photo_attributes]
 
-                                       
-
     def create
       @sitter = Sitter.new(sitter_params)
       @sitter.user_id = current_user.id
