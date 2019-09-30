@@ -1,4 +1,4 @@
-CanineCareApp.Views.SitterForm = Backbone.CompositeView.extend({
+CanineCareApp.Views.SitterForm = Backbone.FormView.extend({
     template: JST['sitters/form'],
 
     className: "newSitterWrapper",
@@ -15,13 +15,7 @@ CanineCareApp.Views.SitterForm = Backbone.CompositeView.extend({
     },
 
     handle_files: function(event) {
-        var that = this;
-        var file = event.currentTarget.files[0];
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            that.model.set('sitter_photo', this.result);
-        };
-        reader.readAsDataURL(file);
+        this.saveFileToAttribute(event, "photo");
     },
 
     submit: function (event) {

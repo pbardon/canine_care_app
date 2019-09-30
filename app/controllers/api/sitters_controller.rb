@@ -99,7 +99,8 @@ module Api
     def sitter_params
       params.require(:sitter).permit(:sitter_name, :description, :price,
                                      :small, :medium, :large,
-                                     :street_address, :city, :state, :zipcode, :sitter_photo, :page)
+                                     :street_address, :city, :state, :zipcode, :sitter_photo, 
+                                     :page, photo: [:photo_contents])
     end
 
   end

@@ -27,7 +27,7 @@ window.CanineCareApp = {
                 }
             });
         }
-        var router = new CanineCareApp.Routers.Router(user);
+        return new CanineCareApp.Routers.Router(user);
     },
     setFormAuthToken: function(token) {
         this.formAuthToken = token;
