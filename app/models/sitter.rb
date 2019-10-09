@@ -17,12 +17,8 @@ class Sitter < ActiveRecord::Base
     small: "100x100#"
     }, default_url: "https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png"
 
-<<<<<<< HEAD
     validates_attachment :sitter_photo, content_type: {
       content_type: ["image/jpeg", "image/gif", "image/png"] }
-=======
-    :content_type => { :content_type => [ "image/jpeg", "image/gif", "image/png" ] }
->>>>>>> 65405a140d4c66b3576e4e63e657c86c9e026664
 
     def generate_geocode
         if self.latitude && self.longitude

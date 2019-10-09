@@ -7,7 +7,8 @@ module Api
     attr_reader :user_id
 
     wrap_parameters :sitter, include: [:sitter_name, :price, :description, :street_address,
-                                       :city, :state, :zipcode, :small, :medium, :large, :sitter_photo]
+                                       :city, :state, :zipcode, :small, :medium, :large, :photo,
+                                       :photo_attributes]
 
     def create
       @sitter = Sitter.new(sitter_params)
@@ -99,10 +100,8 @@ module Api
     def sitter_params
       params.require(:sitter).permit(:sitter_name, :description, :price,
                                      :small, :medium, :large,
-                                     :street_address, :city, :state, :zipcode, :sitter_photo, 
-                                     :page, photo: [:photo_contents])
+                                     :street_address, :city, :state, :zipcode,
+                                     :page, photo_attributes: [:img])
     end
-
   end
-
 end
