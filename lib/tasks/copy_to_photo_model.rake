@@ -5,5 +5,6 @@ namespace :copy_to_photo_model do
     unless sitter.save!
       puts "Failed to save #{sitter.user_name}"
     end
+    sitter.sitter_photo.destroy
   end
 end
