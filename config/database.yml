@@ -9,14 +9,14 @@ default: &default
 development:
   <<: *default
   host: db
-  database: myapp_development
+  database: cc_app_development
 
 production:
       <<: *default
       adapter: postgresql
       encoding: unicode
       pool: 5
-      database: canine_care_production
+      database: cc_app_production
       username: <%= ENV['PG_USERNAME'] %>
       password: <%= ENV['PG_PASSWORD'] %>
       host:     <%= ENV['PG_INSTANCE'] %>
@@ -27,4 +27,4 @@ production:
 
 test:
   <<: *default
-  database: canine_care_test
+  database: cc_app_test
