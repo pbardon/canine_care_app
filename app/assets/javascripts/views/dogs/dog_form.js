@@ -21,7 +21,7 @@ CanineCareApp.Views.DogForm = Backbone.FormView.extend({
     },
 
     handle_files: function(event) {
-        this.saveFileToAttribute(event, 'photo');
+        this.saveFileToAttribute(event, 'photo_attributes');
     },
 
     submit: function (event) {

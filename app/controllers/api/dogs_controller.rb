@@ -1,6 +1,7 @@
 module Api
   class DogsController < ApplicationController
-    wrap_parameters :dog, include: [:name, :age, :description, :size, :dog_photo]
+    wrap_parameters :dog, include: [:name, :age, :description, :size,
+                                    :dog_photo, :photo_attributes]
 
     def create
       @dog = current_user.dogs.new(dog_params)
@@ -55,8 +56,8 @@ module Api
     private
 
     def dog_params
-      params.require(:dog).permit(:name, :age, :description, :size, :dog_photo)
+      params.require(:dog).permit(:name, :age, :description, :size,
+                                  :dog_photo, photo_attributes: [:img])
     end
-
   end
 end

@@ -6,7 +6,6 @@ namespace :db do
       unless sitter.save!
         puts "Failed to save #{sitter.user_name}"
       end
-      sitter.sitter_photo.destroy
     end
   end
 end
