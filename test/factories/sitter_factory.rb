@@ -1,5 +1,5 @@
 require 'faker'
-photos_folder_path="/Users/oldComputer/Desktop/seedphotos"
+photos_folder_path="/home/bardon/test_data/seedphotos"
 
 FactoryBot.define do
     factory :sitter do
