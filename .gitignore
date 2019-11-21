@@ -23,3 +23,5 @@ app.yaml
 public/assets
 
 Gemfile.lock
+
+init_conf.sh
