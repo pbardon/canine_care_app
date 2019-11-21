@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+# Copy this file to init_config.sh in this directory so that the postgres user can be created
+set -e
+
+psql -v ON_ERROR_STOP=1 -U "$POSTGRES_USER" <<-EOSQL
+
+    CREATE ROLE rails_dev with PASSWORD <<PASSWORD>> ;
+    ALTER ROLE rails_dev WITH LOGIN;
+    ALTER ROLE rails_dev CREATEDB;
+
+EOSQL

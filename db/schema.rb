@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_15_044603) do
+ActiveRecord::Schema.define(version: 2019_10_02_044856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,8 +52,21 @@ ActiveRecord::Schema.define(version: 2018_05_15_044603) do
     t.string "dog_photo_content_type"
     t.bigint "dog_photo_file_size"
     t.datetime "dog_photo_updated_at"
+    t.integer "imageable_id"
     t.index ["name"], name: "index_dogs_on_name"
     t.index ["user_id"], name: "index_dogs_on_user_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "imageable_type"
+    t.bigint "imageable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "img_file_name"
+    t.string "img_content_type"
+    t.bigint "img_file_size"
+    t.datetime "img_updated_at"
+    t.index ["imageable_type", "imageable_id"], name: "index_photos_on_imageable_type_and_imageable_id"
   end
 
   create_table "sitters", id: :serial, force: :cascade do |t|
@@ -77,6 +90,7 @@ ActiveRecord::Schema.define(version: 2018_05_15_044603) do
     t.datetime "sitter_photo_updated_at"
     t.float "latitude"
     t.float "longitude"
+    t.integer "imageable_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

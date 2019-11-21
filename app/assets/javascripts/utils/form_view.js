@@ -1,11 +1,16 @@
 Backbone.FormView = Backbone.CompositeView.extend({
     saveFileToAttribute: function(event, attributeName) {
-        var that = this;
+        var form = this;
         var file = event.currentTarget.files[0];
         var reader = new FileReader();
-        reader.onload = function(e) {
-            that.model.set(attributeName, this.result);
+        var loadFunction = function (fileEvent) {
+            form.model.set(attributeName, { img: fileEvent.target.result });
         };
+
+        reader.onload = loadFunction;
+        reader.onerror = function () {
+          console.log("error", arguments)
+        }
         reader.readAsDataURL(file);
-    },
+    }
 });
