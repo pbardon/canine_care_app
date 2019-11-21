@@ -1,9 +1,11 @@
 version: '3'
 services:
   db:
-    image: postgres
+    image: postgres:11.5
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
   web00:
     image: pbardon/canine_care_app
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
@@ -12,6 +14,8 @@ services:
       - /home/webhost/seedphotos:/Users/oldComputer/Desktop/seedphotos
     ports:
       - "8080:3000"
+    environment:
+      - SEED_PHOTO_PATH=/Users/oldComputer/Desktop/seedphotos
     depends_on:
       - db
   web01:

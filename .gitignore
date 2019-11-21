@@ -22,3 +22,6 @@ app.yaml
 # Ignore precompiled assets
 public/assets
 
+Gemfile.lock
+
+init_conf.sh

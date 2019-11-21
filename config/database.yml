@@ -1,14 +1,15 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: rails_dev 
+  host: <%= ENV['PG_HOSTNAME'] %>
+  username: rails_dev
   password: <%= ENV['PG_DEV_PASSWORD'] %>
   pool: 5
   timeout: 5000
+  port: 5432
 
 development:
   <<: *default
-  host: 127.0.0.1
   database: cc_app_development
 
 production:
@@ -27,5 +28,4 @@ production:
 
 test:
   <<: *default
-  host: 127.0.0.1
   database: cc_app_test
