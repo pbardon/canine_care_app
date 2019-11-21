@@ -7,13 +7,14 @@ module Api
     attr_reader :user_id
 
     wrap_parameters :sitter, include: [:sitter_name, :price, :description, :street_address,
-                                       :city, :state, :zipcode, :small, :medium, :large, :sitter_photo]
+                                       :city, :state, :zipcode, :small, :medium, :large, :sitter_photo,
+                                       :photo_attributes]
 
     def create
       @sitter = Sitter.new(sitter_params)
       @sitter.user_id = current_user.id
       if @sitter.save
-        geo = @sitter.generate_geocode()
+        geo = @sitter.generate_geocode
         @sitter.save!
         render 'sitters/show'
       else
@@ -99,9 +100,9 @@ module Api
     def sitter_params
       params.require(:sitter).permit(:sitter_name, :description, :price,
                                      :small, :medium, :large,
-                                     :street_address, :city, :state, :zipcode, :sitter_photo, :page)
+                                     :street_address, :city, :state, :zipcode,
+                                     :sitter_photo, :page,
+                                     photo_attributes: [:img])
     end
-
   end
-
 end

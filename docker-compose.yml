@@ -17,6 +17,8 @@ services:
       - /home/bardon/test_data/seedphotos:/home/bardon/test_data/seedphotos
     ports:
       - "8080:3000"
+    environment:
+      - SEED_PHOTO_PATH=/Users/oldComputer/Desktop/seedphotos
     depends_on:
       - db
   web01:
