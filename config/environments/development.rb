@@ -56,4 +56,8 @@ Rails.application.configure do
   config.google_cloud.use_logging = false
   config.google_cloud.use_error_reporting = false
   config.google_cloud.use_debugger = false
+
+  config.active_storage.service = :local
+
+  Rails.application.routes.default_url_options[:host] = "localhost:3000"
 end
