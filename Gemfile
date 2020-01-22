@@ -25,7 +25,7 @@ gem 'loofah', '~> 2.3.1'
 gem 'font-awesome-rails'
 gem 'simple-line-icons-rails'
 gem 'kaminari'
-
+gem 'mini_magick'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :development, :test do
