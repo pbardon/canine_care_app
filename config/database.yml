@@ -26,4 +26,5 @@ production:
 
 test:
   <<: *default
+  password: <%=  ENV['PG_DEV_PASSWORD'] %>
   database: cc_app_test
