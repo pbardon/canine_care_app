@@ -1,5 +1,5 @@
 require 'faker'
-photos_folder_path=ENV['seed_photo_path']
+photos_folder_path=ENV['SEED_PHOTO_PATH']
 
 
 FactoryBot.define do

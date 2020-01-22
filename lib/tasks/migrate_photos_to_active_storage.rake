@@ -4,7 +4,6 @@ namespace :photos do
       image_name = photo.img_file_name
       ext = File.extname(image_name)
 
-
       photo_id = photo.id
       if photo_id < 1000
         id_string = "#{photo_id}"
@@ -18,10 +17,9 @@ namespace :photos do
 
       img_url = "https://pet-sitter-development.s3.amazonaws.com/photos/imgs/000/000/#{id_string}/original/#{image_name}"
 
-      photo.img.attach(io: open(img_url),
+      photo.image.attach(io: open(img_url),
                        filename: image_name,
                        content_type: photo.img_content_type)
-
     end
   end
 end

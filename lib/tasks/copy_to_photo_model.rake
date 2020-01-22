@@ -1,5 +1,5 @@
 namespace :db do
-  task :copy_to_photo_model do
+  task copy_to_photo_model: :environment do
     Sitter.all.each do |sitter|
       begin
         photo = sitter.sitter_photo

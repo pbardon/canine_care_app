@@ -1,20 +1,22 @@
 class Photo < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   belongs_to :imageable, polymorphic: true
-  has_one_attached :img
+  has_one_attached :image
   attr_accessor :photo_contents
   attr_accessor :photo_name
 
   after_create :parse_photo
 
-  # has_attached_file :img, styles: {
-  #   big: "600x600>",
-  #   small: "100x100#"
-  #   }, default_url: "https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png"
-  #
-  # validates_attachment :img,
-  #   content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
+  has_attached_file :img, styles: {
+    big: "600x600>",
+    small: "100x100#"
+    }, default_url: "https://s3-us-west-1.amazonaws.com/pet-sitter-development/pic-missing2.png"
 
+  validates_attachment :img,
+    content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
+
+  # validates_attachment :image,
+  #   content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
 
   def img_url
     #generate url for attachement
@@ -33,7 +35,7 @@ class Photo < ActiveRecord::Base
       File.open("#{Rails.root}/tmp/images/#{filename}", 'wb') do |f|
         f.write(decoded_data)
       end
-      self.img.attach(io: File.open("#{Rails.root}/tmp/images/#{filename}"), filename: filename)
+      self.image.attach(io: File.open("#{Rails.root}/tmp/images/#{filename}"), filename: filename)
       FileUtils.rm("#{Rails.root}/tmp/images/#{filename}")
     end
   end
