@@ -26,5 +26,10 @@ Gemfile.lock
 
 init_conf.sh
 
+<<<<<<< HEAD
 
 storage/
+=======
+#temporary local storage
+storage
+>>>>>>> origin/master

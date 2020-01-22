@@ -15,7 +15,9 @@ namespace :photos do
         id_string = "00#{photo_id}"
       end
 
-      img_url = "https://pet-sitter-development.s3.amazonaws.com/photos/imgs/000/000/#{id_string}/original/#{image_name}"
+      s3_db_name = "#{ENV["AWS_BUCKET_PRODUCTION"]}.s3.amazonaws.com"
+
+      img_url = "https://#{s3_db_name}/photos/imgs/000/000/#{id_string}/original/#{image_name}"
 
       photo.image.attach(io: open(img_url),
                        filename: image_name,
