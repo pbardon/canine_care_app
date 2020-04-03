@@ -4,7 +4,7 @@ RUN mkdir /app
 WORKDIR /app
 RUN mkdir seedphotos
 
-ADD Gemfile Gemfile.lock /app/
+ADD Gemfile /app/
 RUN bundle install -j 8
 
 ADD . /app

@@ -16,8 +16,10 @@ Sitter.all.each {|s| s.destroy}
 User.all.each {|s| s.destroy}
 
 
-100.times do
+10.times do
     create(:sitter)
 end
 
-create(:sitter)
+10.times do
+  create(:dog)
+end
