@@ -370,6 +370,8 @@ DEPENDENCIES
   addressable
   annotate
   appengine (~> 0.4.6)
+  aws-partitions
+  aws-sdk-core
   aws-sdk-s3
   backbone-on-rails
   bcrypt (~> 3.1.7)
