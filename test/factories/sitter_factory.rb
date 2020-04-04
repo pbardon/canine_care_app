@@ -6,8 +6,8 @@ FactoryBot.define do
     factory :sitter do
         user
         sitter_name { Faker::Company.catch_phrase }
-        description { Faker::Lorem.paragraph(2) }
-        price { Faker::Number.number(2) }
+        description { Faker::Lorem.paragraph(sentence_count: 2) }
+        price { Faker::Number.number(digits: 2) }
         street_address { Faker::Address.street_address }
         city { Faker::Address.city }
         state { Faker::Address.state }

@@ -14,7 +14,7 @@ module Api
       @sitter = Sitter.new(sitter_params)
       @sitter.user_id = current_user.id
       if @sitter.save
-        geo = @sitter.generate_geocode
+        @sitter.generate_geocode
         @sitter.save!
         render 'sitters/show'
       else

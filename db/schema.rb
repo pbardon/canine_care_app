@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_044856) do
+ActiveRecord::Schema.define(version: 2020_04_03_172300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,10 +48,6 @@ ActiveRecord::Schema.define(version: 2019_10_02_044856) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "dog_photo_file_name"
-    t.string "dog_photo_content_type"
-    t.bigint "dog_photo_file_size"
-    t.datetime "dog_photo_updated_at"
     t.integer "imageable_id"
     t.index ["name"], name: "index_dogs_on_name"
     t.index ["user_id"], name: "index_dogs_on_user_id"
@@ -84,10 +80,6 @@ ActiveRecord::Schema.define(version: 2019_10_02_044856) do
     t.string "city"
     t.string "zipcode"
     t.string "state"
-    t.string "sitter_photo_file_name"
-    t.string "sitter_photo_content_type"
-    t.bigint "sitter_photo_file_size"
-    t.datetime "sitter_photo_updated_at"
     t.float "latitude"
     t.float "longitude"
     t.integer "imageable_id"
