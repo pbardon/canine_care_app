@@ -15,6 +15,6 @@ FactoryBot.define do
         avg_rating { 0 }
         latitude { rand(31..49) }
         longitude { rand(-120..-81) }
-        sitter_photo { File.open("#{photos_folder_path}/sitter#{rand(1..9)}.jpg") }
+        photo
     end
 end
