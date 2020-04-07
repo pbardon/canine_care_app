@@ -7,6 +7,6 @@ RSpec.describe Photo, type: :model do
 
   it 'should validate required parameters' do
       expect(@photo.img).to_not be_nil
-      expect(@photo.img.url).to_not be_nil
+      expect(@photo.img_url).to_not be_nil
   end
 end
