@@ -4,7 +4,7 @@ photos_folder_path=ENV['SEED_PHOTO_PATH']
 
 FactoryBot.define do
     factory :sitter do
-        user
+        association :user, factory: :user
         sitter_name { Faker::Company.catch_phrase }
         description { Faker::Lorem.paragraph(sentence_count: 2) }
         price { Faker::Number.number(digits: 2) }
