@@ -14,7 +14,7 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/myapp
-      - /home/bardon/test_data/seedphotos:/root/seedphotos
+      - /home/webhost/seedphotos:/root/seedphotos
     ports:
       - "8080:3000"
     environment:
