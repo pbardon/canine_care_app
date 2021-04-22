@@ -4,8 +4,14 @@ RSpec.describe Sitter, type: :model do
     before(:each) do
         allow_any_instance_of(Paperclip::Attachment).to receive(:save)
             .and_return(true)
+        response = { results: [ geometry: { location: { lat: "100", "lng": "100"} } ] }
+        allow(RestClient).to receive(:get).and_return(JSON.dump(response))
+
+        # allow_any_instance_of(RestClient).to receive(:get)
+        #   .and_return({ geometry: { location: { lat: '100', lng: '100'}}})
         @sitter = create(:sitter)
     end
+
   it 'should validate required parameters' do
       expect(@sitter.user_id).to_not be_nil
       expect(@sitter.avg_rating).to_not be_nil
