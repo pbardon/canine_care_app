@@ -4,6 +4,6 @@ FactoryBot.define do
       sitter
       dog
       date_start { Date.today }
-      date_end { Faker::Date.forward(10) }
+      date_end { Faker::Date.forward(days: 10) }
   end
 end

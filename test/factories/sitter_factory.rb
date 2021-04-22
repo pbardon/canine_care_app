@@ -4,7 +4,7 @@ photos_folder_path=ENV['SEED_PHOTO_PATH']
 
 FactoryBot.define do
     factory :sitter do
-        user
+        association :user, factory: :user
         sitter_name { Faker::Company.catch_phrase }
         description { Faker::Lorem.paragraph(sentence_count: 2) }
         price { Faker::Number.number(digits: 2) }
@@ -15,6 +15,6 @@ FactoryBot.define do
         avg_rating { 0 }
         latitude { rand(31..49) }
         longitude { rand(-120..-81) }
-        sitter_photo { File.open("#{photos_folder_path}/sitter#{rand(1..9)}.jpg") }
+        photo
     end
 end

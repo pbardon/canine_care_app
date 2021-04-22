@@ -29,12 +29,13 @@ class Sitter < ActiveRecord::Base
         ).to_s
 
         output = JSON.parse(RestClient.get(geolocationaddress))
-        print output
         results = output["results"].first
-        location = results['geometry']['location']
-        self.latitude = location['lat']
-        self.longitude = location['lng']
-        location
+        if results['geometry']
+          location = results['geometry']['location']
+          self.latitude = location['lat']
+          self.longitude = location['lng']
+          location
+        end
     end
 
     def find_by_user_id(user_id)

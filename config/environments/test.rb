@@ -56,8 +56,15 @@ Rails.application.configure do
     config.google_cloud.use_error_reporting = false
     config.google_cloud.use_debugger = false
 
+    Rails.application.routes.default_url_options[:host] = "http://localhost:3000"
+
+
+    config.active_storage.service = :test
+
+
     config.after_initialize do
         ActiveRecord::Base.logger = Rails.logger.clone
         ActiveRecord::Base.logger.level = Logger::INFO
     end
+
 end

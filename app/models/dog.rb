@@ -1,6 +1,6 @@
 class Dog < ActiveRecord::Base
 	validates :name, :age, :size, :description, presence: true
-	validates :size, inclusion: { in: %w(small medium large) }
+	validates :size, inclusion: { in: %w[small medium large] }
 
 	belongs_to :user
 

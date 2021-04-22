@@ -4,11 +4,11 @@ photos_folder_path=ENV['SEED_PHOTO_PATH']
 
 FactoryBot.define do
   factory :dog do
-      user
+      association :user, factory: :user
       name { Faker::Internet.user_name(specifier: (5..8)) }
       age { Faker::Number.number(digits: 1) }
-      size { %w[small medium large].take(1) }
+      size { %w[small medium large].sample }
       description { Faker::Lorem.sentence(word_count: 1) }
-      dog_photo { File.open("#{photos_folder_path}/dog#{rand(1..9)}.jpg") }
+      photo
   end
 end

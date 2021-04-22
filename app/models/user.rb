@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
 
   def password=(password)
     return unless password
+
     @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
