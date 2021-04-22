@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'factory_bot'
+require 'byebug'
 include FactoryBot::Syntax::Methods
 
 FactoryBot.find_definitions
@@ -16,8 +17,10 @@ Sitter.all.each {|s| s.destroy}
 User.all.each {|s| s.destroy}
 
 
-100.times do
-    create(:sitter)
+50.times do
+  create(:sitter)
 end
 
-create(:sitter)
+25.times do
+  create(:dog)
+end

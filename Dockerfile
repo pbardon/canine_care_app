@@ -4,9 +4,13 @@ RUN mkdir /app
 WORKDIR /app
 RUN mkdir seedphotos
 
-ADD Gemfile Gemfile.lock /app/
+ADD Gemfile /app/
 RUN bundle install -j 8
 
 ADD . /app
+
+ENV SEED_PHOTO_PATH=/app/test/fixtures/seedphotos
+RUN ruby /app/bin/rake db:migrate RAILS_ENV=test
+RUN ruby /app/bin/bundle exec rspec
 RUN ruby /app/bin/rake assets:precompile
 CMD ruby /app/bin/rails s -b '0.0.0.0'
