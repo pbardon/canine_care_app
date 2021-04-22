@@ -6,10 +6,9 @@
         "build",
         "-t",
         "gcr.io/handy-compass-652/canine_care_app",
-        ".",
-        "--verbosity",
-        "debug"
-       ]
+        "."
+       ],
+       "timeout": "900s"
  }
  ]
 }
