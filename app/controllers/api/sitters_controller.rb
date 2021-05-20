@@ -6,9 +6,10 @@ module Api
   class SittersController < ApplicationController
     attr_reader :user_id
 
-    wrap_parameters :sitter, include: [:sitter_name, :price, :description, :street_address,
-                                       :city, :state, :zipcode, :small, :medium, :large, :sitter_photo,
-                                       :photo_attributes]
+    wrap_parameters :sitter, include: [ :sitter_name, :price, :description, :street_address,
+                                        :city, :state, :zipcode, :small, :medium, :large,
+                                        :photo_attributes
+                                      ]
 
     def create
       @sitter = Sitter.new(sitter_params)

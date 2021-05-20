@@ -5,7 +5,7 @@ CanineCareApp.Views.SitterForm = Backbone.FormView.extend({
 
     events: {
         'submit form':'submit',
-        'change #addSitterPic': 'handle_files'
+        'change #addSitterPic': 'encodeFile'
     },
 
     render: function() {
@@ -14,7 +14,7 @@ CanineCareApp.Views.SitterForm = Backbone.FormView.extend({
         return this;
     },
 
-    handle_files: function(event) {
+    encodeFile: function(event) {
         this.saveFileToAttribute(event, "photo_attributes");
     },
 

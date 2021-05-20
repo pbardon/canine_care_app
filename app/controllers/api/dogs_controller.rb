@@ -1,9 +1,9 @@
 module Api
   class DogsController < ApplicationController
-    wrap_parameters :dog, include: [:name, :age, :description, :size,
-                                    :dog_photo, :photo_attributes]
+    wrap_parameters :dog, include: [:name, :age, :description, :size, :photo_attributes]
 
     def create
+      byebug
       @dog = current_user.dogs.new(dog_params)
       if @dog.save
         render "dogs/show"
