@@ -1,0 +1,14 @@
+{
+ "steps": [
+  {
+      "name": "gcr.io/cloud-builders/docker",
+      "args": [
+        "build",
+        "-t",
+        "gcr.io/handy-compass-652/canine_care_app",
+        "."
+       ],
+       "timeout": "600s"
+ }
+ ]
+}
