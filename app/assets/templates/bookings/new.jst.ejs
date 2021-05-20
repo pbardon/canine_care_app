@@ -15,7 +15,7 @@
                               <label for="dateStart" class="col-lg-2 control-label">Date Start:</label>
                               <div class="col-lg-10">
                                 <input type="text"
-                                      class="form-control"
+                                      class="form-control datepicker"
                                       id="dateStart"
                                       name="date_start"
                                       placeholder="Date Start"
@@ -81,8 +81,15 @@
 
 
 <script>
- $(function() {
-    $("#dateStart").datepicker();
-    $("#dateEnd").datepicker();
-  });
+$(document).ready(function(){
+
+    $("#dateStart").datepicker({
+        maxViewMode: 0,
+        todayHighlight: true
+    });
+    $("#dateEnd").datepicker({
+        maxViewMode: 0,
+        todayHighlight: true
+    });
+});
 </script>
