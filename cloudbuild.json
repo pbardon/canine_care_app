@@ -8,7 +8,7 @@
         "gcr.io/handy-compass-652/canine_care_app",
         "."
        ],
-       "timeout": "600s"
+       "timeout": "900s"
  }
  ]
 }
