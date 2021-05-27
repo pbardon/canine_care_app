@@ -56,7 +56,7 @@ module Api
 
     def dog_params
       params.require(:dog).permit(:name, :age, :description, :size,
-                                  :dog_photo, photo_attributes: [:img])
+                                  :dog_photo, photo_attributes: [:photo_contents])
     end
   end
 end

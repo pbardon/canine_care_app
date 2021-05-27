@@ -20,7 +20,7 @@ RSpec.describe Api::DogsController, type: :controller do
           name: "Spot", age: 7, 
           description: "Nice", size: "small", 
           photo_attributes: { 
-              img: generate_base64_encoded_image
+              photo_contents: generate_base64_encoded_image
           }
         }, format: :json }}
         expect(response).to render_template("dogs/show")

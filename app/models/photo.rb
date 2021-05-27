@@ -4,9 +4,9 @@ class Photo < ActiveRecord::Base
   belongs_to :imageable, polymorphic: true
 
   has_one_attached :img
-  attr_accessor :photo_contents
+  attr_accessor :photo_contents, :photo_name
 
-  after_create :parse_photo
+  before_create :parse_photo
 
   # validates_attachment :img,
   #   content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
