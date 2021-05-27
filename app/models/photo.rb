@@ -4,6 +4,7 @@ class Photo < ActiveRecord::Base
   belongs_to :imageable, polymorphic: true
 
   has_one_attached :img
+  attr_accessor :photo_contents
 
   after_create :parse_photo
 
@@ -17,7 +18,6 @@ class Photo < ActiveRecord::Base
 
   def parse_photo
     # If directly uploaded
-    byebug
     unless self.photo_contents.nil? || self.photo_contents[/(image\/[a-z]{3,4})|(application\/[a-z]{3,4})/] == ''
       content_type = self.photo_contents[/(image\/[a-z]{3,4})|(application\/[a-z]{3,4})/]
       content_type = content_type[/\b(?!.*\/).*/]

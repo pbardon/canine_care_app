@@ -48,6 +48,7 @@ end
 
 group :test do
   gem 'sqlite3'
+  gem 'rails-controller-testing'
 end
 
 # Use unicorn as the app server
