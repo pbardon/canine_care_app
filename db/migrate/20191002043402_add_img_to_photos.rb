@@ -1,10 +1,12 @@
 class AddImgToPhotos < ActiveRecord::Migration[5.0]
   def self.up
     change_table :photos do |t|
-      t.attachment :img
+      # Remove paperclip methods from migration
+      # t.attachment :img
     end
   end
   def self.down
-    drop_attached_file :photos, :img
+    # Remove paperclip methods from migration
+    # drop_attached_file :photos, :img
   end
 end

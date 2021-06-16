@@ -9,7 +9,7 @@ CanineCareApp.Views.DogForm = Backbone.FormView.extend({
 
     events: {
         'submit form' : 'submit',
-        'change #addPic': 'handle_files'
+        'change #addPic': 'encodeFile'
     },
 
     render: function() {
@@ -20,8 +20,8 @@ CanineCareApp.Views.DogForm = Backbone.FormView.extend({
         return this;
     },
 
-    handle_files: function(event) {
-        this.saveFileToAttribute(event, 'photo_attributes');
+    encodeFile: function (event) {
+        this.saveFileToAttribute(event, "photo_attributes");
     },
 
     submit: function (event) {
@@ -30,7 +30,7 @@ CanineCareApp.Views.DogForm = Backbone.FormView.extend({
         var data = $(event.currentTarget).serializeJSON();
         this.model.set(data);
         if (this.model.isNew()) {
-            this.collection.create(this.model, {
+            this.collection.create({ dog: this.model.attributes }, {
                 success: function() {
                     Backbone.history.navigate("#/dogs", { trigger: true });
                 },

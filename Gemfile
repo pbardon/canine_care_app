@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.6.5"
+gem 'concurrent-ruby'
+gem 'ejs'
 
 gem 'rails', '5.2.4'
 gem 'rails-html-sanitizer', '~> 1.0.4'
@@ -8,14 +10,13 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-datepicker-rails'
 gem 'sass-rails'
 gem 'uglifier'
-gem 'backbone-on-rails'
+gem 'backbone-rails'
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'figaro'
 gem 'aws-sdk-s3'
 gem 'aws-sdk-core'
 gem 'aws-partitions', '~> 1.294.0'
-gem 'paperclip'
 gem 'bcrypt', '~> 3.1.7'
 gem 'addressable'
 gem 'rest-client'
@@ -49,6 +50,7 @@ end
 
 group :test do
   gem 'sqlite3'
+  gem 'rails-controller-testing'
 end
 
 # Use unicorn as the app server
@@ -59,5 +61,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-gem "appengine", "~> 0.4.6"

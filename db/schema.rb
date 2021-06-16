@@ -67,15 +67,11 @@ ActiveRecord::Schema.define(version: 2020_04_05_190419) do
     t.integer "imageable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "img_file_name"
-    t.string "img_content_type"
-    t.bigint "img_file_size"
-    t.datetime "img_updated_at"
     t.index ["imageable_type", "imageable_id"], name: "index_photos_on_imageable_type_and_imageable_id"
   end
 
 # Could not dump table "sitters" because of following StandardError
-#   Unknown type '' for column 'latitude'
+#   Unknown type 'real' for column 'latitude'
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false

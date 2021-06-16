@@ -4,7 +4,7 @@ Backbone.FormView = Backbone.CompositeView.extend({
         var file = event.currentTarget.files[0];
         var reader = new FileReader();
         var loadFunction = function (fileEvent) {
-            form.model.set(attributeName, { img: fileEvent.target.result });
+            form.model.set(attributeName, { photo_contents: fileEvent.target.result });
         };
 
         reader.onload = loadFunction;
