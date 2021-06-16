@@ -84,4 +84,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   Rails.application.routes.default_url_options[:host] = "https://caninecare.co"
+
+  config.active_storage.service = :amazon
 end
