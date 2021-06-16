@@ -3,6 +3,8 @@ FROM ruby:2.6.5
 RUN mkdir /app
 WORKDIR /app
 RUN mkdir seedphotos
+RUN mkdir /app/tmp
+RUN mkdir /app/tmp/images
 
 ADD Gemfile /app/
 RUN bundle install -j 8

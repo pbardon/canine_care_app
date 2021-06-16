@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.6.5"
 gem 'concurrent-ruby'
+gem 'ejs'
 
 gem 'rails', '5.2.4'
 gem 'rails-html-sanitizer', '~> 1.0.4'

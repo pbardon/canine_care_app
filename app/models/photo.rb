@@ -23,7 +23,7 @@ class Photo < ActiveRecord::Base
       content_type = content_type[/\b(?!.*\/).*/]
       contents = self.photo_contents.sub /data:((image|application)\/.{3,}),/, ''
       decoded_data = Base64.decode64(contents)
-      filename = self.photo_name || 'photo_' + Time.zone.now.to_s + '.' + content_type
+      filename = self.photo_name || "photo_#{Time.zone.now.to_s}.#{content_type}"
       File.open("#{Rails.root}/tmp/images/#{filename}", 'wb') do |f|
         f.write(decoded_data)
       end
