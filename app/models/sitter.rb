@@ -30,7 +30,7 @@ class Sitter < ActiveRecord::Base
 
         output = JSON.parse(RestClient.get(geolocationaddress))
         results = output["results"].first
-        if results['geometry']
+        if results && results['geometry']
           location = results['geometry']['location']
           self.latitude = location['lat']
           self.longitude = location['lng']

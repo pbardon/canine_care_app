@@ -6,10 +6,11 @@ module Api
   class SittersController < ApplicationController
     attr_reader :user_id
 
-    wrap_parameters :sitter, include: [ :sitter_name, :price, :description, :street_address,
-                                        :city, :state, :zipcode, :small, :medium, :large,
-                                        :photo_attributes
-                                      ]
+    wrap_parameters :sitter, 
+      format: [ :json ],
+      include: [ :sitter_name, :price, :description, :street_address,
+                 :city, :state, :zipcode, :small, :medium, :large,
+                 :photo_attributes ]
 
     def create
       @sitter = Sitter.new(sitter_params)
@@ -49,9 +50,11 @@ module Api
       # end
 
       if @sitter.user_id == current_user.id && @sitter.update_attributes(sitter_params)
-        geo = generate_geocode(@sitter.street_address, @sitter.zipcode, @sitter.city, @sitter.state)
-        @sitter.latitude = geo[0]
-        @sitter.longitude = geo[1]
+        geo = @sitter.generate_geocode
+        if geo
+          @sitter.latitude = geo[0]
+          @sitter.longitude = geo[1]
+        end
         @sitter.save!
         render "sitters/show"
       else
@@ -103,7 +106,7 @@ module Api
                                      :small, :medium, :large,
                                      :street_address, :city, :state, :zipcode,
                                      :sitter_photo, :page,
-                                     photo_attributes: [:img])
+                                     photo_attributes: [:photo_contents])
     end
   end
 end
