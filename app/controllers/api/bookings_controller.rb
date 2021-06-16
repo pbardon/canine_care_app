@@ -1,6 +1,8 @@
 module Api
-
   class BookingsController < ApplicationController
+    wrap_parameters :booking, 
+      format: [ :json],
+      include: [:sitter_id, :date_start, :date_end, :dog_id, :message, :confirmed, :completed]
 
     def index
       if (params[:sitter_id])
