@@ -8,7 +8,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-datepicker-rails'
 gem 'sass-rails'
 gem 'uglifier'
-gem 'backbone-on-rails'
+gem 'backbone-rails'
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'figaro'
@@ -59,5 +59,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-gem "appengine", "~> 0.4.6"
