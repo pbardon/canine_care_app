@@ -6,9 +6,43 @@ In order to run the application in development mode you will need the following 
 
 ## Postgres
 
+Postgres version 11.5 is required to run the development server, you will need to install Postgres as well as create a role for the app to use with the database.
+
+### Creating the Postgres role
+Once Postgres is installed and running, login to the postgres user:
+
+```
+sudo su postgres
+```
+
+And start the Postgres CLI
+
+```
+psql
+```
+
+Then, issue the following commands
+
+```
+CREATE ROLE <<RAILS PG USERNAME>> with PASSWORD '<<RAILS PG PASSWORD>>' ;
+ALTER ROLE <<RAILS PG USERNAME>> WITH LOGIN;
+ALTER ROLE <<RAILS PG USERNAME>> CREATEDB;
+```
+
+Where "<<RAILS PG USERNAME>>" and "<<RAILS PG PASSWORD>>" matches the values provided in the config/application.yml file.
+
+Once you have set these values, you should be able to exit from the CLI and postgres account and the application will be able to connect to the database.
+
+
 ## Ruby
+This application has been developed and tested with Ruby 2.6.5. We recommend installing and using RVM to manage your ruby installations.
 
 ## Docker
+Docker is used to build the container image so that the latest version of the code can be published. Although not strictly required for development, it is useful to have it to debug issues in pipeline or production builds.
+
+### Docker Compose
+
+Docker Compose is used to run the set of containers that we run in production. It is not strictly necessary for development, but can help debug issues when starting the containers in production.
 
 # Running the Development Server
 In order to run the development server locally, run the following command:
@@ -17,8 +51,47 @@ In order to run the development server locally, run the following command:
 bundle exec rails s
 ```
 
+## Secrets
+Put the following secrets in the 'config/application.yml' file:
+
+```
+AWS_BUCKET_DEVELOPMENT: "<<S3 Bucket Name for Development>>"
+
+AWS_BUCKET_PRODUCTION: "<<S3 Bucket Name for Production>>"
+
+AWS_BUCKET_TEST: "<<S3 Bucket Name for Test>>"
+
+AWS_ACCESS_KEY_ID: "<<AWS API Key ID, role must have permissions to the S3 buckets>>"
+
+AWS_SECRET_ACCESS_KEY: "<<AWS API Key Access Key, role must have permissions to the S3 buckets>>"
+
+MAPS_API_KEY: "<<Google Maps API Key, must have permissions to the Google Maps service>>"
+
+AWS_REGION: "<<AWS region where you want to store the content>>"
+
+PG_USERNAME: "<<Postgres username for the app to use>>"
+
+PG_DEV_PASSWORD: "<<Postgres password for the app to use>>"
+
+SECRET_KEY_BASE: "<<Secret key base used to generate unique cookies>>"
+```
+
+# Running the Development Container
+The development server can also be run a container locally.
+
+But, you will need to create the appropriate user role in the database container. The script template should be copied into the following file:
+
+
+```
+cp ./init_conf.sh.template ./init_conf.sh
+```
+
+Once the file is copied, replace the password with the Postgres password you want to use, surrounded by the "'" character.
+
+
+
 # Running Tests
-IN order to run the tests, first set the following environment variables:
+In order to run the tests, first set the following environment variables:
 
 ```
 export SEED_PHOTO_PATH=`pwd`/test/fixtures/seedphotos
@@ -73,7 +146,8 @@ Next, start the docker containers with the new image and ensure that they start 
 
 ```
 cd ~/canine_care_app
-docker-compose up > /tmp/ccapp-docker.log 2>&1
+docker-compose down
+docker-compose up > /tmp/ccapp-docker.log 2>&1 &
 ```
 
 Once you are happy with the deployment, you can shut down the containers and restart the web service that is running the containers:
